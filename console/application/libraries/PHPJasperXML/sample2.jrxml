@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc3d4581-fc29-4980-bc8a-00ac2a6e9c17">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parameter1" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT "x" as name,    10 as qty1,   20 as qty2,  15 as qty3,  29 as qty4
+UNION ALL
+SELECT "y" ,30,   16,  20 ,  8
+UNION ALL
+SELECT "z" ,20,   8,  2 , 20]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="qty1" class="java.lang.Long"/>
+	<field name="qty2" class="java.lang.Long"/>
+	<field name="qty3" class="java.lang.Long"/>
+	<field name="qty4" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="289" y="606" width="266" height="196" uuid="902351f3-a848-47d9-8836-7798e2ad6546"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{sample1_itemname}]]></keyExpression>
+					<valueExpression><![CDATA[$F{sample1_qty}]]></valueExpression>
+					<labelExpression><![CDATA[$F{sample1_itemname}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+			<lineChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="176" uuid="b8971683-d367-463e-ae97-e2a536ab506b"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Line Chart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty1"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty1}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty2"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty2}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty3"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty3}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty4"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty4}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+			<stackedAreaChart>
+				<chart>
+					<reportElement x="0" y="196" width="555" height="148" uuid="21445d25-2585-4d9b-bea8-ea0a2e0e657f"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Stacked Chart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty1"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty1}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty2"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty2}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty3"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty3}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty4"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty4}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+			<barChart>
+				<chart>
+					<reportElement x="58" y="507" width="497" height="73" uuid="67b2c5d7-93ee-4686-8c67-c68ec8f8afcb"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Barchart2"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty1"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty1}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA["qty2"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty2}]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="606" width="230" height="196" uuid="eba31fb0-ebd3-4e95-a988-a22a8d456d38"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{sample1_itemname}]]></keyExpression>
+					<valueExpression><![CDATA[$F{sample1_qty}]]></valueExpression>
+					<labelExpression><![CDATA[$F{sample1_itemname}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="60" width="43" height="21" forecolor="#0033FF" backcolor="#F2F2F2" uuid="7703d11a-ef67-4890-9c90-6340e8f76304"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="142" y="60" width="72" height="21" forecolor="#0033FF" backcolor="#F2F2F2" uuid="627b6870-dc05-4311-a1c8-66d87b70cbfb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="9" isBold="false" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[الب يد الالكترونى :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="43" y="60" width="99" height="21" backcolor="#F2F2F2" uuid="f1036cef-c3da-489e-a23a-82ac224334b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[senthamilan@
+cutegroup.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="23" width="210" height="20" forecolor="#0033FF" uuid="0fbbf6d2-29fb-4c05-bf0b-73258b3dd06e">
+					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9" isBold="false" pdfFontName="ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ ص.ب. رقم ٤۱٧۱ ، الدمام  ۳۱٤۳۲ ، المملكة العربية السعودية.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="140" y="46" width="74" height="14" forecolor="#0033FF" backcolor="#F2F2F2" uuid="77bdbd11-4b6c-42f7-ad88-90fc77b4cc45"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="9" isBold="false" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[الهاتف :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="46" width="43" height="14" forecolor="#0033FF" backcolor="#F2F2F2" uuid="85a72c7c-0fad-4279-9036-36e29c9fe01e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="43" y="46" width="107" height="14" backcolor="#F2F2F2" uuid="0900b50b-b604-4d52-a375-4bacc094a57d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0096613335388]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="0" width="209" height="26" forecolor="#0033FF" uuid="91ab7b66-15ad-4c78-bf3f-9d306e66bf45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="false" pdfFontName="ARIAL.TTF" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[شركة كيوتيك العربية المحدودة .]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="166" y="150" width="48" height="20" forecolor="#0033FF" backcolor="#F2F2F2" uuid="e0314504-5e00-49bb-980f-6bdc29467147"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  VAT No : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="26" width="227" height="25" forecolor="#0033FF" uuid="ee38238d-6fdd-4ff9-9970-2856cb5267a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUTECH ARABIA LLC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="58" y="130" width="87" height="20" backcolor="#F2F2F2" uuid="0f4f6e5b-e4c3-43cd-933d-6fd80adfa8e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2050081513]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="110" width="48" height="20" forecolor="#0033FF" backcolor="#F2F2F2" uuid="74aae5df-fc0e-48ce-8a15-1a895a026508"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.R No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="318" y="156" width="96" height="14" forecolor="#0033FF" backcolor="#F2F2F2" uuid="014aed4c-1e75-402f-a831-cc340b8897cf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="false" pdfFontName="ARIAL.TTF" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[ سجل تجارى رقم :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="86" y="90" width="91" height="20" backcolor="#F2F2F2" uuid="f3feb702-e64b-4853-9bab-d74fbd6f1525"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[300413674500003]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="110" width="227" height="20" forecolor="#0000FF" uuid="6c8a7ab8-5138-40a5-944d-0b9802f3e0ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PO Box No : 4171, Dammam-31432, Saudi Arabia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="346" y="81" width="96" height="20" forecolor="#0033FF" backcolor="#F2F2F2" uuid="d591ed19-887d-47be-8396-d235e14b2559"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="9" isBold="false" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[رقم التعريف الضريبى  :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

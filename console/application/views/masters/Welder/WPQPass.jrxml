@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="578900e3-0c5e-4102-8e31-dc6c573ab805">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="84"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select CONCAT(we.welder_first_name, ' ', we.welder_first_name) AS name, we.welder_photo, we.welder_iqama_no, we.welder_no, we.welder_ref_no, wen.ndt_date, ndt.ndttype_name, wen.ndt_technician_name, wen.ndt_report_no, wen.ndt_issued_date, ttr.tr_name, wen.ndt_remarks, ba.batch_wps, ba.batch_pqr_no, ba.batch_location, wed.welderDetails_base_metal_spec, wed.welderDetails_joint_type, wed.welderDetails_weld_type, wed.welderDetails_authorisedBy, stf.staffs_employee_name, stfs.staffs_employee_name, bwpqa.batchWPQ_additional_notes, bwpqa.batchWPQ_additional_conducted_by, bwpqa.batchWPQ_additional_date, bwpq.batchWPQ_id,bwpq.batchForm_welding_processes_lbl, bwpq.batchForm_welding_processes_val, bwpq.batchForm_welding_processes_range, bwpq.batchForm_welding_type_lbl, bwpq.batchForm_welding_type_val, bwpq.batchForm_welding_type_range, bwpq.batchForm_pno_groupno_lbl, bwpq.batchForm_pno_groupno_val, bwpq.batchForm_pno_groupno_range, bwpq.batchForm_test_specimen_lbl, bwpq.batchForm_test_specimen_val, bwpq.batchForm_test_specimen_range, bwpq.batchForm_pipe_tube_lbl, bwpq.batchForm_pipe_tube_val, bwpq.batchForm_pipe_tube_range, bwpq.batchForm_pipe_plate_lbl, bwpq.batchForm_pipe_plate_val, bwpq.batchForm_pipe_plate_range, bwpq.batchForm_type_of_joint_lbl, bwpq.batchForm_type_of_joint_val, bwpq.batchForm_type_of_joint_range, bwpq.batchForm_type_of_weld_lbl, bwpq.batchForm_type_of_weld_val, bwpq.batchForm_type_of_weld_range, bwpq.batchForm_joint_backing_lbl, bwpq.batchForm_joint_backing_val, bwpq.batchForm_joint_backing_range, bwpq.batchForm_filler_metal_spec_lbl, bwpq.batchForm_filler_metal_spec_val, bwpq.batchForm_filler_metal_spec_range, bwpq.batchForm_filler_metal_aws_lbl, bwpq.batchForm_filler_metal_aws_val, bwpq.batchForm_filler_metal_aws_range, bwpq.batchForm_filler_metal_fno_lbl, bwpq.batchForm_filler_metal_fno_val, bwpq.batchForm_filler_metal_fno_range, bwpq.batchForm_filler_metal_brand_lbl, bwpq.batchForm_filler_metal_brand_val, bwpq.batchForm_filler_metal_brand_range, bwpq.batchForm_deposit_weld_lbl, bwpq.batchForm_deposit_weld_val, bwpq.batchForm_deposit_weld_range, bwpq.batchForm_consumable_insert_lbl, bwpq.batchForm_consumable_insert_val, bwpq.batchForm_consumable_insert_range, bwpq.batchForm_filler_metal_product_lbl, bwpq.batchForm_filler_metal_product_val, bwpq.batchForm_filler_metal_product_range, bwpq.batchForm_welding_position_lbl, bwpq.batchForm_welding_position_val, bwpq.batchForm_welding_position_range, bwpq.batchForm_vertical_progression_lbl, bwpq.batchForm_vertical_progression_val, bwpq.batchForm_vertical_progression_range, bwpq.batchForm_insert_gas_lbl, bwpq.batchForm_insert_gas_val, bwpq.batchForm_insert_gas_range, bwpq.batchForm_transfer_mode_lbl, bwpq.batchForm_transfer_mode_val, bwpq.batchForm_transfer_mode_range, bwpq.batchForm_current_type_lbl, bwpq.batchForm_current_type_val, bwpq.batchForm_current_type_range, bwpqt.batchForm_visual_inspection_result_lbl, bwpqt.batchForm_visual_inspection_result_val, bwpqt.batchForm_visual_inspection_result_report, bwpqt.batchForm_radoigraphy_result_lbl, bwpqt.batchForm_radoigraphy_result_val, bwpqt.batchForm_radoigraphy_result_report, bwpqt.batchForm_bend_result_lbl, bwpqt.batchForm_bend_result_val, bwpqt.batchForm_bend_result_report, bwpqt.batchForm_fillet_fracture_result_lbl, bwpqt.batchForm_fillet_fracture_result_val, bwpqt.batchForm_fillet_fracture_result_report, bwpqt.batchForm_macro_examination_result_lbl, bwpqt.batchForm_macro_examination_result_val, bwpqt.batchForm_macro_examination_result_report, bwpqt.batchForm_other_test_result_lbl, bwpqt.batchForm_other_test_result_val, bwpqt.batchForm_other_test_result_report from jr_welder as we LEFT JOIN jr_welder_ndt as wen ON we.welder_id = wen.welderID LEFT JOIN jr_ndttype as ndt ON wen.ndt_type = ndt.ndttype_id LEFT JOIN jr_testresult as ttr ON wen.ndt_test_result = ttr.tr_id LEFT JOIN jr_batch as ba ON we.batchID = ba.batch_id LEFT JOIN jr_welderdetails as wed ON ba.batch_id = wed.batchID LEFT JOIN jr_staffs as stf ON wed.welderDetails_WQT_witnessedBy = stf.user_id LEFT JOIN jr_welder_vi as wvi ON we.welder_id = wvi.welderID LEFT JOIN jr_staffs as stfs ON wvi.vi_certified_welding_inspector = stfs.user_id  LEFT JOIN jr_batch_wpq_additional as bwpqa ON bwpqa.batchID = ba.batch_id LEFT JOIN jr_batch_wpq_report as bwpq ON bwpq.batchID = ba.batch_id LEFT JOIN jr_batch_wpq_test_result as bwpqt ON bwpqt.batchID = ba.batch_id]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_photo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_iqama_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_ref_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndttype_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_technician_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_report_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_issued_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tr_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_wps" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_pqr_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_location" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_base_metal_spec" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_joint_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_weld_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_authorisedBy" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="staffs_employee_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_conducted_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Integer" calculation="Sum"/>
+	<background>
+		<band height="381" splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="184" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="11" width="247" height="140" uuid="a0534004-ef9a-4e3e-80e2-b8b0bba45706"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="287" y="10" width="272" height="141" uuid="fb9aa753-0886-440b-a90e-66558a753481"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="67" y="11" width="150" height="12" uuid="0ffa6e16-4b68-4913-b124-21aa3edca0cd"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WELDER QUALIFICATION TEST CARD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="21" width="150" height="12" uuid="654168ce-ea52-4bab-a3d7-f8e7362d2880"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPANY NAME]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="10" y="37" width="247" height="60" uuid="b7faaed5-263f-4355-9c4a-c8cc96ad6de5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="67" y="37" width="90" height="11" uuid="ce9b276e-8c65-4cab-9ea0-b69e08fa8519"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Company Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ContainerBottom" x="67" y="47" width="90" height="11" uuid="15aed6b7-2964-4996-8272-65a5392b344c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Welder Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="57" width="90" height="11" uuid="07a20678-e5f5-4e7d-836e-c422a864cbea"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Passport / Iqama No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="67" width="90" height="11" uuid="818c7957-4a86-4f5e-b03c-a457860a7a38"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Welder Symbol / ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="77" width="90" height="11" uuid="67fc7b7c-e787-410b-94c4-041b38768a98"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Certificate No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="86" width="90" height="11" uuid="29a99b1c-9f87-4a62-8b7b-5d12113df250"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Card No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="37" width="100" height="11" uuid="261a2848-5747-4529-87b4-a87b1a387c6c"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="47" width="100" height="11" uuid="57969c71-742a-40ef-ae0e-2317d0601761"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="57" width="100" height="11" uuid="a2e39158-accd-43b6-a87f-3c01843a90b9"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="67" width="100" height="11" uuid="ec8f508d-147a-4ecd-a168-3328a439f46e"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="77" width="100" height="11" uuid="6881e4e6-02d2-4640-a788-de9eb9ed0991"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="86" width="100" height="11" uuid="69fe1d4c-7f1c-4f12-a2fe-de57db740842"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="10" y="101" width="247" height="50" uuid="7e6f89fb-a233-49a8-96b9-6a58fe3cd7ce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="67" y="101" width="190" height="22" uuid="0779af43-9bd9-486e-b93f-22ccd2396546"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[This is to certify that this person has been tested in accordance with the requirements of ASME SEC IX-2017]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="123" width="137" height="13" uuid="d7ed69f2-f25f-4c34-860b-2c9fe5c4b787"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Test Witnessed by]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="123" width="110" height="13" uuid="102d9c65-1073-44d0-9143-e6fd22d33e4a"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Approved By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="11" width="60" height="11" uuid="226f4f0e-66d1-4c93-8276-88a3ca689979"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[WPS No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="11" width="70" height="11" uuid="f45d9e2e-d513-4f00-9bca-21df9893adef"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="11" width="60" height="11" uuid="13a1e414-6566-4d16-a983-e22954157496"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[PQR No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="11" width="82" height="11" uuid="24a7344c-7f35-4cfb-aaa8-0b780759d71a"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="22" width="60" height="11" uuid="bffd88d3-31b0-468f-8608-af72a8e030c9"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Weld. Process]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="22" width="70" height="11" uuid="421b9ff9-7423-4b4c-b881-5c03bbb42942"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="22" width="60" height="11" uuid="3f7bc92f-f832-4bec-a519-36cbcc83e06d"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Process Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="22" width="82" height="11" uuid="73500caf-00f4-4998-8c94-9eb5643a5d57"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="33" width="60" height="11" uuid="8a49f21f-4266-47e0-9192-a76e6de3851c"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Position]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="44" width="70" height="11" uuid="14a0bdd2-f53f-4fed-a5ea-452040ec48fe"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="33" width="60" height="11" uuid="3f7904fd-fa81-4652-9350-cf82ce1fd195"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Position Qualified]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="33" width="82" height="11" uuid="c2520e7c-8e91-4efc-8afd-cae4fdd54511"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="44" width="60" height="11" uuid="e63bed37-23cd-44c5-9c42-20afc5588dc7"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Joint type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="33" width="70" height="11" uuid="f060a839-4887-4130-ba3f-4bca540ca63d"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="44" width="60" height="11" uuid="10e68af8-48cb-43c7-a654-86f022c8d63b"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[P No. / Group No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="44" width="82" height="11" uuid="cd620a32-2634-4fca-aeb2-fcb1466f6310"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="55" width="60" height="11" uuid="00c8e8ff-fe79-42e8-82ae-6ddbc5b3f26d"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Test Dia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="55" width="70" height="11" uuid="26e20ad4-66fd-49c5-99ad-cd946f32d33d"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="55" width="60" height="22" uuid="f1d19431-cf79-4963-80b4-14593d786ab2"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Range Qualified]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="55" width="82" height="11" uuid="135af8ce-65ab-4cb5-b9b7-6a7fdf1fa95c"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="66" width="60" height="11" uuid="0d09086c-932b-4c66-ada6-c4a71660b1a5"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Test Thickness]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="66" width="70" height="11" uuid="d54fb22e-639f-4e0b-a2f5-5b45db62aa48"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="66" width="82" height="11" uuid="ac9a0236-00ba-41ac-8a6d-cec48a530660"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="77" width="60" height="11" uuid="866e7c8f-158f-4993-88a5-087b908145df"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Test Position]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="77" width="70" height="11" uuid="aa0e59bd-2685-40b5-94e6-fd80d82098e2"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="77" width="60" height="11" uuid="54dc320b-e7f8-46ee-be41-6be71943bca8"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Position Qualified]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="77" width="82" height="11" uuid="5688feef-94db-49c5-b781-c27fc8f4471f"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="88" width="60" height="11" uuid="f8598e86-8ce2-4056-a589-9a3b4137e942"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[F No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="88" width="70" height="11" uuid="70ef7ce1-e69c-4f64-ae44-8cbe22203dd7"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="88" width="60" height="11" uuid="b704fff4-c7b2-4b28-a8c7-9ab97f0deda8"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Electrode Spec.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="88" width="82" height="11" uuid="26cdba66-4ea1-41d4-a748-6a6c2e1c7899"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="99" width="60" height="11" uuid="569a5e36-67b8-46a2-a411-c05d1d35b77f"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Date of Test]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="99" width="70" height="11" uuid="51614474-be36-42a8-ad69-9b4ae0a1d679"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="99" width="60" height="11" uuid="e87314bb-763d-4236-a8b1-b5018e420b37"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Test Method]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="99" width="82" height="11" uuid="7c59de4f-4f5c-431d-bd1d-c13895196993"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="110" width="60" height="11" uuid="ac203c94-b294-4e71-8d0b-8e03547990c8"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Date of Expiry]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="128" width="272" height="23" uuid="ed81ac8b-9391-4691-9db5-0b7a329cea82"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[This card, on its own qualifies the welder for 6 months from the Date of test. Beyond this date welding records must be consulted to ensure the welder's qualification has been maintained]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="110" width="70" height="11" uuid="34d63f31-b223-4195-90cb-926fb505e51c"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="110" width="60" height="11" uuid="2566d379-b790-4152-97b8-ae3957cb5315"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Card No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="110" width="82" height="11" uuid="e4b74bc6-3d40-45a8-90af-76965b1a1652"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="10" y="101" width="57" height="22" uuid="19240d29-1b31-4c20-b86b-25ad7fe66173"/>
+			</rectangle>
+			<componentElement>
+				<reportElement x="14" y="104" width="50" height="20" uuid="5b18be27-3c96-4aa5-b278-522e5b675b8e"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="10" y="37" width="57" height="60" uuid="3a29cfdd-9b9c-4681-b61d-7cf1441463b1"/>
+				<textFieldExpression><![CDATA[$F{welder_photo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="57" width="100" height="10" uuid="31cc0b44-87ec-4164-804f-3783267f00f7"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{welder_iqama_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="68" width="100" height="9" uuid="45164d37-3325-41ee-917c-d19ebf46e7a3"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{welder_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="47" width="100" height="10" uuid="aca76e19-0f2b-4412-828b-bccae73fb173"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="70" y="97" width="187" height="1" uuid="1f93ef02-408c-4d84-9d44-16f5523924a2"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="45" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

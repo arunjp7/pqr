@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleReport1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f320c556-4290-4644-9a97-6e1444e6afb3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="batch_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select CONCAT(we.welder_first_name, ' ', we.welder_first_name) AS name, we.welder_photo, we.welder_iqama_no, we.welder_no, we.welder_ref_no, wen.ndt_date, ndt.ndttype_name, wen.ndt_technician_name, wen.ndt_report_no, wen.ndt_issued_date, ttr.tr_name, wen.ndt_remarks, ba.batch_wps, ba.batch_pqr_no, ba.batch_location, wed.welderDetails_base_metal_spec, wed.welderDetails_joint_type, wed.welderDetails_weld_type, wed.welderDetails_authorisedBy, stf.staffs_employee_name, stfs.staffs_employee_name, bwpqa.batchWPQ_additional_notes, bwpqa.batchWPQ_additional_conducted_by, bwpqa.batchWPQ_additional_date, bwpq.batchWPQ_id,bwpq.batchForm_welding_processes_lbl, bwpq.batchForm_welding_processes_val, bwpq.batchForm_welding_processes_range, bwpq.batchForm_welding_type_lbl, bwpq.batchForm_welding_type_val, bwpq.batchForm_welding_type_range, bwpq.batchForm_pno_groupno_lbl, bwpq.batchForm_pno_groupno_val, bwpq.batchForm_pno_groupno_range, bwpq.batchForm_test_specimen_lbl, bwpq.batchForm_test_specimen_val, bwpq.batchForm_test_specimen_range, bwpq.batchForm_pipe_tube_lbl, bwpq.batchForm_pipe_tube_val, bwpq.batchForm_pipe_tube_range, bwpq.batchForm_pipe_plate_lbl, bwpq.batchForm_pipe_plate_val, bwpq.batchForm_pipe_plate_range, bwpq.batchForm_type_of_joint_lbl, bwpq.batchForm_type_of_joint_val, bwpq.batchForm_type_of_joint_range, bwpq.batchForm_type_of_weld_lbl, bwpq.batchForm_type_of_weld_val, bwpq.batchForm_type_of_weld_range, bwpq.batchForm_joint_backing_lbl, bwpq.batchForm_joint_backing_val, bwpq.batchForm_joint_backing_range, bwpq.batchForm_filler_metal_spec_lbl, bwpq.batchForm_filler_metal_spec_val, bwpq.batchForm_filler_metal_spec_range, bwpq.batchForm_filler_metal_aws_lbl, bwpq.batchForm_filler_metal_aws_val, bwpq.batchForm_filler_metal_aws_range, bwpq.batchForm_filler_metal_fno_lbl, bwpq.batchForm_filler_metal_fno_val, bwpq.batchForm_filler_metal_fno_range, bwpq.batchForm_filler_metal_brand_lbl, bwpq.batchForm_filler_metal_brand_val, bwpq.batchForm_filler_metal_brand_range, bwpq.batchForm_deposit_weld_lbl, bwpq.batchForm_deposit_weld_val, bwpq.batchForm_deposit_weld_range, bwpq.batchForm_consumable_insert_lbl, bwpq.batchForm_consumable_insert_val, bwpq.batchForm_consumable_insert_range, bwpq.batchForm_filler_metal_product_lbl, bwpq.batchForm_filler_metal_product_val, bwpq.batchForm_filler_metal_product_range, bwpq.batchForm_welding_position_lbl, bwpq.batchForm_welding_position_val, bwpq.batchForm_welding_position_range, bwpq.batchForm_vertical_progression_lbl, bwpq.batchForm_vertical_progression_val, bwpq.batchForm_vertical_progression_range, bwpq.batchForm_insert_gas_lbl, bwpq.batchForm_insert_gas_val, bwpq.batchForm_insert_gas_range, bwpq.batchForm_transfer_mode_lbl, bwpq.batchForm_transfer_mode_val, bwpq.batchForm_transfer_mode_range, bwpq.batchForm_current_type_lbl, bwpq.batchForm_current_type_val, bwpq.batchForm_current_type_range, bwpqt.batchForm_visual_inspection_result_lbl, bwpqt.batchForm_visual_inspection_result_val, bwpqt.batchForm_visual_inspection_result_report, bwpqt.batchForm_radoigraphy_result_lbl, bwpqt.batchForm_radoigraphy_result_val, bwpqt.batchForm_radoigraphy_result_report, bwpqt.batchForm_bend_result_lbl, bwpqt.batchForm_bend_result_val, bwpqt.batchForm_bend_result_report, bwpqt.batchForm_fillet_fracture_result_lbl, bwpqt.batchForm_fillet_fracture_result_val, bwpqt.batchForm_fillet_fracture_result_report, bwpqt.batchForm_macro_examination_result_lbl, bwpqt.batchForm_macro_examination_result_val, bwpqt.batchForm_macro_examination_result_report, bwpqt.batchForm_other_test_result_lbl, bwpqt.batchForm_other_test_result_val, bwpqt.batchForm_other_test_result_report from jr_welder as we LEFT JOIN jr_welder_ndt as wen ON we.welder_id = wen.welderID LEFT JOIN jr_ndttype as ndt ON wen.ndt_type = ndt.ndttype_id LEFT JOIN jr_testresult as ttr ON wen.ndt_test_result = ttr.tr_id LEFT JOIN jr_batch as ba ON we.batchID = ba.batch_id LEFT JOIN jr_welderdetails as wed ON ba.batch_id = wed.batchID LEFT JOIN jr_staffs as stf ON wed.welderDetails_WQT_witnessedBy = stf.user_id LEFT JOIN jr_welder_vi as wvi ON we.welder_id = wvi.welderID LEFT JOIN jr_staffs as stfs ON wvi.vi_certified_welding_inspector = stfs.user_id  LEFT JOIN jr_batch_wpq_additional as bwpqa ON bwpqa.batchID = ba.batch_id LEFT JOIN jr_batch_wpq_report as bwpq ON bwpq.batchID = ba.batch_id LEFT JOIN jr_batch_wpq_test_result as bwpqt ON bwpqt.batchID = ba.batch_id]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_photo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_iqama_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welder_ref_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndttype_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_technician_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_report_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_issued_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tr_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndt_remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_wps" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_pqr_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch_location" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_base_metal_spec" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_joint_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_weld_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="welderDetails_authorisedBy" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="staffs_employee_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_conducted_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_additional_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchWPQ_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_processes_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_type_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pno_groupno_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_test_specimen_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_tube_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_pipe_plate_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_joint_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_type_of_weld_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_joint_backing_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_spec_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_aws_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_fno_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_brand_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_deposit_weld_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_consumable_insert_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_filler_metal_product_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_welding_position_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_vertical_progression_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_insert_gas_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_transfer_mode_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_current_type_range" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_visual_inspection_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_radoigraphy_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_bend_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_fillet_fracture_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_macro_examination_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_lbl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_val" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batchForm_other_test_result_report" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="0" width="331" height="59" uuid="3d79d284-839b-4826-98ba-7b5a53a3c7eb"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[jegathesh test rerpot ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="12" width="100" height="20" uuid="2370bc1f-39b8-4ef1-9b15-aa85aa6c1521"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

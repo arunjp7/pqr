@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3831c998-ee37-4b41-a5df-19b06fa8c485">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/var/www/PHPJasperXML/trunk/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM (SELECT
+     sample1.`no` AS sample1_no,
+     sample1.`date` AS sample1_date,
+     sample1.`itemname` AS sample1_itemname,
+     sample1.`qty` AS sample1_qty,
+     sample1.`uom` AS sample1_uom
+FROM
+     `sample1` sample1
+
+UNION ALL
+SELECT
+     sample1.`no` AS sample1_no,
+     sample1.`date` AS sample1_date,
+     sample1.`itemname` AS sample1_itemname,
+     sample1.`qty` AS sample1_qty,
+     sample1.`uom` AS sample1_uom
+FROM
+     `sample1` sample1
+
+UNION ALL
+SELECT
+     sample1.`no` AS sample1_no,
+     sample1.`date` AS sample1_date,
+     sample1.`itemname` AS sample1_itemname,
+     sample1.`qty` AS sample1_qty,
+     sample1.`uom` AS sample1_uom
+FROM
+     `sample1` sample1
+
+) a order by a.sample1_date]]>
+	</queryString>
+	<field name="sample1_no" class="java.lang.Integer"/>
+	<field name="sample1_date" class="java.sql.Date"/>
+	<field name="sample1_itemname" class="java.lang.String"/>
+	<field name="sample1_qty" class="java.lang.Integer"/>
+	<field name="sample1_uom" class="java.lang.String"/>
+	<variable name="totalqty" class="java.lang.String" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[$F{sample1_qty}]]></variableExpression>
+	</variable>
+	<variable name="sample1" class="java.lang.String" incrementType="Group" incrementGroup="date" calculation="Sum">
+		<variableExpression><![CDATA[$F{sample1_qty}]]></variableExpression>
+	</variable>
+	<group name="date">
+		<groupExpression><![CDATA[$F{sample1_date}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Opaque" x="67" y="0" width="176" height="20" backcolor="#CC33FF" uuid="2da554c0-176a-4b8b-bfdf-7f6e944bcda4"/>
+					<textFieldExpression><![CDATA["Date: "+$F{sample1_date}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="243" y="0" width="212" height="20" backcolor="#999999" uuid="38665aae-006c-4493-bed1-2bca5a232d38"/>
+					<textElement textAlignment="Center">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[item Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="455" y="0" width="100" height="20" backcolor="#999999" uuid="38665aae-006c-4493-bed1-2bca5a232d38"/>
+					<textElement textAlignment="Right">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Qty]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21">
+				<staticText>
+					<reportElement mode="Opaque" x="67" y="0" width="100" height="20" backcolor="#FF9933" uuid="254eed63-bd09-42b7-a6a0-f4614aa8a6ef"/>
+					<text><![CDATA[Group Footer]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="455" y="0" width="100" height="20" forecolor="#66FF66" uuid="dfac2bea-20ad-443d-bf4a-b413fa683cde"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{sample1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="174" height="60" backcolor="#CC0066" uuid="c4880168-aecb-4e3f-a3b9-96fe9ba1126e"/>
+				<text><![CDATA[TITLE Band]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="316" y="0" width="86" height="60" uuid="eda370f8-3d81-4fb4-9056-16f3bd493c68"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["QR:12345"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<componentElement>
+				<reportElement x="455" y="0" width="76" height="60" uuid="eda370f8-3d81-4fb4-9056-16f3bd493c68"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["12345"]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<componentElement>
+				<reportElement x="191" y="13" width="108" height="35" uuid="0e2ba44f-8ff4-4475-a20c-77737fc33016"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["12345"]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#009999" uuid="208b888a-f33c-4490-853c-24f7c65118f8"/>
+				<text><![CDATA[Page Header]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="0" width="196" height="20" backcolor="#999999" uuid="99c8d442-58ef-46ed-8747-d5894606ddef"/>
+				<text><![CDATA[Column Header]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="243" y="0" width="212" height="32" uuid="e855159e-668e-4905-931a-bd316a8237ed"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="msungstdlight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sample1_itemname}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="67" y="0" width="176" height="32" uuid="0e2ba44f-8ff4-4475-a20c-77737fc33016"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="none">
+					<jr:codeExpression><![CDATA[$F{sample1_itemname}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#0000FF" uuid="af6ec7f6-5bb4-4267-96e5-3354ba7a593a"/>
+				<text><![CDATA[Column Footer]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="174" height="20" backcolor="#CC0066" uuid="04d25ba8-02d3-48b6-a914-4c3028de91f1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Page Footer]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="21">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="133" height="20" backcolor="#99FF99" uuid="56078bbe-77e9-42f6-93d7-db18105ae768"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Last Page Footer]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="343" y="0" width="100" height="20" uuid="dfac2bea-20ad-443d-bf4a-b413fa683cde"/>
+				<textFieldExpression><![CDATA[$V{totalqty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
