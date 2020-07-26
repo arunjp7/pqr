@@ -78,7 +78,7 @@ class PNO extends CI_Controller
 		if(!$sidx) $sidx =1;
 
 		$fields_arrayPackage = array(
-			'j.pno_id','j.pno_name','u.first_name','j.createOn as createOn','u1.first_name as firstname','j.updateOn as updateOn'
+			'j.pno_id','j.pno_name','j.group_no','j.specification_no','j.dtg_name','j.uns_number','u.first_name','j.createOn as createOn','u1.first_name as firstname','j.updateOn as updateOn'
 		);
 		$join_arrayPackage = array(
 			'users AS u' => 'u.id = j.createBy',
@@ -110,6 +110,10 @@ class PNO extends CI_Controller
 	        	$responce->rows[$i]['cell']['edit_pno_id'] = get_buttons_new_only_Edit($dataDetail->pno_id,'master/PNO/');
 	        	$responce->rows[$i]['cell']['delete_pno_id'] = get_buttons_new_only_Delete($dataDetail->pno_id,'master/PNO/');
 	        	$responce->rows[$i]['cell']['pno_name'] = $dataDetail->pno_name;
+	        	$responce->rows[$i]['cell']['group_no'] = $dataDetail->group_no;
+	        	$responce->rows[$i]['cell']['specification_no'] = $dataDetail->specification_no;
+	        	$responce->rows[$i]['cell']['dtg_name'] = $dataDetail->dtg_name;
+	        	$responce->rows[$i]['cell']['uns_number'] = $dataDetail->uns_number;
 	        	$responce->rows[$i]['cell']['first_name'] = $dataDetail->first_name;
 	        	$responce->rows[$i]['cell']['createOn'] = get_date_timeformat($dataDetail->createOn);
 	        	$responce->rows[$i]['cell']['firstname'] = $dataDetail->firstname;
@@ -156,29 +160,39 @@ class PNO extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function create()
 	{		
+		// print_r($_POST);
+		// die();
         $user   = $this->ion_auth->user()->row();
 		$this->mcommon->getCheckUserPermissionHead('PNO add and edit',true);
         if(isset($_POST['submit']))
 		{			
 			 $this->form_validation->set_rules('pno_name', lang('mm_masters_pno_pno_name'), 'required');
+			 $this->form_validation->set_rules('group_no', lang('mm_masters_group_no_name'), 'required');
+			 $this->form_validation->set_rules('specification_no', lang('mm_masters_pno_specification_no'), 'required');
+			 $this->form_validation->set_rules('dtg_name', lang('mm_masters_pno_DTG_name'), 'required');
 			 
-			 $nameVal = $this->input->post('pno_name');
 
-			 $whereArrNameVal        = "pno_name ='".$nameVal."'";
+			//  $nameVal = $this->input->post('pno_name');
 
-			 // Unique name validation
-			 $resultCounteng = $this->mcommon->specific_record_counts('jr_pno',$whereArrNameVal);
+			//  $whereArrNameVal        = "pno_name ='".$nameVal."'";
+
+			//  // Unique name validation
+			//  $resultCounteng = $this->mcommon->specific_record_counts('jr_pno',$whereArrNameVal);
 			 
-			 if($resultCounteng > 0 && $this->input->post('pno_id')==''){
-				$this->form_validation->set_rules('pno_name', $this->lang->line('form_validation_is_unique_name'), 'callback_maximumNameCheck'); 
-			} 
+			//  if($resultCounteng > 0 && $this->input->post('pno_id')==''){
+			// 	$this->form_validation->set_rules('pno_name', $this->lang->line('form_validation_is_unique_name'), 'callback_maximumNameCheck'); 
+			// } 
 
             if ($this->form_validation->run() == true)
 			{
 				$value_array=array(
-					'pno_name'		    =>	$this->input->post('pno_name'),
-					'updateBy'			=>	$this->session->userdata('user_id'),
-					'updateOn'			=>	date('Y-m-d H:i:s')
+					'pno_name'		    	=>	$this->input->post('pno_name'),
+					'group_no'		   		=>	$this->input->post('group_no'),
+					'specification_no'		=>	$this->input->post('specification_no'),
+					'dtg_name'		    	=>	$this->input->post('dtg_name'),
+					'uns_number'		    =>	$this->input->post('uns_number'),
+					'updateBy'				=>	$this->session->userdata('user_id'),
+					'updateOn'				=>	date('Y-m-d H:i:s')
 				);
 				if($this->input->post('pno_id')!='')
 				{

@@ -1,5 +1,5 @@
   <?php
-    $this->mcommon->getCheckUserPermissionHead('PNO',true);
+    $this->mcommon->getCheckUserPermissionHead('F-NO',true);
   ?> 
   <div id="main-wrapper">
   <div class="text-center">
@@ -8,7 +8,7 @@
       if($this->session->flashdata('res'))
       {
         ?>
-        <div class="alert alert-<?php echo $this->session->flashdata('res_pno'); ?> successmessage">
+        <div class="alert alert-<?php echo $this->session->flashdata('res_fno'); ?> successmessage">
           <a href="javascript:void(0)" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <?php   echo $this->session->flashdata('res'); ?>
         </div>
@@ -29,7 +29,7 @@
     if($this->mcommon->getISUserPermission('PNO add and edit',$this->session->userdata('user_id'))){
       ?>
       <span class="pull-left">
-        <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-sm btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_pno_manage_form_add_button_name');?></a>
+        <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-sm btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_fno_manage_form_add_button_name');?></a>
       </span>
       <?php
     }
@@ -100,28 +100,28 @@
         },
 
         colModel:[
-        <?php if($this->mcommon->getISUserPermission('PNO add and edit',$this->session->userdata('user_id'))){?>
-          {label:'<?php echo lang('common_table_label_edit_operation');?>' ,name:'edit_pno_id',index:'edit_pno_id', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-        <?php } if($this->mcommon->getISUserPermission('PNO delete',$this->session->userdata('user_id'))){?>
-          {label:'<?php echo lang('common_table_label_delete_operation');?>' ,name:'delete_pno_id',index:'delete_pno_id', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+        <?php if($this->mcommon->getISUserPermission('FNO add and edit',$this->session->userdata('user_id'))){?>
+          {label:'<?php echo lang('common_table_label_edit_operation');?>' ,name:'edit_fno_id',index:'edit_fno_id', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+        <?php } if($this->mcommon->getISUserPermission('FNO delete',$this->session->userdata('user_id'))){?>
+          {label:'<?php echo lang('common_table_label_delete_operation');?>' ,name:'delete_fno_id',index:'delete_fno_id', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
         <?php }?>
 
-          {label:'<?php echo lang('mm_masters_pno_table_label_pno_name');?>',name:'pno_name',index:'pno_name', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_group_no_name');?>',name:'group_no',index:'group_no', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_specification_no');?>',name:'specification_no',index:'specification_no', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_DTG_name');?>',name:'dtg_name',index:'dtg_name', width:200, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_uns_number');?>',name:'uns_number',index:'uns_number', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_createBy');?>',name:'first_name',index:'first_name', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_pno_table_label_createOn');?>',name:'createOn',index:'createOn', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},    
-          {label:'<?php echo lang('mm_masters_pno_table_label_updateBy');?>',name:'firstname',index:'firstname', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},   
-          {label:'<?php echo lang('mm_masters_pno_table_label_updateon');?>',name:'updateOn',index:'updateOn', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}} 
+          {label:'<?php echo lang('mm_masters_fno_table_label_fno_name');?>',name:'fno_name',index:'fno_name', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_a_no');?>',name:'a_no',index:'a_no', width:100, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_sfa_no');?>',name:'sfa_no',index:'sfa_no', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_aws_name');?>',name:'aws_classfication',index:'aws_classfication', width:200, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_uns_no');?>',name:'uns_no',index:'uns_no', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_createBy');?>',name:'first_name',index:'first_name', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_fno_table_label_createOn');?>',name:'createOn',index:'createOn', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},    
+          {label:'<?php echo lang('mm_masters_fno_table_label_updateBy');?>',name:'firstname',index:'firstname', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},   
+          {label:'<?php echo lang('mm_masters_fno_table_label_updateon');?>',name:'updateOn',index:'updateOn', width:150, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}} 
         ],
         
         //postData: { page: 1,rows: 1},        
         rowNum:10,
         rowList:[10,25,50,100],
         pager: jQuery('#dataTablePager2'),
-        sortname: 'pno_id',
+        sortname: 'fno_id',
         viewrecords: true,
         sortorder: "desc",
         autowidth: true,
@@ -168,7 +168,7 @@
 
     $("#pdf").on("click", function(){
         $("#dataTableList2").jqGrid("exportToPdf",{
-          title: '<?php echo lang('mm_masters_pno_pdfTitle');?>',
+          title: '<?php echo lang('mm_masters_fno_pdfTitle');?>',
           orientation: 'portrait',
           pageSize: 'A4',
           description: ' ', 

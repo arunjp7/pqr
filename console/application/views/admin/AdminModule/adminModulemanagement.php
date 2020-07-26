@@ -29,16 +29,15 @@ if(isset($value) && !empty($value)) {
 
 ?>
   <!-- /.start form -->
+<div id="main-wrapper">
   <div class="row">
     <div class="col-md-12">
-      <div class="white-box">
-      <!--
-        <h3 class="box-title m-b-0"><?php echo $form_tittle;?></h3>
-        <p class="text-muted m-b-30 font-13"> <?php echo $form_tittle_small;?> </p>
-      -->
-        
-        <div class="row">
-          <div class="col-sm-12 col-xs-12">
+        <div class="panel panel-white">
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title"></h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">
             <?php echo form_open_multipart($form_url); ?>
               <div class="row">                 
                 <div class="col-sm-3 col-xs-3">
@@ -135,11 +134,10 @@ if(isset($value) && !empty($value)) {
                 <a href="<?php echo base_url().$form_cancel_url;?>" class="btn btn-warning waves-effect waves-light m-r-10"><?php echo lang('btn_Cancel');?></a>
               </div>
             <?php echo form_close(); ?>
-          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
   <!-- /.end form -->
 <script type="text/javascript">  
   function myFunction(){

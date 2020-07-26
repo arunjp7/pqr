@@ -1,6 +1,6 @@
 <?php
 // Last Updated by  Vinitha 06/08/2016 
-$this->mcommon->getCheckUserPermissionHead('Type add and edit',true);
+$this->mcommon->getCheckUserPermissionHead('PNO add and edit',true);
 if(isset($value) && !empty($value)){
   foreach($value->result() as $row){   
     $pno_id                            =  $row->pno_id;
@@ -23,11 +23,49 @@ if(isset($value) && !empty($value)){
               <div class="row">
         <?php echo form_open_multipart($form_url); ?>
           <div class="row">
-            <div class="col-sm-3 col-xs-3">
-              <div class="form-group <?PHP if(form_error('pno_name')){ echo 'has-error';} ?>">
-                <label for="exampleInputEmail1"><?php echo lang('mm_masters_pno_name');?><span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_pno_name');?>" id="pno_name" name="pno_name" value="<?php echo $pno_name ;?>" autocomplete="off">
-                <?PHP if(form_error('pno_name')){ echo '<span class="help-block">'.form_error('pno_name').'</span>';} ?>
+            <div class="col-sm-12 col-xs-12">
+              <!-- P-No -->
+              <div class="col-sm-3 col-xs-3">
+                <div class="form-group <?PHP if(form_error('pno_name')){ echo 'has-error';} ?>">
+                  <label for="exampleInputEmail1"><?php echo lang('mm_masters_pno_name');?><span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_pno_name');?>" id="pno_name" name="pno_name" value="<?php echo $pno_name ;?>" autocomplete="off">
+                  <?PHP if(form_error('pno_name')){ echo '<span class="help-block">'.form_error('pno_name').'</span>';} ?>
+                </div>
+              </div>
+              <!-- group no -->
+              <div class="col-sm-3 col-xs-3">
+                <div class="form-group <?PHP if(form_error('group_no')){ echo 'has-error';} ?>">
+                  <label for="exampleInputEmail1"><?php echo lang('mm_masters_group_no_name');?><span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_group_no_name');?>" id="group_no" name="group_no" value="<?php echo $group_no ;?>" autocomplete="off">
+                  <?PHP if(form_error('group_no')){ echo '<span class="help-block">'.form_error('group_no').'</span>';} ?>
+                </div>
+              </div>
+              <!-- specification No -->
+              <div class="col-sm-3 col-xs-3">
+                <div class="form-group <?PHP if(form_error('specification_no')){ echo 'has-error';} ?>">
+                  <label for="exampleInputEmail1"><?php echo lang('mm_masters_pno_specification_no');?><span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_pno_specification_no');?>" id="specification_no" name="specification_no" value="<?php echo $specification_no ;?>" autocomplete="off">
+                  <?PHP if(form_error('specification_no')){ echo '<span class="help-block">'.form_error('specification_no').'</span>';} ?>
+                </div>
+              </div>
+               <!-- Designation, Type or Grade -->
+              <div class="col-sm-3 col-xs-3">
+                <div class="form-group <?PHP if(form_error('dtg_name')){ echo 'has-error';} ?>">
+                  <label for="exampleInputEmail1"><?php echo lang('mm_masters_pno_DTG_name');?><span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_pno_DTG_name');?>" id="dtg_name" name="dtg_name" value="<?php echo $dtg_name ;?>" autocomplete="off">
+                  <?PHP if(form_error('dtg_name')){ echo '<span class="help-block">'.form_error('dtg_name').'</span>';} ?>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+             
+              <!-- UNS Number -->
+              <div class="col-sm-3 col-xs-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><?php echo lang('mm_masters_pno_uns_number');?></label>
+                  <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_pno_uns_number');?>" id="uns_number" name="uns_number" value="<?php echo $uns_number ;?>" autocomplete="off">
+                  <?PHP if(form_error('uns_number')){ echo '<span class="help-block">'.form_error('uns_number').'</span>';} ?>
+                </div>
               </div>
             </div>
           </div>              

@@ -25,8 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if($_SERVER['HTTP_HOST'] == 'localhost')
 {
-	$config['base_url']		= 'http://localhost/ruang/console/';
-	$config['image_url']	= 'http://localhost/ruang/';
+	$config['base_url']		= 'http://localhost/pqr/console/';
+	$config['image_url']	= 'http://localhost/pqr/';
 	
 }else
 {

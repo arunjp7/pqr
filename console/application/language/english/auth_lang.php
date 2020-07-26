@@ -2553,6 +2553,33 @@ $lang['mm_masters_process_table_label_updateBy']='Updated By';
 $lang['mm_masters_process_table_label_updateon']='Updated On';
 
 
+// Project Manage titles and labels for master code
+
+$lang['mm_masters_code_manage_create']='Create Code';
+$lang['mm_masters_code_manage_view']='View Code';
+
+$lang['mm_masters_code_manage_toptitle']='Code';
+$lang['mm_masters_code_manage_pergram']='Code';
+$lang['mm_masters_code_manage_form_title']=' Create Code';
+$lang['mm_masters_code_manage_form_title_small']='Create Code';
+$lang['mm_masters_code_manage_list_title']='Code List';
+$lang['mm_masters_code_manage_list_title_small']='Code list';
+$lang['mm_masters_code_manage_form_button_name']='Code';
+$lang['mm_masters_code_manage_form_add_button_name']='Add New Code';
+
+$lang['mm_masters_code_manage_exportPDFFileName']='Code_';
+$lang['mm_masters_code_manage_pdfTitle']='Code';
+
+
+$lang['mm_masters_code_code_name']='Code Name';
+
+$lang['mm_masters_code_table_label_code_name']='Code Name';
+$lang['mm_masters_code_table_label_createBy']='Created By';
+$lang['mm_masters_code_table_label_createOn']='Created On';
+$lang['mm_masters_code_table_label_updateBy']='Updated By';
+$lang['mm_masters_code_table_label_updateon']='Updated On';
+
+
 // Project Manage titles and labels for master Type
 
 $lang['mm_masters_type_manage_create']='Create Type';
@@ -2680,13 +2707,85 @@ $lang['mm_masters_pno_manage_exportPDFFileName']='PNO_';
 $lang['mm_masters_pno_manage_pdfTitle']='PNO';
 
 
-$lang['mm_masters_pno_name']='PNO Name';
+$lang['mm_masters_pno_name']='P-No Name';
+$lang['mm_masters_group_no_name']='Group No.';
+$lang['mm_masters_pno_specification_no']='Specification No.';
+$lang['mm_masters_pno_DTG_name']='Designation, Type or Grade';
+$lang['mm_masters_pno_uns_number']='UNS Number';
+
 
 $lang['mm_masters_pno_table_label_pno_name']='PNO Name';
+$lang['mm_masters_pno_table_label_group_no_name']='Group No.';
+$lang['mm_masters_pno_table_label_specification_no']='Specification No.';
+$lang['mm_masters_pno_table_label_DTG_name']='Designation, Type or Grade';
+$lang['mm_masters_pno_table_label_uns_number']='UNS Number';
 $lang['mm_masters_pno_table_label_createBy']='Created By';
 $lang['mm_masters_pno_table_label_createOn']='Created On';
 $lang['mm_masters_pno_table_label_updateBy']='Updated By';
 $lang['mm_masters_pno_table_label_updateon']='Updated On';
+
+// Project Manage titles and labels for master F-No
+
+$lang['mm_masters_fno_manage_create']='Create F-No';
+$lang['mm_masters_fno_manage_view']='View F.No';
+
+$lang['mm_masters_fno_manage_toptitle']='F-NO';
+$lang['mm_masters_fno_manage_pergram']='F-NO';
+$lang['mm_masters_fno_manage_form_title']=' Create F-NO';
+$lang['mm_masters_fno_manage_form_title_small']='Create F-NO';
+$lang['mm_masters_fno_manage_list_title']='F-NO List';
+$lang['mm_masters_fno_manage_list_title_small']='F-NO list';
+$lang['mm_masters_fno_manage_form_button_name']='F-NO';
+$lang['mm_masters_fno_manage_form_add_button_name']='Add New F-NO';
+
+
+$lang['mm_masters_fno_manage_exportPDFFileName']='F-NO_';
+$lang['mm_masters_fno_manage_pdfTitle']='F-NO';
+
+
+$lang['mm_masters_fno_name']='P-No Name';
+$lang['mm_masters_a_no_name']='A-No.';
+$lang['mm_masters_fno_sfa']='SFA Specification';
+$lang['mm_masters_fno_aws_name']='AWS Classfication';
+$lang['mm_masters_fno_uns_no']='UNS No.';
+
+
+$lang['mm_masters_fno_table_label_fno_name']='F-NO Name';
+$lang['mm_masters_fno_table_label_a_no']='A-No';
+$lang['mm_masters_fno_table_label_sfa_no']='SFA Specification';
+$lang['mm_masters_fno_table_label_aws_name']='AWS Classfication';
+$lang['mm_masters_fno_table_label_uns_no']='UNS No.';
+$lang['mm_masters_fno_table_label_createBy']='Created By';
+$lang['mm_masters_fno_table_label_createOn']='Created On';
+$lang['mm_masters_fno_table_label_updateBy']='Updated By';
+$lang['mm_masters_fno_table_label_updateon']='Updated On';
+
+// Project Manage titles and labels for master Diameter
+
+$lang['mm_masters_diameter_manage_create']='Create Diameter';
+$lang['mm_masters_diameter_manage_view']='View Diameter';
+
+$lang['mm_masters_diameter_manage_toptitle']='Diameter of Test Coupon';
+$lang['mm_masters_diameter_manage_pergram']='Diameter of Test Coupon';
+$lang['mm_masters_diameter_manage_form_title']=' Create Diameter';
+$lang['mm_masters_diameter_manage_form_title_small']='Create Diameter';
+$lang['mm_masters_diameter_manage_list_title']='Diameter List';
+$lang['mm_masters_diameter_manage_list_title_small']='Diameter list';
+$lang['mm_masters_diameter_manage_form_button_name']='Diameter';
+$lang['mm_masters_diameter_manage_form_add_button_name']='Add New Diameter';
+
+
+$lang['mm_masters_diameter_manage_exportPDFFileName']='Diameter_';
+$lang['mm_masters_diameter_manage_pdfTitle']='Diameter';
+
+
+$lang['mm_masters_diameter_name']='Diameter of Test Coupon';
+
+$lang['mm_masters_diameter_table_label_diameter_name']='Diameter of Test Coupon';
+$lang['mm_masters_diameter_table_label_createBy']='Created By';
+$lang['mm_masters_diameter_table_label_createOn']='Created On';
+$lang['mm_masters_diameter_table_label_updateBy']='Updated By';
+$lang['mm_masters_diameter_table_label_updateon']='Updated On';
 
 // Project Manage titles and labels for master Welder
 
