@@ -3,7 +3,6 @@
 $this->mcommon->getCheckUserPermissionHead('PQR add and edit',true);
 
 if(isset($value) && !empty($value)){
-    
 
   foreach($value->result() as $row){
     $pqr_no = $row->pqr_no;
