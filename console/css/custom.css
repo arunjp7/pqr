@@ -55,7 +55,8 @@
 }
 
 .tabPqr .active {
-  background-color: #ffeb3bb0 !important; 
+    background-color: #1e92ef !important;
+    color: #FFFFFF;
 }
 
 .tabPqr ul {
@@ -71,14 +72,103 @@
   text-transform: uppercase;
 }
 
-.tabpqr ul li:hover {
-  border-color: #fec107;
+.tabPqr ul li:hover {
+  border: 1px solid #28699c;
+  color: #065e86;
+  font-weight: bold;
 }
 
-..tablepqr {
-  border-color: #000 !important;
-}
 .tablepqr th {
-    text-align: center;
-    vertical-align: middle !important;
+  text-align: center;
+  vertical-align: middle !important;
 } 
+
+.box-title {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f5efef;
+  padding-bottom: 3px;
+}
+.img-btn {
+  margin-top: -18px;
+}
+.jointblockrepeat:last-child {
+  border: none;
+}
+.jointblockrepeat
+{
+    border-bottom: 2px groove #03a9f44d;
+    margin-bottom: 24px;
+}
+.closeJointBlock:first-child {
+  display: none;
+}
+/*File Upload*/
+.btn-file {
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+.btn-file > input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 23px;
+  height: 100%;
+  width: 100%;
+  direction: ltr;
+  cursor: pointer;
+  border-radius: 0px;
+}
+.fileinput {
+  margin-bottom: 9px;
+  display: inline-block;
+}
+.fileinput .form-control {
+  padding-top: 7px;
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  cursor: text;
+}
+.fileinput .thumbnail {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+.fileinput .thumbnail > img {
+  max-height: 100%;
+}
+.fileinput .btn {
+  vertical-align: middle;
+}
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists {
+  display: none;
+}
+.fileinput-inline .fileinput-controls {
+  display: inline;
+}
+.fileinput-filename {
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+}
+.form-control .fileinput-filename {
+  vertical-align: bottom;
+}
+.fileinput.input-group {
+  display: table;
+}
+.fileinput.input-group > * {
+  position: relative;
+  z-index: 2;
+}
+.fileinput.input-group > .btn-file {
+  z-index: 1;
+}

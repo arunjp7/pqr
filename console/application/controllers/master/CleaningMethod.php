@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Code extends CI_Controller
+class CleaningMethod extends CI_Controller
 {
 	public function __construct()
 	{
@@ -43,25 +43,25 @@ class Code extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function index($view_data)
 	{  
-		$this->mcommon->getCheckUserPermissionHead('Qualification Code',true);
-        $view_data['top_tittle']			=	lang('mm_masters_code_manage_toptitle');
-        $view_data['top_tittle_pergram']	=	lang('mm_masters_code_manage_pergram');
+		$this->mcommon->getCheckUserPermissionHead('Cleaning Method',true);
+        $view_data['top_tittle']			=	lang('mm_masters_cleaning_manage_toptitle');
+        $view_data['top_tittle_pergram']	=	lang('mm_masters_cleaning_manage_pergram');
 
-        $view_data['add_button_url']		=	'master/Code/addUpdateForm';
-    	$view_data['datatable_url']			=	'master/Code/datatable';
-    	$view_data['pdf_url']				=	'master/Code/downloadPDF';
-    	$view_data['pdf_fileName']			=	lang('mm_masters_code_exportPDFFileName').date('d_m_Y');    	
-    	$view_data['export_url']			=	'master/Code/exportExcel';
-    	$view_data['export_fileName']		=	lang('mm_masters_code_exportPDFFileName').date('d_m_Y');
+        $view_data['add_button_url']		=	'master/CleaningMethod/addUpdateForm';
+    	$view_data['datatable_url']			=	'master/CleaningMethod/datatable';
+    	$view_data['pdf_url']				=	'master/CleaningMethod/downloadPDF';
+    	$view_data['pdf_fileName']			=	lang('mm_masters_cleaning_exportPDFFileName').date('d_m_Y');    	
+    	$view_data['export_url']			=	'master/CleaningMethod/exportExcel';
+    	$view_data['export_fileName']		=	lang('mm_masters_cleaning_exportPDFFileName').date('d_m_Y');
     	
-    	$view_data['datatable_url']			=	'master/Code/datatable';
-    	$view_data['list_tittle']			=	lang('mm_masters_code_manage_list_title');
-    	$view_data['list_tittle_small']		=	lang('mm_masters_code_manage_list_title_small');
+    	$view_data['datatable_url']			=	'master/CleaningMethod/datatable';
+    	$view_data['list_tittle']			=	lang('mm_masters_cleaning_manage_list_title');
+    	$view_data['list_tittle_small']		=	lang('mm_masters_cleaning_manage_list_title_small');
     	
       
 		$data = array(
-                    'title'     	=> lang('mm_masters_code_manage_view'),
-                    'content'   	=>$this->load->view('master/Code/CodeDataList',$view_data,TRUE)                
+                    'title'     	=> lang('mm_masters_cleaning_manage_view'),
+                    'content'   	=>$this->load->view('master/CleaningMethod/CleaningMethodDataList',$view_data,TRUE)                
                     );
         $this->load->view('base/template', $data); 
 	}
@@ -77,16 +77,16 @@ class Code extends CI_Controller
 		if(!$sidx) $sidx =1;
 
 		$fields_arrayPackage = array(
-			'j.code_id','j.code_name','u.first_name','j.createOn as createOn','u1.first_name as firstname','j.updateOn as updateOn'
+			'j.cleaning_id','j.cleaning_name','u.first_name','j.createOn as createOn','u1.first_name as firstname','j.updateOn as updateOn'
 		);
 		$join_arrayPackage = array(
 			'users AS u' => 'u.id = j.createBy',
 			'users AS u1' => 'u1.id = j.updateBy',
 		);
-		$where_arrayPackage = array('j.code_show_status' =>'1');
+		$where_arrayPackage = array('j.cleaning_show_status' =>'1');
 		$orderPackage = $sidx.' '. $sord;
 
-		$count =   $this->mcommon->join_records_counts($fields_arrayPackage, 'jr_code as j', $join_arrayPackage, $where_arrayPackage, '', $orderPackage);
+		$count =   $this->mcommon->join_records_counts($fields_arrayPackage, 'jr_cleaning as j', $join_arrayPackage, $where_arrayPackage, '', $orderPackage);
 
 		if( $count >0 ) {
 			$total_pages = ceil($count/$limit);
@@ -99,16 +99,16 @@ class Code extends CI_Controller
 		$responce->page = $page;
 		$responce->total = $total_pages;
 		$responce->records = $count;
-		$dataTable_Details =   $this->mcommon->join_records_all($fields_arrayPackage, 'jr_code as j', $join_arrayPackage, $where_arrayPackage, '', $orderPackage,'object');
+		$dataTable_Details =   $this->mcommon->join_records_all($fields_arrayPackage, 'jr_cleaning as j', $join_arrayPackage, $where_arrayPackage, '', $orderPackage,'object');
 
 		if (isset($dataTable_Details) && !empty($dataTable_Details)) {
 			$i=0;
 	        foreach ($dataTable_Details->result() as $dataDetail) {
-	        	$responce->rows[$i]['id'] = $dataDetail->code_id;
+	        	$responce->rows[$i]['id'] = $dataDetail->cleaning_id;
 	        	//$responce->rows[$i]['cell']= array($dataDetail->ndtContractor_id);
-	        	$responce->rows[$i]['cell']['edit_code_id'] = get_buttons_new_only_Edit($dataDetail->code_id,'master/Code/');
-	        	$responce->rows[$i]['cell']['delete_code_id'] = get_buttons_new_only_Delete($dataDetail->code_id,'master/Code/');
-	        	$responce->rows[$i]['cell']['code_name'] = $dataDetail->code_name;
+	        	$responce->rows[$i]['cell']['edit_cleaning_id'] = get_buttons_new_only_Edit($dataDetail->cleaning_id,'master/CleaningMethod/');
+	        	$responce->rows[$i]['cell']['delete_cleaning_id'] = get_buttons_new_only_Delete($dataDetail->cleaning_id,'master/CleaningMethod/');
+	        	$responce->rows[$i]['cell']['cleaning_name'] = $dataDetail->cleaning_name;
 	        	$responce->rows[$i]['cell']['first_name'] = $dataDetail->first_name;
 	        	$responce->rows[$i]['cell']['createOn'] = get_date_timeformat($dataDetail->createOn);
 	        	$responce->rows[$i]['cell']['firstname'] = $dataDetail->firstname;
@@ -128,20 +128,20 @@ class Code extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function addUpdateForm($view_data)
 	{  
-		$this->mcommon->getCheckUserPermissionHead('Process add and edit',true);
-        $view_data['top_tittle']			=	lang('mm_masters_code_manage_toptitle');
-        $view_data['top_tittle_pergram']	=	lang('mm_masters_code_manage_pergram');
+		$this->mcommon->getCheckUserPermissionHead('Cleaning Method add and edit',true);
+        $view_data['top_tittle']			=	lang('mm_masters_cleaning_manage_toptitle');
+        $view_data['top_tittle_pergram']	=	lang('mm_masters_cleaning_manage_pergram');
 
-        $view_data['form_url']				=	'master/Code/create';
-        $view_data['form_cancel_url']		=	'master/Code';
+        $view_data['form_url']				=	'master/CleaningMethod/create';
+        $view_data['form_cancel_url']		=	'master/CleaningMethod';
 
-        $view_data['form_tittle']			=	lang('mm_masters_code_manage_form_title');
-        $view_data['form_tittle_small']		=	lang('mm_masters_code_manage_form_title_small');
-        $view_data['form_button_name']		=	lang('mm_masters_code_manage_form_button_name');
+        $view_data['form_tittle']			=	lang('mm_masters_cleaning_manage_form_title');
+        $view_data['form_tittle_small']		=	lang('mm_masters_cleaning_manage_form_title_small');
+        $view_data['form_button_name']		=	lang('mm_masters_cleaning_manage_form_button_name');
     	
 		$data = array(
-                    'title'     	=> lang('mm_masters_code_manage_create'),
-                    'content'   	=>$this->load->view('master/Code/Codemanagement',$view_data,TRUE)                
+                    'title'     	=> lang('mm_masters_cleaning_manage_create'),
+                    'content'   	=>$this->load->view('master/CleaningMethod/CleaningMethodmanagement',$view_data,TRUE)                
                     );
         $this->load->view('base/template', $data); 
 	}
@@ -156,41 +156,41 @@ class Code extends CI_Controller
 	public function create()
 	{		
         $user   = $this->ion_auth->user()->row();
-		$this->mcommon->getCheckUserPermissionHead('Code add and edit',true);
+		$this->mcommon->getCheckUserPermissionHead('Cleaning Method add and edit',true);
         if(isset($_POST['submit']))
 		{			
-			 $this->form_validation->set_rules('code_name', lang('mm_masters_code_code_name'), 'required');
+			 $this->form_validation->set_rules('cleaning_name', lang('mm_masters_cleaning_cleaning_name'), 'required');
 			 
-			 $nameVal = $this->input->post('code_name');
+			 $nameVal = $this->input->post('cleaning_name');
 
-			 $whereArrNameVal        = "code_name ='".$nameVal."'";
+			 $whereArrNameVal        = "cleaning_name ='".$nameVal."'";
 
 			 // Unique name validation
-			 $resultCounteng = $this->mcommon->specific_record_counts('jr_code',$whereArrNameVal);
+			 $resultCounteng = $this->mcommon->specific_record_counts('jr_cleaning',$whereArrNameVal);
 			 
-			 if($resultCounteng > 0 && $this->input->post('code_id')==''){
-				$this->form_validation->set_rules('code_name', $this->lang->line('form_validation_is_unique_name'), 'callback_maximumNameCheck'); 
+			 if($resultCounteng > 0 && $this->input->post('cleaning_id')==''){
+				$this->form_validation->set_rules('cleaning_name', $this->lang->line('form_validation_is_unique_name'), 'callback_maximumNameCheck'); 
 			} 
 
             if ($this->form_validation->run() == true)
 			{
 				$value_array=array(
-					'code_name'		    =>	$this->input->post('code_name'),
+					'cleaning_name'		    =>	$this->input->post('cleaning_name'),
 					'updateBy'			=>	$this->session->userdata('user_id'),
 					'updateOn'			=>	date('Y-m-d H:i:s')
 				);
-				if($this->input->post('code_id')!='')
+				if($this->input->post('cleaning_id')!='')
 				{
 					$where_array=array(
-						'code_id'		=>	$this->input->post('code_id')
+						'cleaning_id'		=>	$this->input->post('cleaning_id')
 					);
-					$resultupdate=$this->mcommon->common_edit('jr_code',$value_array,$where_array);
+					$resultupdate=$this->mcommon->common_edit('jr_cleaning',$value_array,$where_array);
 				}
 				else
 				{
 					$value_array['createBy'] =  $this->session->userdata('user_id');    
 					$value_array['createOn'] =  date('Y-m-d H:i:s'); 
-					$result=$this->mcommon->common_insert('jr_code',$value_array);
+					$result=$this->mcommon->common_insert('jr_cleaning',$value_array);
 				}
 			}		
 		}
@@ -199,13 +199,13 @@ class Code extends CI_Controller
 		{
 			$this->session->set_flashdata('res', lang('common_message_create'));
 			$this->session->set_flashdata('res_type', 'success');
-			redirect(base_url().'master/Code');
+			redirect(base_url().'master/CleaningMethod');
 		}
 		if($resultupdate)
 		{
 			$this->session->set_flashdata('res', lang('common_message_update'));
 			$this->session->set_flashdata('res_type', 'success');
-			redirect(base_url().'master/Code');
+			redirect(base_url().'master/CleaningMethod');
 		}
 		else
 		{
@@ -217,11 +217,11 @@ class Code extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function operation($id)
 	{
-		$this->mcommon->getCheckUserPermissionHead('Code add and edit',true);
+		$this->mcommon->getCheckUserPermissionHead('Cleaning Method add and edit',true);
 		$where_array=array(
-			'code_id'=>$id
+			'cleaning_id'=>$id
 		);
-		$data['value']=$this->mcommon->get_fulldata('jr_code',$where_array);
+		$data['value']=$this->mcommon->get_fulldata('jr_cleaning',$where_array);
 		
 		$this->addUpdateForm($data);
 	}
@@ -230,17 +230,17 @@ class Code extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016
 	public function delete($id)
 	{   
-		$this->mcommon->getCheckUserPermissionHead('Code delete',true);
+		$this->mcommon->getCheckUserPermissionHead('Cleaning Method delete',true);
 		$where_array=array(
-			'code_id'     =>$id
+			'cleaning_id'     =>$id
 		);
 		
-       $delete=$this->mcommon->common_delete('jr_code',$where_array);
+       $delete=$this->mcommon->common_delete('jr_cleaning',$where_array);
 		if($delete)
 		{
 			$this->session->set_flashdata('res', lang('common_message_delete'));
 			$this->session->set_flashdata('res_type', 'danger');
-			redirect(base_url().'master/Code');
+			redirect(base_url().'master/CleaningMethod');
 		}
 		else
 		{

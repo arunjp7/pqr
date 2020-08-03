@@ -2558,8 +2558,8 @@ $lang['mm_masters_process_table_label_updateon']='Updated On';
 $lang['mm_masters_code_manage_create']='Create Code';
 $lang['mm_masters_code_manage_view']='View Code';
 
-$lang['mm_masters_code_manage_toptitle']='Code';
-$lang['mm_masters_code_manage_pergram']='Code';
+$lang['mm_masters_code_manage_toptitle']='Qualification Code';
+$lang['mm_masters_code_manage_pergram']='Qualification Code';
 $lang['mm_masters_code_manage_form_title']=' Create Code';
 $lang['mm_masters_code_manage_form_title_small']='Create Code';
 $lang['mm_masters_code_manage_list_title']='Code List';
@@ -2579,6 +2579,32 @@ $lang['mm_masters_code_table_label_createOn']='Created On';
 $lang['mm_masters_code_table_label_updateBy']='Updated By';
 $lang['mm_masters_code_table_label_updateon']='Updated On';
 
+
+// Project Manage titles and labels for master position
+
+$lang['mm_masters_position_manage_create']='Create Position';
+$lang['mm_masters_position_manage_view']='View Position';
+
+$lang['mm_masters_position_manage_toptitle']='Position';
+$lang['mm_masters_position_manage_pergram']='Position';
+$lang['mm_masters_position_manage_form_title']=' Create Position';
+$lang['mm_masters_position_manage_form_title_small']='Create Position';
+$lang['mm_masters_position_manage_list_title']='Position List';
+$lang['mm_masters_position_manage_list_title_small']='Position list';
+$lang['mm_masters_position_manage_form_button_name']='Position';
+$lang['mm_masters_position_manage_form_add_button_name']='Add New Position';
+
+$lang['mm_masters_position_manage_exportPDFFileName']='Position_';
+$lang['mm_masters_position_manage_pdfTitle']='Position';
+
+
+$lang['mm_masters_position_position_name']='Position Name';
+
+$lang['mm_masters_position_table_label_position_name']='Position Name';
+$lang['mm_masters_position_table_label_createBy']='Created By';
+$lang['mm_masters_position_table_label_createOn']='Created On';
+$lang['mm_masters_position_table_label_updateBy']='Updated By';
+$lang['mm_masters_position_table_label_updateon']='Updated On';
 
 // Project Manage titles and labels for master Type
 
@@ -2606,6 +2632,60 @@ $lang['mm_masters_type_table_label_createBy']='Created By';
 $lang['mm_masters_type_table_label_createOn']='Created On';
 $lang['mm_masters_type_table_label_updateBy']='Updated By';
 $lang['mm_masters_type_table_label_updateon']='Updated On';
+
+// Project Manage titles and labels for master Cupsize
+
+$lang['mm_masters_cupsize_manage_create']='Create Cup Size';
+$lang['mm_masters_cupsize_manage_view']='View Cup Size';
+
+$lang['mm_masters_cupsize_manage_toptitle']='Cup Size';
+$lang['mm_masters_cupsize_manage_pergram']='Cup Size';
+$lang['mm_masters_cupsize_manage_form_title']=' Create Cup Size';
+$lang['mm_masters_cupsize_manage_form_title_small']='Create Cup Size';
+$lang['mm_masters_cupsize_manage_list_title']='Cup Size List';
+$lang['mm_masters_cupsize_manage_list_title_small']='Cup Size list';
+$lang['mm_masters_cupsize_manage_form_button_name']='Cup Size';
+$lang['mm_masters_cupsize_manage_form_add_button_name']='Add New Cup Size';
+
+
+$lang['mm_masters_cupsize_manage_exportPDFFileName']='Cupsize_';
+$lang['mm_masters_cupsize_manage_pdfTitle']='CupSize';
+
+
+$lang['mm_masters_cupsize_cupsize_name']='Cup Size Name';
+
+$lang['mm_masters_cupsize_table_label_cupsize_name']='Cup Size Name';
+$lang['mm_masters_cupsize_table_label_createBy']='Created By';
+$lang['mm_masters_cupsize_table_label_createOn']='Created On';
+$lang['mm_masters_cupsize_table_label_updateBy']='Updated By';
+$lang['mm_masters_cupsize_table_label_updateon']='Updated On';
+
+// Project Manage titles and labels for master Cleaning Method
+
+$lang['mm_masters_cleaning_manage_create']='Create Cleaning Method';
+$lang['mm_masters_cleaning_manage_view']='View Cleaning Method';
+
+$lang['mm_masters_cleaning_manage_toptitle']='Cleaning Method';
+$lang['mm_masters_cleaning_manage_pergram']='Cleaning Method';
+$lang['mm_masters_cleaning_manage_form_title']=' Create Cleaning Method';
+$lang['mm_masters_cleaning_manage_form_title_small']='Create Cleaning Method';
+$lang['mm_masters_cleaning_manage_list_title']='Cleaning Method List';
+$lang['mm_masters_cleaning_manage_list_title_small']='Cleaning Method list';
+$lang['mm_masters_cleaning_manage_form_button_name']='Cleaning Method';
+$lang['mm_masters_cleaning_manage_form_add_button_name']='Add New Cleaning Method';
+
+
+$lang['mm_masters_cleaning_manage_exportPDFFileName']='cleaningmethod_';
+$lang['mm_masters_cleaning_manage_pdfTitle']='CleaningMethod';
+
+
+$lang['mm_masters_cleaning_cleaning_name']='Cleaning Method Name';
+
+$lang['mm_masters_cleaning_table_label_cleaning_name']='Cleaning Method Name';
+$lang['mm_masters_cleaning_table_label_createBy']='Created By';
+$lang['mm_masters_cleaning_table_label_createOn']='Created On';
+$lang['mm_masters_cleaning_table_label_updateBy']='Updated By';
+$lang['mm_masters_cleaning_table_label_updateon']='Updated On';
 
 // Project Manage titles and labels for master Applicable code
 
@@ -2857,7 +2937,7 @@ $lang['mm_masters_pqr_manage_form_button_name']='PQR';
 $lang['mm_masters_pqr_manage_form_add_button_name']='Add New PQR';
 
 
-$lang['mm_operation_pqr_company_details_label'] = "Company Details";
+$lang['mm_operation_pqr_company_details_label'] = "Basic Details";
 $lang['mm_operation_pqr_joints_label'] = "Joints (QW - 402)";
 $lang['mm_operation_pqr_base_metals_label'] = "Base Metals (QW - 403)";
 $lang['mm_operation_pqr_filler_metals_label'] = "Filler Metals (QW - 404)";
@@ -2874,35 +2954,40 @@ $lang['mm_operation_pqr_fillet_weld_test_label'] = "Fillet Weld Test (QW - 180) 
 $lang['mm_operation_pqr_other_tests_label'] = "Other Tests";
 
 
-
+// Basic Details
 $lang['mm_operation_pqr_company_name_label'] = "Company Name";
 $lang['mm_operation_pqr_procedure_qulation_spec_no_label'] = "Procedure Qulation specification No.";
 $lang['mm_operation_pqr_inspection_date_label'] = "Inspection Date";
 $lang['mm_operation_pqr_welding_procedure_spec_no_label'] = "Welding Procedure Specification No.";
-$lang['mm_operation_pqr_welding_process_1_label'] = "Welding Process 1";
-$lang['mm_operation_pqr_welding_process_2_label'] = "Welding Process 2";
-$lang['mm_operation_pqr_welding_process_3_label'] = "Welding Process 3";
+$lang['mm_operation_pqr_welding_process_1_label'] = "Process 1";
+$lang['mm_operation_pqr_welding_process_2_label'] = "Process 2";
+$lang['mm_operation_pqr_welding_process_3_label'] = "Process 3";
 $lang['mm_operation_pqr_type_label'] = "Types";
+$lang['mm_operation_pqr_layer_label'] = "Layer";
 $lang['mm_operation_pqr_code_label'] = "Code";
+$lang['mm_operation_pqr_pwht_label'] = "Post Weld Heat Treatment";
 
 // joints block labels
 $lang['mm_operation_pqr_variable_label'] = "Variable";
 $lang['mm_operation_pqr_value_label'] = "Value";
 $lang['mm_operation_pqr_joint_image_label'] = "Upload a joint image";
 
+$lang['mm_operation_pqr_joint_groove_angle_label'] = "Groove Angle (A)";
+$lang['mm_operation_pqr_joint_base_label'] = "Base Metal Thickness (B)";
+$lang['mm_operation_pqr_joint_root_face_label'] = "Root Face (C)";
+$lang['mm_operation_pqr_joint_root_gap_label'] = "Root Gap (D)";
+$lang['mm_operation_pqr_joint_other_label'] = "Others";
 
 
-
-
-$lang['mm_operation_pqr_material_spec_label'] = "Material Spec. type or grade";
-$lang['mm_operation_pqr_to_material_spec_label'] = "To Material Spec. type or grade";
+$lang['mm_operation_pqr_material_spec_label'] = "Material Specification";
+$lang['mm_operation_pqr_tgu_no_label'] = "Type or Grade or UNS Number";
 $lang['mm_operation_pqr_pno_label'] = "P. No.";
 $lang['mm_operation_pqr_group_no_label'] = "Grp. No.";
 $lang['mm_operation_pqr_to_pno_label'] = "To P. No.";
-$lang['mm_operation_pqr_to_group_no_label'] = "Grp. No.";
+$lang['mm_operation_pqr_to_group_no_label'] = "To Grp. No.";
 $lang['mm_operation_pqr_thickness_test_label'] = "Thickness of Test Coupon";
 $lang['mm_operation_pqr_diameter_test_label'] = "Diameter of Test Coupon";
-$lang['mm_operation_pqr_cast_no_label'] = "Cast No.";
+$lang['mm_operation_pqr_heat_no_label'] = "Heat No.";
 
 $lang['mm_operation_pqr_process_label'] = "Process";
 $lang['mm_operation_pqr_weld_metal_analysis_no_label'] = "Weld Metal Analysis No.";
@@ -2979,7 +3064,7 @@ $lang['mm_operation_pqr_impact_values_label'] = "Impact Values";
 $lang['mm_operation_pqr_lateral_exp_label'] = "Lateral Exp.";
 $lang['mm_operation_pqr_shear_label'] = "Shear";
 $lang['mm_operation_pqr_mils_label'] = "Mils";
-$lang['mm_operation_pqr_drop_weight_label'] = "Drop 	Weight";
+$lang['mm_operation_pqr_drop_weight_label'] = "Drop Weight";
 $lang['mm_operation_pqr_break_label'] = "Break";
 $lang['mm_operation_pqr_no_break_label'] = "No Break";
 
@@ -3001,6 +3086,9 @@ $lang['mm_operation_pqr_final_content_label'] = "We certify that the statement i
 $lang['mm_operation_company_Select_label'] = "-- Select Company --";
 $lang['mm_operation_process_Select_label'] = "-- Select Process --";
 $lang['mm_operation_type_Select_label'] = "-- Select Type --";
+$lang['mm_operation_layer_Select_label'] = "-- Select Layer --";
+$lang['mm_operation_code_Select_label'] = "-- Select Code --";
+$lang['mm_operation_diameter_Select_label'] = "-- Select Diameter of Test Coupon --";
 $lang['mm_operation_pno_Select_label'] = "-- Select P-Number --";
 $lang['mm_operation_sfa_Select_label'] = "-- Select SFA --";
 $lang['mm_operation_applicable_code_Select_label'] = "-- Select Applicable Code --";

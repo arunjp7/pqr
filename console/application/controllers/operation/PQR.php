@@ -139,14 +139,16 @@ class PQR extends CI_Controller
         $view_data['form_tittle_small']		=	lang('mm_masters_pqr_manage_form_title_small');
         $view_data['form_button_name']		=	lang('mm_masters_pqr_manage_form_button_name');
 
-        $view_data['drop_menu_company']	=	$this->mdropdown->drop_menu_all_company();
-        $view_data['drop_menu_process']	=	$this->mdropdown->drop_menu_process();
-        $view_data['drop_menu_type']	=	$this->mdropdown->drop_menu_type();
-        $view_data['drop_menu_pno']	=	$this->mdropdown->drop_menu_pno();
-        $view_data['drop_menu_sfa']	=	$this->mdropdown->drop_menu_sfa();
-        $view_data['drop_menu_welder']	=	$this->mdropdown->drop_menu_welder();
+        $view_data['drop_menu_company']		=	$this->mdropdown->drop_menu_all_company();
+        $view_data['drop_menu_process']		=	$this->mdropdown->drop_menu_process();
+        $view_data['drop_menu_type']		=	$this->mdropdown->drop_menu_type();
+        $view_data['drop_menu_code']		=	$this->mdropdown->drop_menu_code();
+        $view_data['drop_menu_diameter']	=	$this->mdropdown->drop_menu_diameter();
+        $view_data['drop_menu_pno']			=	$this->mdropdown->drop_menu_pno();
+        $view_data['drop_menu_sfa']			=	$this->mdropdown->drop_menu_sfa();
+        $view_data['drop_menu_welder']		=	$this->mdropdown->drop_menu_welder();
         $view_data['drop_menu_material']	=	$this->mdropdown->drop_menu_material();
-        $view_data['drop_menu_grade']	=	$this->mdropdown->drop_menu_grade();
+        $view_data['drop_menu_grade']		=	$this->mdropdown->drop_menu_grade();
         $view_data['drop_menu_applicable_code']	=	$this->mdropdown->drop_menu_applicable_code();
         $view_data['drop_menu_staff_welder']	=	$this->mdropdown->drop_menu_staff_welder();
 
@@ -161,7 +163,20 @@ class PQR extends CI_Controller
 		$this->form_validation->set_message('maximumNameCheck', $this->lang->line('form_validation_is_unique_name'));
 		return FALSE;
 	}
-	
+	// get group information by selecting pno_id
+	public function getGroupNo($pno_id){
+		$pno_id = $_POST['pno_id'];
+		$drop_menu_group		=	$this->mdropdown->drop_menu_group($pno_id);
+		echo json_encode($drop_menu_group);
+	}
+
+	// get group information by selecting group_no
+	public function getGroupNoInfo($pno_id, $group_no){
+		$pno_id = $_POST['pno_id'];
+		$group_no = $_POST['group_no'];
+		$drop_menu_group_info =	$this->mdropdown->drop_menu_group_info($pno_id, $group_no);
+		echo json_encode($drop_menu_group_info);
+	}
 	// create Form
 	// Last Updated by Vinitha 09/08/2016 
 	public function create()

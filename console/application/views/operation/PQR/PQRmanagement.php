@@ -145,9 +145,9 @@ if(isset($value) && !empty($value)){
          
               <div class="tabPqr">
                <ul>
-                <li class="tablinks active" data-id="companydetails"><?php echo lang('mm_operation_pqr_company_details_label');?></li>
+                <li class="tablinks" data-id="companydetails"><?php echo lang('mm_operation_pqr_company_details_label');?></li>
                 <li class="tablinks" data-id="joints"><?php echo lang('mm_operation_pqr_joints_label');?></li>
-                <li class="tablinks" data-id="basemetals"><?php echo lang('mm_operation_pqr_base_metals_label');?></li>
+                <li class="tablinks active" data-id="basemetals"><?php echo lang('mm_operation_pqr_base_metals_label');?></li>
                 <li class="tablinks" data-id="filler"><?php echo lang('mm_operation_pqr_filler_metals_label');?></li>
                 <li class="tablinks" data-id="position_preheat"><?php echo lang('mm_operation_pqr_position_label');?> & <?php echo lang('mm_operation_pqr_preheat_label');?></li>
                 <li class="tablinks" data-id="post"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></li>
@@ -186,7 +186,7 @@ if(isset($value) && !empty($value)){
             <?php echo form_open_multipart($form_url); ?>
              <div class="clearfix"></div>
             <!-- Block Company Details -->
-            <div class="row blockdiv" id="companydetails">
+            <div class="row blockdiv hide" id="companydetails">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_company_details_label');?></h3>
                 </div>
@@ -203,37 +203,37 @@ if(isset($value) && !empty($value)){
                 </div>
                 <!-- Procedure Qulation specification No -->
                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_material_id')){ echo 'has-error';} ?>">
+                  <div class="form-group <?PHP if(form_error('pqr_no')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?>" id="to_material_id" name="to_material_id" value="<?php echo $to_material_id ;?>" autocomplete="off">
-                    <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?>" id="pqr_no" name="pqr_no" value="<?php echo $pqr_no ;?>" autocomplete="off">
+                    <?PHP if(form_error('pqr_no')){ echo '<span class="help-block">'.form_error('pqr_no').'</span>';} ?>
                     </div>
                 </div>
                 <!-- Inspection Date -->
                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_material_id')){ echo 'has-error';} ?>">
+                  <div class="form-group <?PHP if(form_error('inspection_date')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_inspection_date_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_inspection_date_label');?>" id="to_material_id" name="to_material_id" value="<?php echo $to_material_id ;?>" autocomplete="off">
-                    <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
+                    <input type="text" class="form-control date-picker" placeholder="<?php echo lang('mm_operation_pqr_inspection_date_label');?>" id="inspection_date" name="inspection_date" value="<?php echo $inspection_date ;?>" autocomplete="off">
+                    <?PHP if(form_error('inspection_date')){ echo '<span class="help-block">'.form_error('inspection_date').'</span>';} ?>
                     </div>
                 </div>
                 <!-- Welding Procedure Specification No -->
                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_material_id')){ echo 'has-error';} ?>">
+                  <div class="form-group <?PHP if(form_error('wps_no')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?>" id="to_material_id" name="to_material_id" value="<?php echo $to_material_id ;?>" autocomplete="off">
-                    <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?>" id="wps_no" name="wps_no" value="<?php echo $wps_no ;?>" autocomplete="off">
+                    <?PHP if(form_error('wps_no')){ echo '<span class="help-block">'.form_error('wps_no').'</span>';} ?>
                     </div>
                 </div>
                 <!-- Welding Process 1 -->
                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_material_id')){ echo 'has-error';} ?>">
+                  <div class="form-group <?PHP if(form_error('process1')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_1_label');?><span class="text-danger">*</span></label>
                     <?php   
-                      $attrib = 'class="form-control select2" name="process_id"  data-live-search="true" data-width="100%"  id="process_id"';
+                      $attrib = 'class="form-control select2" name="process1"  data-live-search="true" data-width="100%"  id="process1"';
                       echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process_id)) ? $process_id : ''), $attrib);
                     ?>
-                    <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
+                    <?PHP if(form_error('process1')){ echo '<span class="help-block">'.form_error('process1').'</span>';} ?>
                     </div>
                 </div>
                 <!-- Welding Process 2 -->
@@ -241,7 +241,7 @@ if(isset($value) && !empty($value)){
                   <div class="form-group">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_2_label');?></label>
                     <?php   
-                      $attrib = 'class="form-control select2" name="process_id"  data-live-search="true" data-width="100%"  id="process_id"';
+                      $attrib = 'class="form-control select2" name="process2"  data-live-search="true" data-width="100%"  id="process2"';
                       echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process_id)) ? $process_id : ''), $attrib);
                     ?>                    
                     </div>
@@ -251,7 +251,7 @@ if(isset($value) && !empty($value)){
                   <div class="form-group">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_3_label');?></label>
                     <?php   
-                      $attrib = 'class="form-control select2" name="process_id"  data-live-search="true" data-width="100%"  id="process_id"';
+                      $attrib = 'class="form-control select2" name="process3"  data-live-search="true" data-width="100%"  id="process3"';
                       echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process_id)) ? $process_id : ''), $attrib);
                     ?> 
                     </div>
@@ -261,7 +261,7 @@ if(isset($value) && !empty($value)){
                   <div class="form-group <?PHP if(form_error('type_id')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_label');?><span class="text-danger">*</span></label>
                     <?php   
-                      $attrib = 'class="form-control select2" name="type_id"  data-live-search="true" data-width="100%"  id="type_id"';
+                      $attrib = 'class="form-control select2" multiple="multiple" name="type_id" data-live-search="true" data-width="100%"  id="type_id"';
                       echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
                     ?>
                     <?PHP if(form_error('type_id')){ echo '<span class="help-block">'.form_error('type_id').'</span>';} ?>
@@ -272,10 +272,31 @@ if(isset($value) && !empty($value)){
                   <div class="form-group <?PHP if(form_error('code_id')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_code_label');?><span class="text-danger">*</span></label>
                     <?php   
-                      $attrib = 'class="form-control select2" name="type_id"  data-live-search="true" data-width="100%"  id="type_id"';
-                      echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
+                      $attrib = 'class="form-control select2" name="code_id" multiple="multiple" data-live-search="true" data-width="100%"  id="code_id"';
+                      echo form_dropdown('code_id', $drop_menu_code, set_value('code_id', (isset($code_id)) ? $code_id : ''), $attrib);
                     ?>
-                    <?PHP if(form_error('type_id')){ echo '<span class="help-block">'.form_error('type_id').'</span>';} ?>
+                    <?PHP if(form_error('code_id')){ echo '<span class="help-block">'.form_error('code_id').'</span>';} ?>
+                    </div>
+                </div>
+                <!-- Others -->
+                <div class="col-sm-3 col-xs-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="pqr_other" name="pqr_other" value="<?php echo $pqr_other ;?>" autocomplete="off">
+                    </div>
+                </div>
+                <!-- Post Weld Heat Treatment get yes or no -->
+                <div class="col-sm-3 col-xs-3">
+                    <div class="form-group <?PHP if(form_error('pwht')){ echo 'has-error';} ?>">
+                        <label class="display-block">Pre Payment <span class="text-danger">*</span></label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="pwht" class="styled" <?php if($pwht=='1'){?> checked="checked"  <?php }?>value="1" onclick="check()"> Yes
+                            </div>  
+                        </label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="pwht" class="styled" checked="" <?php if($pwht=='0'){?> checked="checked" <?php }?>  value="0" onclick="check()">No
+                            </div>                                                          
+                        </label>
                     </div>
                 </div>
             </div>
@@ -283,150 +304,300 @@ if(isset($value) && !empty($value)){
             <div class="row blockdiv hide" id="joints">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                     <h3 class="box-title">
-                        <?php echo lang('mm_operation_pqr_base_metals_label');?> 
-                        <button class="btn btn-primary pull-right" type="button">Add Image</button>
+                        <?php echo lang('mm_operation_pqr_base_metals_label');?>
+                        <button class="btn btn-primary pull-right img-btn" type="button" id="addJointImage">Add Image</button> 
                     </h3>
                 </div>
                 <!-- joints value -->
-                <div class="col-sm-12 col-xs-12" id="jointblock1">
+                <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="1" id="jointblock1">
                     <!-- get joint value block -->
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="row">
-                            <div class="col-sm-6 col-xs-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_variable_label');?><span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_value_label');?><span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                            for($i = 0; $i <=3; $i++){
-                        ?>
+                    <div class="col-sm-4 col-xs-4">                        
                         <div class="row variableDiv">
                             <div class="col-sm-5 col-xs-5">
                                 <div class="form-group">
-                                    <input type="text" class="form-control variable1" placeholder="<?php echo lang('mm_operation_pqr_variable_label');?>" name="variable1[]" value="" autocomplete="off">
+                                    <label for="joints_A"><?php echo lang('mm_operation_pqr_joint_groove_angle_label');?></label>
                                 </div>
                             </div>
                             <div class="col-sm-5 col-xs-5">
                                 <div class="form-group">
-                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_value_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
+                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row variableDiv">
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <label for="joints_B"><?php echo lang('mm_operation_pqr_joint_base_label');?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_joint_base_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row variableDiv">
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <label for="joints_C"><?php echo lang('mm_operation_pqr_joint_root_face_label');?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row variableDiv">
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <label for="joints_D"><?php echo lang('mm_operation_pqr_joint_root_gap_label');?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_joint_root_gap_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row variableDiv">
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <label for="joints_other"><?php echo lang('mm_operation_pqr_joint_other_label');?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control valuedata1" placeholder="<?php echo lang('mm_operation_pqr_joint_other_label');?>" class="material_id" name="valuedata[]" value="<?php echo $material_id ;?>" autocomplete="off">
                                 </div>
                             </div>
                             <!-- displaying add button -->
                             <div class="col-sm-2 col-xs-2">
-                                <?php
-                                    if($i == 3){
-                                ?>
-                                    <span><button type="button" class="btn btn-success addVariable addbutton" data-id="<?= $i ?>">+</button></span>
-                                <?php
-                                    }
-                                ?>
+                                <span><button type="button" class="btn btn-success addVariable addbutton" data-id="3">+</button></span>
                             </div>
                         </div>
-
-                        <?php
-                            }
-                        ?>
                     </div>
                     <!-- get joints image block -->
-                    <div class="col-sm-9 col-xs-9">
-                        <div class="col-sm-8 col-xs-8">
+                    <div class="col-sm-6 col-xs-6">
+                        <div class="col-sm-12 col-xs-12 joint_img_block">
                             <div class="form-group <?PHP if(form_error('material_id')){ echo 'has-error';} ?>">
                                 <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_joint_image_label');?> <?php echo lang('mm_common_logo_size_label');?> <span class="text-danger">*</span></label>
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                   <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                                   <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
-                                  <input type="file" id="staffs_photo" class="joints_image" name="staffs_photo" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
+                                  <input type="file" id="joint_photo1" class="joints_image" name="staffs_photo" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
                                   </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
                                 </div>
                                 <?PHP if(form_error('staffs_photo')){ echo '<span class="help-block">'.form_error('staffs_photo').'</span>';} ?>
                                 <?php if($old_staffsphoto!=''){ ?> <img src="<?php echo config_item('image_url').$old_staffsphoto;?>" height="100" width="100"> <?php }?>
                             </div>
-                            <img src="" id="profile-img-tag" width="200px" />
+                            <img src="" class="joint_image_display joint_photo1" width="200px" />
+                        </div>
+                    </div>
+                    <!-- close joint block -->
+                    <div class="col-sm-2 col-xs-6">
+                        <button type="button" class="btn btn-danger pull-right closeJointBlock">X</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Block Base Mentals -->
+            <div class="row blockdiv" id="basemetals">
+                <div class="col-sm-12 col-xs-12 box-title-head">
+                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    <!-- Pno to Pno -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pno_label');?>-<?php echo lang('mm_operation_pqr_to_pno_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <?php   
+                                          $attrib = 'class="form-control select2" name="pno_id"  data-live-search="true" data-width="100%"  id="pno_id"';
+                                          echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
+                                        ?> 
+                                        <?PHP if(form_error('pno_id')){ echo '<span class="help-block">'.form_error('pno_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <?php   
+                                          $attrib = 'class="form-control select2" name="to_pno_id"  data-live-search="true" data-width="100%"  id="to_pno_id"';
+                                          echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
+                                        ?> 
+                                        <?PHP if(form_error('to_pno_id')){ echo '<span class="help-block">'.form_error('to_pno_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Group NO to Group No -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_group_no_label');?>-<?php echo lang('mm_operation_pqr_to_group_no_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <select class="from-control select2" name="group_no" style="width:100%;" data-live-search="true" id="group_no">
+                                            <option value="" >-- Select Group No --</option>
+                                            
+                                        </select>
+                                        <?PHP if(form_error('group_no')){ echo '<span class="help-block">'.form_error('group_no').'</span>';} ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_to_group_no_label');?>" id="to_group_no" name="to_group_no" value="<?php echo $to_group_no ;?>" autocomplete="off">
+                                        <?PHP if(form_error('to_group_no')){ echo '<span class="help-block">'.form_error('to_group_no').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Material Specification -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_material_spec_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                        <?PHP if(form_error('material_id')){ echo '<span class="help-block">'.form_error('material_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="to_material_id" name="to_material_id" value="<?php echo $to_material_id ;?>" autocomplete="off">
+                                        <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Type or Grade or UNS Number -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_tgu_no_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="tgu_no" name="tgu_no" value="<?php echo $tgu_no ;?>" autocomplete="off">
+                                        <?PHP if(form_error('tgu_no')){ echo '<span class="help-block">'.form_error('tgu_no').'</span>';} ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="to_tgu_no" name="to_tgu_no" value="<?php echo $to_tgu_no ;?>" autocomplete="off">
+                                        <?PHP if(form_error('to_tgu_no')){ echo '<span class="help-block">'.form_error('to_tgu_no').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Diameter of test Coupon -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_diameter_test_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <?php   
+                                          $attrib = 'class="form-control select2" name="diameter_id"  data-live-search="true" data-width="100%"  id="diameter_id"';
+                                          echo form_dropdown('diameter_id', $drop_menu_diameter, set_value('diameter_id', (isset($diameter_id)) ? $diameter_id : ''), $attrib);
+                                        ?> 
+                                        <?PHP if(form_error('diameter_id')){ echo '<span class="help-block">'.form_error('diameter_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thickness of test Coupon -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thickness_test_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thickness_test_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                        <?PHP if(form_error('material_id')){ echo '<span class="help-block">'.form_error('material_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Heat No. -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_no_label');?><span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                        <?PHP if(form_error('material_id')){ echo '<span class="help-block">'.form_error('material_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                        <?PHP if(form_error('material_id')){ echo '<span class="help-block">'.form_error('material_id').'</span>';} ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Others -->
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_others_label');?></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-              <div class="row blockdiv hide" id="basemetals">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
-                </div>
-                <div class="col-6 col-6">
-                  <div class="form-group <?PHP if(form_error('material_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_material_spec_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="material_id" name="material_id" value="<?php echo $material_id ;?>" autocomplete="off">
-                    <?PHP if(form_error('material_id')){ echo '<span class="help-block">'.form_error('material_id').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-6">
-                  <div class="form-group <?PHP if(form_error('to_material_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_to_material_spec_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_to_material_spec_label');?>" id="to_material_id" name="to_material_id" value="<?php echo $to_material_id ;?>" autocomplete="off">
-                    <?PHP if(form_error('to_material_id')){ echo '<span class="help-block">'.form_error('to_material_id').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('pno_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pno_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="pno_id"  data-live-search="true" data-width="100%"  id="pno_id"';
-                      echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
-                      ?> 
-                    <?PHP if(form_error('pno_id')){ echo '<span class="help-block">'.form_error('pno_id').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('grp_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_group_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_group_no_label');?>" id="grp_no" name="grp_no" value="<?php echo $grp_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('grp_no')){ echo '<span class="help-block">'.form_error('grp_no').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_pno_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_to_pno_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="to_pno_id"  data-live-search="true" data-width="100%"  id="to_pno_id"';
-                      echo form_dropdown('to_pno_id', $drop_menu_pno, set_value('to_pno_id', (isset($to_pno_id)) ? $to_pno_id : ''), $attrib);
-                      ?> 
-                    <?PHP if(form_error('to_pno_id')){ echo '<span class="help-block">'.form_error('to_pno_id').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('to_grp_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_group_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_group_no_label');?>" id="to_grp_no" name="to_grp_no" value="<?php echo $to_grp_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('to_grp_no')){ echo '<span class="help-block">'.form_error('to_grp_no').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thickness_test_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thickness_test_label');?>" id="thickness_test_coupon" name="thickness_test_coupon" value="<?php echo $thickness_test_coupon ;?>" autocomplete="off">
-                    <?PHP if(form_error('thickness_test_coupon')){ echo '<span class="help-block">'.form_error('thickness_test_coupon').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('diameter_test_coupon')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_diameter_test_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_diameter_test_label');?>" id="diameter_test_coupon" name="diameter_test_coupon" value="<?php echo $diameter_test_coupon ;?>" autocomplete="off">
-                    <?PHP if(form_error('diameter_test_coupon')){ echo '<span class="help-block">'.form_error('diameter_test_coupon').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('cast_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_cast_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_cast_no_label');?>" id="cast_no" name="cast_no" value="<?php echo $cast_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('cast_no')){ echo '<span class="help-block">'.form_error('cast_no').'</span>';} ?>
-                    </div>
-                </div>
-              </div>
 
             <div class="row blockdiv hide" id="filler">
                 <div class="col-sm-12 col-xs-12 box-title-head">
@@ -793,7 +964,7 @@ if(isset($value) && !empty($value)){
               </div>
 
 
-              <div class="row blockdiv hide" id="tensile">
+            <div class="row blockdiv hide" id="tensile">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_tensile_test_label');?></h3>
                 </div>
@@ -952,7 +1123,7 @@ if(isset($value) && !empty($value)){
 
                 <div class="col-sm-3 col-xs-3">
                   <div class="form-group <?PHP if(form_error('result_statificatory')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_result_statisfactory_label');?><span class="text-danger">*</span></label>
+                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pwht_label');?><span class="text-danger">*</span></label>
                     <div class="row">
                       <div class="col-sm-6 col-xs-6">
                         <div class="radio radio-success">
@@ -1085,7 +1256,7 @@ if(isset($value) && !empty($value)){
 <script>
 
   $(document).ready(function(){
-    
+
     $('.tablinks').click(function(){
       $('.tablinks').removeClass('active');
       $('.blockdiv').addClass('hide');
@@ -1109,23 +1280,26 @@ if(isset($value) && !empty($value)){
     });
 
     // show selected image
-    function readURL(input) {
+    function readURL(input, id) {
         if (input.files && input.files[0]) {
+
             var reader = new FileReader();
-            
             reader.onload = function (e) {
-                $('#profile-img-tag').attr('src', e.target.result);
+                $("."+id).attr('src', e.target.result);
+                // $('#profile-img-tag').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $(".joints_image").change(function(){
-        readURL(this);
+    $(document).on("change", ".joints_image", function(){
+        console.log($(this).attr("id"));
+        readURL(this, $(this).attr("id"));
     });
 
     // add variable button function
     $(document).on('click', '.addVariable', function(){
-        $(".variableDiv:last").clone().insertAfter("div.variableDiv:last");
+        var id = $(this).parents('.jointblockrepeat').attr('id');
+        $('#'+ id +' .variableDiv:last').clone().insertAfter('#'+ id +' div.variableDiv:last');
         $(this).after("<button type='button' class='btn btn-danger removeVariable'>-</button>");
         $(this).hide();
     });
@@ -1134,5 +1308,63 @@ if(isset($value) && !empty($value)){
         $(this).closest('.variableDiv').remove();
     });
 
+    // Clone hole image set in joints
+    $(document).on('click', '#addJointImage', function(e){
+        $(".jointblockrepeat:last").clone().insertAfter("div.jointblockrepeat:last");
+        var count = $(".jointblockrepeat").length;
+
+        $(".jointblockrepeat:last").attr("id", "jointblock"+count).attr("data-rel", count);
+        $(".joints_image:last").attr("id", "joint_photo"+count);
+        $(".joint_image_display:last").removeClass("joint_photo"+(count-1)).addClass("joint_photo"+count);
+        $(".joint_photo"+count).attr("src", "");
+        $(".closeJointBlock").css("display", "none");
+        $(".closeJointBlock:last").css("display", "block");
+    });
+    // close the joint block
+    $(document).on('click', '.closeJointBlock', function(){
+        var r = confirm("Do you like to remove...!");
+        if (r == true) {
+            $(this).parents('.jointblockrepeat').remove();
+            $(".closeJointBlock:last").css("display", "block");
+        }
+    });
+
+    $('#pno_id').on('change', function(){
+        $.ajax({
+           url: '<?php echo base_url(); ?>operation/PQR/getGroupNo',
+           type: 'POST',
+           data: { pno_id: $(this).val() },
+           error: function() {
+              alert('Something is wrong');
+           },
+           success: function(data) {
+                var dataGroup = JSON.parse(data);
+                var selectItemStr = "<option value=''> -- select Group No. --</option>";
+                $.each(dataGroup, function(key, value){
+                    console.log('Key '+key+' value '+value);
+                    selectItemStr += "<option value='"+key+"'>"+value+"</option>";
+                });
+                $("#group_no").html(selectItemStr);
+           }
+        });
+    });
+
+    $('#group_no').on('change', function(){
+        $.ajax({
+           url: '<?php echo base_url(); ?>operation/PQR/getGroupNoInfo',
+           type: 'POST',
+           data: {pno_id: $("#pno_id").val(), group_no: $(this).val()},
+           error: function() {
+              alert('Something is wrong');
+           },
+           success: function(data) {
+                var dataGroup = JSON.parse(data);
+                $.each(dataGroup, function(key, value){
+                    console.log(value);
+                });
+                
+           }
+        });
+    });
   });
 </script>

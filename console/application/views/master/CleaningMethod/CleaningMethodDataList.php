@@ -1,5 +1,5 @@
   <?php
-    $this->mcommon->getCheckUserPermissionHead('Qualification Code',true);
+    $this->mcommon->getCheckUserPermissionHead('Cleaning Method',true);
   ?> 
 
   
@@ -31,11 +31,12 @@
             </div>
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
                 <?php 
-                    if($this->mcommon->getISUserPermission('Code add and edit',$this->session->userdata('user_id'))){
+                    if($this->mcommon->getISUserPermission('Cleaning Method add and edit',$this->session->userdata('user_id'))){
                       ?>
                       <span class="pull-left">
-                        <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-sm btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_code_manage_form_add_button_name');?></a>
+                        <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-sm btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_cleaning_manage_form_add_button_name');?></a>
                       </span>
                       <?php
                     }
@@ -45,12 +46,12 @@
                   ?>
                   <span class="pull-right">
                   <?php 
-                    if($this->mcommon->getISUserPermission('Code all details download excel',$this->session->userdata('user_id'))){
+                    if($this->mcommon->getISUserPermission('Cleaning Method all details download excel',$this->session->userdata('user_id'))){
                       ?>
                       <button id="excel" class="btn-sm btn-primary btn-addon m-b-sm pull-right"><i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?></button> 
                       <?php
                     }
-                    if($this->mcommon->getISUserPermission('Code all details download pdf',$this->session->userdata('user_id'))){
+                    if($this->mcommon->getISUserPermission('Cleaning Method all details download pdf',$this->session->userdata('user_id'))){
                       ?>
                       <button id="pdf" class="btn-sm btn-primary btn-addon m-b-sm pull-right m-r-10"><i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?></button>
                       <?php 
@@ -58,6 +59,7 @@
                   ?>
                 </span>
               </div>
+            </div>
 
               <div class="mr-1">
                 <table id="dataTableList2"></table>
@@ -100,24 +102,24 @@
         },
 
         colModel:[
-        <?php if($this->mcommon->getISUserPermission('Code add and edit',$this->session->userdata('user_id'))){?>
-          {label:'<?php echo lang('common_table_label_edit_operation');?>' ,name:'edit_code_id',index:'edit_code_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-        <?php } if($this->mcommon->getISUserPermission('Code delete',$this->session->userdata('user_id'))){?>
-          {label:'<?php echo lang('common_table_label_delete_operation');?>' ,name:'delete_code_id',index:'delete_code_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+        <?php if($this->mcommon->getISUserPermission('Cleaning Method add and edit',$this->session->userdata('user_id'))){?>
+          {label:'<?php echo lang('common_table_label_edit_operation');?>' ,name:'edit_cleaning_id',index:'edit_cleaning_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+        <?php } if($this->mcommon->getISUserPermission('Cleaning Method delete',$this->session->userdata('user_id'))){?>
+          {label:'<?php echo lang('common_table_label_delete_operation');?>' ,name:'delete_cleaning_id',index:'delete_cleaning_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
         <?php }?>
 
-           {label:'<?php echo lang('mm_masters_code_table_label_code_name');?>',name:'code_name',index:'code_name', width:200, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_code_table_label_createBy');?>',name:'first_name',index:'first_name', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_code_table_label_createOn');?>',name:'createOn',index:'createOn', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},    
-          {label:'<?php echo lang('mm_masters_code_table_label_updateBy');?>',name:'firstname',index:'firstname', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},   
-          {label:'<?php echo lang('mm_masters_code_table_label_updateon');?>',name:'updateOn',index:'updateOn', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}} 
+           {label:'<?php echo lang('mm_masters_cleaning_table_label_cleaning_name');?>',name:'cleaning_name',index:'cleaning_name', width:200, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_cleaning_table_label_createBy');?>',name:'first_name',index:'first_name', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_cleaning_table_label_createOn');?>',name:'createOn',index:'createOn', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},    
+          {label:'<?php echo lang('mm_masters_cleaning_table_label_updateBy');?>',name:'firstname',index:'firstname', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},   
+          {label:'<?php echo lang('mm_masters_cleaning_table_label_updateon');?>',name:'updateOn',index:'updateOn', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}} 
         ],
         
         //postData: { page: 1,rows: 1},        
         rowNum:10,
         rowList:[10,25,50,100],
         pager: jQuery('#dataTablePager2'),
-        sortname: 'code_id',
+        sortname: 'cleaning_id',
         viewrecords: true,
         sortorder: "desc",
         autowidth: true,
@@ -164,7 +166,7 @@
 
       $("#pdf").on("click", function(){
           $("#dataTableList2").jqGrid("exportToPdf",{
-            title: '<?php echo lang('mm_masters_code_pdfTitle');?>',
+            title: '<?php echo lang('mm_masters_cleaning_pdfTitle');?>',
             orientation: 'portrait',
             pageSize: 'A4',
             description: ' ', 

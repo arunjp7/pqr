@@ -32,8 +32,10 @@
     <!-- Theme Styles -->
     <link href="<?php echo base_url(); ?>css/modern.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url(); ?>css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
-    <link href="<?php echo base_url(); ?>css/custom.css" rel="stylesheet" type="text/css"/>
-     <link href="<?php echo base_url(); ?>css/overwrite.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo base_url(); ?>css/custom.css?time=<?php echo time(); ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo base_url(); ?>css/overwrite.css" rel="stylesheet" type="text/css"/>
+
+    <!-- <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css"/> -->
 
     <link href="<?php echo base_url(); ?>plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/> 
     <link href="<?php echo base_url(); ?>plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/> 

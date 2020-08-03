@@ -978,6 +978,31 @@ class M_dropdown extends CI_Model {
       return $data;
     }
 
+    // All Diameter Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_diameter($limit = '')
+    {
+ 		$this->db->select('diameter_name, diameter_id');
+		$this->db->where('diameter_show_status',1);
+		$this->db->order_by('diameter_name', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_diameter');
+		$data[''] = lang("mm_operation_diameter_Select_label") ;
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['diameter_id']] = $item['diameter_name'];
+		}
+      return $data;
+    }
+    
     // All Type Drop Down
 	//Last Updated by N.S.Arunjayaprakash
 	function drop_menu_type($limit = '')
@@ -994,11 +1019,36 @@ class M_dropdown extends CI_Model {
 		//$this->db->where('cat_isSubcat',0);
 		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
 		$query = $this->db->get('jr_type');
-		$data[''] = lang("mm_operation_type_Select_label") ;
+		// $data[''] = lang("mm_operation_type_Select_label") ;
 		
 		foreach($query->result_array() as $item)
 		{
 			$data[$item['type_id']] = $item['type_name'];
+		}
+      return $data;
+    }
+
+    // All Type Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_code($limit = '')
+    {
+ 		$this->db->select('code_name, code_id');
+		$this->db->where('code_show_status',1);
+		$this->db->order_by('code_name', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_code');
+		// $data[''] = lang("mm_operation_code_Select_label") ;
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['code_id']] = $item['code_name'];
 		}
       return $data;
     }
@@ -1024,6 +1074,53 @@ class M_dropdown extends CI_Model {
 		foreach($query->result_array() as $item)
 		{
 			$data[$item['pno_id']] = $item['pno_name'];
+		}
+      return $data;
+    }
+
+    // All Group No Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_group($limit = '', $pno_id)
+    {
+ 		$this->db->select('group_no, specification_no', 'dtg_name', 'uns_number');
+		$this->db->where('pno_show_status',1);
+		$this->db->order_by('group_no', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_pno');
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['group_no']] =$item['group_no'];
+		}
+      return $data;
+    }
+
+    // All other group no information Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_group_info($pno_id, $group_no)
+    {
+ 		$this->db->select('group_no', 'specification_no', 'dtg_name', 'uns_number');
+ 		$this->db->where('pno_id',$pno_id);
+ 		$this->db->where('group_no',$group_no);
+		$this->db->where('pno_show_status',1);
+		$this->db->order_by('group_no', 'ASC');
+		
+		$query = $this->db->get('jr_pno');
+
+		foreach($query->result_array() as $item)
+		{
+			print_r($item);
+			// $data[] = array( 'specification_no' => $item['specification_no'], 
+			// 								  'dtg_name' => $item['dtg_name'], 
+			// 								  'uns_number' => $item['uns_number']
+			// 								);
 		}
       return $data;
     }

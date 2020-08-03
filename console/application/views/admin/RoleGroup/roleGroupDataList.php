@@ -1,11 +1,7 @@
   <?php
     $this->mcommon->getCheckUserPermissionHead('Role Group',true);
   ?> 
-    <div class="row">
-
-    <div class="col-sm-12">
-
-      <div class="white-box">
+    <div id="main-wrapper">
 
       <?php
         if($this->session->flashdata('res'))
@@ -18,9 +14,14 @@
           <?php
         }
         ?>
-        
-        <div class="row m-b-10">
-          <div class="col-sm-12">          
+  <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title"></h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">         
           <?php 
             if($this->mcommon->getISUserPermission('RoleGroup add and edit',$this->session->userdata('user_id'))){
               ?>
@@ -55,16 +56,24 @@
 
 
             </span>
-          </div>
+                     </div>
+
+              <div class="mr-1">
+                <table id="dataTableList2"></table>
+                <div id="dataTablePager2"></div>
+              </div>
+            </div>
+            <!-- Datatable  -->
+            
+              
+        
         </div>
-
-        <table id="dataTableList2"></table>
-        <div id="dataTablePager2"></div>
-
       </div>
     </div>
-  </div>
 
+</div>
+
+</div
 
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false" id="CompanyModal">
     <div class="modal-dialog modal-lg" id="commonDetailsModal"></div>
