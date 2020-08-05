@@ -145,12 +145,16 @@ class PQR extends CI_Controller
         $view_data['drop_menu_code']		=	$this->mdropdown->drop_menu_code();
         $view_data['drop_menu_diameter']	=	$this->mdropdown->drop_menu_diameter();
         $view_data['drop_menu_pno']			=	$this->mdropdown->drop_menu_pno();
+        $view_data['drop_menu_position']	=	$this->mdropdown->drop_menu_position();
         $view_data['drop_menu_sfa']			=	$this->mdropdown->drop_menu_sfa();
         $view_data['drop_menu_welder']		=	$this->mdropdown->drop_menu_welder();
         $view_data['drop_menu_material']	=	$this->mdropdown->drop_menu_material();
+        $view_data['drop_menu_cup_size']	=	$this->mdropdown->drop_menu_cup_size();
+        $view_data['drop_menu_cleaning']	=	$this->mdropdown->drop_menu_cleaning();
         $view_data['drop_menu_grade']		=	$this->mdropdown->drop_menu_grade();
         $view_data['drop_menu_applicable_code']	=	$this->mdropdown->drop_menu_applicable_code();
         $view_data['drop_menu_staff_welder']	=	$this->mdropdown->drop_menu_staff_welder();
+        $view_data['drop_menu_fno']	=	$this->mdropdown->drop_menu_fno();
 
 		$data = array(
                     'title'     	=> lang('mm_masters_pqr_manage_create'),
@@ -177,6 +181,14 @@ class PQR extends CI_Controller
 		$drop_menu_group_info =	$this->mdropdown->drop_menu_group_info($pno_id, $group_no);
 		echo json_encode($drop_menu_group_info);
 	}
+
+	// get F-No information
+	public function getFno($fno_id){
+		$fno_id = $_POST['fno_id'];
+		$drop_menu_fnoInfo =	$this->mdropdown->drop_menu_fnoInfo($fno_id);
+		echo json_encode($drop_menu_fnoInfo);
+	}
+
 	// create Form
 	// Last Updated by Vinitha 09/08/2016 
 	public function create()

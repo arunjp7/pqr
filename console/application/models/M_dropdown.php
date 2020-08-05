@@ -288,11 +288,6 @@ class M_dropdown extends CI_Model {
       return $data;
     }
 
-
-
-   
-
-
     // All Exist Menu Drop Down
 	//Last Updated by S.jegatheesh 06/08/2016 2:32 PM
     function drop_menu_all_exist_menu($menu_id='')
@@ -978,6 +973,83 @@ class M_dropdown extends CI_Model {
       return $data;
     }
 
+
+    // All Position Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_position($limit = '')
+    {
+ 		$this->db->select('position_name, position_id');
+		$this->db->where('position_show_status',1);
+		$this->db->order_by('position_name', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_position');
+		$data[''] = lang("mm_operation_position_Select_label");
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['position_id']] = $item['position_name'];
+		}
+      return $data;
+    }
+
+    // All Cup Size Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_cup_size($limit = '')
+    {
+ 		$this->db->select('cupsize_name, cupsize_id');
+		$this->db->where('cupsize_show_status',1);
+		$this->db->order_by('cupsize_name', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_cupsize');
+		$data[''] = lang("mm_operation_cupsize_Select_label");
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['cupsize_id']] = $item['cupsize_name'];
+		}
+      return $data;
+    }
+
+    // All cleaning Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_cleaning($limit = '')
+    {
+ 		$this->db->select('cleaning_name, cleaning_id');
+		$this->db->where('cleaning_show_status',1);
+		$this->db->order_by('cleaning_name', 'ASC');
+		if($limit != ''){
+			$this->db->limit($limit);
+		}
+
+		//$this->db->where('cat_delete',0);
+		//$this->db->where('cat_parentID',0);
+		//$this->db->where('cat_isSubcat',0);
+		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
+		$query = $this->db->get('jr_cleaning');
+		$data[''] = lang("mm_operation_cleaning_Select_label");
+		
+		foreach($query->result_array() as $item)
+		{
+			$data[$item['cleaning_id']] = $item['cleaning_name'];
+		}
+      return $data;
+    }
+
+
     // All Diameter Drop Down
 	//Last Updated by N.S.Arunjayaprakash
 	function drop_menu_diameter($limit = '')
@@ -1057,7 +1129,7 @@ class M_dropdown extends CI_Model {
 	//Last Updated by N.S.Arunjayaprakash
 	function drop_menu_pno($limit = '')
     {
- 		$this->db->select('pno_name, pno_id');
+ 		$this->db->select(array('pno_name', 'pno_id','group_no', 'specification_no', 'dtg_name', 'uns_number'));
 		$this->db->where('pno_show_status',1);
 		$this->db->order_by('pno_name', 'ASC');
 		if($limit != ''){
@@ -1069,58 +1141,80 @@ class M_dropdown extends CI_Model {
 		//$this->db->where('cat_isSubcat',0);
 		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
 		$query = $this->db->get('jr_pno');
+		
 		$data[''] = lang("mm_operation_pno_Select_label") ;
 		
 		foreach($query->result_array() as $item)
 		{
-			$data[$item['pno_id']] = $item['pno_name'];
+			$data[$item['pno_id']] = $item['pno_name'] . " - " . $item['group_no'] . ',' . $item['specification_no'] . ',' . ($item['dtg_name']!=null?$item['dtg_name']:$item['uns_number']);
 		}
       return $data;
     }
 
-    // All Group No Drop Down
+   
+
+    // All other group no information Drop Down
 	//Last Updated by N.S.Arunjayaprakash
-	function drop_menu_group($limit = '', $pno_id)
+	function drop_menu_group($pno_id)
     {
- 		$this->db->select('group_no, specification_no', 'dtg_name', 'uns_number');
+ 		$this->db->select(array('group_no', 'specification_no', 'dtg_name', 'uns_number'));
+ 		$this->db->where('pno_id',$pno_id);
 		$this->db->where('pno_show_status',1);
 		$this->db->order_by('group_no', 'ASC');
+		
+		$query = $this->db->get('jr_pno');
+		
+		foreach($query->result_array() as $item)
+		{
+			
+			$data = array( 'group_no' => $item['group_no'], 
+							'specification_no' => $item['specification_no'], 
+							'dtg_name' => $item['dtg_name'], 
+							'uns_number' => $item['uns_number']
+						);
+		}
+      return $data;
+    }
+
+    // All fno information Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_fnoInfo($fno_id)
+    {
+ 		$this->db->select(array('a_no', 'sfa_no', 'aws_classfication'));
+ 		$this->db->where('fno_id',$fno_id);
+		$this->db->where('fno_show_status',1);
+		
+		
+		$query = $this->db->get('jr_fno');
+		
+		foreach($query->result_array() as $item)
+		{
+			
+			$data = array( 'a_no' => $item['a_no'], 
+							'sfa_no' => $item['sfa_no'], 
+							'aws_classfication' => $item['aws_classfication']
+						);
+		}
+      return $data;
+    }
+
+    // All F-No. Drop Down
+	//Last Updated by N.S.Arunjayaprakash
+	function drop_menu_fno($limit = '')
+    {
+ 		$this->db->select('fno_name, fno_id');
+		$this->db->where('fno_show_status',1);
+		$this->db->order_by('fno_name', 'ASC');
 		if($limit != ''){
 			$this->db->limit($limit);
 		}
 
-		//$this->db->where('cat_delete',0);
-		//$this->db->where('cat_parentID',0);
-		//$this->db->where('cat_isSubcat',0);
-		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
-		$query = $this->db->get('jr_pno');
+		$query = $this->db->get('jr_fno');
+		$data[''] = lang("mm_operation_fno_Select_label") ;
 		
 		foreach($query->result_array() as $item)
 		{
-			$data[$item['group_no']] =$item['group_no'];
-		}
-      return $data;
-    }
-
-    // All other group no information Drop Down
-	//Last Updated by N.S.Arunjayaprakash
-	function drop_menu_group_info($pno_id, $group_no)
-    {
- 		$this->db->select('group_no', 'specification_no', 'dtg_name', 'uns_number');
- 		$this->db->where('pno_id',$pno_id);
- 		$this->db->where('group_no',$group_no);
-		$this->db->where('pno_show_status',1);
-		$this->db->order_by('group_no', 'ASC');
-		
-		$query = $this->db->get('jr_pno');
-
-		foreach($query->result_array() as $item)
-		{
-			print_r($item);
-			// $data[] = array( 'specification_no' => $item['specification_no'], 
-			// 								  'dtg_name' => $item['dtg_name'], 
-			// 								  'uns_number' => $item['uns_number']
-			// 								);
+			$data[$item['fno_id']] = $item['fno_name'];
 		}
       return $data;
     }

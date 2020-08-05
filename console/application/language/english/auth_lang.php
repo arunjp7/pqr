@@ -2945,8 +2945,10 @@ $lang['mm_operation_pqr_position_label'] = "Position (QW - 405)";
 $lang['mm_operation_pqr_preheat_label'] = "Preheat (QW - 406)";
 $lang['mm_operation_pqr_post_weld_heat_label'] = "Post Weld Heat Treatment (QW - 407)";
 $lang['mm_operation_pqr_gas_label'] = "Gas (QW - 408)";
-$lang['mm_operation_pqr_techique_label'] = "Techique(QW-410)";
 $lang['mm_operation_pqr_electrical_character_label'] = "Electrical Characteristics (QW-409)";
+$lang['mm_operation_pqr_techique_label'] = "Techique (QW - 410)";
+$lang['mm_operation_pqr_welding_parameters_label'] = "Welding Parameters";
+
 $lang['mm_operation_pqr_tensile_test_label'] = "Tensile Test (QW - 150)";
 $lang['mm_operation_pqr_guided_ben_test_label'] = "Guided Ben Test (QW - 160)";
 $lang['mm_operation_pqr_touchness_test_label'] = "Touchness Test (Qw - 170)";
@@ -2978,7 +2980,7 @@ $lang['mm_operation_pqr_joint_root_face_label'] = "Root Face (C)";
 $lang['mm_operation_pqr_joint_root_gap_label'] = "Root Gap (D)";
 $lang['mm_operation_pqr_joint_other_label'] = "Others";
 
-
+// Base Material labels
 $lang['mm_operation_pqr_material_spec_label'] = "Material Specification";
 $lang['mm_operation_pqr_tgu_no_label'] = "Type or Grade or UNS Number";
 $lang['mm_operation_pqr_pno_label'] = "P. No.";
@@ -2989,30 +2991,41 @@ $lang['mm_operation_pqr_thickness_test_label'] = "Thickness of Test Coupon";
 $lang['mm_operation_pqr_diameter_test_label'] = "Diameter of Test Coupon";
 $lang['mm_operation_pqr_heat_no_label'] = "Heat No.";
 
+// Filler Metals labels
 $lang['mm_operation_pqr_process_label'] = "Process";
-$lang['mm_operation_pqr_weld_metal_analysis_no_label'] = "Weld Metal Analysis No.";
-$lang['mm_operation_pqr_size_filler_metal_label'] = "Size of Filler Metal";
-$lang['mm_operation_pqr_f_number_label'] = "F-Number";
+$lang['mm_operation_pqr_filler_metal_fno_label'] = "Filler Metal F-No.";
+$lang['mm_operation_pqr_weld_metal_analysis_no_label'] = "Weld Metal Analysis A-No";
 $lang['mm_operation_pqr_specification_no_label'] = "Specification No. (SFA)";
 $lang['mm_operation_pqr_aws_classfication_no_label'] = "AWS Classfication";
+$lang['mm_operation_pqr_size_filler_metal_label'] = "Size of Filler Metal";
 $lang['mm_operation_pqr_filler_metal_product_form_label'] = "Filler Metal Product Form";
-$lang['mm_operation_pqr_electrode_brand_name_label'] = "Electrode Brand Name";
+$lang['mm_operation_pqr_filler_supply_metal_filler_label'] = "Supply mental Filler Metal";
+$lang['mm_operation_pqr_filler_Electrode_flux_label'] = "Electrode Flux Classification";
+$lang['mm_operation_pqr_filler_flux_type_form_label'] = "Flux Type";
+$lang['mm_operation_pqr_filler_flux_trade_label'] = "Flux Trade Name";
+$lang['mm_operation_pqr_filler_weld_thickness_label'] = "Weld Metal Thickness";
 $lang['mm_operation_pqr_lot_no_label'] = "Lot. No.";
-$lang['mm_operation_pqr_deposited_weld_thickness_label'] = "Deposited Weld Thickness";
+$lang['mm_operation_pqr_metal_other_label'] = "Other";
 
+// position label
 $lang['mm_operation_pqr_position_groove_label'] = "Position of Groove";
 $lang['mm_operation_pqr_weld_progression_label'] = "Weld Progression";
 $lang['mm_operation_pqr_others_label'] = "Other(s)";
 
+// Preheat label
 $lang['mm_operation_pqr_preheat_temp_min_label'] = "Preheat Temperature Min.";
 $lang['mm_operation_pqr_interpass_temp_max_label'] = "Interpass Temperature Max.";
 
+// Post weld heat Treatment label
 $lang['mm_operation_pqr_temp_range_label'] = "Temperature Range";
 $lang['mm_operation_pqr_soak_period_label'] = "Soak Period";
-$lang['mm_operation_pqr_heating_rate_label'] = "Heating Rate";
-$lang['mm_operation_pqr_cooling_rate_label'] = "Cooling Rate";
+$lang['mm_operation_pqr_heat_rate_up_to_label'] = "Unrestriced Heating Rate up to (°C)";
+$lang['mm_operation_pqr_heat_rate_from_label'] = "Unrestriced Heating Rate From (°C)";
+$lang['mm_operation_pqr_control_heat_rate_label'] = "Controlled Heating Rate (Max./Hr)";
+$lang['mm_operation_pqr_control_cooling_rate_label'] = "Controlled Cooling Rate (Max./Hr)";
 $lang['mm_operation_pqr_post_heat_others_label'] = "Others";
 
+// Gas label
 $lang['mm_operation_pqr_gas_td_label'] = "Gas(es)";
 $lang['mm_operation_pqr_post_others_label'] = "Percent Composition(Mixture)";
 $lang['mm_operation_pqr_flow_rate_cfh_label'] = "Flow Rate CFH";
@@ -3022,13 +3035,33 @@ $lang['mm_operation_pqr_shielding_label'] = "Shielding";
 $lang['mm_operation_pqr_backing_label'] = "Backing";
 $lang['mm_operation_pqr_trailing_label'] = "Trailing";
 
+
+// Electrical Character label
+$lang['mm_operation_pqr_elec_currnet_label'] = "Current";
+$lang['mm_operation_pqr_elec_prolarity_label'] = "Polarity";
+$lang['mm_operation_pqr_elec_amps_label'] = "Amps";
+$lang['mm_operation_pqr_elec_volts_label'] = "Volts";
+$lang['mm_operation_pqr_elec_waveform_label'] = "Waveform Control";
+$lang['mm_operation_pqr_elec_power_label'] = "Power of Energy";
+$lang['mm_operation_pqr_elec_arc_label'] = "Arc Time";
+$lang['mm_operation_pqr_elec_weld_bed_label'] = "Weld Bead Length";
+$lang['mm_operation_pqr_elec_type_label'] = "Tungsten Electrode Type";
+$lang['mm_operation_pqr_elec_size_label'] = "Tungsten Electrode Size";
+$lang['mm_operation_pqr_elec_mode_label'] = "Mode of Transfer for GMAW (FCAW)";
+$lang['mm_operation_pqr_elec_heat_label'] = "Heat Input";
+$lang['mm_operation_pqr_elec_other_label'] = "Other";
+
+// Teachinqe label
 $lang['mm_operation_pqr_travel_speed_label'] = "Travel Speed";
 $lang['mm_operation_pqr_bead_label'] = "String or Weave Bead";
 $lang['mm_operation_pqr_orifice_gascup_size_label'] = "Orifice or Gas Cup Size";
-$lang['mm_operation_pqr_s_m_pass_per_side_label'] = "Multi Pass or Single Pass per side";
+$lang['mm_operation_pqr_s_m_pass_per_side_label'] = "MultiPass or Single Pass per side";
 $lang['mm_operation_pqr_s_m_electrode_label'] = "Single or Multiple Electrode";
-$lang['mm_operation_pqr_initial_interpass_clean_label'] = "Initial and Inter-pass Cleaning";
-$lang['mm_operation_pqr_tungsten_electrode_label'] = "Tungsten Electrode Size and Type";
+$lang['mm_operation_pqr_work_distance_label'] = "Contact Tube to Work Distance";
+$lang['mm_operation_pqr_method_cleaning_label'] = "Method Of Cleaning";
+$lang['mm_operation_pqr_thermal_process_label'] = "Use of Thermal Processes";
+$lang['mm_operation_pqr_teachinqe_other_label'] = "Other";
+
 
 
 $lang['mm_operation_pqr_r_n_label'] = "R.N";
@@ -3090,14 +3123,16 @@ $lang['mm_operation_layer_Select_label'] = "-- Select Layer --";
 $lang['mm_operation_code_Select_label'] = "-- Select Code --";
 $lang['mm_operation_diameter_Select_label'] = "-- Select Diameter of Test Coupon --";
 $lang['mm_operation_pno_Select_label'] = "-- Select P-Number --";
+$lang['mm_operation_position_Select_label'] = "-- Select Position --";
+$lang['mm_operation_fno_Select_label'] = "-- Select F-No --";
 $lang['mm_operation_sfa_Select_label'] = "-- Select SFA --";
 $lang['mm_operation_applicable_code_Select_label'] = "-- Select Applicable Code --";
 $lang['mm_operation_grade_Select_label'] = "-- Select Grade --";
 $lang['mm_operation_material_Select_label'] = "-- Select Material Specification --";
 $lang['mm_operation_welder_Select_label'] = "-- Select Welder --";
 $lang['mm_operation_staff_Select_label'] = "-- Select Welder Name --";
-
-
+$lang['mm_operation_cupsize_Select_label'] = "-- Select Cup Size --";
+$lang['mm_operation_cleaning_Select_label'] = "-- Select Method of Cleaning --";
 
 
 $lang['mm_masters_pqr_manage_exportPDFFileName']='PQR_';

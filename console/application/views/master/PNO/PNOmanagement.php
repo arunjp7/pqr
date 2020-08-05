@@ -5,10 +5,18 @@ if(isset($value) && !empty($value)){
   foreach($value->result() as $row){   
     $pno_id                            =  $row->pno_id;
     $pno_name                          =  $row->pno_name;
+    $specification_no                  =  $row->specification_no;
+    $group_no                          =  $row->group_no;
+    $dtg_name                          =  $row->dtg_name;
+    $uns_number                        =  $row->uns_number;
   }
 } else {
   $pno_id                              =  $this->input->post('pno_id');
   $pno_name                            =  $this->input->post('pno_name');
+  $specification_no                    =  $this->input->post('specification_no');
+  $group_no                            =  $this->input->post('group_no');
+  $dtg_name                            =  $this->input->post('dtg_name');
+  $uns_number                          =  $this->input->post('uns_number');
 } 
 ?>
   <!-- /.start form -->
