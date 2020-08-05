@@ -155,6 +155,8 @@ if(isset($value) && !empty($value)){
                 <li class="tablinks" data-id="techniqe"><?php echo lang('mm_operation_pqr_techique_label');?></li>
                 <li class="tablinks active" data-id="welding_parameters"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></li>
 
+
+
               <!--   <li class="tablinks" data-id="tensile"><?php echo lang('mm_operation_pqr_tensile_test_label');?></li>
                 <li class="tablinks" data-id="guided"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></li>
                 <li class="tablinks" data-id="touchness"><?php echo lang('mm_operation_pqr_touchness_test_label');?></li>
