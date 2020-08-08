@@ -172,3 +172,9 @@
 .fileinput.input-group > .btn-file {
   z-index: 1;
 }
+.invalid {
+  border: 1px solid red;
+}
+.invalid.select2  {
+    border-color: rgb(185, 74, 72) !important;
+}

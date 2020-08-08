@@ -131,7 +131,7 @@ if(isset($value) && !empty($value)){
     $laboratory_test_3 = $this->input->post('laboratory_test_3');
 } 
 ?>
-  <!-- /.start form -->
+<!-- /.start form -->
 <div id="main-wrapper">
 <div class="row">
     <div class="col-md-12">
@@ -141,27 +141,46 @@ if(isset($value) && !empty($value)){
             </div>
             <div class="panel-body">
               <div class="row">
-         
-              <div class="tabPqr">
-               <ul>
-                <li class="tablinks" data-id="companydetails"><?php echo lang('mm_operation_pqr_company_details_label');?></li>
-                <li class="tablinks" data-id="joints"><?php echo lang('mm_operation_pqr_joints_label');?></li>
-                <li class="tablinks" data-id="basemetals"><?php echo lang('mm_operation_pqr_base_metals_label');?></li>
-                <li class="tablinks" data-id="filler"><?php echo lang('mm_operation_pqr_filler_metals_label');?></li>
-                <li class="tablinks" data-id="position_preheat"><?php echo lang('mm_operation_pqr_position_label');?> & <?php echo lang('mm_operation_pqr_preheat_label');?></li>
-                <li class="tablinks" data-id="post"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></li>
-                <li class="tablinks" data-id="gas"><?php echo lang('mm_operation_pqr_gas_label');?></li>
-                <li class="tablinks" data-id="electrical"><?php echo lang('mm_operation_pqr_electrical_character_label');?></li>
-                <li class="tablinks" data-id="techniqe"><?php echo lang('mm_operation_pqr_techique_label');?></li>
-                <li class="tablinks active" data-id="welding_parameters"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></li>
-
-              <!--   <li class="tablinks" data-id="tensile"><?php echo lang('mm_operation_pqr_tensile_test_label');?></li>
-                <li class="tablinks" data-id="guided"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></li>
-                <li class="tablinks" data-id="touchness"><?php echo lang('mm_operation_pqr_touchness_test_label');?></li>
-                <li class="tablinks" data-id="fillet"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></li>
-                <li class="tablinks" data-id="other"><?php echo lang('mm_operation_pqr_other_tests_label');?></li> -->
-               </ul>
-              </div>
+                <div class="col-sm-12 col-xl-12">
+                    <ul class="nav nav-pills">
+                    <li class="tablinks nav-item active" data-id="companydetails">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_company_details_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="joints">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_joints_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="basemetals">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_base_metals_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="filler">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_filler_metals_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="position_preheat">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_position_label');?> & <?php echo lang('mm_operation_pqr_preheat_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="post">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="gas">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_gas_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="electrical">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_electrical_character_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="techniqe">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_techique_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="welding_parameters">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></a>
+                    </li>
+                  
+                  <!--   <li class="tablinks" data-id="tensile"><?php echo lang('mm_operation_pqr_tensile_test_label');?></li>
+                    <li class="tablinks" data-id="guided"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></li>
+                    <li class="tablinks" data-id="touchness"><?php echo lang('mm_operation_pqr_touchness_test_label');?></li>
+                    <li class="tablinks" data-id="fillet"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></li>
+                    <li class="tablinks" data-id="other"><?php echo lang('mm_operation_pqr_other_tests_label');?></li> -->
+                    </ul>
+                </div>
           </div>
       </div>
 </div>
@@ -187,21 +206,11 @@ if(isset($value) && !empty($value)){
             <?php echo form_open_multipart($form_url); ?>
              <div class="clearfix"></div>
             <!-- Block Company Details -->
-            <div class="row blockdiv hide" id="companydetails">
+            <div class="row blockdiv" id="companydetails">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_company_details_label');?></h3>
                 </div>
-                <!-- Company Details -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
-                      echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
-                      ?> 
-                    <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
-                    </div>
-                </div>
+                
                 <!-- Procedure Qulation specification No -->
                 <div class="col-sm-3 col-xs-3">
                   <div class="form-group <?PHP if(form_error('pqr_no')){ echo 'has-error';} ?>">
@@ -286,6 +295,8 @@ if(isset($value) && !empty($value)){
                     <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="pqr_other" name="pqr_other" value="<?php echo $pqr_other ;?>" autocomplete="off">
                     </div>
                 </div>
+
+
                 <!-- Post Weld Heat Treatment get yes or no -->
                 <!-- <div class="col-sm-3 col-xs-3">
                     <div class="form-group <?PHP if(form_error('pwht')){ echo 'has-error';} ?>">
@@ -300,12 +311,16 @@ if(isset($value) && !empty($value)){
                         </label>
                     </div>
                 </div> -->
+                <!-- Next button -->
+                <div class="col-sm-12 col-xs-12">
+                    <button class="btn btn-info pull-right" type="button"  id="btnCompanyDetails" data-block="1" data-block-name="companydetails">Save & Next</button>
+                </div>
             </div>
             <!-- Block Joints -->
             <div class="row blockdiv hide" id="joints">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                     <h3 class="box-title">
-                        <?php echo lang('mm_operation_pqr_base_metals_label');?>
+                        <?php echo lang('mm_operation_pqr_joints_label');?>
                         <button class="btn btn-primary pull-right img-btn" type="button" id="addJointImage">Add Image</button> 
                     </h3>
                 </div>
@@ -407,6 +422,19 @@ if(isset($value) && !empty($value)){
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
                 </div>
                 <div class="col-sm-12 col-xs-12">
+                    <div class="row">
+                        <!-- Company Details -->
+                        <div class="col-sm-3 col-xs-3">
+                          <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
+                            <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
+                            <?php   
+                              $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
+                              echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
+                              ?> 
+                            <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Pno to Pno -->
                     <div class="row">
                         <div class="col-sm-3 col-xs-3">
@@ -613,9 +641,9 @@ if(isset($value) && !empty($value)){
                             </tr>
                             <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_fno_label');?><span class="text-danger">*</span></label></td>
-                                <td data-col="1" data-val="0">
+                                <td data-col="2" data-val="0">
                                     <?php   
-                                      $attrib = 'class="form-control select2 fno_id" name="fno_id[]"  data-live-search="true" data-width="100%" style="width:100%;" ';
+                                      $attrib = 'class="form-control select2 fno_id" name="fno_id[]" child="1" data-live-search="true" data-width="100%" style="width:100%;" ';
                                       echo form_dropdown('fno_id', $drop_menu_fno, set_value('fno_id', (isset($fno_id)) ? $fno_id : ''), $attrib);
                                       ?> 
                                     <?PHP if(form_error('fno_id')){ echo '<span class="help-block">'.form_error('fno_id').'</span>';} ?>
@@ -1071,8 +1099,8 @@ if(isset($value) && !empty($value)){
             </div>
 
             <!-- Welding Parameters -->
-            <div class="row blockdiv" id="welding_parameters">
-                 <div class="col-sm-12 col-xs-12 box-title-head">
+            <div class="row blockdiv hide" id="welding_parameters">
+                <div class="col-sm-12 col-xs-12 box-title-head">
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></h3>
                 </div>
 
@@ -1099,10 +1127,10 @@ if(isset($value) && !empty($value)){
                     </tr>
                   </thead>
                   <tbody class="welding_tbody">
-                    <tr class="tr_welding">
+                    <tr class="tr_welding" data-child="1">
                       <td class="tr_sno">1</td>
                       <td>
-                        <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%" style="width:100%;">
+                        <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%"  style="width:100%;">
                             <option value="">-- Select Layer --</option>
                             <option value="Root">Root</option>
                             <option value="Hot">Hot</option>
@@ -1111,12 +1139,12 @@ if(isset($value) && !empty($value)){
                         </select>
                       </td>
                       <td>
-                        <select class="from-control select2 welder_process" name="welder_process" data-live-search="true" data-width="100%" style="width:100%;">
+                        <select class="from-control select2 welder_process" name="welder_process" data-child="1" data-live-search="true" data-width="100%" style="width:100%;">
                             <option value="">-- Select Process --</option>
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control classVal" name="class[]" value="" autocomplete="off" disabled>
+                        <input type="text" class="form-control classVal" id="layer1" name="class[]" value="" autocomplete="off" disabled>
                       </td>
                       <td>
                         <input type="text" class="form-control diameter"  name="diameter[]" value="" autocomplete="off">
@@ -1125,16 +1153,16 @@ if(isset($value) && !empty($value)){
                         <input type="text" class="form-control typer_polority" name="typer_polority[]" value="" autocomplete="off">
                       </td>
                       <td>
-                        <input type="text" class="form-control current_amperage_range"  name="current_amperage_range[]" value="" autocomplete="off">
+                        <input type="text" class="form-control current_amperage_range" id="current_amperage_range1" name="current_amperage_range[]" value="" autocomplete="off">
                       </td>
                       <td>
-                        <input type="text" class="form-control current_voltage_range" name="current_voltage_range[]" value="" autocomplete="off">
+                        <input type="text" class="form-control current_voltage_range" id="current_voltage_range1" name="current_voltage_range[]" value="" autocomplete="off">
                       </td>
                       <td>
-                        <input type="text" class="form-control travel_speed_range" name="travel_speed_range[]" value="" autocomplete="off">
+                        <input type="text" class="form-control travel_speed_range" id="travel_speed_range1" name="travel_speed_range[]" value="" autocomplete="off">
                       </td>
                       <td>
-                        <input type="text" class="form-control heat_input" name="heat_input[]" value="" autocomplete="off">
+                        <input type="text" class="form-control heat_input" id="heat_input1" data-row-no="1" name="heat_input[]" value="" autocomplete="off">
                       </td>
                       <td>
                         <button type="button" class="btn btn-info welding_row">+</button>
@@ -1143,10 +1171,21 @@ if(isset($value) && !empty($value)){
                     
                   </tbody>
                 </table>
+                
                 </div>
+                <!-- <div class="col-sm-12">
+                  <div class="text-right final_button">
+                    <input type="hidden" name="pqr_id" value="<?php echo $pqr_id;?>">
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit"><?php echo lang('btn_save');?></button>
+                    <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10"><?php echo lang('btn_Reset');?></button>
+                    <a href="<?php echo base_url().$form_cancel_url;?>" class="btn btn-warning waves-effect waves-light m-r-10"><?php echo lang('btn_Cancel');?></a>
+                  </div>
+                </div> -->
+                
             </div>
+        </div>
 
-            <div class="row blockdiv hide" id="tensile">
+           <!--  <div class="row blockdiv hide" id="tensile">
                 <div class="col-sm-12 col-xs-12 box-title-head">
                   <h3 class="box-title"><?php echo lang('mm_operation_pqr_tensile_test_label');?></h3>
                 </div>
@@ -1425,7 +1464,7 @@ if(isset($value) && !empty($value)){
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
               
             <?php echo form_close(); ?>
      </div>
@@ -1440,6 +1479,10 @@ if(isset($value) && !empty($value)){
   $(document).ready(function(){
     var process = [];
     var processName = [];
+
+    // array object to handle Process select
+    var objProcess = {}; 
+    var WeldingData = {};
 
     $('.tablinks').click(function(){
       $('.tablinks').removeClass('active');
@@ -1558,7 +1601,7 @@ if(isset($value) && !empty($value)){
 
     $(document).on('change', '.fno_id', function(){
         var count = $(this).parents("td").attr('data-col');
-        var len = parseInt(count)+1;
+        var len = parseInt(count);
         $.ajax({
            url: '<?php echo base_url(); ?>operation/PQR/getFno',
            type: 'POST',
@@ -1568,9 +1611,12 @@ if(isset($value) && !empty($value)){
            },
            success: function(data) {
                 var dataGroup = JSON.parse(data);
+                
+                var process_id = $('#mtable tbody tr:nth-child(1) td:nth-child('+len+') .processVal').attr('data-process-id');
+                WeldingData[process_id] = dataGroup['aws_classfication'];
                 $('#mtable tbody tr:nth-child(3) td:nth-child('+len+') .a_no').val(dataGroup['a_no']);
                 $('#mtable tbody tr:nth-child(4) td:nth-child('+len+') .sfa_no').val(dataGroup['sfa_no']);
-                $('#mtable tbody tr:nth-child(5) td:nth-child('+len+') .aws_classfication').val(dataGroup['aws_classfication']);              
+                $('#mtable tbody tr:nth-child(5) td:nth-child('+len+') .aws_classfication').val(dataGroup['aws_classfication']); 
            }
         });
     });
@@ -1579,7 +1625,9 @@ if(isset($value) && !empty($value)){
         process['process1'] = $(this).val();
         layer_select_option($(this).val(), 'process1', $('#process1 option:selected').text());
         processName['process1'] = $('#process1 option:selected').text();
-        $('#mtable tbody tr:nth-child(1) td:nth-child(2) .processVal:nth-child(1)').val($("#process1 option:selected").text());
+        $('#mtable tbody tr:nth-child(1) td:nth-child(2) .processVal:nth-child(1)')
+            .val($("#process1 option:selected").text())
+            .attr('data-process-id', $('#process1').val()).attr('data-child', 2);
         $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(2) .electric_process:nth-child(1)').val($("#process1 option:selected").text());
 
     });
@@ -1592,8 +1640,12 @@ if(isset($value) && !empty($value)){
             process['process2'] = $(this).val();
             processName['process2'] = $('#process2 option:selected').text();
             tableTdCreate();
-            $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)').val($("#process2 option:selected").text());
-            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(3) .electric_process:nth-child(1)').val($("#process2 option:selected").text());
+            $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)')
+                .val($("#process2 option:selected").text())
+                .attr('data-process-id', $('#process2').val()).attr('data-child', 3);
+            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(3) .electric_process:nth-child(1)')
+                .val($("#process2 option:selected").text())
+                .attr('data-process-id', $('#process2').val());
         }
     });
         
@@ -1605,11 +1657,17 @@ if(isset($value) && !empty($value)){
             process['process3'] = $(this).val();
             processName['process3'] = $('#process3 option:selected').text();
             tableTdCreate();
-            $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)').val($("#process2 option:selected").text());
-            $('#mtable tbody tr:nth-child(1) td:nth-child(4) .processVal:nth-child(1)').val($("#process3 option:selected").text()); 
+            $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)')
+                .val($("#process2 option:selected").text())
+                .attr('data-process-id', $('#process2').val()).attr('data-child', 3);
+            $('#mtable tbody tr:nth-child(1) td:nth-child(4) .processVal:nth-child(1)')
+                .val($("#process3 option:selected").text())
+                .attr('data-process-id', $('#process3').val()).attr('data-child', 4); 
 
-            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(3) .electric_process:nth-child(1)').val($("#process2 option:selected").text());
-            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(4) .electric_process:nth-child(1)').val($("#process3 option:selected").text());   
+            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(3) .electric_process:nth-child(1)')
+                .val($("#process2 option:selected").text());
+            $('#electrical_mtab tbody tr:nth-child(1) td:nth-child(4) .electric_process:nth-child(1)')
+                .val($("#process3 option:selected").text());   
         }
     });
     
@@ -1625,24 +1683,38 @@ if(isset($value) && !empty($value)){
         $('.processGas').val(processGas);
     });
 
-    var optionStr = '';
-    optionStr += '<option value="">-- Select Process --</option>';
+    
     function layer_select_option(value, key, textVal){
-        
-      console.log(process['process1']);
-      console.log(processName['process1']);
-
+    
+        if(value != ''){
+            objProcess[value] =  textVal;
+        }
+        var optionStr = '';
+        optionStr += '<option value="">-- Select Process --</option>';
+        $.each(objProcess, function(key, value){
+            optionStr += '<option value="'+key+'">'+value+'</option>';
+        });
+        $('.welder_process').empty();
+        $('.welder_process').html(optionStr);
     }
+
+    $(document).on('change', '.welder_process', function(){
+        var changeVal = $(this).val();
+        var changeChild = $(this).parents('tr').attr('data-child');
+        $('.welding_tbody tr:nth-child('+changeChild+') td:nth-child(4) .classVal').val(WeldingData[changeVal]);
+    });
+
     function tableTdCreate(){
         $('.fno_id').select2("destroy");
+
           $('#mtable tbody tr').each(function(key){
                 // $(this).children('td:last').attr('class','append'+key);
                 var count = key+1;
             
                 $("#mtable tbody tr:nth-child("+count+") td:nth-child(2)").clone(false)
-                    .insertAfter('#mtable tbody tr:nth-child('+count+') td:nth-child(2)').attr('class','append'+key)
+                    .insertAfter('#mtable tbody tr:nth-child('+count+') td:last').attr('class','append'+key)
                     .attr('data-val', key)
-                    .attr('data-col',key == 1 ? 1+key : undefined);
+                    .attr('data-col',($('#mtable tbody tr:nth-child('+count+') td').length));
                 $('#mtable tbody tr:nth-child('+count+') td:nth-child(2)').children("select").select2();
             });
           $(".fno_id").select2({               
@@ -1669,19 +1741,74 @@ if(isset($value) && !empty($value)){
     }
 
     $(document).on('click', '.welding_row', function(){
-       $('.layer:last').select2("destroy");
-        var trcount = 0;
-        var thisRow = $( this ).closest( 'tr' )[0];
-        $('.welding_tbody tr:last').clone().insertAfter('.welding_tbody tr:last').find( 'input:text' ).val( '' );
-        
-        var trcount = $('.welding_tbody tr').length;
-        $('.welding_tbody tr:last td:first').html(trcount);
-        $('.welding_tbody tr:nth-child('+(trcount-1)+') td:last').html('');
-
-        $('.layer').select2();
        
+        var trcount = 0;
+        var trcount = $('.welding_tbody tr').length;
+        if(trcount < 6){
+            $(".welding_tbody tr:last").find('.layer').select2('destroy');
+            $(".welding_tbody tr:last").find('.welder_process').select2('destroy');
+
+            $('.welding_tbody tr:last').clone().insertAfter('.welding_tbody tr:last').find("input:text").val("");
+            
+            $('.welding_tbody tr:last td:first').html(trcount+1);
+            
+            $('.welding_tbody tr:nth-child('+(trcount)+') td:last').html('');
+            $('.welding_tbody tr:last').attr('data-child', (trcount+1));
+            $('.welding_tbody tr:last td:nth-child(4) .classVal').attr('id', 'layer'+(trcount+1));
+
+            // for calculation add dynamic ids
+            $('.welding_tbody tr:last td:nth-child(7) .current_amperage_range').attr('id', 'current_amperage_range'+(trcount+1));
+            $('.welding_tbody tr:last td:nth-child(8) .current_voltage_range').attr('id', 'current_voltage_range'+(trcount+1));
+            $('.welding_tbody tr:last td:nth-child(9) .travel_speed_range').attr('id', 'travel_speed_range'+(trcount+1));
+            $('.welding_tbody tr:last td:nth-child(10) .heat_input').attr('id', 'heat_input'+(trcount+1))
+                    .attr('data-row-no', (trcount+1));
+
+            $('.layer, .welder_process ').select2();
+
+            if(trcount == 5){
+                $('.welding_tbody tr:nth-child('+(trcount+1)+') td:last').html('');
+            }
+        }
     });
 
+
+    $('.heat_input').focus(function(){
+        var row_no = $(this).attr('data-row-no');
+        
+        var current_amperage_range = $('#current_amperage_range'+row_no).val();
+        var current_voltage_range = $('#current_voltage_range'+row_no).val();
+        var travel_speed_range = $('#travel_speed_range'+row_no).val();
+        var avg_voltage;
+        var avg_amp;
+        var avg_travel_speed;
+        var total_voltage = 0;
+
+        if(current_amperage_range != '' && current_voltage_range != '' && travel_speed_range != ''){
+            // get avarage
+            avg_amp = getAverage(current_amperage_range);
+            avg_voltage = getAverage(current_voltage_range);
+            avg_travel_speed = getAverage(travel_speed_range);
+            console.log('avg_voltage :'+avg_voltage);
+            console.log('avg_amp :'+avg_amp);
+            console.log('avg_travel_speed :'+avg_travel_speed);
+            total_voltage = getAvgAns(avg_voltage, avg_amp, avg_travel_speed);
+            $('#heat_input'+row_no).val(total_voltage);
+        }
+    });
+
+    function getAverage(value){
+        var data = value;
+        var splitArr = [];
+        splitArr = data.split('-');
+        console.log('splitArr: '+splitArr);
+        console.log('avg'+ (splitArr[0]+splitArr[1])/2);
+        return (parseFloat(splitArr[0])+parseFloat(splitArr[1]))/2;
+    }
+
+    function getAvgAns(avg_voltage, avg_amp, avg_travel_speed){
+        var formula = ((avg_voltage * avg_amp * 60)/avg_travel_speed);
+        return Math.round(formula);
+    }
     // check the preheat value yes r no choice
     // $(document).on('click',"input[name='pwht']", function(){
     //     var radioValue = $("input[name='pwht']:checked").val();
@@ -1694,17 +1821,6 @@ if(isset($value) && !empty($value)){
    
   });
 
-
-// fno_id
-// a_no
-// sfa_no
-// aws_classfication
-// size_filler_metal
-// filler_supply_metal
-// filler_electrode
-// filler_flux_type
-// filler_flux_trade
-// filer_weld_thickness
-// lot_no
-// fille_other
 </script>
+
+<script src="<?php echo base_url(); ?>js/pqr.js"></script>  

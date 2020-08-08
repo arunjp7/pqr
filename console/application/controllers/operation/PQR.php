@@ -195,6 +195,10 @@ class PQR extends CI_Controller
 	{		
         $user   = $this->ion_auth->user()->row();
 		$this->mcommon->getCheckUserPermissionHead('PQR add and edit',true);
+		echo "<pre>";
+		print_r($_POST);
+		echo "</pre>";
+		die();
 
         if(isset($_POST['submit']))
 		{			

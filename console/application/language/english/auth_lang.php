@@ -2938,21 +2938,21 @@ $lang['mm_masters_pqr_manage_form_add_button_name']='Add New PQR';
 
 
 $lang['mm_operation_pqr_company_details_label'] = "Basic Details";
-$lang['mm_operation_pqr_joints_label'] = "Joints (QW - 402)";
-$lang['mm_operation_pqr_base_metals_label'] = "Base Metals (QW - 403)";
-$lang['mm_operation_pqr_filler_metals_label'] = "Filler Metals (QW - 404)";
-$lang['mm_operation_pqr_position_label'] = "Position (QW - 405)";
-$lang['mm_operation_pqr_preheat_label'] = "Preheat (QW - 406)";
-$lang['mm_operation_pqr_post_weld_heat_label'] = "Post Weld Heat Treatment (QW - 407)";
-$lang['mm_operation_pqr_gas_label'] = "Gas (QW - 408)";
-$lang['mm_operation_pqr_electrical_character_label'] = "Electrical Characteristics (QW-409)";
-$lang['mm_operation_pqr_techique_label'] = "Techique (QW - 410)";
+$lang['mm_operation_pqr_joints_label'] = "Joints";
+$lang['mm_operation_pqr_base_metals_label'] = "Base Metals";
+$lang['mm_operation_pqr_filler_metals_label'] = "Filler Metals";
+$lang['mm_operation_pqr_position_label'] = "Position";
+$lang['mm_operation_pqr_preheat_label'] = "Preheat";
+$lang['mm_operation_pqr_post_weld_heat_label'] = "Post Weld Heat Treatment";
+$lang['mm_operation_pqr_gas_label'] = "Gas";
+$lang['mm_operation_pqr_electrical_character_label'] = "Electrical Characteristics";
+$lang['mm_operation_pqr_techique_label'] = "Techique";
 $lang['mm_operation_pqr_welding_parameters_label'] = "Welding Parameters";
 
-$lang['mm_operation_pqr_tensile_test_label'] = "Tensile Test (QW - 150)";
-$lang['mm_operation_pqr_guided_ben_test_label'] = "Guided Ben Test (QW - 160)";
-$lang['mm_operation_pqr_touchness_test_label'] = "Touchness Test (Qw - 170)";
-$lang['mm_operation_pqr_fillet_weld_test_label'] = "Fillet Weld Test (QW - 180) - N/A";
+$lang['mm_operation_pqr_tensile_test_label'] = "Tensile Test";
+$lang['mm_operation_pqr_guided_ben_test_label'] = "Guided Ben Test";
+$lang['mm_operation_pqr_touchness_test_label'] = "Touchness Test";
+$lang['mm_operation_pqr_fillet_weld_test_label'] = "Fillet Weld Test";
 $lang['mm_operation_pqr_other_tests_label'] = "Other Tests";
 
 
@@ -3067,7 +3067,7 @@ $lang['mm_operation_pqr_teachinqe_other_label'] = "Other";
 $lang['mm_operation_pqr_r_n_label'] = "R.N";
 $lang['mm_operation_pqr_layers_label'] = "Layer(s)";
 $lang['mm_operation_pqr_filler_metal_label'] = "Filler Metal";
-$lang['mm_operation_pqr_class_label'] = "Class";
+$lang['mm_operation_pqr_class_label'] = "Aws Classfication";
 $lang['mm_operation_pqr_diameter_label'] = "Diameter";
 $lang['mm_operation_pqr_current_label'] = "Current";
 $lang['mm_operation_pqr_typer_polarity_label'] = "Typer Polarity";
