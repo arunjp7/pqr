@@ -2936,7 +2936,6 @@ $lang['mm_masters_pqr_manage_list_title_small']='PQR list';
 $lang['mm_masters_pqr_manage_form_button_name']='PQR';
 $lang['mm_masters_pqr_manage_form_add_button_name']='Add New PQR';
 
-
 $lang['mm_operation_pqr_company_details_label'] = "Basic Details";
 $lang['mm_operation_pqr_joints_label'] = "Joints (QW - 402)";
 $lang['mm_operation_pqr_base_metals_label'] = "Base Metals (QW - 403)";
