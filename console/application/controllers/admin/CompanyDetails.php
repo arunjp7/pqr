@@ -201,14 +201,14 @@ class CompanyDetails extends CI_Controller
 				$this->load->library('image_lib');
 				$this->load->library('upload', $config);
 
-				if($this->upload->do_upload('company_logo'))
+				if($this->upload->do_upload('company_logo'))	
 				{	
 					$this->load->helper('inflector');
 					$file_name = underscore($_FILES['company_logo']['name']);
 					$config['file_name'] = $file_name;
 					$image_data['message'] = $this->upload->data(); 
 
-					$_POST[company_logo]="~cdn/companyLogo/".$image_data['message']['file_name'];
+					$_POST['company_logo']="~cdn/companyLogo/".$image_data['message']['file_name'];
 				} 
 				else
 				{

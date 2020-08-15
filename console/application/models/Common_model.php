@@ -354,7 +354,6 @@ class Common_model extends CI_Model
 	{
 		$query = $this->db->get_where($table,$constraint_array);
 		return $query;
-
 	}
 
 
