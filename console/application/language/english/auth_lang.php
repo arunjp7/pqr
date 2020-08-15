@@ -2946,7 +2946,7 @@ $lang['mm_operation_pqr_preheat_label'] = "Preheat";
 $lang['mm_operation_pqr_post_weld_heat_label'] = "Post Weld Heat Treatment";
 $lang['mm_operation_pqr_gas_label'] = "Gas";
 $lang['mm_operation_pqr_electrical_character_label'] = "Electrical Characteristics";
-$lang['mm_operation_pqr_techique_label'] = "Techique";
+$lang['mm_operation_pqr_techique_label'] = "Techinque";
 $lang['mm_operation_pqr_welding_parameters_label'] = "Welding Parameters";
 
 $lang['mm_operation_pqr_tensile_test_label'] = "Tensile Test";
