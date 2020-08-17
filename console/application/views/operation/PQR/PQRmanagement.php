@@ -1902,13 +1902,18 @@ if(isset($value) && !empty($value)){
 
     if(displayProcess1 != ''){
 
+        var get_process1 = ('<?php echo $process1; ?>'==''?0:'<?php echo $process1; ?>');
+        var get_process2 = ('<?php echo $process2; ?>'==''?0:'<?php echo $process2; ?>');;
+        var get_process3 = ('<?php echo $process3; ?>'==''?0:'<?php echo $process3; ?>');;
+
         $('.processVal').each(function(k){
             if(k == 0){ $(this).val(displayProcess1); layer_select_option('<?php echo $process1; ?>', 'process1', displayProcess1); 
-                WeldingData[<?php echo $process1; ?>] = $('.aws_classfication:nth-child(1)').val();}
+                WeldingData[get_process1] = $('.aws_classfication:nth-child(1)').val();
+            }
             if(k == 1){ $(this).val(displayProcess2); layer_select_option('<?php echo $process2; ?>', 'process2', displayProcess2);
-                 WeldingData[<?php echo $process2; ?>] = $('.aws_classfication:nth-child(2)').val();}
+                 WeldingData[get_process2] = $('.aws_classfication:nth-child(2)').val();}
             if(k == 2){ $(this).val(displayProcess3); layer_select_option('<?php echo $process3; ?>', 'process3', displayProcess3);
-                 WeldingData[<?php echo $process3; ?>] = $('.aws_classfication:nth-child(3)').val();}
+                 WeldingData[get_process3] = $('.aws_classfication:nth-child(3)').val();}
         });
         $('.electric_process').each(function(k){
             if(k == 0){ $(this).val(displayProcess1);}
@@ -1916,9 +1921,9 @@ if(isset($value) && !empty($value)){
             if(k == 2){ $(this).val(displayProcess3);}
         });
         $('.aws_classfication').each(function(k){
-            if(k == 0){  WeldingData[<?php echo $process1; ?>] = $(this).val();}
-            if(k == 1){ WeldingData[<?php echo $process2; ?>] = $(this).val();}
-            if(k == 2){ WeldingData[<?php echo $process3; ?>] = $(this).val();}
+            if(k == 0){  WeldingData[get_process1] = $(this).val();}
+            if(k == 1){ WeldingData[get_process2] = $(this).val();}
+            if(k == 2){ WeldingData[get_process3] = $(this).val();}
         });
 
     }
@@ -2979,4 +2984,3 @@ if(isset($value) && !empty($value)){
 
 </script>
 
-<script src="<?php echo base_url(); ?>js/pqr.js"></script>  
