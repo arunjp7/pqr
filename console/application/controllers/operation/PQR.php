@@ -243,7 +243,7 @@ class PQR extends CI_Controller
 								'joints_b' => implode(',', $_POST['joints_B']),
 								'joints_c' => implode(',', $_POST['joints_C']),
 								'joints_d' => implode(',', $_POST['joints_D']),
-								'joints_other' => implode(',', $_POST['joints_other']),
+								'joints_other' => implode(',', $_POST['joints_other'])
 							);
 			$value_array['updateBy'] =  $this->session->userdata('user_id');    
 			$value_array['updateOn'] =  date('Y-m-d H:i:s');
