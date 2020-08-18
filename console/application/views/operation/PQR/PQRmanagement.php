@@ -2354,6 +2354,10 @@ if(isset($value) && !empty($value)){
 
         if(val_joints_A == '' && val_joints_B == '' && val_joints_C == ''){
             valid = 1;
+            $('.joints_A:first, .joints_B:first, .joints_C:first').addClass('invalid');
+        }else{
+            $('.joints_A:first, .joints_B:first, .joints_C:first').removeClass('invalid');
+            valid = 0;
         }
 
         // var form = $('form');
@@ -2414,7 +2418,7 @@ if(isset($value) && !empty($value)){
         var base_to_others = $('#base_to_others').val();
         var valid = 0;
 
-        if(company == ''){ $('#company_id').addClass('invalid'); valid = 1;}else{$('#company_id').removeClass('invalid'); valid = 0;}
+        if(company != ''){ $('#company_id').next().removeClass('invalid'); valid= 0;}else{$('#company_id').next().addClass('invalid'); valid=1;}
         if(pno_id != ''){ $('#pno_id').next().removeClass('invalid'); valid= 0;}else{$('#pno_id').next().addClass('invalid'); valid=1;}
         if(to_pno_id != ''){ $('#to_pno_id').next().removeClass('invalid'); valid= 0;}else{$('#to_pno_id').next().addClass('invalid'); valid=1;}
         if(group_no == ''){ $('#group_no').addClass('invalid'); valid = 1;}else{$('#group_no').removeClass('invalid'); valid = 0;}
@@ -2428,39 +2432,41 @@ if(isset($value) && !empty($value)){
         if(base_to_heat_no == ''){ $('#base_to_heat_no').addClass('invalid'); valid = 1;}else{$('#base_to_heat_no').removeClass('invalid'); valid = 0;}
         if(diameter_id != ''){ $('#diameter_id').next().removeClass('invalid'); valid= 0;}else{$('#diameter_id').next().addClass('invalid'); valid=1;}
 
-
          // save the joint value first
-        $.ajax({
-            type: 'post',
-            url: '<?php echo base_url(); ?>operation/pqr/create',
-            data: {
-                blockname: "basemetals",
-                pqr_id: $('#pqr_id').val(),
-                company_id : company,
-                pno_id : pno_id,
-                to_pno_id : to_pno_id,
-                group_no : group_no,
-                to_group_no : to_group_no,
-                material_spe : material_spe,
-                to_material_spe : to_material_spe,
-                thickness_test : thickness_test,
-                tgu_no : tgu_no,
-                to_tgu_no : to_tgu_no,
-                base_heat_no : base_heat_no,
-                base_to_heat_no : base_to_heat_no,
-                diameter_id : diameter_id,
-                base_others : base_others,
-                base_to_others : base_to_others
-            },
-            // processData: false,
-            error: function(err){
-                console.log(err);
-                alert('Something wrong..!');
-            }, 
-            success: function(data){
-                $('.tablinks:nth-child(4)').trigger('click');
-            }
-        });
+        if(valid == 0){
+        
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url(); ?>operation/pqr/create',
+                data: {
+                    blockname: "basemetals",
+                    pqr_id: $('#pqr_id').val(),
+                    company_id : company,
+                    pno_id : pno_id,
+                    to_pno_id : to_pno_id,
+                    group_no : group_no,
+                    to_group_no : to_group_no,
+                    material_spe : material_spe,
+                    to_material_spe : to_material_spe,
+                    thickness_test : thickness_test,
+                    tgu_no : tgu_no,
+                    to_tgu_no : to_tgu_no,
+                    base_heat_no : base_heat_no,
+                    base_to_heat_no : base_to_heat_no,
+                    diameter_id : diameter_id,
+                    base_others : base_others,
+                    base_to_others : base_to_others
+                },
+                // processData: false,
+                error: function(err){
+                    console.log(err);
+                    alert('Something wrong..!');
+                }, 
+                success: function(data){
+                    $('.tablinks:nth-child(4)').trigger('click');
+                }
+            });
+        }
     });
 
     $('#btnFillermetals').on('click', function(){
