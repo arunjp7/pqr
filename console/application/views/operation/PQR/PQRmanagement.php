@@ -18,7 +18,6 @@ if(isset($value) && !empty($value)){
     $code_id = explode(',', $row->code_id);
     $pqr_other  = $row->pqr_other;
 
-
     // Joints Block
     $joints_a = explode(',', $row->joints_a);
     $joints_b = explode(',', $row->joints_b);
