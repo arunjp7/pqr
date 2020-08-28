@@ -45,6 +45,15 @@ function get_buttons_new_only_Edit($id, $url,$user_id)
     return $html;
 }
 
+function get_buttons_new_only_View($id, $url,$user_id)
+{
+    $ci= & get_instance();
+    $html='<span class="actions">';
+    $html .='<a href="'.  base_url(). $url.'view/'.$id.'" title="'.lang('helper_common_view_label').'"><i class="glyphicon glyphicon-file" style="color:orange;"></i></a> &nbsp;';
+	$html.='</span>';
+    return $html;
+}
+
 function get_buttons_new_only_Roles($id, $url,$user_id)
 {
     $ci= & get_instance();

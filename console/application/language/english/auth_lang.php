@@ -46,6 +46,7 @@ $lang['batchForm_pipe_plate_val_common_error']='Pipe / Plate Tickness';
 
 
 $lang['helper_common_edit_label']='Edit';
+$lang['helper_common_view_label']='View';
 $lang['helper_common_delete_label']='Delete';
 $lang['helper_common_print_label']='Print';
 $lang['helper_common_active_label']='Active';
@@ -73,6 +74,7 @@ $lang['helper_common_excel_label']='Excel';
 
 $lang['common_table_label_edit_operation']='Edit';
 $lang['common_table_label_delete_operation']='Delete';
+$lang['common_table_label_view_operation']='View';
 $lang['common_table_label_roles_operation']='Roles Manage';
 
 
@@ -2998,7 +3000,7 @@ $lang['mm_operation_pqr_specification_no_label'] = "Specification No. (SFA)";
 $lang['mm_operation_pqr_aws_classfication_no_label'] = "AWS Classfication";
 $lang['mm_operation_pqr_size_filler_metal_label'] = "Size of Filler Metal";
 $lang['mm_operation_pqr_filler_metal_product_form_label'] = "Filler Metal Product Form";
-$lang['mm_operation_pqr_filler_supply_metal_filler_label'] = "Supply mental Filler Metal";
+$lang['mm_operation_pqr_filler_supply_metal_filler_label'] = "Supplemental Filler Metal";
 $lang['mm_operation_pqr_filler_Electrode_flux_label'] = "Electrode Flux Classification";
 $lang['mm_operation_pqr_filler_flux_type_form_label'] = "Flux Type";
 $lang['mm_operation_pqr_filler_flux_trade_label'] = "Flux Trade Name";
@@ -3063,8 +3065,8 @@ $lang['mm_operation_pqr_teachinqe_other_label'] = "Other";
 
 
 
-$lang['mm_operation_pqr_r_n_label'] = "R.N";
-$lang['mm_operation_pqr_layers_label'] = "Layer(s)";
+$lang['mm_operation_pqr_r_n_label'] = "Run";
+$lang['mm_operation_pqr_layers_label'] = "Weld Layer(s)";
 $lang['mm_operation_pqr_filler_metal_label'] = "Filler Metal";
 $lang['mm_operation_pqr_class_label'] = "Aws Classfication";
 $lang['mm_operation_pqr_diameter_label'] = "Diameter";

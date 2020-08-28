@@ -444,4 +444,14 @@ class Common_model extends CI_Model
 
 		//SELECT u.email, g.description, mm.menu_name FROM users as u left join user_admin_group as uag on u.id = uag.user_id LEFT JOIN user_group_module as ugm ON uag.group_id = ugm.group_id LEFT JOIN groups as g ON uag.group_id = g.id LEFT JOIN jr_menu_module as mm ON mm.menu_id = ugm.module_id
 	}	
+
+	function getNameById($dataID, $tableName, $fieldArray)
+	{
+
+		$item = array();
+		$selectQuery = $this->db->query("select GROUP_CONCAT(".$fieldArray['fieldName'].") as fieldname from ".$tableName." WHERE ".$fieldArray['fieldId']." in (".$dataID.")");
+		$item = $selectQuery->result();
+		return $item[0]->fieldname;
+
+	}
 }

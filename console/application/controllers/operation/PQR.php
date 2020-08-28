@@ -108,6 +108,7 @@ class PQR extends CI_Controller
 	        	$responce->rows[$i]['id'] = $dataDetail->pqr_id;
 	        	//$responce->rows[$i]['cell']= array($dataDetail->ndtContractor_id);
 	        	$responce->rows[$i]['cell']['edit_pqr_id'] = get_buttons_new_only_Edit($dataDetail->pqr_id,'operation/PQR/');
+	        	$responce->rows[$i]['cell']['view_pqr_id'] = get_buttons_new_only_View($dataDetail->pqr_id,'operation/PQR/');
 	        	$responce->rows[$i]['cell']['delete_pqr_id'] = get_buttons_new_only_Delete($dataDetail->pqr_id,'operation/PQR/');
 	        	$responce->rows[$i]['cell']['pqr_no'] = $dataDetail->pqr_no;
 	        	$responce->rows[$i]['cell']['first_name'] = $dataDetail->first_name;
@@ -165,6 +166,8 @@ class PQR extends CI_Controller
                     );
         $this->load->view('base/template', $data); 
 	}
+
+
 
 	function maximumNameCheck($val){
 		$this->form_validation->set_message('maximumNameCheck', $this->lang->line('form_validation_is_unique_name'));
@@ -349,6 +352,7 @@ class PQR extends CI_Controller
 				'sfa_no' => implode('|', $_POST['sfa_no']),
 				'aws_classfication' => implode('|', $_POST['aws_classfication']),
 				'size_filler_metal' => implode('|', $_POST['size_filler_metal']),
+				'filler_metal_product' => implode('|', $_POST['filler_metal_product']),
 				'filler_supply_metal' => implode('|', $_POST['filler_supply_metal']),
 				'filler_flux_type' => implode('|', $_POST['filler_flux_type']),
 				'filler_flux_trade' => implode('|', $_POST['filler_flux_trade']),
@@ -482,6 +486,7 @@ class PQR extends CI_Controller
 		if($_POST['blockname'] == 'techinqueblock'){
 
 			$value_array = array(
+				'travel_speed' => $_POST['travel_speed'],
 				'weave_bead' => $_POST['weave_bead'],
 				'cupsize_id' => $_POST['cupsize_id'],
 				'pass_per_side' => $_POST['pass_per_side'],
@@ -594,5 +599,33 @@ class PQR extends CI_Controller
 		}
 	}
 	
+	// View data
+	public function view($id){
+		$this->mcommon->getCheckUserPermissionHead('PQR add and edit',true);
 
+        $view_data['top_tittle']			=	lang('mm_masters_pqr_manage_toptitle');
+        $view_data['top_tittle_pergram']	=	lang('mm_masters_pqr_manage_pergram');
+
+        
+
+        $view_data['form_cancel_url']		=	'operation/PQR';
+
+        $view_data['form_tittle']			=	lang('mm_masters_pqr_manage_form_title');
+        $view_data['form_tittle_small']		=	lang('mm_masters_pqr_manage_form_title_small');
+        $view_data['form_button_name']		=	lang('mm_masters_pqr_manage_form_button_name');
+
+      	$where_array=array(
+			'pqr_id'=>$id
+		);
+		$view_data['value'] = $this->mcommon->get_fulldataAll('jr_pqr',$where_array);
+
+		$data = array(
+                    'title'     	=> lang('mm_masters_pqr_manage_create'),
+                    'content'   	=>$this->load->view('operation/PQR/PQRView',$view_data,TRUE),
+                    );
+
+	
+
+        $this->load->view('base/template', $data); 
+	}
 }
