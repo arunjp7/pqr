@@ -110,8 +110,10 @@
         <?php if($this->mcommon->getISUserPermission('PQR add and edit',$this->session->userdata('user_id'))){?>
           {label:'<?php echo lang('common_table_label_edit_operation');?>' ,name:'edit_pqr_id',index:'edit_pqr_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
         <?php } if($this->mcommon->getISUserPermission('PQR delete',$this->session->userdata('user_id'))){?>
+          {label:'<?php echo lang('common_table_label_view_operation');?>' ,name:'view_pqr_id',index:'view_pqr_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+        <?php } if($this->mcommon->getISUserPermission('PQR delete',$this->session->userdata('user_id'))){?>
           {label:'<?php echo lang('common_table_label_delete_operation');?>' ,name:'delete_pqr_id',index:'delete_pqr_id', width:120, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-        <?php }?>
+        <?php } ?>
 
            {label:'<?php echo lang('mm_masters_pqr_table_label_pqr_name');?>',name:'pqr_no',index:'pqr_no', width:200, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
           {label:'<?php echo lang('mm_masters_pqr_table_label_createBy');?>',name:'first_name',index:'first_name', width:250, sortable:false, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},

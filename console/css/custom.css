@@ -178,3 +178,12 @@
 .invalid.select2  {
     border-color: rgb(185, 74, 72) !important;
 }
+#viewPQR caption{
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    background: #cccccc7d;
+}
+#viewPQR .table>tbody>tr>td, #viewPQR .table>tbody>tr>th {
+  padding: 1px !important;
+}

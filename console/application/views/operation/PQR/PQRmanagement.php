@@ -50,6 +50,7 @@ if(isset($value) && !empty($value)){
     $sfa_no = explode('|', $row->sfa_no);
     $aws_classfication = explode('|', $row->aws_classfication);
     $size_filler_metal = explode('|', $row->size_filler_metal);
+    $filler_metal_product = explode('|', $row->filler_metal_product);
     $filler_supply_metal = explode('|', $row->filler_supply_metal);
     $filler_flux_type = explode('|', $row->filler_flux_type);
     $filler_flux_trade = explode('|', $row->filler_flux_trade);
@@ -98,6 +99,7 @@ if(isset($value) && !empty($value)){
     $elec_other = explode('|', $row->elec_other);
 
 
+    $travel_speed = $row->travel_speed;
     $weave_bead = $row->weave_bead;
     $cupsize_id = $row->cupsize_id;
     $pass_per_side = $row->pass_per_side;
@@ -791,9 +793,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_specification_no_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($sfa_no as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="<?php echo $sfa_no[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('sfa_no')){ echo '<span class="help-block">'.form_error('sfa_no').'</span>';} ?>
                                     </td>
                                 <?php }}else{ ?>
@@ -806,9 +808,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_aws_classfication_no_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($aws_classfication as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="<?php echo $aws_classfication[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('aws_classfication')){ echo '<span class="help-block">'.form_error('aws_classfication').'</span>';} ?>
                                     </td>
                                 <?php }}else{ ?>
@@ -821,9 +823,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_size_filler_metal_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($size_filler_metal as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="<?php echo $size_filler_metal[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('size_filler_metal')){ echo '<span class="help-block">'.form_error('size_filler_metal').'</span>';} ?>
                                     </td>
                                 <?php }}else{ ?>
@@ -833,12 +835,27 @@ if(isset($value) && !empty($value)){
                                     </td>
                                 <?php }?>
                             </tr>
+                            <tr>
+                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?><span class="text-danger">*</span></label></td>
+                                 <?php if(isset($value) &&  !empty($value)){ 
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                    <td>
+                                        <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="<?php echo $filler_metal_product[$k]?>" autocomplete="off">
+                                        <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
+                                    </td>
+                                <?php }}else{ ?>
+                                    <td>
+                                        <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="" autocomplete="off">
+                                        <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
+                                    </td>
+                                <?php }?>
+                            </tr>
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($filler_supply_metal as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="<?php echo $filler_supply_metal[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('filler_supply_metal')){ echo '<span class="help-block">'.form_error('filler_supply_metal').'</span>';} ?>
                                     </td>
                                     <?php }}else{ ?>
@@ -851,9 +868,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($filler_electrode as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="<?php echo $filler_electrode[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('filler_electrode')){ echo '<span class="help-block">'.form_error('filler_electrode').'</span>';} ?>
                                     </td>
                                 <?php }}else{ ?>
@@ -867,9 +884,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?><span class="text-danger">*</span></label></td>
                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($filler_flux_type as $k => $value){  $count = $k+2; ?>
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="<?php echo $filler_flux_type[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('filler_flux_type')){ echo '<span class="help-block">'.form_error('filler_flux_type').'</span>';} ?>
                                     </td>
                                 <?php } }else{ ?>
@@ -882,9 +899,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_trade_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($filler_flux_trade as $k => $value){   ?>
+                                    foreach($fno_id as $k => $value){   ?>
                                     <td>
-                                        <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="<?php echo $filler_flux_trade[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('filler_flux_trade')){ echo '<span class="help-block">'.form_error('filler_flux_trade').'</span>';} ?>
                                     </td>
                                 <?php } }else{ ?>
@@ -897,9 +914,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?><span class="text-danger">*</span></label></td>
                                 <?php if(isset($value) &&  !empty($value)){ 
-                                foreach($filer_weld_thickness as $k => $value){  $count = $k+2; ?>
+                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="<?php echo $filer_weld_thickness[$k]?>" autocomplete="off">
                                         <?PHP if(form_error('filer_weld_thickness')){ echo '<span class="help-block">'.form_error('filer_weld_thickness').'</span>';} ?>
                                     </td>
                                 <?php }}else{ ?>
@@ -912,9 +929,9 @@ if(isset($value) && !empty($value)){
                              <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_lot_no_label');?><span class="text-danger">*</span></label></td>
                                  <?php if(isset($value) &&  !empty($value)){ 
-                                foreach($lot_no as $k => $value){  $count = $k+2; ?>
+                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                 <td>
-                                    <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="<?php echo $value ?>" autocomplete="off">
+                                    <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="<?php echo $lot_no[$k]?>" autocomplete="off">
                                     <?PHP if(form_error('lot_no')){ echo '<span class="help-block">'.form_error('lot_no').'</span>';} ?>
                                 </td>
                                 <?php } }else{ ?>
@@ -926,10 +943,10 @@ if(isset($value) && !empty($value)){
                             </tr> 
                             <tr>
                                 <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_metal_other_label');?></label></td>
-                                <?php if(isset($fille_other) &&  !empty($value)){ 
-                                foreach($a_no as $k => $value){  $count = $k+2; ?>
+                                <?php if(isset($value) &&  !empty($value)){ 
+                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="<?php echo $value ?>" autocomplete="off">
+                                        <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="<?php echo $fille_other[$k]?>" autocomplete="off">
                                     </td>
                                 <?php } } else{ ?>
                                     <td>
@@ -2474,6 +2491,7 @@ if(isset($value) && !empty($value)){
         var sfa_no = [];
         var aws_classfication = [];
         var size_filler_metal = [];
+        var filler_metal_product = [];
         var filler_supply_metal = [];
         var filler_flux_type = [];
         var filler_flux_trade = [];
@@ -2506,6 +2524,11 @@ if(isset($value) && !empty($value)){
         $('.size_filler_metal').each(function(k){
             if($(this).val() == ''){ valid = 1; $(this).addClass('invalid');}else{ valid = 0; $(this).removeClass('invalid');}
             size_filler_metal[k] = $(this).val();
+        });
+
+        $('.filler_metal_product').each(function(k){
+            if($(this).val() == ''){ valid = 1; $(this).addClass('invalid');}else{ valid = 0; $(this).removeClass('invalid');}
+            filler_metal_product[k] = $(this).val();
         });
 
         $('.filler_supply_metal').each(function(k){
@@ -2555,6 +2578,7 @@ if(isset($value) && !empty($value)){
                     sfa_no: sfa_no,
                     aws_classfication: aws_classfication,
                     size_filler_metal: size_filler_metal,
+                    filler_metal_product: filler_metal_product,
                     filler_supply_metal: filler_supply_metal,
                     filler_flux_type: filler_flux_type,
                     filler_flux_trade: filler_flux_trade,
@@ -2716,7 +2740,7 @@ if(isset($value) && !empty($value)){
     });
     
 
-    $('#btnElectrical').on('click', function(){
+    $('#btnElectrical').on('click', function(){ 
         var elec_current = [];
         var elec_prolarity = [];
         var elec_amps = [];
@@ -2864,6 +2888,7 @@ if(isset($value) && !empty($value)){
                 data : {
                     blockname: "techinqueblock",
                     pqr_id: $('#pqr_id').val(),
+                    travel_speed: travel_speed,
                     weave_bead: weave_bead,
                     cupsize_id: cupsize_id,
                     pass_per_side: pass_per_side,
@@ -2878,7 +2903,7 @@ if(isset($value) && !empty($value)){
                 },
                 success : function(data){
                     if(data.success == 1){
-                        window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                        $('.tablinks:nth-child(10)').trigger('click');
                     }
                 }
 
@@ -2968,14 +2993,13 @@ if(isset($value) && !empty($value)){
                     alert('Something wrong..!');
                 }, 
                 success: function(data){
-                    $('.tablinks:nth-child(9)').trigger('click');
+                    if(data.success == 1){
+                        window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                    }
                 }
             });
         }
     });
-
-
-
 
 
     $('.previous').on('click', function(){
