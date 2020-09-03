@@ -320,7 +320,7 @@ if(isset($value) && !empty($value)){
                     foreach($joints_a as $key => $value){
                 ?>
 
-                <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="<?php echo $key ?>" id="jointblock<?php echo $key ?>">
+                <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="<?php echo $key+1 ?>" id="jointblock<?php echo $key+1 ?>">
                     <!-- get joint value block -->
                     <div class="col-sm-4 col-xs-4">                        
                         <div class="row variableDiv">
@@ -400,13 +400,14 @@ if(isset($value) && !empty($value)){
                                     <span class="input-group-addon btn btn-default btn-file"> 
                                         <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> 
                                         <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
-                                        <input type="file" id="joint_photo<?php echo $key ?>" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
+                                        <input type="file" id="joint_photo<?php echo $key+1 ?>" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
                                     </span> 
                                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
                                 </div>
-                                <?php if($old_staffsphoto!=''){ ?> <img id="old_joint_img<?php echo $key ?>" src="<?php echo config_item('image_url').$joints_image[$key];?>" height="100" width="100"> <?php }?>
+                                <?php if($joints_image[$key]!=''){ ?> <img id="old_joint_img<?php echo $key ?>" src="<?php echo config_item('image_url').$joints_image[$key];?>" height="200" width="200"> <?php }?>
                             </div>
-                            <img src="" class="joint_image_display joint_photo1" width="200px" />
+                            <img src="" class="joint_image_display joint_photo<?php echo $key+1 ?>" width="200px" />
+                            <input type="hidden" class="old_joint_image" value="<?php echo $joints_image[$key];?>">
                         </div>
                     </div>
                     <!-- close joint block -->
@@ -503,7 +504,7 @@ if(isset($value) && !empty($value)){
                                     </span> 
                                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
                                 </div>
-                                <?php if($old_staffsphoto!=''){ ?> <img src="<?php echo config_item('image_url').$old_staffsphoto;?>" height="100" width="100"> <?php }?>
+                                <input type="hidden" class="old_joint_image" value=""> 
                             </div>
                             <img src="" class="joint_image_display joint_photo1" width="200px" />
                         </div>
@@ -2333,27 +2334,43 @@ if(isset($value) && !empty($value)){
     });
 
     $('#btnJoints').on('click', function(){
-        // var fd = new FormData();
-        // $('.joints_image').each(function(k){
-        //     var files= $(this)[0].files[0];
-        //      fd.append('files'+k,files);
-        // });
-        // $.ajax({
-        //         type: 'post',
-        //         url: '<?php echo base_url(); ?>operation/pqr/create?blockname=jointimages',
-        //         contentType: false,
-        //         processData: false,
-        //         data: fd,
-        //         // processData: false,
-        //         error: function(err){
-        //             console.log(err);
-        //             alert('Something wrong..!');
-        //         }, 
-        //         success: function(data){
-        //             console.log(data);
-        //         }
-        //     });
-        // return false;
+        var fd = new FormData();
+        $('.joints_image').each(function(k){
+            var files= $(this)[0].files[0];
+             fd.append('files'+k,files);
+        });
+        var oldImage = [];
+        $('.old_joint_image').each(function(k){
+            // alert(k);
+            var value = $(this).val();
+            oldImage[k]  = value.toString(); 
+
+            
+        });
+        $.ajax({
+            type: 'post',
+            url: '<?php echo base_url(); ?>operation/pqr/create?blockname=jointimages&pqr_id='+$('#pqr_id').val()+'&oldImage='+oldImage,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            data: fd,
+            // processData: false,
+            error: function(err){
+                console.log(err);
+                alert('Something wrong..!');
+            }, 
+            success: function(data){
+                if(data.img_success == 1){
+                    $('.old_joint_image').each(function(k, val){
+                        $(this).val(data.path[k]);
+                    });
+                }
+
+
+            }
+        });
+
+
         var joints_A = [];
         var joints_B = [];
         var joints_C = [];

@@ -137,29 +137,29 @@ if(isset($value) && !empty($value)){
                     <div class="col-md-12">
                         <button type="button" id="printDoc" class="btn btn-primary pull-right">Print</button>
                     </div>
-                    <div class="col-md-12" id="viewPQR">
+                    <div class="col-md-10" id="viewPQR">
                         <table class="table">
                             <tbody>
                                 <tr>
                                     <td colspan="2">
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>Orignization Name:</th><td colspan="3"><?= $company_id ?></td>
+                                                <td>Orignization Name:</td><td colspan="3"><?= $company_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Procedure Qualification Record No.:</th><td><?= $pqr_no ?></td><th>Date</th><td><?= $inspection_date ?></td>
+                                                <td>Procedure Qualification Record No.:</td><td><?= $pqr_no ?></td><td>Date</td><td><?= $inspection_date ?></td>
                                             </tr>
                                             <tr>
-                                                <th>WPS No.:</th><td colspan="3"><?= $wps_no; ?></td>
+                                                <td>WPS No.:</td><td colspan="3"><?= $wps_no; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Welding Process(es)</th><td colspan="3"><?= rtrim(implode(',', $process), ',') ?></td>
+                                                <td>Welding Process(es)</td><td colspan="3"><?= rtrim(implode(',', $process), ',') ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Types(Manual, Automatic, Semi-Automatic)</th><td colspan="3"><?= $type_id ?></td>
+                                                <td>Types(Manual, Automatic, Semi-Automatic)</td><td colspan="3"><?= $type_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Code</th><td><?= $code_id ?></td><th>Others</th><td><?= $pqr_other ?></td>
+                                                <td>Code</td><td><?= $code_id ?></td><td>Others</td><td><?= $pqr_other ?></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -177,23 +177,23 @@ if(isset($value) && !empty($value)){
                                                 <td>
                                                     <table class="table table-bordered">
                                                         <tr>
-                                                            <th>Groove Angle (A)</th><td><?= $value ?></td>
+                                                            <td>Groove Angle (A)</td><td><?= $value ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Base Metal Thickness (B)</th><td><?= $joints_b[$key] ?></td>
+                                                            <td>Base Metal Thickness (B)</td><td><?= $joints_b[$key] ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Root Face (C)</th><td><?= $joints_c[$key] ?></td>
+                                                            <td>Root Face (C)</td><td><?= $joints_c[$key] ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Root Gap (D)</th><td><?= $joints_d[$key] ?></td>
+                                                            <td>Root Gap (D)</td><td><?= $joints_d[$key] ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Other</th><td><?= $joints_other[$key] ?></td>
+                                                            <td>Other</td><td><?= $joints_other[$key] ?></td>
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td></td>
+                                                <td style="text-align:center;"><?php if($joints_image[$key]!=''){ ?> <img id="old_joint_img<?php echo $key ?>" src="<?php echo config_item('image_url').$joints_image[$key];?>" height="200" width="200"> <?php }?></td>
                                             </tr>
                                             <?php 
                                                 }
@@ -211,28 +211,28 @@ if(isset($value) && !empty($value)){
                                                 <td></td><td></td><td></td>
                                             </tr>
                                             <tr>
-                                                <th>P.No to P.No</th><td><?= $pno_id ?></td><td><?= $to_pno_id ?></td>
+                                                <td>P.No to P.No</td><td><?= $pno_id ?></td><td><?= $to_pno_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Group No. to Group No.</th><td><?= $group_no ?></td><td><?= $to_group_no ?></td>
+                                                <td>Group No. to Group No.</td><td><?= $group_no ?></td><td><?= $to_group_no ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Material Specification</th><td><?= $material_spe ?></td><td><?= $to_material_spe ?></td>
+                                                <td>Material Specification</td><td><?= $material_spe ?></td><td><?= $to_material_spe ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Type or Grade, or UNS Number</th><td><?= $tgu_no ?></td><td><?= $to_tgu_no ?></td>
+                                                <td>Type or Grade, or UNS Number</td><td><?= $tgu_no ?></td><td><?= $to_tgu_no ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Diameter of Test Coupon</th><td><?= $diameter_id ?></td><td><?= $diameter_id ?></td>
+                                                <td>Diameter of Test Coupon</td><td><?= $diameter_id ?></td><td><?= $diameter_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Thickness of test Coupon</th><td><?= $thickness_test ?></td><td><?= $thickness_test ?></td>
+                                                <td>Thickness of test Coupon</td><td><?= $thickness_test ?></td><td><?= $thickness_test ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Heat No.</th><td><?= $base_heat_no ?></td><td><?= $base_to_heat_no ?></td>
+                                                <td>Heat No.</td><td><?= $base_heat_no ?></td><td><?= $base_to_heat_no ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Other</th><td><?= $base_others ?></td><td><?= $base_to_others ?></td>
+                                                <td>Other</td><td><?= $base_others ?></td><td><?= $base_to_others ?></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -243,19 +243,19 @@ if(isset($value) && !empty($value)){
                                                 <td></td><td colspan="3" class="text-center">Percent Composition</td>
                                             </tr>
                                             <tr>
-                                                <td></td><th>Gas(es)</th><th>Mixture</th><th>Flow Rate</th>
+                                                <td></td><td>Gas(es)</td><td>Mixture</td><td>Flow Rate</td>
                                             </tr>
                                             <tr>
-                                                <th>Shielding</th><td><?= $shielding_gas ?></td><td><?= $shielding_percent ?></td><td><?= $shielding_rate ?></td>
+                                                <td>Shielding</td><td><?= $shielding_gas ?></td><td><?= $shielding_percent ?></td><td><?= $shielding_rate ?></td>
                                             </tr>
                                              <tr>
-                                                <th>Trailing</th><td><?= $backing_gas ?></td><td><?= $backing_percent ?></td><td><?= $backing_rate ?></td>
+                                                <td>Trailing</td><td><?= $backing_gas ?></td><td><?= $backing_percent ?></td><td><?= $backing_rate ?></td>
                                             </tr>
                                              <tr>
-                                                <th>Backing</th><td><?= $trailing_gas ?></td><td><?= $trailing_percent ?></td><td><?= $trailing_rate ?></td>
+                                                <td>Backing</td><td><?= $trailing_gas ?></td><td><?= $trailing_percent ?></td><td><?= $trailing_rate ?></td>
                                             </tr>
                                              <tr>
-                                                <th>Others</th><td><?= $other_gas ?></td><td><?= $other_gas ?></td><td><?= $other_gas ?></td>
+                                                <td>Others</td><td><?= $other_gas ?></td><td><?= $other_gas ?></td><td><?= $other_gas ?></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -266,7 +266,7 @@ if(isset($value) && !empty($value)){
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Filler Metals</caption>
                                             <tr>
-                                                <th>Process</th>
+                                                <td>Process</td>
                                                 <?php 
                                                     foreach($fno_id as $k => $value){
                                                 ?>
@@ -276,7 +276,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Filler Metal No.</th>
+                                                <td>Filler Metal No.</td>
                                                 <?php 
                                                     foreach($fno_id as $k => $value){
                                                 ?>
@@ -286,7 +286,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Weld Metal Analysis F-No.</th>
+                                                <td>Weld Metal Analysis F-No.</td>
                                                 <?php 
                                                     foreach($a_no as $k => $value){
                                                 ?>
@@ -296,7 +296,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>SFA Specification</th>
+                                                <td>SFA Specification</td>
                                                 <?php 
                                                     foreach($sfa_no as $k => $value){
                                                 ?>
@@ -306,7 +306,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>AWS Classification</th>
+                                                <td>AWS Classification</td>
                                                 <?php 
                                                     foreach($aws_classfication as $k => $value){
                                                 ?>
@@ -316,7 +316,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Size of the Filler Metal</th>
+                                                <td>Size of the Filler Metal</td>
                                                 <?php 
                                                     foreach($size_filler_metal as $k => $value){
                                                 ?>
@@ -326,7 +326,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Filler Metal Product Form</th>
+                                                <td>Filler Metal Product Form</td>
                                                 <?php 
                                                     foreach($filler_metal_product as $k => $value){
                                                 ?>
@@ -336,7 +336,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Supplemental Filler Metal</th>
+                                                <td>Supplemental Filler Metal</td>
                                                 <?php 
                                                     foreach($filler_supply_metal as $k => $value){
                                                 ?>
@@ -346,7 +346,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Electrode Flux Classification</th>
+                                                <td>Electrode Flux Classification</td>
                                                 <?php 
                                                     foreach($filler_electrode as $k => $value){
                                                 ?>
@@ -356,7 +356,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Flux Type</th>
+                                                <td>Flux Type</td>
                                                 <?php 
                                                     foreach($filler_flux_type as $k => $value){
                                                 ?>
@@ -366,7 +366,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Flux Trade Name</th>
+                                                <td>Flux Trade Name</td>
                                                 <?php 
                                                     foreach($filler_flux_trade as $k => $value){
                                                 ?>
@@ -376,7 +376,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Weld Metal Thickness</th>
+                                                <td>Weld Metal Thickness</td>
                                                 <?php 
                                                     foreach($filer_weld_thickness as $k => $value){
                                                 ?>
@@ -386,7 +386,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Lot No</th>
+                                                <td>Lot No</td>
                                                 <?php 
                                                     foreach($lot_no as $k => $value){
                                                 ?>
@@ -396,7 +396,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Other</th>
+                                                <td>Other</td>
                                                 <?php 
                                                     foreach($fille_other as $k => $value){
                                                 ?>
@@ -411,7 +411,7 @@ if(isset($value) && !empty($value)){
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Electrical Characteristics</caption>
                                             <tr>
-                                                <th>Process</th><?php 
+                                                <td>Process</td><?php 
                                                     foreach($elec_current as $k => $value){
                                                 ?>
                                                 <td><?= $process[$k] ?></td>
@@ -420,7 +420,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Current</th><?php 
+                                                <td>Current</td><?php 
                                                     foreach($elec_current as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -429,7 +429,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Polarity</th><?php 
+                                                <td>Polarity</td><?php 
                                                     foreach($elec_prolarity as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -438,7 +438,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Amps</th><?php 
+                                                <td>Amps</td><?php 
                                                     foreach($elec_amps as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -447,7 +447,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Volts</th><?php 
+                                                <td>Volts</td><?php 
                                                     foreach($elec_volts as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -456,7 +456,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Waveform Control</th><?php 
+                                                <td>Waveform Control</td><?php 
                                                     foreach($elec_arc as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -465,7 +465,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Power of Emergy</th><?php 
+                                                <td>Power of Emergy</td><?php 
                                                     foreach($elec_weld_bed as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -474,7 +474,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Arc Time</th><?php 
+                                                <td>Arc Time</td><?php 
                                                     foreach($elec_waveform as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -483,7 +483,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Weld Bead Length</th><?php 
+                                                <td>Weld Bead Length</td><?php 
                                                     foreach($elec_power as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -492,7 +492,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Tungsten Electrode Type</th><?php 
+                                                <td>Tungsten Electrode Type</td><?php 
                                                     foreach($elec_type as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -501,7 +501,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Tungeten Electrode Size</th><?php 
+                                                <td>Tungeten Electrode Size</td><?php 
                                                     foreach($elec_mode as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -510,7 +510,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Mode of Transfer for GMAW (FCAW)</th><?php 
+                                                <td>Mode of Transfer for GMAW (FCAW)</td><?php 
                                                     foreach($elec_size as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -519,7 +519,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Heat Input</th><?php 
+                                                <td>Heat Input</td><?php 
                                                     foreach($elec_heat as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -528,7 +528,7 @@ if(isset($value) && !empty($value)){
                                                 ?>
                                             </tr>
                                             <tr>
-                                                <th>Other</th><?php 
+                                                <td>Other</td><?php 
                                                     foreach($elec_other as $k => $value){
                                                 ?>
                                                 <td><?= $value ?></td>
@@ -544,49 +544,49 @@ if(isset($value) && !empty($value)){
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Position</caption>
                                             <tr>
-                                                <th>Position(s)</th><td><?= $position_id ?></td>
+                                                <td>Position(s)</td><td><?= $position_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Welding Progression</th><td><?= $weld_progression ?></td>
+                                                <td>Welding Progression</td><td><?= $weld_progression ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Other</th><td><?= $position_other ?></td>
+                                                <td>Other</td><td><?= $position_other ?></td>
                                             </tr>
                                         </table>
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Preheat</caption>
                                             <tr>
-                                                <th>Preheat Temperature</th><td><?= $preheat_temp_min ?></td>
+                                                <td>Preheat Temperature</td><td><?= $preheat_temp_min ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Interpass Temperature</th><td><?= $interpass_temp_max ?></td>
+                                                <td>Interpass Temperature</td><td><?= $interpass_temp_max ?></td>
                                                 </tr>
                                             <tr>
-                                                <th>Other</th><td></td>
+                                                <td>Other</td><td></td>
                                             </tr>
                                         </table>
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Postweld Heat Treatment</caption>
                                             <tr>
-                                                <th>Temperature</th><td><?= $temp_range ?></td>
+                                                <td>Temperature</td><td><?= $temp_range ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Time</th><td><?= $soak_period ?></td>
+                                                <td>Time</td><td><?= $soak_period ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Unrestriced Heating Rate up to (&deg;C)</th><td><?= $heat_rate_up_to ?></td>
+                                                <td>Unrestriced Heating Rate up to (&deg;C)</td><td><?= $heat_rate_up_to ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Unrestriced Heating Rate From (&deg;C)</th><td><?= $heat_rate_from ?></td>
+                                                <td>Unrestriced Heating Rate From (&deg;C)</td><td><?= $heat_rate_from ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Controlled Heating Rate (Max./Hr)</th><td><?= $control_heat_rate ?></td>
+                                                <td>Controlled Heating Rate (Max./Hr)</td><td><?= $control_heat_rate ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Controlled Cooling Rate (Max./Hr)</th><td><?= $cooling_rate ?></td>
+                                                <td>Controlled Cooling Rate (Max./Hr)</td><td><?= $cooling_rate ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Other</th><td><?= $post_heat_other ?></td>
+                                                <td>Other</td><td><?= $post_heat_other ?></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -594,34 +594,34 @@ if(isset($value) && !empty($value)){
                                         <table class="table table-bordered">
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Techniqe</caption>
                                             <tr>
-                                                <th>Travel Speed</th><td><?= $travel_speed ?></td>
+                                                <td>Travel Speed</td><td><?= $travel_speed ?></td>
                                             </tr>
                                             <tr>
-                                                <th>String or Weave Bead</th><td><?= $temp_range ?></td>
+                                                <td>String or Weave Bead</td><td><?= $temp_range ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Oscillation</th><td><?= $soak_period ?></td>
+                                                <td>Oscillation</td><td><?= $soak_period ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Orifice or Gas Size</th><td><?= $heat_rate_up_to ?></td>
+                                                <td>Orifice or Gas Size</td><td><?= $heat_rate_up_to ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Multipass or Single pass(pre side)</th><td><?= $heat_rate_from ?></td>
+                                                <td>Multipass or Single pass(pre side)</td><td><?= $heat_rate_from ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Single or Multiple Electrode</th><td><?= $control_heat_rate ?></td>
+                                                <td>Single or Multiple Electrode</td><td><?= $control_heat_rate ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Contact Tube to Work Distance</th><td><?= $cooling_rate ?></td>
+                                                <td>Contact Tube to Work Distance</td><td><?= $cooling_rate ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Method of Cleaning</th><td><?= $cleaning_id ?></td>
+                                                <td>Method of Cleaning</td><td><?= $cleaning_id ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Use of Thermal Processes</th><td><?= $thermal_process ?></td>
+                                                <td>Use of Thermal Processes</td><td><?= $thermal_process ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Other</th><td><?= $techinqe_other ?></td>
+                                                <td>Other</td><td><?= $techinqe_other ?></td>
                                             </tr>
                                         </table>
                                     </td>   
@@ -632,20 +632,20 @@ if(isset($value) && !empty($value)){
                                             <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">WELDING PARAMETERS</caption>
                                            
                                             <tr>
-                                                <th rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_r_n_label'); ?></th>
-                                                <th rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_layers_label'); ?></th>
-                                                <th rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_process_label'); ?></th>
-                                                <th colspan="2"><?php echo lang('mm_operation_pqr_filler_metal_label'); ?></th>
-                                                <th colspan="3"><?php echo lang('mm_operation_pqr_current_label'); ?></th>
-                                                <th rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_travel_speed_range_ipm_label'); ?></th>
-                                                <th rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_heat_input_jinch_label'); ?></th>
+                                                <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_r_n_label'); ?></td>
+                                                <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_layers_label'); ?></td>
+                                                <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_process_label'); ?></td>
+                                                <td colspan="2"><?php echo lang('mm_operation_pqr_filler_metal_label'); ?></td>
+                                                <td colspan="3"><?php echo lang('mm_operation_pqr_current_label'); ?></td>
+                                                <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_travel_speed_range_ipm_label'); ?></td>
+                                                <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_heat_input_jinch_label'); ?></td>
                                             </tr>
                                             <tr>  
-                                              <th><?php echo lang('mm_operation_pqr_class_label'); ?></th>
-                                              <th><?php echo lang('mm_operation_pqr_diameter_label'); ?></th>
-                                              <th><?php echo lang('mm_operation_pqr_typer_polarity_label'); ?></th>
-                                              <th><?php echo lang('mm_operation_pqr_amperage_range_label'); ?></th>
-                                              <th><?php echo lang('mm_operation_pqr_voltage_range_label'); ?></th>
+                                              <td><?php echo lang('mm_operation_pqr_class_label'); ?></td>
+                                              <td><?php echo lang('mm_operation_pqr_diameter_label'); ?></td>
+                                              <td><?php echo lang('mm_operation_pqr_typer_polarity_label'); ?></td>
+                                              <td><?php echo lang('mm_operation_pqr_amperage_range_label'); ?></td>
+                                              <td><?php echo lang('mm_operation_pqr_voltage_range_label'); ?></td>
                                             </tr>
                                             <?php 
                                                 $i = 0;
