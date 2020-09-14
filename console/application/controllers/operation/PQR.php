@@ -212,7 +212,9 @@ class PQR extends CI_Controller
 				'process1' 			=> $_POST['process1'],
 				'process2' 			=> $_POST['process2'],
 				'process3' 			=> $_POST['process3'],
-				'type_id' 			=> implode(',' , $_POST['type_id']),
+				'type_id1' 			=> $_POST['type_id1'],
+				'type_id2' 			=> $_POST['type_id2'],
+				'type_id3' 			=> $_POST['type_id3'],
 				'code_id' 			=> implode(',' , $_POST['code_id']),
 				'pqr_other' 		=> $_POST['pqr_other'],
 				
@@ -261,53 +263,85 @@ class PQR extends CI_Controller
 			}
 		}
 
-		// if($_GET['blockname'] == 'jointimages'){
-			
-			
-
-		// 	foreach($_FILES as $files){
-		// 		if($files['name'] != ''){
-
-		// 			if (!file_exists(FCPATH.'/~cdn/pqrjoints/'))
-		// 	        {
-		// 			    mkdir(FCPATH.'/~cdn/pqrjoints/', 0777, true);
-		// 			}
-
-		// 			$config = array();
-		// 			$config['upload_path'] = '.././~cdn/pqrjoints/';
-		// 			$config['allowed_types'] = 'gif|jpg|png';
-		// 			$config['max_size'] = '5000';
-		// 			$config['max_width'] = '3500';
-		// 			$config['max_height'] = '3500';
-		// 			$config['max_filename'] = '500';
-		// 			$config['overwrite'] = false;
-		// 			$this->upload->initialize($config);
-		// 			$this->load->library('image_lib');
-		// 			$this->load->library('upload', $config);
-
-		// 			if($this->upload->do_upload($files))
-		// 			{	
-		// 				$this->load->helper('inflector');
-		// 				$file_name = underscore($files['name']);
-		// 				$config['file_name'] = $file_name;
-		// 				$image_data['message'] = $this->upload->data(); 
-
-		// 				echo "~cdn/pqrjoints/".$image_data['message']['file_name'];
-		// 			} 
-		// 			else
-		// 			{
-		// 				 // $data['company_logo'] = $this->upload->display_errors('<div class="alert alert-error">', '</div>');
-		// 				 // $this->form_validation->set_rules('company_logo', $this->upload->display_errors(), 'required');        
-		// 				 echo $this->upload->display_errors();
-						        
-		// 			}	
-		// 		}
-		// 	}
-			
-		// 	exit;
+		if($_GET['blockname'] == 'jointimages'){
 
 			
-		// }
+			$pqr_id = $_GET['pqr_id'];
+			$oldImage = explode(',', $_GET['oldImage']);
+		
+			$path = [];
+			$i = 0;
+			foreach($_FILES as $key => $files){
+				
+
+				if($_FILES[$key]['name'] != ''){
+
+
+					if (!file_exists(FCPATH.'/~cdn/prq_joints/'.$pqr_id.'/'))
+			        {
+					    mkdir(FCPATH.'/~cdn/prq_joints/'.$pqr_id.'/', 0777, true);
+					}
+
+
+					if($oldImage[$i] != ''){
+						@unlink(FCPATH.$oldImage[$i]);
+					}
+
+					$config = array();
+					$config['upload_path'] = '.././~cdn/prq_joints/'.$pqr_id.'/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size'] = '5000';
+					$config['max_width'] = '3500';
+					$config['max_height'] = '3500';
+					$config['max_filename'] = '500';
+					$config['overwrite'] = false;
+					$this->upload->initialize($config);
+					$this->load->library('image_lib');
+					$this->load->library('upload', $config);
+
+					if($this->upload->do_upload($key))	
+					{	
+						$this->load->helper('inflector');
+						$file_name = underscore($_FILES[$key]['name']);
+						$config['file_name'] = $file_name;
+						$image_data['message'] = $this->upload->data(); 
+
+						$path[] = "~cdn/prq_joints/".$pqr_id."/".$image_data['message']['file_name'];
+					} 
+					else
+					{
+						$this->upload->display_errors();
+						              
+					}	
+				}
+			$i++;
+			}
+
+
+			if(count($path) != 0){
+				$value_array = array(
+					'joints_image' => implode(',' ,$path)
+				);
+				$value_array['updateBy'] =  $this->session->userdata('user_id');    
+				$value_array['updateOn'] =  date('Y-m-d H:i:s');
+				
+
+				if($pqr_id !='')
+				{
+					
+					$where_array = array(
+						'pqr_id'		=>	$_GET['pqr_id']
+					);
+					$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+					
+					$data['img_success'] = 1;
+					$data['path'] = $path;
+				}
+				print_r($data); die();
+				echo json_encode($data);
+			}
+			exit;
+		}
 
 		// Save Base Metals
 		if($_POST['blockname'] == 'basemetals'){
@@ -534,6 +568,123 @@ class PQR extends CI_Controller
 			}
 		}
 
+		if($_POST['blockname'] == 'tensile'){
+			$value_array = array(
+				'specimen_no' => implode(',', $_POST['specimen_no']),
+				'thickness' => implode(',', $_POST['thickness']),
+				'width' => implode(',', $_POST['width']),
+				'area' => implode(',', $_POST['area']),
+				'ultimate_tensile_load' => implode(',', $_POST['ultimate_tensile_load']),
+				'ultimate_tensile_strength' => implode(',', $_POST['ultimate_tensile_strength']),
+				'failure_location' => implode(',', $_POST['failure_location']),
+				'tensile_test_result' => implode(',', $_POST['tensile_test_result'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'touchness'){
+
+			
+			$value_array = array(
+				'touchness_specimen_no' => implode(',', $_POST['touchness_specimen_no']),
+				'notch_location' => implode(',', $_POST['notch_location']),
+				'notch_type' => implode(',', $_POST['notch_type']),
+				'test_temp' => implode(',', $_POST['test_temp']),
+				'impact_values' => implode(',', $_POST['impact_values']),
+				'lateral_exp_shear' => implode(',', $_POST['lateral_exp_shear']),
+				'lateral_exp_mils' => implode(',', $_POST['lateral_exp_mils']),
+				'drop_break' => implode(',', $_POST['drop_break']),
+				'drop_no_break' => implode(',', $_POST['drop_no_break'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+
+		if($_POST['blockname'] == 'guided'){
+			$value_array = array(
+				'type_and_figure_no' => implode(',', $_POST['type_and_figure_no']),
+				'ben_test_result' => implode(',', $_POST['ben_test_result'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'fillet'){
+			$value_array = array(
+				'result_statificatory' => $_POST['result_statificatory'],
+				'penetration_into_partent_metal' => $_POST['penetration_into_partent_metal'],
+				'maro_result' => $_POST['maro_result']
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'others'){
+			$value_array = array(
+				'type_test' => $_POST['type_test'],
+				'type_test_other' => $_POST['type_test_other'],
+				'deposit_analysis' => $_POST['deposit_analysis'],
+				'test_other_sel' => $_POST['test_other_sel'],
+				'test_other' => $_POST['test_other'],
+				'welder_staff_id' => $_POST['welder_staff_id'],
+				'stamp_no' => $_POST['stamp_no'],
+				'conducted_by' => $_POST['conducted_by'],
+				'laboratory_test_1' => $_POST['laboratory_test_1'],
+				'laboratory_test_2' => $_POST['laboratory_test_2'],
+				'laboratory_test_3' => $_POST['laboratory_test_3']
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
 
 		$data = [];
 
@@ -551,8 +702,12 @@ class PQR extends CI_Controller
 			if(isset($_POST['blockfinished']) && $_POST['blockfinished'] == 1){
 				$this->session->set_flashdata('res', lang('common_message_update'));
 				$this->session->set_flashdata('res_pqr', 'success');
-				redirect(base_url().'operation/PQR');
+				// redirect(base_url().'operation/PQR');
+				$data['success'] = 1;
+				echo json_encode($data);
+				exit;
 			}else{
+				$data['id'] = $_POST['pqr_id'];
 				$data['success'] = 1;
 				echo json_encode($data);
 				exit;

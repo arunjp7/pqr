@@ -180,15 +180,21 @@ else
 
 ?>
   <!-- /.start form -->
-  <div class="row">
+<div id="main-wrapper">
+<div class="row">
     <div class="col-md-12">
-      <div class="white-box">
+        <div class="panel panel-white">
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title"></h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">
       <!--
         <h3 class="box-title m-b-0"><?php echo $form_tittle;?></h3>
         <p class="text-muted m-b-30 font-13"> <?php echo $form_tittle_small;?> </p>
       -->
-        <div class="row">
-          <div class="col-sm-12 col-xs-12">
+        <div class="col-md-12 col-lg-12">
+            <div class="col-sm-12 col-xs-12">
             <?php echo form_open_multipart($form_url); ?>
 
               <div class="clearfix"></div>
@@ -778,15 +784,14 @@ else
                 <a href="<?php echo base_url().$form_cancel_url;?>" class="btn btn-warning waves-effect waves-light m-r-10"><?php echo lang('btn_Cancel');?></a>
               </div>
             <?php echo form_close(); ?>
-          </div>
         </div>
-
-
-
-        
       </div>
     </div>
-  </div>
+
+
+</div>
+</div>
+</div>
   <!-- /.end form -->
 
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false" id="CompanyModal">
@@ -978,22 +983,5 @@ $("#show_hide_password a").on('click', function(event) {
 
 
 <style type="text/css">
-  .box-title-head:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 9%;
-    height: 4px;
-    background: #ff4800;
-  }
-  
-  .white-box .box-title {
-    margin: 0px 0px 0px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
-  .box-title-head {
-    margin-bottom: 15px;
-  }
+ 
 </style>

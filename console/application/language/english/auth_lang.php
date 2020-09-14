@@ -139,10 +139,6 @@ $lang['mm_auditor']='Auditor';
 
 
 
-
-
-
-
 //Start User management Menus
 $lang['mm_user']='User Management';
 $lang['mm_user_create']='Create User';
@@ -2966,6 +2962,9 @@ $lang['mm_operation_pqr_welding_process_1_label'] = "Process 1";
 $lang['mm_operation_pqr_welding_process_2_label'] = "Process 2";
 $lang['mm_operation_pqr_welding_process_3_label'] = "Process 3";
 $lang['mm_operation_pqr_type_label'] = "Types";
+$lang['mm_operation_pqr_type_1_label'] = "Types 1";
+$lang['mm_operation_pqr_type_2_label'] = "Types 2";
+$lang['mm_operation_pqr_type_3_label'] = "Types 3";
 $lang['mm_operation_pqr_layer_label'] = "Layer";
 $lang['mm_operation_pqr_code_label'] = "Code";
 $lang['mm_operation_pqr_pwht_label'] = "Post Weld Heat Treatment";
@@ -3081,9 +3080,9 @@ $lang['mm_operation_pqr_specimen_no_label'] = "Specimen No.";
 $lang['mm_operation_pqr_thickness_mm_label'] = "Thickness (mm)";
 $lang['mm_operation_pqr_width_mm_label'] = "Width (mm)";
 $lang['mm_operation_pqr_area_sq_mm_label'] = "Area Sq. mm";
-$lang['mm_operation_pqr_ultimate_tensile_label'] = "Ultimate Tensile Load(KN)";
+$lang['mm_operation_pqr_ultimate_tensile_load_label'] = "Ultimate Tensile Load(KN)";
 $lang['mm_operation_pqr_ultimate_tensile_label'] = "Ultimate Tensile Strenght(MPa / PSi)";
-$lang['mm_operation_pqr_fracture_location_label'] = "Fracture Location";
+$lang['mm_operation_pqr_failure_location_label'] = "Type of Failure and Location";
 $lang['mm_operation_pqr_result_label'] = "Results";
 $lang['mm_operation_pqr_refer_to_fugro_label'] = "Refer to Fugro - Suhaimi cert # FSL / T & B / 1475 - 2015";
 
@@ -3109,6 +3108,7 @@ $lang['mm_operation_pqr_macro_result_label'] = "Macro Result";
 $lang['mm_operation_pqr_penetration_partent_metal_label'] = "Penetration into Partent Metal";
 
 $lang['mm_operation_pqr_type_of_test_label'] = "Type of Test";
+$lang['mm_operation_pqr_type_of_test_other_label'] = "Type of Test Other";
 $lang['mm_operation_pqr_deposit_analysis_label'] = "Deposit Analysis";
 $lang['mm_operation_pqr_welder_name_label'] = "Welder's Name";
 $lang['mm_operation_pqr_stamp_no_label'] = "Stamp No.";

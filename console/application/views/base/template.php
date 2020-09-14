@@ -33,6 +33,7 @@
     <link href="<?php echo base_url(); ?>css/modern.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url(); ?>css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url(); ?>css/custom.css?time=<?php echo time(); ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo base_url(); ?>css/printCss.css?time=<?php echo time(); ?>" rel="stylesheet" media="print" type="text/css"/>
     <link href="<?php echo base_url(); ?>css/overwrite.css" rel="stylesheet" type="text/css"/>
 
     <!-- <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css"/> -->

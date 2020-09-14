@@ -449,9 +449,18 @@ class Common_model extends CI_Model
 	{
 
 		$item = array();
+
 		$selectQuery = $this->db->query("select GROUP_CONCAT(".$fieldArray['fieldName'].") as fieldname from ".$tableName." WHERE ".$fieldArray['fieldId']." in (".$dataID.")");
-		$item = $selectQuery->result();
-		return $item[0]->fieldname;
+		
+		
+		if($selectQuery !== FALSE && $selectQuery->num_rows() > 0){
+		    foreach ($selectQuery->result_array() as $row) {
+		        $item[] = $row;
+		    }
+		}
+		// print_r($item[]);
+		return $item[0]['fieldname'];
+		
 
 	}
 }
