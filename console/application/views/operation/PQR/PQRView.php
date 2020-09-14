@@ -3,7 +3,7 @@
 $this->mcommon->getCheckUserPermissionHead('PQR add and edit',true);
 
 if(isset($value) && !empty($value)){
-
+    // print_r($value->result()); die();
   foreach($value->result() as $row){   
 
     // Basic block
@@ -15,7 +15,9 @@ if(isset($value) && !empty($value)){
     $process2 = $this->mcommon->getNameById($row->process2, 'jr_process', array('fieldName' => 'process_name', 'fieldId' => 'process_id'));
     $process3 = $this->mcommon->getNameById($row->process3, 'jr_process', array('fieldName' => 'process_name', 'fieldId' => 'process_id'));
     $process = array($process1, $process2, $process3);
-    $type_id = $this->mcommon->getNameById($row->type_id, 'jr_type', array('fieldName' => 'type_name', 'fieldId' => 'type_id')); 
+    $type_id1 = $this->mcommon->getNameById($row->type_id1, 'jr_type', array('fieldName' => 'type_name', 'fieldId' => 'type_id')); 
+    $type_id2 = $this->mcommon->getNameById($row->type_id2, 'jr_type', array('fieldName' => 'type_name', 'fieldId' => 'type_id'));
+    $type_id3 = $this->mcommon->getNameById($row->type_id3, 'jr_type', array('fieldName' => 'type_name', 'fieldId' => 'type_id')); 
     $code_id = $this->mcommon->getNameById($row->code_id, 'jr_code', array('fieldName' => 'code_name', 'fieldId' => 'code_id'));
     $pqr_other  = $row->pqr_other;
 
@@ -118,6 +120,66 @@ if(isset($value) && !empty($value)){
     $current_voltage_range = explode(',', $row->current_voltage_range);
     $travel_speed_range = explode(',', $row->travel_speed_range);
     $heat_input = explode(',', $row->heat_input);
+
+    $travel_speed = $row->travel_speed;
+    $weave_bead = $row->weave_bead;
+    $cupsize_id = $row->cupsize_id;
+    $pass_per_side = $row->pass_per_side;
+    $s_m_electrode = $row->s_m_electrode;
+    $work_distance = $row->work_distance;
+    $cleaning_id = $row->cleaning_id;
+    $thermal_process = $row->thermal_process;
+    $techinqe_other = $row->techinqe_other;
+
+    $layer = explode(',', $row->layer);
+    $welder_process = explode(',', $row->welder_process);
+    $classVal = explode(',', $row->classVal);
+    $diameter = explode(',', $row->diameter);
+    $typer_polority = explode(',', $row->typer_polority);
+    $current_amperage_range = explode(',', $row->current_amperage_range);
+    $current_voltage_range = explode(',', $row->current_voltage_range);
+    $travel_speed_range = explode(',', $row->travel_speed_range);
+    $heat_input = explode(',', $row->heat_input);
+
+    $specimen_no = explode(',', $row->specimen_no);
+    $thickness = explode(',', $row->thickness);
+    $width = explode(',', $row->width);
+    $area = explode(',', $row->area);
+    $ultimate_tensile_load = explode(',', $row->ultimate_tensile_load);
+    $ultimate_tensile_strength = explode(',', $row->ultimate_tensile_strength);
+    $failure_location = explode(',', $row->failure_location);
+    $tensile_test_result = explode(',', $row->tensile_test_result);
+
+    $type_and_figure_no = explode(',', $row->type_and_figure_no); 
+    $ben_test_result = explode(',', $row->ben_test_result);
+
+    $touchness_specimen_no = explode(',', $row->touchness_specimen_no);
+    $notch_location = explode(',', $row->notch_location);
+    $notch_type = explode(',', $row->notch_type);
+    $test_temp = explode(',', $row->test_temp);
+    $impact_values = explode(',', $row->impact_values);
+
+
+    $lateral_exp_shear = explode(',', $row->lateral_exp_shear);
+    $lateral_exp_mils = explode(',', $row->lateral_exp_mils);
+    $drop_break = explode(',', $row->drop_break);
+    $drop_no_break = explode(',', $row->drop_no_break);
+
+    $result_statificatory = $row->result_statificatory;
+    $penetration_into_partent_metal = $row->penetration_into_partent_metal;
+    $maro_result = $row->maro_result;
+
+    $type_test = $row->type_test;
+    $type_test_other = $row->type_test_other;
+    $deposit_analysis = $row->deposit_analysis;
+    $test_other_sel = $row->test_other_sel;
+    $test_other = $row->test_other;
+    $welder_staff_id = explode(',', $this->mcommon->getNameById($row->welder_staff_id, 'jr_staffs', array('fieldName' => 'staffs_employee_name', 'fieldId' => 'staffs_id')));
+    $stamp_no = $row->stamp_no;
+    $conducted_by = $row->conducted_by;
+    $laboratory_test_1 = $row->laboratory_test_1;
+    $laboratory_test_2 = $row->laboratory_test_2;
+    $laboratory_test_3 = $row->laboratory_test_3;
   
   }
 }
@@ -135,7 +197,7 @@ if(isset($value) && !empty($value)){
                 </div>
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <button type="button" id="printDoc" class="btn btn-primary pull-right">Print</button>
+                        <button type="button" id="printDoc" class="btn btn-primary pull-right">Print Preview</button>
                     </div>
                     <div class="col-md-10" id="viewPQR">
                         <table class="table">
@@ -156,7 +218,7 @@ if(isset($value) && !empty($value)){
                                                 <td>Welding Process(es)</td><td colspan="3"><?= rtrim(implode(',', $process), ',') ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Types(Manual, Automatic, Semi-Automatic)</td><td colspan="3"><?= $type_id ?></td>
+                                                <td>Types(Manual, Automatic, Semi-Automatic)</td><td colspan="3"><?= $type_id1 ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Code</td><td><?= $code_id ?></td><td>Others</td><td><?= $pqr_other ?></td>
@@ -629,7 +691,7 @@ if(isset($value) && !empty($value)){
                                 <tr>
                                     <td colspan="2">
                                         <table class="table table-bordered">
-                                            <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">WELDING PARAMETERS</caption>
+                                            <caption style="text-align: center;color: #000;font-weight: bold;background: #cccccc7d;">Welding Parameters</caption>
                                            
                                             <tr>
                                                 <td rowspan="2" style="vertical-align:bottom;"><?php echo lang('mm_operation_pqr_r_n_label'); ?></td>
@@ -669,6 +731,154 @@ if(isset($value) && !empty($value)){
                                         </table>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table class="table table-bordered">
+                                            <caption>Tensile Test</caption>
+                                            <thead>
+                                                <tr>
+                                                  <td><?php echo lang('mm_operation_pqr_specimen_no_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_thickness_mm_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_width_mm_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_area_sq_mm_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_ultimate_tensile_load_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_ultimate_tensile_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_failure_location_label');?></td>
+                                                  <td><?php echo lang('mm_operation_pqr_result_label');?></td>
+                                                </tr>
+                                            </thead>
+                                            <body>
+                                                <?php foreach($specimen_no as $k => $value){ ?>
+                                                <tr>
+                                                    <td><?= $value ?></td>
+                                                    <td><?= $thickness[$k] ?></td>
+                                                    <td><?= $width[$k] ?></td>
+                                                    <td><?= $area[$k] ?></td>
+                                                    <td><?= $ultimate_tensile_load[$k] ?></td>
+                                                    <td><?= $ultimate_tensile_strength[$k] ?></td>
+                                                    <td><?= $failure_location[$k] ?></td>
+                                                    <td><?= $tensile_test_result[$k] ?></td>
+                                                </tr>
+                                                <?php } ?>  
+                                            </body>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table class="table table-bordered">
+                                            <caption>Touchness Test</caption>
+                                            <thead>
+                                                <tr align="center">
+                                                  <td width="50%"><?php echo lang('mm_operation_pqr_type_figure_no_label');?></td>
+                                                  <td width="50%"><?php echo lang('mm_operation_pqr_result_label');?></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($type_and_figure_no as $k => $value){ ?>
+                                                <tr align="center">
+                                                    <td><?= $value ?></td>
+                                                    <td><?= $ben_test_result[$k] ?></td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table class="table table-bordered">
+                                            <caption>Guided Ben Test</caption>
+                                            <thead>
+                                                <tr>
+                                                  <th rowspan="2"><?php echo lang('mm_operation_pqr_specimen_no_label');?></th>
+                                                  <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_location_label');?></th>
+                                                  <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_type_label');?></th>
+                                                  <th rowspan="2"><?php echo lang('mm_operation_pqr_test_temp_label');?></th>
+                                                  <th rowspan="2"><?php echo lang('mm_operation_pqr_impact_values_label');?></th>
+                                                  <th colspan="2"><?php echo lang('mm_operation_pqr_lateral_exp_label');?></th>
+                                                  <th colspan="2"><?php echo lang('mm_operation_pqr_drop_weight_label');?></th>
+                                                </tr>
+                                                <tr>
+                                                  <th><?php echo lang('mm_operation_pqr_shear_label');?></th>
+                                                  <th><?php echo lang('mm_operation_pqr_mils_label');?></th>
+                                                  <th><?php echo lang('mm_operation_pqr_break_label');?></th>
+                                                  <th><?php echo lang('mm_operation_pqr_no_break_label');?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($touchness_specimen_no as $k => $value){ ?>
+                                                    <tr>
+                                                        <td><?= $value ?></td>
+                                                        <td><?= $notch_location[$k] ?></td>
+                                                        <td><?= $notch_type[$k] ?></td>
+                                                        <td><?= $test_temp[$k] ?></td>
+                                                        <td><?= $impact_values[$k] ?></td>
+                                                        <td><?= $lateral_exp_shear[$k] ?></td>
+                                                        <td><?= $lateral_exp_mils[$k] ?></td>
+                                                        <td><?= $drop_break[$k] ?></td>
+                                                        <td><?= $drop_no_break[$k] ?></td>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table class="table table-bordered">
+                                            <caption>Fillet Weld Test</caption>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_pwht_label');?></td>
+                                                <td><?= $result_statificatory ?></td>
+                                                <td><?php echo lang('mm_operation_pqr_penetration_partent_metal_label');?></td>
+                                                <td><?= $penetration_into_partent_metal ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_macro_result_label');?></td>
+                                                <td colspan="3"><?= $maro_result ?></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table class="table table-bordered">
+                                            <caption>Other Tests</caption>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_type_of_test_label');?></td>
+                                                <td colspan="3"><?= $type_test ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_deposit_analysis_label');?></td>
+                                                <td colspan="3"><?= $deposit_analysis ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_post_heat_others_label');?></td>
+                                                <td colspan="3"><?= $test_other_sel ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td colspan="3"><?= $test_other ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_welder_name_label');?></td>
+                                                <td><?= $welder_staff_id ?></td>
+                                                <td><?php echo lang('mm_operation_pqr_stamp_no_label');?></td>
+                                                <td><?= $stamp_no ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo lang('mm_operation_pqr_test_conducted_by_label');?></td>
+                                                <td><?= $conducted_by ?></td>
+                                                <td><?php echo lang('mm_operation_pqr_laboratory_test_no_label');?></td>
+                                                <td>
+                                                    <?= $laboratory_test_1 ?><br/>
+                                                    <?= $laboratory_test_2 ?><br/>
+                                                    <?= $laboratory_test_3 ?><br/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -678,18 +888,42 @@ if(isset($value) && !empty($value)){
     </div>
   <!-- /.end form -->
 
-
+<script src="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Html-Print-Preview-printPreview/js/printPreview.js"></script>
 <script>
-    $(document).ready(function(){
-        $(document).on('click', '#printDoc',function(){
+    // $(document).ready(function(){
+        // $(document).on('click', '#printDoc',function(){
             
-            var printContents = document.getElementById('viewPQR').innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
+    //         var printContents = document.getElementById('viewPQR').innerHTML;
+    //         var originalContents = document.body.innerHTML;
+    //         document.body.innerHTML = printContents;
 
-           
-        });
-    });
+    //         window.print();
+    //         document.body.innerHTML = originalContents;
+    //     });
+    // });
+
+
 </script>
+<script type="text/javascript">
+        $(function(){
+            $("#printDoc").printPreview({
+                obj2print:'#viewPQR',
+                width:'810',
+                // style:'<?php echo base_url(); ?>css/printCss.css?time=<?php echo time(); ?>',
+                title:'PQR STATEMENT'
+                
+                /*optional properties with default values*/
+                //obj2print:'body',     /*if not provided full page will be printed*/
+                //style:'',             /*if you want to override or add more css assign here e.g: "<style>#masterContent:background:red;</style>"*/
+                //width: '670',         /*if width is not provided it will be 670 (default print paper width)*/
+                //height:screen.height, /*if not provided its height will be equal to screen height*/
+                //top:0,                /*if not provided its top position will be zero*/
+                //left:'center',        /*if not provided it will be at center, you can provide any number e.g. 300,120,200*/
+                //resizable : 'yes',    /*yes or no default is yes, * do not work in some browsers*/
+                //scrollbars:'yes',     /*yes or no default is yes, * do not work in some browsers*/
+                //status:'no',          /*yes or no default is yes, * do not work in some browsers*/
+                //title:'Print Preview' /*title of print preview popup window*/
+                
+            });
+        });
+    </script>

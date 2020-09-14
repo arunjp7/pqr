@@ -14,7 +14,9 @@ if(isset($value) && !empty($value)){
     $process1 = $row->process1;
     $process2 = $row->process2;
     $process3 = $row->process3;
-    $type_id = explode(',', $row->type_id);
+    $type_id1 = $row->type_id1;
+    $type_id2 = $row->type_id2;
+    $type_id3 = $row->type_id3;
     $code_id = explode(',', $row->code_id);
     $pqr_other  = $row->pqr_other;
 
@@ -118,7 +120,46 @@ if(isset($value) && !empty($value)){
     $current_voltage_range = explode(',', $row->current_voltage_range);
     $travel_speed_range = explode(',', $row->travel_speed_range);
     $heat_input = explode(',', $row->heat_input);
-  
+
+    $specimen_no = explode(',', $row->specimen_no);
+    $thickness = explode(',', $row->thickness);
+    $width = explode(',', $row->width);
+    $area = explode(',', $row->area);
+    $ultimate_tensile_load = explode(',', $row->ultimate_tensile_load);
+    $ultimate_tensile_strength = explode(',', $row->ultimate_tensile_strength);
+    $failure_location = explode(',', $row->failure_location);
+    $tensile_test_result = explode(',', $row->tensile_test_result);
+
+    $type_and_figure_no = explode(',', $row->type_and_figure_no); 
+    $ben_test_result = explode(',', $row->ben_test_result);
+
+    $touchness_specimen_no = explode(',', $row->touchness_specimen_no);
+    $notch_location = explode(',', $row->notch_location);
+    $notch_type = explode(',', $row->notch_type);
+    $test_temp = explode(',', $row->test_temp);
+    $impact_values = explode(',', $row->impact_values);
+
+
+    $lateral_exp_shear = explode(',', $row->lateral_exp_shear);
+    $lateral_exp_mils = explode(',', $row->lateral_exp_mils);
+    $drop_break = explode(',', $row->drop_break);
+    $drop_no_break = explode(',', $row->drop_no_break);
+
+    $result_statificatory = $row->result_statificatory;
+    $penetration_into_partent_metal = $row->penetration_into_partent_metal;
+    $maro_result = $row->maro_result;
+
+    $type_test = $row->type_test;
+    $type_test_other = $row->type_test_other;
+    $deposit_analysis = $row->deposit_analysis;
+    $test_other_sel = $row->test_other_sel;
+    $test_other = $row->test_other;
+    $welder_staff_id = $row->welder_staff_id;
+    $stamp_no = $row->stamp_no;
+    $conducted_by = $row->conducted_by;
+    $laboratory_test_1 = $row->laboratory_test_1;
+    $laboratory_test_2 = $row->laboratory_test_2;
+    $laboratory_test_3 = $row->laboratory_test_3;
   }
 }
 ?>
@@ -165,11 +206,21 @@ if(isset($value) && !empty($value)){
                         <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></a>
                     </li>
                   
-                  <!--   <li class="tablinks" data-id="tensile"><?php echo lang('mm_operation_pqr_tensile_test_label');?></li>
-                    <li class="tablinks" data-id="guided"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></li>
-                    <li class="tablinks" data-id="touchness"><?php echo lang('mm_operation_pqr_touchness_test_label');?></li>
-                    <li class="tablinks" data-id="fillet"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></li>
-                    <li class="tablinks" data-id="other"><?php echo lang('mm_operation_pqr_other_tests_label');?></li> -->
+                    <li class="tablinks nav-item" data-id="tensile">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_tensile_test_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="guided">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="touchness">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_touchness_test_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="fillet">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></a>
+                    </li>
+                    <li class="tablinks nav-item" data-id="other">
+                        <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_other_tests_label');?></a>
+                    </li>
                     </ul>
                 </div>
           </div>
@@ -193,1694 +244,1831 @@ if(isset($value) && !empty($value)){
         <p class="text-muted m-b-30 font-13"> <?php echo $form_tittle_small;?> </p>
       -->
         <div class="col-md-12 col-lg-12">
-          <div class="col-sm-12 col-xs-12">
-            <?php echo form_open_multipart($form_url); ?>
-             <div class="clearfix"></div>
-            <!-- Block Company Details -->
-            <div class="row blockdiv" id="companydetails">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_company_details_label');?></h3>
-                </div>
-                
-                <!-- Procedure Qulation specification No -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('pqr_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?>" id="pqr_no" name="pqr_no" value="<?php echo $pqr_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('pqr_no')){ echo '<span class="help-block">'.form_error('pqr_no').'</span>';} ?>
+            <div class="col-sm-12 col-xs-12">
+                <?php echo form_open_multipart($form_url); ?>
+                <input type="hidden" name="pqr_id" id="pqr_id" value="<?php echo $pqr_id;?>">
+                 <div class="clearfix"></div>
+                <!-- Block Company Details -->
+                <div class="row blockdiv" id="companydetails">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_company_details_label');?></h3>
                     </div>
-                </div>
-                <!-- Inspection Date -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('inspection_date')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_inspection_date_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control date-picker" placeholder="<?php echo lang('mm_operation_pqr_inspection_date_label');?>" id="inspection_date" name="inspection_date" value="<?php echo $inspection_date ;?>" autocomplete="off">
-                    <?PHP if(form_error('inspection_date')){ echo '<span class="help-block">'.form_error('inspection_date').'</span>';} ?>
-                    </div>
-                </div>
-                <!-- Welding Procedure Specification No -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('wps_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?>" id="wps_no" name="wps_no" value="<?php echo $wps_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('wps_no')){ echo '<span class="help-block">'.form_error('wps_no').'</span>';} ?>
-                    </div>
-                </div>
-                <!-- Welding Process 1 -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('process1')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_1_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2 block1_process" name="process1"  data-live-search="true" data-width="100%"  id="process1"';
-                      echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process1)) ? $process1 : ''), $attrib);
-                    ?>
-                    <?PHP if(form_error('process1')){ echo '<span class="help-block">'.form_error('process1').'</span>';} ?>
-                    </div>
-                </div>
-                <!-- Welding Process 2 -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_2_label');?></label>
-                    <?php   
-                      $attrib = 'class="form-control select2 block1_process" name="process2"  data-live-search="true" data-width="100%"  id="process2"';
-                      echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process2)) ? $process2 : ''), $attrib);
-                    ?>                    
-                    </div>
-                </div>
-                <!-- Welding Process 3 -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_3_label');?></label>
-                    <?php   
-                      $attrib = 'class="form-control select2 block1_process" name="process3" data-live-search="true" data-width="100%"  id="process3"';
-                      echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process3)) ? $process3 : ''), $attrib);
-                    ?> 
-                    </div>
-                </div>
-                <!-- Types -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('type_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" multiple="multiple" name="type_id" data-live-search="true" data-width="100%"  id="type_id"';
-                      echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
-                    ?>
-                    <?PHP if(form_error('type_id')){ echo '<span class="help-block">'.form_error('type_id').'</span>';} ?>
-                    </div>
-                </div>
-                <!-- Code -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('code_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_code_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="code_id" multiple="multiple" data-live-search="true" data-width="100%"  id="code_id"';
-                      echo form_dropdown('code_id', $drop_menu_code, set_value('code_id', (isset($code_id)) ? $code_id : ''), $attrib);
-                    ?>
-                    <?PHP if(form_error('code_id')){ echo '<span class="help-block">'.form_error('code_id').'</span>';} ?>
-                    </div>
-                </div>
-                <!-- Others -->
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="pqr_other" name="pqr_other" value="<?php echo $pqr_other ;?>" autocomplete="off">
-                    </div>
-                </div>
-
-
-                <!-- Post Weld Heat Treatment get yes or no -->
-                <!-- <div class="col-sm-3 col-xs-3">
-                    <div class="form-group <?PHP if(form_error('pwht')){ echo 'has-error';} ?>">
-                        <label class="display-block">Pre Payment <span class="text-danger">*</span></label>
-                        <label class="radio-inline">
-                            <div class="choice"><input type="radio" name="pwht" class="styled" <?php if($pwht=='1'){?> checked="checked"  <?php }?>value="1" > Yes
-                            </div>  
-                        </label>
-                        <label class="radio-inline">
-                            <div class="choice"><input type="radio" name="pwht" class="styled" checked="" <?php if($pwht=='0'){?> checked="checked" <?php }?>  value="0">No
-                            </div>                                                          
-                        </label>
-                    </div>
-                </div> -->
-                <!-- Next button -->
-                <div class="col-sm-12 col-xs-12">
-                    <button class="btn btn-info pull-right" type="button"  id="btnCompanyDetails" data-block="1" data-block-name="companydetails">Save & Next</button>
-                </div>
-            </div>
-            <!-- Block Joints -->
-            <div class="row blockdiv hide" id="joints">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                    <h3 class="box-title">
-                        <?php echo lang('mm_operation_pqr_joints_label');?>
-                        <button class="btn btn-primary pull-right img-btn" type="button" id="addJointImage">Add Image</button> 
-                    </h3>
-                </div>
-                <!-- joints value -->
-                <?php if(isset($value) &&  !empty($value)){ 
-                    foreach($joints_a as $key => $value){
-                ?>
-
-                <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="<?php echo $key+1 ?>" id="jointblock<?php echo $key+1 ?>">
-                    <!-- get joint value block -->
-                    <div class="col-sm-4 col-xs-4">                        
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_A"><?php echo lang('mm_operation_pqr_joint_groove_angle_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_A" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" name="joints_A[]" value="<?php echo $value ?>" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_B"><?php echo lang('mm_operation_pqr_joint_base_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_B" placeholder="<?php echo lang('mm_operation_pqr_joint_base_label');?>" name="joints_B[]" value="<?php echo $joints_b[$key] ?>" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_C"><?php echo lang('mm_operation_pqr_joint_root_face_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_C" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>"  name="joints_C[]" value="<?php echo $joints_c[$key] ?>" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_D"><?php echo lang('mm_operation_pqr_joint_root_gap_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_D" placeholder="<?php echo lang('mm_operation_pqr_joint_root_gap_label');?>" name="joints_D[]" value="<?php echo $joints_d[$key] ?>" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_other"><?php echo lang('mm_operation_pqr_joint_other_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_other" placeholder="<?php echo lang('mm_operation_pqr_joint_other_label');?>"  name="joints_other[]" value="<?php echo $joints_other[$key] ?>" autocomplete="off">
-                                </div>
-                            </div>
-                            <!-- displaying add button -->
-                            <!-- <div class="col-sm-2 col-xs-2">
-                                <span><button type="button" class="btn btn-success addVariable addbutton" data-id="3">+</button></span>
-                            </div> -->
+                    
+                    <!-- Procedure Qulation specification No -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('pqr_no')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_procedure_qulation_spec_no_label');?>" id="pqr_no" name="pqr_no" value="<?php echo $pqr_no ;?>" autocomplete="off">
+                        <?PHP if(form_error('pqr_no')){ echo '<span class="help-block">'.form_error('pqr_no').'</span>';} ?>
                         </div>
                     </div>
-                    <!-- get joints image block -->
-                    <div class="col-sm-6 col-xs-6">
-                        <div class="col-sm-12 col-xs-12 joint_img_block">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_joint_image_label');?> <?php echo lang('mm_common_logo_size_label');?> <span class="text-danger">*</span></label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                    <div class="form-control" data-trigger="fileinput"> 
-                                        <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
-                                    </div>
-                                    <span class="input-group-addon btn btn-default btn-file"> 
-                                        <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> 
-                                        <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
-                                        <input type="file" id="joint_photo<?php echo $key+1 ?>" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
-                                    </span> 
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
-                                </div>
-                                <?php if($joints_image[$key]!=''){ ?> <img id="old_joint_img<?php echo $key ?>" src="<?php echo config_item('image_url').$joints_image[$key];?>" height="200" width="200"> <?php }?>
-                            </div>
-                            <img src="" class="joint_image_display joint_photo<?php echo $key+1 ?>" width="200px" />
-                            <input type="hidden" class="old_joint_image" value="<?php echo $joints_image[$key];?>">
+                    <!-- Inspection Date -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('inspection_date')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_inspection_date_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control date-picker" placeholder="<?php echo lang('mm_operation_pqr_inspection_date_label');?>" id="inspection_date" name="inspection_date" value="<?php echo $inspection_date ;?>" autocomplete="off">
+                        <?PHP if(form_error('inspection_date')){ echo '<span class="help-block">'.form_error('inspection_date').'</span>';} ?>
                         </div>
                     </div>
-                    <!-- close joint block -->
-                    <div class="col-sm-2 col-xs-6">
-                        <button type="button" class="btn btn-danger pull-right closeJointBlock">X</button>
-                    </div>
-                </div>
-
-                <?php
-                }
-                }else{
-                ?>
-                <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="1" id="jointblock1">
-                    <!-- get joint value block -->
-                    <div class="col-sm-4 col-xs-4">                        
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_A"><?php echo lang('mm_operation_pqr_joint_groove_angle_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_A" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" name="joints_A[]" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_B"><?php echo lang('mm_operation_pqr_joint_base_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_B" placeholder="<?php echo lang('mm_operation_pqr_joint_base_label');?>" name="joints_B[]" value="" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_C"><?php echo lang('mm_operation_pqr_joint_root_face_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_C" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>"  name="joints_C[]" value="" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_D"><?php echo lang('mm_operation_pqr_joint_root_gap_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_D" placeholder="<?php echo lang('mm_operation_pqr_joint_root_gap_label');?>" name="joints_D[]" value="" autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row variableDiv">
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <label for="joints_other"><?php echo lang('mm_operation_pqr_joint_other_label');?></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 col-xs-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control joints_other" placeholder="<?php echo lang('mm_operation_pqr_joint_other_label');?>"  name="joints_other[]" value="" autocomplete="off">
-                                </div>
-                            </div>
-                            <!-- displaying add button -->
-                            <!-- <div class="col-sm-2 col-xs-2">
-                                <span><button type="button" class="btn btn-success addVariable addbutton" data-id="3">+</button></span>
-                            </div> -->
+                    <!-- Welding Procedure Specification No -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('wps_no')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_welding_procedure_spec_no_label');?>" id="wps_no" name="wps_no" value="<?php echo $wps_no ;?>" autocomplete="off">
+                        <?PHP if(form_error('wps_no')){ echo '<span class="help-block">'.form_error('wps_no').'</span>';} ?>
                         </div>
                     </div>
-                    <!-- get joints image block -->
-                    <div class="col-sm-6 col-xs-6">
-                        <div class="col-sm-12 col-xs-12 joint_img_block">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_joint_image_label');?> <?php echo lang('mm_common_logo_size_label');?> <span class="text-danger">*</span></label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                    <div class="form-control" data-trigger="fileinput"> 
-                                        <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
-                                    </div>
-                                    <span class="input-group-addon btn btn-default btn-file"> 
-                                        <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> 
-                                        <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
-                                        <input type="file" id="joint_photo1" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
-                                    </span> 
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
-                                </div>
-                                <input type="hidden" class="old_joint_image" value=""> 
-                            </div>
-                            <img src="" class="joint_image_display joint_photo1" width="200px" />
+                    <!-- Welding Process 1 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('process1')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_1_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2 block1_process" name="process1"  data-live-search="true" data-width="100%"  id="process1"';
+                          echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process1)) ? $process1 : ''), $attrib);
+                        ?>
+                        <?PHP if(form_error('process1')){ echo '<span class="help-block">'.form_error('process1').'</span>';} ?>
                         </div>
                     </div>
-                    <!-- close joint block -->
-                    <div class="col-sm-2 col-xs-6">
-                        <button type="button" class="btn btn-danger pull-right closeJointBlock">X</button>
-                    </div>
-                </div>
-                <?php } ?>  
-                <div class="col-sm-12 col-xs-12">
-                    <input type="hidden" name="joints_id" id="joints_id" />
-                    <button class="btn btn-info pull-right" type="button" id="btnJoints">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="1"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-            </div>
-            <!-- Block Base Mentals -->
-            <div class="row blockdiv hide" id="basemetals">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
-                </div>
-                <div class="col-sm-12 col-xs-12">
-                    <div class="row">
-                        <!-- Company Details -->
-                        <div class="col-sm-3 col-xs-3">
-                          <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
-                            <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
-                            <?php   
-                              $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
-                              echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
-                              ?> 
-                            <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
-                            </div>
+                    <!-- Welding Process 2 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_2_label');?></label>
+                        <?php   
+                          $attrib = 'class="form-control select2 block1_process" name="process2"  data-live-search="true" data-width="100%"  id="process2"';
+                          echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process2)) ? $process2 : ''), $attrib);
+                        ?>                    
                         </div>
                     </div>
-                    <!-- Pno to Pno -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pno_label');?>-<?php echo lang('mm_operation_pqr_to_pno_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <?php   
-                                          $attrib = 'class="form-control select2" name="pno_id"  data-live-search="true" data-width="100%"  id="pno_id"';
-                                          echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
-                                        ?> 
-                                        <?PHP if(form_error('pno_id')){ echo '<span class="help-block">'.form_error('pno_id').'</span>';} ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <?php   
-                                          $attrib = 'class="form-control select2" name="to_pno_id"  data-live-search="true" data-width="100%"  id="to_pno_id"';
-                                          echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
-                                        ?> 
-                                        <?PHP if(form_error('to_pno_id')){ echo '<span class="help-block">'.form_error('to_pno_id').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Welding Process 3 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welding_process_3_label');?></label>
+                        <?php   
+                          $attrib = 'class="form-control select2 block1_process" name="process3" data-live-search="true" data-width="100%"  id="process3"';
+                          echo form_dropdown('process_id', $drop_menu_process, set_value('process_id', (isset($process3)) ? $process3 : ''), $attrib);
+                        ?> 
                         </div>
                     </div>
-                    <!-- Group NO to Group No -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_group_no_label');?>-<?php echo lang('mm_operation_pqr_to_group_no_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_group_no_label');?>" id="group_no" name="group_no" value="<?php echo $group_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('group_no')){ echo '<span class="help-block">'.form_error('group_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_to_group_no_label');?>" id="to_group_no" name="to_group_no" value="<?php echo $to_group_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('to_group_no')){ echo '<span class="help-block">'.form_error('to_group_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Types 1 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('type_id1')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_1_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="type_id1" data-live-search="true" data-width="100%"  id="type_id1"';
+                          echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
+                        ?>
+                        <?PHP if(form_error('type_id1')){ echo '<span class="help-block">'.form_error('type_id1').'</span>';} ?>
                         </div>
                     </div>
-                    <!-- Material Specification -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_material_spec_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="material_spe" name="material_spe" value="<?php echo $material_spe ;?>" autocomplete="off">
-                                        <?PHP if(form_error('material_spe')){ echo '<span class="help-block">'.form_error('material_spe').'</span>';} ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="to_material_spe" name="to_material_spe" value="<?php echo $to_material_spe ;?>" autocomplete="off">
-                                        <?PHP if(form_error('to_material_spe')){ echo '<span class="help-block">'.form_error('to_material_spe').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Types2 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_2_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="type_id2" data-live-search="true" data-width="100%"  id="type_id2"';
+                          echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
+                        ?>
                         </div>
                     </div>
-                    <!-- Type or Grade or UNS Number -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_tgu_no_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="tgu_no" name="tgu_no" value="<?php echo $tgu_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('tgu_no')){ echo '<span class="help-block">'.form_error('tgu_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="to_tgu_no" name="to_tgu_no" value="<?php echo $to_tgu_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('to_tgu_no')){ echo '<span class="help-block">'.form_error('to_tgu_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Types3 -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_3_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="type_id3" data-live-search="true" data-width="100%"  id="type_id3"';
+                          echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
+                        ?>
                         </div>
                     </div>
-                    <!-- Diameter of test Coupon -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_diameter_test_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-8 col-xs-8">
-                                    <div class="form-group">
-                                        <?php   
-                                          $attrib = 'class="form-control select2" name="diameter_id"  data-live-search="true" data-width="100%"  id="diameter_id"';
-                                          echo form_dropdown('diameter_id', $drop_menu_diameter, set_value('diameter_id', (isset($diameter_id)) ? $diameter_id : ''), $attrib);
-                                        ?> 
-                                        <?PHP if(form_error('diameter_id')){ echo '<span class="help-block">'.form_error('diameter_id').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Thickness of test Coupon -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thickness_test_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thickness_test_label');?>" id="thickness_test" name="thickness_test" value="<?php echo $thickness_test ;?>" autocomplete="off">
-                                        <?PHP if(form_error('thickness_test')){ echo '<span class="help-block">'.form_error('thickness_test').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Heat No. -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_no_label');?><span class="text-danger">*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="base_heat_no" name="base_heat_no" value="<?php echo $base_heat_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('base_heat_no')){ echo '<span class="help-block">'.form_error('base_heat_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="base_to_heat_no" name="base_to_heat_no" value="<?php echo $base_to_heat_no ;?>" autocomplete="off">
-                                        <?PHP if(form_error('base_to_heat_no')){ echo '<span class="help-block">'.form_error('base_to_heat_no').'</span>';} ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Code -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('code_id')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_code_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="code_id" multiple="multiple" data-live-search="true" data-width="100%"  id="code_id"';
+                          echo form_dropdown('code_id', $drop_menu_code, set_value('code_id', (isset($code_id)) ? $code_id : ''), $attrib);
+                        ?>
+                        <?PHP if(form_error('code_id')){ echo '<span class="help-block">'.form_error('code_id').'</span>';} ?>
                         </div>
                     </div>
                     <!-- Others -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_others_label');?></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="base_others" name="base_others" value="<?php echo $base_others ;?>" autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="base_to_others" name="base_to_others" value="<?php echo $base_to_others ;?>" autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="pqr_other" name="pqr_other" value="<?php echo $pqr_other ;?>" autocomplete="off">
                         </div>
                     </div>
-                    <button class="btn btn-info pull-right" type="button" id="btnBasemetals">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="2"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+
+
+                    <!-- Post Weld Heat Treatment get yes or no -->
+                    <!-- <div class="col-sm-3 col-xs-3">
+                        <div class="form-group <?PHP if(form_error('pwht')){ echo 'has-error';} ?>">
+                            <label class="display-block">Pre Payment <span class="text-danger">*</span></label>
+                            <label class="radio-inline">
+                                <div class="choice"><input type="radio" name="pwht" class="styled" <?php if($pwht=='1'){?> checked="checked"  <?php }?>value="1" > Yes
+                                </div>  
+                            </label>
+                            <label class="radio-inline">
+                                <div class="choice"><input type="radio" name="pwht" class="styled" checked="" <?php if($pwht=='0'){?> checked="checked" <?php }?>  value="0">No
+                                </div>                                                          
+                            </label>
+                        </div>
+                    </div> -->
+                    <!-- Next button -->
+                    <div class="col-sm-12 col-xs-12">
+                        <button class="btn btn-info pull-right" type="button"  id="btnCompanyDetails" data-block="1" data-block-name="companydetails">Save & Next</button>
+                    </div>
                 </div>
-            </div>
-            <!-- Filler Metal -->
-            <div class="row blockdiv hide" id="filler">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_filler_metals_label');?></h3>
+                <!-- Block Joints -->
+                <div class="row blockdiv hide" id="joints">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                        <h3 class="box-title">
+                            <?php echo lang('mm_operation_pqr_joints_label');?>
+                            <button class="btn btn-primary pull-right img-btn" type="button" id="addJointImage">Add Image</button> 
+                        </h3>
+                    </div>
+                    <!-- joints value -->
+                    <?php if(isset($value) &&  !empty($value)){ 
+                        foreach($joints_a as $key => $value){
+                    ?>
+
+                    <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="<?php echo $key+1 ?>" id="jointblock<?php echo $key+1 ?>">
+                        <!-- get joint value block -->
+                        <div class="col-sm-4 col-xs-4">                        
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_A"><?php echo lang('mm_operation_pqr_joint_groove_angle_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_A" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" name="joints_A[]" value="<?php echo $value ?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_B"><?php echo lang('mm_operation_pqr_joint_base_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_B" placeholder="<?php echo lang('mm_operation_pqr_joint_base_label');?>" name="joints_B[]" value="<?php echo $joints_b[$key] ?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_C"><?php echo lang('mm_operation_pqr_joint_root_face_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_C" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>"  name="joints_C[]" value="<?php echo $joints_c[$key] ?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_D"><?php echo lang('mm_operation_pqr_joint_root_gap_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_D" placeholder="<?php echo lang('mm_operation_pqr_joint_root_gap_label');?>" name="joints_D[]" value="<?php echo $joints_d[$key] ?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_other"><?php echo lang('mm_operation_pqr_joint_other_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_other" placeholder="<?php echo lang('mm_operation_pqr_joint_other_label');?>"  name="joints_other[]" value="<?php echo $joints_other[$key] ?>" autocomplete="off">
+                                    </div>
+                                </div>
+                                <!-- displaying add button -->
+                                <!-- <div class="col-sm-2 col-xs-2">
+                                    <span><button type="button" class="btn btn-success addVariable addbutton" data-id="3">+</button></span>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- get joints image block -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-12 col-xs-12 joint_img_block">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_joint_image_label');?> <?php echo lang('mm_common_logo_size_label');?> <span class="text-danger">*</span></label>
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <div class="form-control" data-trigger="fileinput"> 
+                                            <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
+                                        </div>
+                                        <span class="input-group-addon btn btn-default btn-file"> 
+                                            <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> 
+                                            <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
+                                            <input type="file" id="joint_photo<?php echo $key+1 ?>" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
+                                        </span> 
+                                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
+                                    </div>
+                                    <?php if($joints_image[$key]!=''){ ?> <img id="old_joint_img<?php echo $key ?>" src="<?php echo config_item('image_url').$joints_image[$key];?>" height="200" width="200"> <?php }?>
+                                </div>
+                                <img src="" class="joint_image_display joint_photo<?php echo $key+1 ?>" width="200px" />
+                                <input type="hidden" class="old_joint_image" value="<?php echo $joints_image[$key];?>">
+                            </div>
+                        </div>
+                        <!-- close joint block -->
+                        <div class="col-sm-2 col-xs-6">
+                            <button type="button" class="btn btn-danger pull-right closeJointBlock">X</button>
+                        </div>
+                    </div>
+
+                    <?php
+                    }
+                    }else{
+                    ?>
+                    <div class="col-sm-12 col-xs-12 jointblockrepeat" data-rel="1" id="jointblock1">
+                        <!-- get joint value block -->
+                        <div class="col-sm-4 col-xs-4">                        
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_A"><?php echo lang('mm_operation_pqr_joint_groove_angle_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_A" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>" name="joints_A[]" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_B"><?php echo lang('mm_operation_pqr_joint_base_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_B" placeholder="<?php echo lang('mm_operation_pqr_joint_base_label');?>" name="joints_B[]" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_C"><?php echo lang('mm_operation_pqr_joint_root_face_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_C" placeholder="<?php echo lang('mm_operation_pqr_joint_groove_angle_label');?>"  name="joints_C[]" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_D"><?php echo lang('mm_operation_pqr_joint_root_gap_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_D" placeholder="<?php echo lang('mm_operation_pqr_joint_root_gap_label');?>" name="joints_D[]" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row variableDiv">
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <label for="joints_other"><?php echo lang('mm_operation_pqr_joint_other_label');?></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control joints_other" placeholder="<?php echo lang('mm_operation_pqr_joint_other_label');?>"  name="joints_other[]" value="" autocomplete="off">
+                                    </div>
+                                </div>
+                                <!-- displaying add button -->
+                                <!-- <div class="col-sm-2 col-xs-2">
+                                    <span><button type="button" class="btn btn-success addVariable addbutton" data-id="3">+</button></span>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- get joints image block -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-12 col-xs-12 joint_img_block">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_joint_image_label');?> <?php echo lang('mm_common_logo_size_label');?> <span class="text-danger">*</span></label>
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <div class="form-control" data-trigger="fileinput"> 
+                                            <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
+                                        </div>
+                                        <span class="input-group-addon btn btn-default btn-file"> 
+                                            <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> 
+                                            <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
+                                            <input type="file" id="joint_photo1" class="joints_image" name="joints_image[]" placeholder="<?php echo lang('mm_operation_pqr_joint_image_label');?>" >
+                                        </span> 
+                                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
+                                    </div>
+                                    <input type="hidden" class="old_joint_image" value=""> 
+                                </div>
+                                <img src="" class="joint_image_display joint_photo1" width="200px" />
+                            </div>
+                        </div>
+                        <!-- close joint block -->
+                        <div class="col-sm-2 col-xs-6">
+                            <button type="button" class="btn btn-danger pull-right closeJointBlock">X</button>
+                        </div>
+                    </div>
+                    <?php } ?>  
+                    <div class="col-sm-12 col-xs-12">
+                        <input type="hidden" name="joints_id" id="joints_id" />
+                        <button class="btn btn-info pull-right" type="button" id="btnJoints">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="1"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-xs-12">
-                    
-                    <table class="table table-bordered" id="mtable">
-                        <tbody>
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_process_label');?></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" class="form-control processVal" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
-                                    </td>
-                                <?php } }else{ ?>
-                                
-                                    <td>
-                                        <input type="text" class="form-control processVal" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_fno_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td data-col="2" data-val="<?= $count ?>">
-                                        <?php   
-                                          $attrib = 'class="form-control select2 fno_id" name="fno_id[]" child="1" data-live-search="true" data-width="100%" style="width:100%;" ';
-                                          echo form_dropdown('fno_id', $drop_menu_fno, set_value('fno_id', (isset($value)) ? $value : ''), $attrib);
-                                          ?> 
-                                        <?PHP if(form_error('fno_id')){ echo '<span class="help-block">'.form_error('fno_id').'</span>';} ?>
-                                    </td>
-                                <?php } }else{
-                                ?>
-                                    <td data-col="2" data-val="0">
-                                        <?php   
-                                          $attrib = 'class="form-control select2 fno_id" name="fno_id[]" child="1" data-live-search="true" data-width="100%" style="width:100%;" ';
-                                          echo form_dropdown('fno_id', $drop_menu_fno, set_value('fno_id', (isset($fno_id)) ? $fno_id : ''), $attrib);
-                                          ?> 
-                                        <?PHP if(form_error('fno_id')){ echo '<span class="help-block">'.form_error('fno_id').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($a_no as $k => $value){  $count = $k+2; ?>
+                <!-- Block Base Mentals -->
+                <div class="row blockdiv hide" id="basemetals">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="row">
+                            <!-- Company Details -->
+                            <div class="col-sm-3 col-xs-3">
+                              <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
+                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
+                                <?php   
+                                  $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
+                                  echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
+                                  ?> 
+                                <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pno to Pno -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pno_label');?>-<?php echo lang('mm_operation_pqr_to_pno_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <?php   
+                                              $attrib = 'class="form-control select2" name="pno_id"  data-live-search="true" data-width="100%"  id="pno_id"';
+                                              echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
+                                            ?> 
+                                            <?PHP if(form_error('pno_id')){ echo '<span class="help-block">'.form_error('pno_id').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <?php   
+                                              $attrib = 'class="form-control select2" name="to_pno_id"  data-live-search="true" data-width="100%"  id="to_pno_id"';
+                                              echo form_dropdown('pno_id', $drop_menu_pno, set_value('pno_id', (isset($pno_id)) ? $pno_id : ''), $attrib);
+                                            ?> 
+                                            <?PHP if(form_error('to_pno_id')){ echo '<span class="help-block">'.form_error('to_pno_id').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Group NO to Group No -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_group_no_label');?>-<?php echo lang('mm_operation_pqr_to_group_no_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_group_no_label');?>" id="group_no" name="group_no" value="<?php echo $group_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('group_no')){ echo '<span class="help-block">'.form_error('group_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_to_group_no_label');?>" id="to_group_no" name="to_group_no" value="<?php echo $to_group_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('to_group_no')){ echo '<span class="help-block">'.form_error('to_group_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Material Specification -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_material_spec_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="material_spe" name="material_spe" value="<?php echo $material_spe ;?>" autocomplete="off">
+                                            <?PHP if(form_error('material_spe')){ echo '<span class="help-block">'.form_error('material_spe').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_material_spec_label');?>" id="to_material_spe" name="to_material_spe" value="<?php echo $to_material_spe ;?>" autocomplete="off">
+                                            <?PHP if(form_error('to_material_spe')){ echo '<span class="help-block">'.form_error('to_material_spe').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Type or Grade or UNS Number -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_tgu_no_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="tgu_no" name="tgu_no" value="<?php echo $tgu_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('tgu_no')){ echo '<span class="help-block">'.form_error('tgu_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_tgu_no_label');?>" id="to_tgu_no" name="to_tgu_no" value="<?php echo $to_tgu_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('to_tgu_no')){ echo '<span class="help-block">'.form_error('to_tgu_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Diameter of test Coupon -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_diameter_test_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-8">
+                                        <div class="form-group">
+                                            <?php   
+                                              $attrib = 'class="form-control select2" name="diameter_id"  data-live-search="true" data-width="100%"  id="diameter_id"';
+                                              echo form_dropdown('diameter_id', $drop_menu_diameter, set_value('diameter_id', (isset($diameter_id)) ? $diameter_id : ''), $attrib);
+                                            ?> 
+                                            <?PHP if(form_error('diameter_id')){ echo '<span class="help-block">'.form_error('diameter_id').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Thickness of test Coupon -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thickness_test_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-8">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thickness_test_label');?>" id="thickness_test" name="thickness_test" value="<?php echo $thickness_test ;?>" autocomplete="off">
+                                            <?PHP if(form_error('thickness_test')){ echo '<span class="help-block">'.form_error('thickness_test').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Heat No. -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_no_label');?><span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="base_heat_no" name="base_heat_no" value="<?php echo $base_heat_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('base_heat_no')){ echo '<span class="help-block">'.form_error('base_heat_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_no_label');?>" id="base_to_heat_no" name="base_to_heat_no" value="<?php echo $base_to_heat_no ;?>" autocomplete="off">
+                                            <?PHP if(form_error('base_to_heat_no')){ echo '<span class="help-block">'.form_error('base_to_heat_no').'</span>';} ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Others -->
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_others_label');?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="base_others" name="base_others" value="<?php echo $base_others ;?>" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="base_to_others" name="base_to_others" value="<?php echo $base_to_others ;?>" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info pull-right" type="button" id="btnBasemetals">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="2"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
+                </div>
+                <!-- Filler Metal -->
+                <div class="row blockdiv hide" id="filler">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_filler_metals_label');?></h3>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        
+                        <table class="table table-bordered" id="mtable">
+                            <tbody>
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_process_label');?></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){ ?>
                                         <td>
-                                            <input type="text" class="form-control a_no" placeholder="<?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?>" name="a_no[]" value="<?php echo $value ?>" autocomplete="off">
-                                            <?PHP if(form_error('a_no')){ echo '<span class="help-block">'.form_error('a_no').'</span>';} ?>
+                                            <input type="text" class="form-control processVal" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
                                         </td>
-                                <?php }}else{ ?>
+                                    <?php } }else{ ?>
+                                    
                                         <td>
-                                            <input type="text" class="form-control a_no" placeholder="<?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?>" name="a_no[]" value="" autocomplete="off">
-                                            <?PHP if(form_error('a_no')){ echo '<span class="help-block">'.form_error('a_no').'</span>';} ?>
+                                            <input type="text" class="form-control processVal" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
                                         </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_specification_no_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
+                                    <?php }?>
+                                </tr>
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_fno_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td data-col="2" data-val="<?= $count ?>">
+                                            <?php   
+                                              $attrib = 'class="form-control select2 fno_id" name="fno_id[]" child="1" data-live-search="true" data-width="100%" style="width:100%;" ';
+                                              echo form_dropdown('fno_id', $drop_menu_fno, set_value('fno_id', (isset($value)) ? $value : ''), $attrib);
+                                              ?> 
+                                            <?PHP if(form_error('fno_id')){ echo '<span class="help-block">'.form_error('fno_id').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{
+                                    ?>
+                                        <td data-col="2" data-val="0">
+                                            <?php   
+                                              $attrib = 'class="form-control select2 fno_id" name="fno_id[]" child="1" data-live-search="true" data-width="100%" style="width:100%;" ';
+                                              echo form_dropdown('fno_id', $drop_menu_fno, set_value('fno_id', (isset($fno_id)) ? $fno_id : ''), $attrib);
+                                              ?> 
+                                            <?PHP if(form_error('fno_id')){ echo '<span class="help-block">'.form_error('fno_id').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($a_no as $k => $value){  $count = $k+2; ?>
+                                            <td>
+                                                <input type="text" class="form-control a_no" placeholder="<?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?>" name="a_no[]" value="<?php echo $value ?>" autocomplete="off">
+                                                <?PHP if(form_error('a_no')){ echo '<span class="help-block">'.form_error('a_no').'</span>';} ?>
+                                            </td>
+                                    <?php }}else{ ?>
+                                            <td>
+                                                <input type="text" class="form-control a_no" placeholder="<?php echo lang('mm_operation_pqr_weld_metal_analysis_no_label');?>" name="a_no[]" value="" autocomplete="off">
+                                                <?PHP if(form_error('a_no')){ echo '<span class="help-block">'.form_error('a_no').'</span>';} ?>
+                                            </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_specification_no_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="<?php echo $sfa_no[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('sfa_no')){ echo '<span class="help-block">'.form_error('sfa_no').'</span>';} ?>
+                                        </td>
+                                    <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('sfa_no')){ echo '<span class="help-block">'.form_error('sfa_no').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_aws_classfication_no_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="<?php echo $aws_classfication[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('aws_classfication')){ echo '<span class="help-block">'.form_error('aws_classfication').'</span>';} ?>
+                                        </td>
+                                    <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('aws_classfication')){ echo '<span class="help-block">'.form_error('aws_classfication').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_size_filler_metal_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="<?php echo $size_filler_metal[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('size_filler_metal')){ echo '<span class="help-block">'.form_error('size_filler_metal').'</span>';} ?>
+                                        </td>
+                                    <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('size_filler_metal')){ echo '<span class="help-block">'.form_error('size_filler_metal').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="<?php echo $filler_metal_product[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
+                                        </td>
+                                    <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="<?php echo $filler_supply_metal[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filler_supply_metal')){ echo '<span class="help-block">'.form_error('filler_supply_metal').'</span>';} ?>
+                                        </td>
+                                        <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('filler_supply_metal')){ echo '<span class="help-block">'.form_error('filler_supply_metal').'</span>';} ?>
+                                        </td>
+                                        <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="<?php echo $filler_electrode[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filler_electrode')){ echo '<span class="help-block">'.form_error('filler_electrode').'</span>';} ?>
+                                        </td>
+                                    <?php }}else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('filler_electrode')){ echo '<span class="help-block">'.form_error('filler_electrode').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                    
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="<?php echo $filler_flux_type[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filler_flux_type')){ echo '<span class="help-block">'.form_error('filler_flux_type').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('filler_flux_type')){ echo '<span class="help-block">'.form_error('filler_flux_type').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_trade_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){   ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="<?php echo $filler_flux_trade[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filler_flux_trade')){ echo '<span class="help-block">'.form_error('filler_flux_trade').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="" autocomplete="off">
+                                            <?PHP if(form_error('filler_flux_trade')){ echo '<span class="help-block">'.form_error('filler_flux_trade').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
                                     foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="<?php echo $sfa_no[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('sfa_no')){ echo '<span class="help-block">'.form_error('sfa_no').'</span>';} ?>
-                                    </td>
-                                <?php }}else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control sfa_no" placeholder="<?php echo lang('mm_operation_pqr_specification_no_label');?>" name="sfa_no[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('sfa_no')){ echo '<span class="help-block">'.form_error('sfa_no').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_aws_classfication_no_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="<?php echo $aws_classfication[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('aws_classfication')){ echo '<span class="help-block">'.form_error('aws_classfication').'</span>';} ?>
-                                    </td>
-                                <?php }}else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control aws_classfication" placeholder="<?php echo lang('mm_operation_pqr_aws_classfication_no_label');?>"  name="aws_classfication[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('aws_classfication')){ echo '<span class="help-block">'.form_error('aws_classfication').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_size_filler_metal_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="<?php echo $size_filler_metal[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('size_filler_metal')){ echo '<span class="help-block">'.form_error('size_filler_metal').'</span>';} ?>
-                                    </td>
-                                <?php }}else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control size_filler_metal" placeholder="<?php echo lang('mm_operation_pqr_size_filler_metal_label');?>"  name="size_filler_metal[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('size_filler_metal')){ echo '<span class="help-block">'.form_error('size_filler_metal').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="<?php echo $filler_metal_product[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
-                                    </td>
-                                <?php }}else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_metal_product" placeholder="<?php echo lang('mm_operation_pqr_filler_metal_product_form_label');?>"  name="filler_metal_product[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('filler_metal_product')){ echo '<span class="help-block">'.form_error('filler_metal_product').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="<?php echo $filler_supply_metal[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('filler_supply_metal')){ echo '<span class="help-block">'.form_error('filler_supply_metal').'</span>';} ?>
-                                    </td>
+                                        <td>
+                                            <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="<?php echo $filer_weld_thickness[$k]?>" autocomplete="off">
+                                            <?PHP if(form_error('filer_weld_thickness')){ echo '<span class="help-block">'.form_error('filer_weld_thickness').'</span>';} ?>
+                                        </td>
                                     <?php }}else{ ?>
                                     <td>
-                                        <input type="text" class="form-control filler_supply_metal" placeholder="<?php echo lang('mm_operation_pqr_filler_supply_metal_filler_label');?>"  name="filler_supply_metal[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('filler_supply_metal')){ echo '<span class="help-block">'.form_error('filler_supply_metal').'</span>';} ?>
-                                    </td>
-                                    <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="<?php echo $filler_electrode[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('filler_electrode')){ echo '<span class="help-block">'.form_error('filler_electrode').'</span>';} ?>
-                                    </td>
-                                <?php }}else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_electrode" placeholder="<?php echo lang('mm_operation_pqr_filler_Electrode_flux_label');?>"  name="filler_electrode[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('filler_electrode')){ echo '<span class="help-block">'.form_error('filler_electrode').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                                
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="<?php echo $filler_flux_type[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('filler_flux_type')){ echo '<span class="help-block">'.form_error('filler_flux_type').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_flux_type" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_type_form_label');?>"  name="filler_flux_type[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('filler_flux_type')){ echo '<span class="help-block">'.form_error('filler_flux_type').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_flux_trade_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){   ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="<?php echo $filler_flux_trade[$k]?>" autocomplete="off">
-                                        <?PHP if(form_error('filler_flux_trade')){ echo '<span class="help-block">'.form_error('filler_flux_trade').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" class="form-control filler_flux_trade" placeholder="<?php echo lang('mm_operation_pqr_filler_flux_trade_label');?>"  name="filler_flux_trade[]" value="" autocomplete="off">
-                                        <?PHP if(form_error('filler_flux_trade')){ echo '<span class="help-block">'.form_error('filler_flux_trade').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="<?php echo $filer_weld_thickness[$k]?>" autocomplete="off">
+                                        <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="" autocomplete="off">
                                         <?PHP if(form_error('filer_weld_thickness')){ echo '<span class="help-block">'.form_error('filer_weld_thickness').'</span>';} ?>
                                     </td>
-                                <?php }}else{ ?>
-                                <td>
-                                    <input type="text" class="form-control filer_weld_thickness" placeholder="<?php echo lang('mm_operation_pqr_filler_weld_thickness_label');?>"  name="filer_weld_thickness[]" value="" autocomplete="off">
-                                    <?PHP if(form_error('filer_weld_thickness')){ echo '<span class="help-block">'.form_error('filer_weld_thickness').'</span>';} ?>
-                                </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_lot_no_label');?><span class="text-danger">*</span></label></td>
-                                 <?php if(isset($value) &&  !empty($value)){ 
-                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
-                                <td>
-                                    <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="<?php echo $lot_no[$k]?>" autocomplete="off">
-                                    <?PHP if(form_error('lot_no')){ echo '<span class="help-block">'.form_error('lot_no').'</span>';} ?>
-                                </td>
-                                <?php } }else{ ?>
-                                <td>
-                                    <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="" autocomplete="off">
-                                    <?PHP if(form_error('lot_no')){ echo '<span class="help-block">'.form_error('lot_no').'</span>';} ?>
-                                </td>
-                                <?php }?>
-                            </tr> 
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_metal_other_label');?></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_lot_no_label');?><span class="text-danger">*</span></label></td>
+                                     <?php if(isset($value) &&  !empty($value)){ 
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
                                     <td>
-                                        <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="<?php echo $fille_other[$k]?>" autocomplete="off">
+                                        <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="<?php echo $lot_no[$k]?>" autocomplete="off">
+                                        <?PHP if(form_error('lot_no')){ echo '<span class="help-block">'.form_error('lot_no').'</span>';} ?>
                                     </td>
-                                <?php } } else{ ?>
+                                    <?php } }else{ ?>
                                     <td>
-                                        <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="" autocomplete="off">
+                                        <input type="text" class="form-control lot_no" placeholder="<?php echo lang('mm_operation_pqr_lot_no_label');?>"  name="lot_no[]" value="" autocomplete="off">
+                                        <?PHP if(form_error('lot_no')){ echo '<span class="help-block">'.form_error('lot_no').'</span>';} ?>
                                     </td>
-                                <?php }?>
-                            </tr>
-                        </tbody>
+                                    <?php }?>
+                                </tr> 
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_metal_other_label');?></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                    foreach($fno_id as $k => $value){  $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="<?php echo $fille_other[$k]?>" autocomplete="off">
+                                        </td>
+                                    <?php } } else{ ?>
+                                        <td>
+                                            <input type="text" class="form-control fille_other" placeholder="<?php echo lang('mm_operation_pqr_metal_other_label');?>"  name="fille_other[]" value="" autocomplete="off">
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="hidden" name="filler_id" id="filler_id" />
+                    <button class="btn btn-info pull-right" type="button" id="btnFillermetals">Save & Next</button>
+                    <button class="btn btn-warning pull-left previous" type="button" data-btn="3"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                </div>
+                <!-- position preheat -->
+                <div class="row blockdiv hide" id="position_preheat">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_position_label');?></h3>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('position_id')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_position_groove_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="position_id" data-live-search="true" data-width="100%"  id="position_id"';
+                          echo form_dropdown('position_id', $drop_menu_position, set_value('position_id', (isset($position_id)) ? $position_id : ''), $attrib);
+                        ?>
+                        <?PHP if(form_error('position_id')){ echo '<span class="help-block">'.form_error('position_id').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('weld_progression')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_weld_progression_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_weld_progression_label');?>" id="weld_progression" name="weld_progression" value="<?php echo $weld_progression ;?>" autocomplete="off">
+                        <?PHP if(form_error('weld_progression')){ echo '<span class="help-block">'.form_error('weld_progression').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('position_other')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_others_label');?></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="position_other" name="position_other" value="<?php echo $position_other ;?>" autocomplete="off">
+                        <?PHP if(form_error('position_other')){ echo '<span class="help-block">'.form_error('position_other').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_preheat_label');?></h3>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('preheat_temp_min')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_preheat_temp_min_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_preheat_temp_min_label');?>" id="preheat_temp_min" name="preheat_temp_min" value="<?php echo $preheat_temp_min ;?>" autocomplete="off">
+                        <?PHP if(form_error('preheat_temp_min')){ echo '<span class="help-block">'.form_error('preheat_temp_min').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('interpass_temp_max')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_interpass_temp_max_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_interpass_temp_max_label');?>" id="interpass_temp_max" name="interpass_temp_max" value="<?php echo $interpass_temp_max ;?>" autocomplete="off">
+                        <?PHP if(form_error('interpass_temp_max')){ echo '<span class="help-block">'.form_error('interpass_temp_max').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnposition_preheat">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="4"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
+                </div>
+                <!-- Post Weld Heat Treatment -->
+                <div class="row blockdiv hide" id="post">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></h3>
+                    </div>
+
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('temp_range')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_temp_range_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_temp_range_label');?>" id="temp_range" name="temp_range" value="<?php echo $temp_range ;?>" autocomplete="off">
+                        <?PHP if(form_error('temp_range')){ echo '<span class="help-block">'.form_error('temp_range').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('soak_period')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_soak_period_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_soak_period_label');?>" id="soak_period" name="soak_period" value="<?php echo $soak_period ;?>" autocomplete="off">
+                        <?PHP if(form_error('soak_period')){ echo '<span class="help-block">'.form_error('soak_period').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('heat_rate_up_to')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_rate_up_to_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_rate_up_to_label');?>" id="heat_rate_up_to" name="heat_rate_up_to" value="<?php echo $heat_rate_up_to ;?>" autocomplete="off">
+                        <?PHP if(form_error('heat_rate_up_to')){ echo '<span class="help-block">'.form_error('heat_rate_up_to').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('heat_rate_from')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_rate_from_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_rate_from_label');?>" id="heat_rate_from" name="heat_rate_from" value="<?php echo $heat_rate_from ;?>" autocomplete="off">
+                        <?PHP if(form_error('heat_rate_from')){ echo '<span class="help-block">'.form_error('heat_rate_from').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('control_heat_rate')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_control_heat_rate_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_control_heat_rate_label');?>" id="control_heat_rate" name="control_heat_rate" value="<?php echo $control_heat_rate ;?>" autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('cooling_rate')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_control_cooling_rate_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_control_cooling_rate_label');?>" id="cooling_rate" name="cooling_rate" value="<?php echo $cooling_rate ;?>" autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('post_heat_other')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="post_heat_other" name="post_heat_other" value="<?php echo $post_heat_other ;?>" autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnpost">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="5"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
+                </div>
+                <!-- Gas -->
+                <div class="row blockdiv hide" id="gas">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_gas_label');?></h3>
+                    </div>
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <input type="text" class="form-control processGas" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" name="process_in_gas" value="<?php echo $process_in_gas ;?>" autocomplete="off" disabled>
+                            
+                          </th>
+                          <th>
+                            <?php echo lang('mm_operation_pqr_gas_td_label');?>
+                          </th>
+                          <th>
+                            <?php echo lang('mm_operation_pqr_post_others_label');?>
+                          </th>
+                          <th>
+                            <?php echo lang('mm_operation_pqr_flow_rate_cfh_label');?>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <?php echo lang('mm_operation_pqr_shielding_label');?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="shielding_gas" name="shielding_gas" value="<?php echo $shielding_gas ;?>" autocomplete="off">
+                            <?PHP if(form_error('shielding_gas')){ echo '<span class="help-block">'.form_error('shielding_gas').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="shielding_percent" name="shielding_percent" value="<?php echo $shielding_percent ;?>" autocomplete="off">
+                            <?PHP if(form_error('shielding_percent')){ echo '<span class="help-block">'.form_error('shielding_percent').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="shielding_rate" name="shielding_rate" value="<?php echo $shielding_rate ;?>" autocomplete="off">
+                            <?PHP if(form_error('shielding_rate')){ echo '<span class="help-block">'.form_error('shielding_rate').'</span>';} ?>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <?php echo lang('mm_operation_pqr_backing_label');?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="backing_gas" name="backing_gas" value="<?php echo $backing_gas ;?>" autocomplete="off">
+                            <?PHP if(form_error('backing_gas')){ echo '<span class="help-block">'.form_error('backing_gas').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="backing_percent" name="backing_percent" value="<?php echo $backing_percent ;?>" autocomplete="off">
+                            <?PHP if(form_error('backing_percent')){ echo '<span class="help-block">'.form_error('backing_percent').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="backing_rate" name="backing_rate" value="<?php echo $backing_rate ;?>" autocomplete="off">
+                            <?PHP if(form_error('backing_rate')){ echo '<span class="help-block">'.form_error('backing_rate').'</span>';} ?>
+                          </td>
+                        </tr>
+                          <td>
+                            <?php echo lang('mm_operation_pqr_trailing_label');?>
+                          </td>
+                         <td>
+                            <input type="text" class="form-control" id="trailing_gas" name="trailing_gas" value="<?php echo $trailing_gas ;?>" autocomplete="off">
+                            <?PHP if(form_error('trailing_gas')){ echo '<span class="help-block">'.form_error('trailing_gas').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="trailing_percent" name="trailing_percent" value="<?php echo $trailing_percent ;?>" autocomplete="off">
+                            <?PHP if(form_error('trailing_percent')){ echo '<span class="help-block">'.form_error('trailing_percent').'</span>';} ?>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="trailing_rate" name="trailing_rate" value="<?php echo $trailing_rate ;?>" autocomplete="off">
+                            <?PHP if(form_error('trailing_rate')){ echo '<span class="help-block">'.form_error('trailing_rate').'</span>';} ?>
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
-                </div>
-                <input type="hidden" name="filler_id" id="filler_id" />
-                <button class="btn btn-info pull-right" type="button" id="btnFillermetals">Save & Next</button>
-                <button class="btn btn-warning pull-left previous" type="button" data-btn="3"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-            </div>
-            <!-- position preheat -->
-            <div class="row blockdiv hide" id="position_preheat">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_position_label');?></h3>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('position_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_position_groove_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="position_id" data-live-search="true" data-width="100%"  id="position_id"';
-                      echo form_dropdown('position_id', $drop_menu_position, set_value('position_id', (isset($position_id)) ? $position_id : ''), $attrib);
-                    ?>
-                    <?PHP if(form_error('position_id')){ echo '<span class="help-block">'.form_error('position_id').'</span>';} ?>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btngas">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="6"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
                     </div>
                 </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('weld_progression')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_weld_progression_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_weld_progression_label');?>" id="weld_progression" name="weld_progression" value="<?php echo $weld_progression ;?>" autocomplete="off">
-                    <?PHP if(form_error('weld_progression')){ echo '<span class="help-block">'.form_error('weld_progression').'</span>';} ?>
+                <!-- electrical character -->
+                <div class="row blockdiv hide" id="electrical">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_electrical_character_label');?></h3>
                     </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('position_other')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_others_label');?></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_others_label');?>" id="position_other" name="position_other" value="<?php echo $position_other ;?>" autocomplete="off">
-                    <?PHP if(form_error('position_other')){ echo '<span class="help-block">'.form_error('position_other').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_preheat_label');?></h3>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('preheat_temp_min')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_preheat_temp_min_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_preheat_temp_min_label');?>" id="preheat_temp_min" name="preheat_temp_min" value="<?php echo $preheat_temp_min ;?>" autocomplete="off">
-                    <?PHP if(form_error('preheat_temp_min')){ echo '<span class="help-block">'.form_error('preheat_temp_min').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('interpass_temp_max')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_interpass_temp_max_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_interpass_temp_max_label');?>" id="interpass_temp_max" name="interpass_temp_max" value="<?php echo $interpass_temp_max ;?>" autocomplete="off">
-                    <?PHP if(form_error('interpass_temp_max')){ echo '<span class="help-block">'.form_error('interpass_temp_max').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btnposition_preheat">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="4"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-            </div>
-            <!-- Post Weld Heat Treatment -->
-            <div class="row blockdiv hide" id="post">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></h3>
-                </div>
 
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('temp_range')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_temp_range_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_temp_range_label');?>" id="temp_range" name="temp_range" value="<?php echo $temp_range ;?>" autocomplete="off">
-                    <?PHP if(form_error('temp_range')){ echo '<span class="help-block">'.form_error('temp_range').'</span>';} ?>
+                    <div class="col-sm-12 col-xs-12">
+                        <table class="table table-bordered" id="electrical_mtab">
+                            <tbody>
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_process_label');?></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_current as $k => $value){ $count = $k+2; ?>
+                                        <td>
+                                            <input type="text" name="electric_process[]" class="form-control electric_process" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="electric_process[]" class="form-control electric_process" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_currnet_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_current as $k => $value){ $count = $k+2; ?>
+                                        <td data-col="1" data-val="<?= $count ?>">
+                                            <input type="text" name="elec_current[]" class="form-control elec_current" placeholder="<?php echo lang('mm_operation_pqr_elec_currnet_label');?>" value="<?php echo $value; ?>" name="elec_current[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_current')){ echo '<span class="help-block">'.form_error('elec_current').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td data-col="1" data-val="<?= $count ?>">
+                                            <input type="text" name="elec_current[]" class="form-control elec_current" placeholder="<?php echo lang('mm_operation_pqr_elec_currnet_label');?>" name="elec_current[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_current')){ echo '<span class="help-block">'.form_error('elec_current').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_prolarity_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_prolarity as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_prolarity[]" class="form-control elec_prolarity" placeholder="<?php echo lang('mm_operation_pqr_elec_prolarity_label');?>" name="elec_prolarity[]" value="<?php echo $value; ?>" autocomplete="off">
+                                            <?PHP if(form_error('elec_prolarity')){ echo '<span class="help-block">'.form_error('elec_prolarity').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_prolarity[]" class="form-control elec_prolarity" placeholder="<?php echo lang('mm_operation_pqr_elec_prolarity_label');?>" name="elec_prolarity[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_prolarity')){ echo '<span class="help-block">'.form_error('elec_prolarity').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_amps_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_amps as $k => $value){ ?>
+                                        <td>
+                                            <input type="text"  name="elec_amps[]" class="form-control elec_amps" placeholder="<?php echo lang('mm_operation_pqr_elec_amps_label');?>" name="elec_amps[]"  value="<?php echo $value; ?>" autocomplete="off">
+                                            <?PHP if(form_error('elec_amps')){ echo '<span class="help-block">'.form_error('elec_amps').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text"  name="elec_amps[]" class="form-control elec_amps" placeholder="<?php echo lang('mm_operation_pqr_elec_amps_label');?>" name="elec_amps[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_amps')){ echo '<span class="help-block">'.form_error('elec_amps').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_volts_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_volts as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_volts[]" class="form-control elec_volts" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_volts_label');?>"  name="elec_volts[]" autocomplete="off">
+                                            <?PHP if(form_error('elec_volts')){ echo '<span class="help-block">'.form_error('elec_volts').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_volts[]" class="form-control elec_volts" placeholder="<?php echo lang('mm_operation_pqr_elec_volts_label');?>"  name="elec_volts[]" autocomplete="off">
+                                            <?PHP if(form_error('elec_volts')){ echo '<span class="help-block">'.form_error('elec_volts').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_waveform_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_waveform as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_waveform[]" class="form-control elec_waveform" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_waveform_label');?>"  name="elec_waveform[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_waveform')){ echo '<span class="help-block">'.form_error('elec_waveform').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_waveform[]" class="form-control elec_waveform" placeholder="<?php echo lang('mm_operation_pqr_elec_waveform_label');?>"  name="elec_waveform[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_waveform')){ echo '<span class="help-block">'.form_error('elec_waveform').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_power_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_power as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_power[]" class="form-control elec_power" placeholder="<?php echo lang('mm_operation_pqr_elec_power_label');?>"  name="elec_power[]" value="<?php echo $value; ?>" autocomplete="off">
+                                            <?PHP if(form_error('elec_power')){ echo '<span class="help-block">'.form_error('elec_power').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_power[]" class="form-control elec_power" placeholder="<?php echo lang('mm_operation_pqr_elec_power_label');?>"  name="elec_power[]" autocomplete="off">
+                                            <?PHP if(form_error('elec_power')){ echo '<span class="help-block">'.form_error('elec_power').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_arc_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_arc as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_arc[]" class="form-control elec_arc" placeholder="<?php echo lang('mm_operation_pqr_elec_arc_label');?>"  name="elec_arc[]"  value="<?php echo $value; ?>" autocomplete="off">
+                                            <?PHP if(form_error('elec_arc')){ echo '<span class="help-block">'.form_error('elec_arc').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_arc[]" class="form-control elec_arc" placeholder="<?php echo lang('mm_operation_pqr_elec_arc_label');?>"  name="elec_arc[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_arc')){ echo '<span class="help-block">'.form_error('elec_arc').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_weld_bed_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_weld_bed as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_weld_bed[]" class="form-control elec_weld_bed" placeholder="<?php echo lang('mm_operation_pqr_elec_weld_bed_label');?>"  name="elec_weld_bed[]" value="<?php echo $value; ?>" autocomplete="off">
+                                            <?PHP if(form_error('elec_weld_bed')){ echo '<span class="help-block">'.form_error('elec_weld_bed').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_weld_bed[]" class="form-control elec_weld_bed" placeholder="<?php echo lang('mm_operation_pqr_elec_weld_bed_label');?>"  name="elec_weld_bed[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_weld_bed')){ echo '<span class="help-block">'.form_error('elec_weld_bed').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_type_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($fno_id as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_type[]" class="form-control elec_type" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_type_label');?>"  name="elec_type[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_type')){ echo '<span class="help-block">'.form_error('elec_type').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_type[]" class="form-control elec_type" placeholder="<?php echo lang('mm_operation_pqr_elec_type_label');?>"  name="elec_type[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_type')){ echo '<span class="help-block">'.form_error('elec_type').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_size_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_size as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_size[]" class="form-control elec_size" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_size_label');?>"  name="elec_size[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_size')){ echo '<span class="help-block">'.form_error('elec_size').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_size[]" class="form-control elec_size" placeholder="<?php echo lang('mm_operation_pqr_elec_size_label');?>"  name="elec_size[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_size')){ echo '<span class="help-block">'.form_error('elec_size').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                    
+                                </tr>
+                                 <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_mode_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_mode as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_mode[]" class="form-control elec_mode" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_mode_label');?>"  name="elec_mode[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_mode')){ echo '<span class="help-block">'.form_error('elec_mode').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_mode[]" class="form-control elec_mode" placeholder="<?php echo lang('mm_operation_pqr_elec_mode_label');?>"  name="elec_mode[]"  autocomplete="off">
+                                            <?PHP if(form_error('elec_mode')){ echo '<span class="help-block">'.form_error('elec_mode').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr> 
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_heat_label');?><span class="text-danger">*</span></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_heat as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_heat[]" class="form-control elec_heat" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_heat_label');?>"  name="elec_heat[]" autocomplete="off">
+                                            <?PHP if(form_error('elec_heat')){ echo '<span class="help-block">'.form_error('elec_heat').'</span>';} ?>
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_heat[]" class="form-control elec_heat" placeholder="<?php echo lang('mm_operation_pqr_elec_heat_label');?>"  name="elec_heat[]" autocomplete="off">
+                                            <?PHP if(form_error('elec_heat')){ echo '<span class="help-block">'.form_error('elec_heat').'</span>';} ?>
+                                        </td>
+                                    <?php }?>
+                                </tr> 
+                                <tr>
+                                    <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_other_label');?></label></td>
+                                    <?php if(isset($value) &&  !empty($value)){ 
+                                        foreach($elec_other as $k => $value){ ?>
+                                        <td>
+                                            <input type="text" name="elec_other[]" class="form-control elec_other" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_other_label');?>"  name="elec_other[]" value="<?php echo $value; ?>" autocomplete="off">
+                                        </td>
+                                    <?php } }else{ ?>
+                                        <td>
+                                            <input type="text" name="elec_other[]" class="form-control elec_other" placeholder="<?php echo lang('mm_operation_pqr_elec_other_label');?>"  name="elec_other[]" autocomplete="off">
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('soak_period')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_soak_period_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_soak_period_label');?>" id="soak_period" name="soak_period" value="<?php echo $soak_period ;?>" autocomplete="off">
-                    <?PHP if(form_error('soak_period')){ echo '<span class="help-block">'.form_error('soak_period').'</span>';} ?>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnElectrical">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="7"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
                     </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('heat_rate_up_to')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_rate_up_to_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_rate_up_to_label');?>" id="heat_rate_up_to" name="heat_rate_up_to" value="<?php echo $heat_rate_up_to ;?>" autocomplete="off">
-                    <?PHP if(form_error('heat_rate_up_to')){ echo '<span class="help-block">'.form_error('heat_rate_up_to').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('heat_rate_from')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_heat_rate_from_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_heat_rate_from_label');?>" id="heat_rate_from" name="heat_rate_from" value="<?php echo $heat_rate_from ;?>" autocomplete="off">
-                    <?PHP if(form_error('heat_rate_from')){ echo '<span class="help-block">'.form_error('heat_rate_from').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('control_heat_rate')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_control_heat_rate_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_control_heat_rate_label');?>" id="control_heat_rate" name="control_heat_rate" value="<?php echo $control_heat_rate ;?>" autocomplete="off">
                   </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('cooling_rate')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_control_cooling_rate_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_control_cooling_rate_label');?>" id="cooling_rate" name="cooling_rate" value="<?php echo $cooling_rate ;?>" autocomplete="off">
-                  </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('post_heat_other')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="post_heat_other" name="post_heat_other" value="<?php echo $post_heat_other ;?>" autocomplete="off">
-                  </div>
-                </div>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btnpost">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="5"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-            </div>
-            <!-- Gas -->
-            <div class="row blockdiv hide" id="gas">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_gas_label');?></h3>
-                </div>
 
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <input type="text" class="form-control processGas" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" name="process_in_gas" value="<?php echo $process_in_gas ;?>" autocomplete="off" disabled>
-                        
-                      </th>
-                      <th>
-                        <?php echo lang('mm_operation_pqr_gas_td_label');?>
-                      </th>
-                      <th>
-                        <?php echo lang('mm_operation_pqr_post_others_label');?>
-                      </th>
-                      <th>
-                        <?php echo lang('mm_operation_pqr_flow_rate_cfh_label');?>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <?php echo lang('mm_operation_pqr_shielding_label');?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="shielding_gas" name="shielding_gas" value="<?php echo $shielding_gas ;?>" autocomplete="off">
-                        <?PHP if(form_error('shielding_gas')){ echo '<span class="help-block">'.form_error('shielding_gas').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="shielding_percent" name="shielding_percent" value="<?php echo $shielding_percent ;?>" autocomplete="off">
-                        <?PHP if(form_error('shielding_percent')){ echo '<span class="help-block">'.form_error('shielding_percent').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="shielding_rate" name="shielding_rate" value="<?php echo $shielding_rate ;?>" autocomplete="off">
-                        <?PHP if(form_error('shielding_rate')){ echo '<span class="help-block">'.form_error('shielding_rate').'</span>';} ?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <?php echo lang('mm_operation_pqr_backing_label');?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="backing_gas" name="backing_gas" value="<?php echo $backing_gas ;?>" autocomplete="off">
-                        <?PHP if(form_error('backing_gas')){ echo '<span class="help-block">'.form_error('backing_gas').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="backing_percent" name="backing_percent" value="<?php echo $backing_percent ;?>" autocomplete="off">
-                        <?PHP if(form_error('backing_percent')){ echo '<span class="help-block">'.form_error('backing_percent').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="backing_rate" name="backing_rate" value="<?php echo $backing_rate ;?>" autocomplete="off">
-                        <?PHP if(form_error('backing_rate')){ echo '<span class="help-block">'.form_error('backing_rate').'</span>';} ?>
-                      </td>
-                    </tr>
-                      <td>
-                        <?php echo lang('mm_operation_pqr_trailing_label');?>
-                      </td>
-                     <td>
-                        <input type="text" class="form-control" id="trailing_gas" name="trailing_gas" value="<?php echo $trailing_gas ;?>" autocomplete="off">
-                        <?PHP if(form_error('trailing_gas')){ echo '<span class="help-block">'.form_error('trailing_gas').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="trailing_percent" name="trailing_percent" value="<?php echo $trailing_percent ;?>" autocomplete="off">
-                        <?PHP if(form_error('trailing_percent')){ echo '<span class="help-block">'.form_error('trailing_percent').'</span>';} ?>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="trailing_rate" name="trailing_rate" value="<?php echo $trailing_rate ;?>" autocomplete="off">
-                        <?PHP if(form_error('trailing_rate')){ echo '<span class="help-block">'.form_error('trailing_rate').'</span>';} ?>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btngas">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="6"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-            </div>
-            <!-- electrical character -->
-            <div class="row blockdiv hide" id="electrical">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_electrical_character_label');?></h3>
-                </div>
+                <!-- Teachniqe -->
+                <div class="row blockdiv hide" id="techniqe">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_techique_label');?></h3>
+                    </div>
 
-                <div class="col-sm-12 col-xs-12">
-                    <table class="table table-bordered" id="electrical_mtab">
-                        <tbody>
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_process_label');?></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_current as $k => $value){ $count = $k+2; ?>
-                                    <td>
-                                        <input type="text" name="electric_process[]" class="form-control electric_process" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="electric_process[]" class="form-control electric_process" placeholder="<?php echo lang('mm_operation_pqr_process_label');?>" autocomplete="off" disabled>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_currnet_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_current as $k => $value){ $count = $k+2; ?>
-                                    <td data-col="1" data-val="<?= $count ?>">
-                                        <input type="text" name="elec_current[]" class="form-control elec_current" placeholder="<?php echo lang('mm_operation_pqr_elec_currnet_label');?>" value="<?php echo $value; ?>" name="elec_current[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_current')){ echo '<span class="help-block">'.form_error('elec_current').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td data-col="1" data-val="<?= $count ?>">
-                                        <input type="text" name="elec_current[]" class="form-control elec_current" placeholder="<?php echo lang('mm_operation_pqr_elec_currnet_label');?>" name="elec_current[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_current')){ echo '<span class="help-block">'.form_error('elec_current').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_prolarity_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_prolarity as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_prolarity[]" class="form-control elec_prolarity" placeholder="<?php echo lang('mm_operation_pqr_elec_prolarity_label');?>" name="elec_prolarity[]" value="<?php echo $value; ?>" autocomplete="off">
-                                        <?PHP if(form_error('elec_prolarity')){ echo '<span class="help-block">'.form_error('elec_prolarity').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_prolarity[]" class="form-control elec_prolarity" placeholder="<?php echo lang('mm_operation_pqr_elec_prolarity_label');?>" name="elec_prolarity[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_prolarity')){ echo '<span class="help-block">'.form_error('elec_prolarity').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_amps_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_amps as $k => $value){ ?>
-                                    <td>
-                                        <input type="text"  name="elec_amps[]" class="form-control elec_amps" placeholder="<?php echo lang('mm_operation_pqr_elec_amps_label');?>" name="elec_amps[]"  value="<?php echo $value; ?>" autocomplete="off">
-                                        <?PHP if(form_error('elec_amps')){ echo '<span class="help-block">'.form_error('elec_amps').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text"  name="elec_amps[]" class="form-control elec_amps" placeholder="<?php echo lang('mm_operation_pqr_elec_amps_label');?>" name="elec_amps[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_amps')){ echo '<span class="help-block">'.form_error('elec_amps').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_volts_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_volts as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_volts[]" class="form-control elec_volts" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_volts_label');?>"  name="elec_volts[]" autocomplete="off">
-                                        <?PHP if(form_error('elec_volts')){ echo '<span class="help-block">'.form_error('elec_volts').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_volts[]" class="form-control elec_volts" placeholder="<?php echo lang('mm_operation_pqr_elec_volts_label');?>"  name="elec_volts[]" autocomplete="off">
-                                        <?PHP if(form_error('elec_volts')){ echo '<span class="help-block">'.form_error('elec_volts').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_waveform_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_waveform as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_waveform[]" class="form-control elec_waveform" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_waveform_label');?>"  name="elec_waveform[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_waveform')){ echo '<span class="help-block">'.form_error('elec_waveform').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_waveform[]" class="form-control elec_waveform" placeholder="<?php echo lang('mm_operation_pqr_elec_waveform_label');?>"  name="elec_waveform[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_waveform')){ echo '<span class="help-block">'.form_error('elec_waveform').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_power_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_power as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_power[]" class="form-control elec_power" placeholder="<?php echo lang('mm_operation_pqr_elec_power_label');?>"  name="elec_power[]" value="<?php echo $value; ?>" autocomplete="off">
-                                        <?PHP if(form_error('elec_power')){ echo '<span class="help-block">'.form_error('elec_power').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_power[]" class="form-control elec_power" placeholder="<?php echo lang('mm_operation_pqr_elec_power_label');?>"  name="elec_power[]" autocomplete="off">
-                                        <?PHP if(form_error('elec_power')){ echo '<span class="help-block">'.form_error('elec_power').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_arc_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_arc as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_arc[]" class="form-control elec_arc" placeholder="<?php echo lang('mm_operation_pqr_elec_arc_label');?>"  name="elec_arc[]"  value="<?php echo $value; ?>" autocomplete="off">
-                                        <?PHP if(form_error('elec_arc')){ echo '<span class="help-block">'.form_error('elec_arc').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_arc[]" class="form-control elec_arc" placeholder="<?php echo lang('mm_operation_pqr_elec_arc_label');?>"  name="elec_arc[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_arc')){ echo '<span class="help-block">'.form_error('elec_arc').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_weld_bed_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_weld_bed as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_weld_bed[]" class="form-control elec_weld_bed" placeholder="<?php echo lang('mm_operation_pqr_elec_weld_bed_label');?>"  name="elec_weld_bed[]" value="<?php echo $value; ?>" autocomplete="off">
-                                        <?PHP if(form_error('elec_weld_bed')){ echo '<span class="help-block">'.form_error('elec_weld_bed').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_weld_bed[]" class="form-control elec_weld_bed" placeholder="<?php echo lang('mm_operation_pqr_elec_weld_bed_label');?>"  name="elec_weld_bed[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_weld_bed')){ echo '<span class="help-block">'.form_error('elec_weld_bed').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_type_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($fno_id as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_type[]" class="form-control elec_type" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_type_label');?>"  name="elec_type[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_type')){ echo '<span class="help-block">'.form_error('elec_type').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_type[]" class="form-control elec_type" placeholder="<?php echo lang('mm_operation_pqr_elec_type_label');?>"  name="elec_type[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_type')){ echo '<span class="help-block">'.form_error('elec_type').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_size_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_size as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_size[]" class="form-control elec_size" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_size_label');?>"  name="elec_size[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_size')){ echo '<span class="help-block">'.form_error('elec_size').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_size[]" class="form-control elec_size" placeholder="<?php echo lang('mm_operation_pqr_elec_size_label');?>"  name="elec_size[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_size')){ echo '<span class="help-block">'.form_error('elec_size').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                                
-                            </tr>
-                             <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_mode_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_mode as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_mode[]" class="form-control elec_mode" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_mode_label');?>"  name="elec_mode[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_mode')){ echo '<span class="help-block">'.form_error('elec_mode').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_mode[]" class="form-control elec_mode" placeholder="<?php echo lang('mm_operation_pqr_elec_mode_label');?>"  name="elec_mode[]"  autocomplete="off">
-                                        <?PHP if(form_error('elec_mode')){ echo '<span class="help-block">'.form_error('elec_mode').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr> 
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_heat_label');?><span class="text-danger">*</span></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_heat as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_heat[]" class="form-control elec_heat" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_heat_label');?>"  name="elec_heat[]" autocomplete="off">
-                                        <?PHP if(form_error('elec_heat')){ echo '<span class="help-block">'.form_error('elec_heat').'</span>';} ?>
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_heat[]" class="form-control elec_heat" placeholder="<?php echo lang('mm_operation_pqr_elec_heat_label');?>"  name="elec_heat[]" autocomplete="off">
-                                        <?PHP if(form_error('elec_heat')){ echo '<span class="help-block">'.form_error('elec_heat').'</span>';} ?>
-                                    </td>
-                                <?php }?>
-                            </tr> 
-                            <tr>
-                                <td><label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_elec_other_label');?></label></td>
-                                <?php if(isset($value) &&  !empty($value)){ 
-                                    foreach($elec_other as $k => $value){ ?>
-                                    <td>
-                                        <input type="text" name="elec_other[]" class="form-control elec_other" value="<?php echo $value; ?>" placeholder="<?php echo lang('mm_operation_pqr_elec_other_label');?>"  name="elec_other[]" value="<?php echo $value; ?>" autocomplete="off">
-                                    </td>
-                                <?php } }else{ ?>
-                                    <td>
-                                        <input type="text" name="elec_other[]" class="form-control elec_other" placeholder="<?php echo lang('mm_operation_pqr_elec_other_label');?>"  name="elec_other[]" autocomplete="off">
-                                    </td>
-                                <?php }?>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btnElectrical">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="7"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-              </div>
-
-            <!-- Teachniqe -->
-            <div class="row blockdiv hide" id="techniqe">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_techique_label');?></h3>
-                </div>
-
-                <div class="col-sm-12 col-xs-12">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('travel_speed')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_travel_speed_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_travel_speed_label');?>" id="travel_speed" name="travel_speed" value="<?php echo $travel_speed ;?>" autocomplete="off">
-                                <?PHP if(form_error('travel_speed')){ echo '<span class="help-block">'.form_error('travel_speed').'</span>';} ?>
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('travel_speed')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_travel_speed_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_travel_speed_label');?>" id="travel_speed" name="travel_speed" value="<?php echo $travel_speed ;?>" autocomplete="off">
+                                    <?PHP if(form_error('travel_speed')){ echo '<span class="help-block">'.form_error('travel_speed').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('weave_bead')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_bead_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_bead_label');?>" id="weave_bead" name="weave_bead" value="<?php echo $weave_bead ;?>" autocomplete="off">
+                                    <?PHP if(form_error('weave_bead')){ echo '<span class="help-block">'.form_error('weave_bead').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('cupsize_id')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_orifice_gascup_size_label');?><span class="text-danger">*</span></label>
+                                    <?php   
+                                      $attrib = 'class="form-control select2" name="cupsize_id"  data-live-search="true" data-width="100%"  id="cupsize_id"';
+                                      echo form_dropdown('cupsize_id', $drop_menu_cup_size, set_value('cupsize_id', (isset($cupsize_id)) ? $cupsize_id : ''), $attrib);
+                                    ?> 
+                                    <?PHP if(form_error('cupsize_id')){ echo '<span class="help-block">'.form_error('cupsize_id').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('pass_per_side')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_s_m_pass_per_side_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_s_m_pass_per_side_label');?>" id="pass_per_side" name="pass_per_side" value="<?php echo $pass_per_side ;?>" autocomplete="off">
+                                    <?PHP if(form_error('pass_per_side')){ echo '<span class="help-block">'.form_error('pass_per_side').'</span>';} ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('weave_bead')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_bead_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_bead_label');?>" id="weave_bead" name="weave_bead" value="<?php echo $weave_bead ;?>" autocomplete="off">
-                                <?PHP if(form_error('weave_bead')){ echo '<span class="help-block">'.form_error('weave_bead').'</span>';} ?>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('s_m_electrode')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_s_m_electrode_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_s_m_electrode_label');?>" id="s_m_electrode" name="s_m_electrode" value="<?php echo $s_m_electrode ;?>" autocomplete="off">
+                                    <?PHP if(form_error('s_m_electrode')){ echo '<span class="help-block">'.form_error('s_m_electrode').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('work_distance')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_work_distance_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_work_distance_label');?>" id="work_distance" name="work_distance" value="<?php echo $work_distance ;?>" autocomplete="off">
+                                    <?PHP if(form_error('work_distance')){ echo '<span class="help-block">'.form_error('work_distance').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('cleaning_id')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_method_cleaning_label');?><span class="text-danger">*</span></label>
+                                    <?php   
+                                      $attrib = 'class="form-control select2" name="cleaning_id"  data-live-search="true" data-width="100%"  id="cleaning_id"';
+                                      echo form_dropdown('cleaning_id', $drop_menu_cleaning, set_value('cleaning_id', (isset($cleaning_id)) ? $cleaning_id : ''), $attrib);
+                                    ?> 
+                                    <?PHP if(form_error('cleaning_id')){ echo '<span class="help-block">'.form_error('cleaning_id').'</span>';} ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('thermal_process')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thermal_process_label');?><span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thermal_process_label');?>" id="thermal_process" name="thermal_process" value="<?php echo $thermal_process ;?>" autocomplete="off">
+                                    <?PHP if(form_error('thermal_process')){ echo '<span class="help-block">'.form_error('thermal_process').'</span>';} ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('cupsize_id')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_orifice_gascup_size_label');?><span class="text-danger">*</span></label>
-                                <?php   
-                                  $attrib = 'class="form-control select2" name="cupsize_id"  data-live-search="true" data-width="100%"  id="cupsize_id"';
-                                  echo form_dropdown('cupsize_id', $drop_menu_cup_size, set_value('cupsize_id', (isset($cupsize_id)) ? $cupsize_id : ''), $attrib);
-                                ?> 
-                                <?PHP if(form_error('cupsize_id')){ echo '<span class="help-block">'.form_error('cupsize_id').'</span>';} ?>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('pass_per_side')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_s_m_pass_per_side_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_s_m_pass_per_side_label');?>" id="pass_per_side" name="pass_per_side" value="<?php echo $pass_per_side ;?>" autocomplete="off">
-                                <?PHP if(form_error('pass_per_side')){ echo '<span class="help-block">'.form_error('pass_per_side').'</span>';} ?>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-3">
+                                <div class="form-group <?PHP if(form_error('techinqe_other')){ echo 'has-error';} ?>">
+                                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_teachinqe_other_label');?></label>
+                                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_teachinqe_other_label');?>" id="techinqe_other" name="techinqe_other" value="<?php echo $techinqe_other ;?>" autocomplete="off">
+                                    <?PHP if(form_error('techinqe_other')){ echo '<span class="help-block">'.form_error('techinqe_other').'</span>';} ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('s_m_electrode')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_s_m_electrode_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_s_m_electrode_label');?>" id="s_m_electrode" name="s_m_electrode" value="<?php echo $s_m_electrode ;?>" autocomplete="off">
-                                <?PHP if(form_error('s_m_electrode')){ echo '<span class="help-block">'.form_error('s_m_electrode').'</span>';} ?>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('work_distance')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_work_distance_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_work_distance_label');?>" id="work_distance" name="work_distance" value="<?php echo $work_distance ;?>" autocomplete="off">
-                                <?PHP if(form_error('work_distance')){ echo '<span class="help-block">'.form_error('work_distance').'</span>';} ?>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('cleaning_id')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_method_cleaning_label');?><span class="text-danger">*</span></label>
-                                <?php   
-                                  $attrib = 'class="form-control select2" name="cleaning_id"  data-live-search="true" data-width="100%"  id="cleaning_id"';
-                                  echo form_dropdown('cleaning_id', $drop_menu_cleaning, set_value('cleaning_id', (isset($cleaning_id)) ? $cleaning_id : ''), $attrib);
-                                ?> 
-                                <?PHP if(form_error('cleaning_id')){ echo '<span class="help-block">'.form_error('cleaning_id').'</span>';} ?>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('thermal_process')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_thermal_process_label');?><span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_thermal_process_label');?>" id="thermal_process" name="thermal_process" value="<?php echo $thermal_process ;?>" autocomplete="off">
-                                <?PHP if(form_error('thermal_process')){ echo '<span class="help-block">'.form_error('thermal_process').'</span>';} ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <div class="form-group <?PHP if(form_error('techinqe_other')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_teachinqe_other_label');?></label>
-                                <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_teachinqe_other_label');?>" id="techinqe_other" name="techinqe_other" value="<?php echo $techinqe_other ;?>" autocomplete="off">
-                                <?PHP if(form_error('techinqe_other')){ echo '<span class="help-block">'.form_error('techinqe_other').'</span>';} ?>
-                            </div>
-                        </div>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnTechinque">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="8"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
                     </div>
                 </div>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btnTechinque">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="8"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-            </div>
 
-            <!-- Welding Parameters -->
-            <div class="row blockdiv hide" id="welding_parameters">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></h3>
+                <!-- Welding Parameters -->
+                <div class="row blockdiv hide" id="welding_parameters">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_welding_parameters_label');?></h3>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12">
+                        <table class="table table-bordered tablepqr_welding">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2"><?php echo lang('mm_operation_pqr_r_n_label'); ?></th>
+                                    <th rowspan="2"><?php echo lang('mm_operation_pqr_layers_label'); ?></th>
+                                    <th rowspan="2"><?php echo lang('mm_operation_pqr_process_label'); ?></th>
+                                    <th colspan="2"><?php echo lang('mm_operation_pqr_filler_metal_label'); ?></th>
+                                    <th colspan="3"><?php echo lang('mm_operation_pqr_current_label'); ?></th>
+                                    <th rowspan="2"><?php echo lang('mm_operation_pqr_travel_speed_range_ipm_label'); ?></th>
+                                    <th rowspan="2"><?php echo lang('mm_operation_pqr_heat_input_jinch_label'); ?></th>
+                                    <th rowspan="2"></th>
+                                </tr>
+                                <tr>  
+                                  <th><?php echo lang('mm_operation_pqr_class_label'); ?></th>
+                                  <th><?php echo lang('mm_operation_pqr_diameter_label'); ?></th>
+                                  <th><?php echo lang('mm_operation_pqr_typer_polarity_label'); ?></th>
+                                  <th><?php echo lang('mm_operation_pqr_amperage_range_label'); ?></th>
+                                  <th><?php echo lang('mm_operation_pqr_voltage_range_label'); ?></th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody class="welding_tbody">
+                                <?php if(isset($value) &&  !empty($value)){ 
+                                foreach($layer as $k => $value){ $count = $k+1; ?>
+                                    <tr class="tr_welding" data-child="<?php echo $count ?>">
+                                  <td class="tr_sno"><?php echo $count ?></td>
+                                  <td>
+                                    <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%"  style="width:100%;">
+                                        <option value="">-- Select Layer --</option>
+                                        <option value="Root" <?php echo ($value == 'Root'?'selected':''); ?>>Root</option>
+                                        <option value="Hot" <?php echo ($value == 'Hot'?'selected':''); ?>>Hot</option>
+                                        <option value="Fill" <?php echo ($value == 'Fill'?'selected':''); ?>>Fill</option>
+                                        <option value="Cap" <?php echo ($value == 'Cap'?'selected':''); ?>>Cap</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <select class="from-control select2 welder_process" name="welder_process" data-child="1" data-live-search="true" data-width="100%" style="width:100%;">
+                                        <option value="">-- Select Process --</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control classVal" id="classVal1" name="class[]" value="<?php echo $classVal[$k]; ?>" autocomplete="off" disabled>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control diameter"  name="diameter[]" value="<?php echo $diameter[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control typer_polority" name="typer_polority[]" value="<?php echo $typer_polority[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control current_amperage_range" id="current_amperage_range1" name="current_amperage_range[]" value="<?php echo $current_amperage_range[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control current_voltage_range" id="current_voltage_range1" name="current_voltage_range[]" value="<?php echo $current_voltage_range[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control travel_speed_range" id="travel_speed_range1" name="travel_speed_range[]" value="<?php echo $travel_speed_range[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control heat_input" id="heat_input1" data-row-no="1" name="heat_input[]" value="<?php echo $heat_input[$k]; ?>" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <?php if((count($layer)-1) == $k && count($layer) != 6){ ?>
+                                        <button type="button" class="btn btn-info welding_row">+</button>
+                                    <?php } ?>
+                                  </td>
+                                </tr>
+                                <?php } }else{ ?>
+                                <tr class="tr_welding" data-child="1">
+                                  <td class="tr_sno">1</td>
+                                  <td>
+                                    <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%"  style="width:100%;">
+                                        <option value="">-- Select Layer --</option>
+                                        <option value="Root">Root</option>
+                                        <option value="Hot">Hot</option>
+                                        <option value="Fill">Fill</option>
+                                        <option value="Cap">Cap</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <select class="from-control select2 welder_process" name="welder_process" data-child="1" data-live-search="true" data-width="100%" style="width:100%;">
+                                        <option value="">-- Select Process --</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control classVal" id="layer1" name="class[]" value="" autocomplete="off" disabled>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control diameter"  name="diameter[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control typer_polority" name="typer_polority[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control current_amperage_range" id="current_amperage_range1" name="current_amperage_range[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control current_voltage_range" id="current_voltage_range1" name="current_voltage_range[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control travel_speed_range" id="travel_speed_range1" name="travel_speed_range[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control heat_input" id="heat_input1" data-row-no="1" name="heat_input[]" value="" autocomplete="off">
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-info welding_row">+</button>
+                                  </td>
+                                </tr>
+                                <?php }?>                    
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnWeldingparameters">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="9"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                 </div>
 
-                <div class="col-sm-12 col-xs-12">
-                    <table class="table table-bordered tablepqr_welding">
-                  <thead>
-                    <tr>
-                        <th rowspan="2"><?php echo lang('mm_operation_pqr_r_n_label'); ?></th>
-                        <th rowspan="2"><?php echo lang('mm_operation_pqr_layers_label'); ?></th>
-                        <th rowspan="2"><?php echo lang('mm_operation_pqr_process_label'); ?></th>
-                        <th colspan="2"><?php echo lang('mm_operation_pqr_filler_metal_label'); ?></th>
-                        <th colspan="3"><?php echo lang('mm_operation_pqr_current_label'); ?></th>
-                        <th rowspan="2"><?php echo lang('mm_operation_pqr_travel_speed_range_ipm_label'); ?></th>
-                        <th rowspan="2"><?php echo lang('mm_operation_pqr_heat_input_jinch_label'); ?></th>
-                        <th rowspan="2"></th>
-                    </tr>
-                    <tr>  
-                      <th><?php echo lang('mm_operation_pqr_class_label'); ?></th>
-                      <th><?php echo lang('mm_operation_pqr_diameter_label'); ?></th>
-                      <th><?php echo lang('mm_operation_pqr_typer_polarity_label'); ?></th>
-                      <th><?php echo lang('mm_operation_pqr_amperage_range_label'); ?></th>
-                      <th><?php echo lang('mm_operation_pqr_voltage_range_label'); ?></th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody class="welding_tbody">
-                    <?php if(isset($value) &&  !empty($value)){ 
-                    foreach($layer as $k => $value){ $count = $k+1; ?>
-                        <tr class="tr_welding" data-child="<?php echo $count ?>">
-                      <td class="tr_sno"><?php echo $count ?></td>
-                      <td>
-                        <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%"  style="width:100%;">
-                            <option value="">-- Select Layer --</option>
-                            <option value="Root" <?php echo ($value == 'Root'?'selected':''); ?>>Root</option>
-                            <option value="Hot" <?php echo ($value == 'Hot'?'selected':''); ?>>Hot</option>
-                            <option value="Fill" <?php echo ($value == 'Fill'?'selected':''); ?>>Fill</option>
-                            <option value="Cap" <?php echo ($value == 'Cap'?'selected':''); ?>>Cap</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select class="from-control select2 welder_process" name="welder_process" data-child="1" data-live-search="true" data-width="100%" style="width:100%;">
-                            <option value="">-- Select Process --</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control classVal" id="classVal1" name="class[]" value="<?php echo $classVal[$k]; ?>" autocomplete="off" disabled>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control diameter"  name="diameter[]" value="<?php echo $diameter[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control typer_polority" name="typer_polority[]" value="<?php echo $typer_polority[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control current_amperage_range" id="current_amperage_range1" name="current_amperage_range[]" value="<?php echo $current_amperage_range[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control current_voltage_range" id="current_voltage_range1" name="current_voltage_range[]" value="<?php echo $current_voltage_range[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control travel_speed_range" id="travel_speed_range1" name="travel_speed_range[]" value="<?php echo $travel_speed_range[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control heat_input" id="heat_input1" data-row-no="1" name="heat_input[]" value="<?php echo $heat_input[$k]; ?>" autocomplete="off">
-                      </td>
-                      <td>
-                        <?php if((count($layer)-1) == $k && count($layer) != 6){ ?>
-                            <button type="button" class="btn btn-info welding_row">+</button>
+                <!-- Tensile -->
+                <div class="row blockdiv hide" id="tensile">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_tensile_test_label');?></h3>
+                    </div>
+
+                    <table class="table table-bordered tablepqr">
+                      <thead>
+                        <tr>
+                          <th><?php echo lang('mm_operation_pqr_specimen_no_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_thickness_mm_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_width_mm_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_area_sq_mm_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_ultimate_tensile_load_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_ultimate_tensile_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_failure_location_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_result_label');?></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody class="tensile_tbody">
+                        <?php 
+                            if(isset($value) &&  !empty($value)){
+                            foreach($specimen_no as $k => $value){
+                        ?>
+                            <tr>
+                              <td>
+                                <input type="text" class="form-control specimen_no"  name="specimen_no[]" value="<?= $value ?>" autocomplete="off">
+                              </td>
+                              <td>
+                                <input type="text" class="form-control thickness decimal"  name="thickness[]"  value="<?= $thickness[$k] ?>" autocomplete="off">
+                              </td>
+                              <td>
+                                <input type="text" class="form-control width decimal" name="width[]"  value="<?= $width[$k] ?>" autocomplete="off">
+                              </td>
+                              <td>
+                                <input type="text" class="form-control area decimal"  name="area[]" value="<?= $area[$k] ?>" autocomplete="off" placeholder="0.00" disabled>
+                              </td>
+                              <td>
+                                <input type="text" class="form-control ultimate_tensile_load" name="ultimate_tensile_load[]" value="<?= $ultimate_tensile_load[$k] ?>" autocomplete="off">
+                              </td>
+                              <td>
+                                <input type="text" class="form-control ultimate_tensile_strength" name="ultimate_tensile_strength[]" value="<?= $ultimate_tensile_strength[$k] ?>" autocomplete="off" disabled>
+                              </td>
+                              <td>
+                                <select class="form-control select2 failure_location" name="failure_location[]" data-live-search="true" data-width="100%"  style="width:100%;">
+                                    <option value="">-- Select Metal --</option>
+                                    <option value="Base Metal" <?php echo ($failure_location[$k]=='Base Metal'?'selected':''); ?>>Base Metal</option>
+                                    <option value="Weld Metal" <?php echo ($failure_location[$k]=='Weld Metal'?'selected':''); ?>>Weld Metal</option>
+                                </select>
+                              </td>
+                              <td>
+                                <input type="text" class="form-control tensile_test_result" name="tensile_test_result[]" value="<?= $tensile_test_result[$k] ?>" autocomplete="off">
+                              </td>
+                              <td>
+                                <?php if( $k == (count($specimen_no)-1)){ ?>
+                                    <button type="button" class="btn btn-info tensile_row">+</button>
+                                <?php } else { ?>
+                                    <button type="button" class="btn btn-danger tensile_row_remove">x</button>
+                                <?php } ?>
+                              </td>
+                            </tr>
+                            <?php } 
+                            }else{
+                        ?>
+                        <tr>
+                          <td>
+                            <input type="text" class="form-control specimen_no"  name="specimen_no[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control thickness decimal"  name="thickness[]"  value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control width decimal" name="width[]"  value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control area decimal"  name="area[]" value="" autocomplete="off" placeholder="0.00" disabled>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control ultimate_tensile_load" name="ultimate_tensile_load[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control ultimate_tensile_strength" name="ultimate_tensile_strength[]" value="" autocomplete="off" disabled>
+                          </td>
+                          <td>
+                            <select class="form-control select2 failure_location" name="failure_location[]" data-live-search="true" data-width="100%"  style="width:100%;">
+                                <option value="">-- Select Metal --</option>
+                                <option value="Base Metal">Base Metal</option>
+                                <option value="Weld Metal">Weld Metal</option>
+                            </select>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control tensile_test_result" name="tensile_test_result[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                           <button type="button" class="btn btn-info tensile_row">+</button>
+                          </td>
+                        </tr>
                         <?php } ?>
-                      </td>
-                    </tr>
-                    <?php } }else{ ?>
-                    <tr class="tr_welding" data-child="1">
-                      <td class="tr_sno">1</td>
-                      <td>
-                        <select class="form-control select2 layer" name="layer[]" data-live-search="true" data-width="100%"  style="width:100%;">
-                            <option value="">-- Select Layer --</option>
-                            <option value="Root">Root</option>
-                            <option value="Hot">Hot</option>
-                            <option value="Fill">Fill</option>
-                            <option value="Cap">Cap</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select class="from-control select2 welder_process" name="welder_process" data-child="1" data-live-search="true" data-width="100%" style="width:100%;">
-                            <option value="">-- Select Process --</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control classVal" id="layer1" name="class[]" value="" autocomplete="off" disabled>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control diameter"  name="diameter[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control typer_polority" name="typer_polority[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control current_amperage_range" id="current_amperage_range1" name="current_amperage_range[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control current_voltage_range" id="current_voltage_range1" name="current_voltage_range[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control travel_speed_range" id="travel_speed_range1" name="travel_speed_range[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control heat_input" id="heat_input1" data-row-no="1" name="heat_input[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-info welding_row">+</button>
-                      </td>
-                    </tr>
-                    <?php }?>
-                    
-                    
-                  </tbody>
-                </table>
-                <input type="hidden" name="pqr_id" id="pqr_id" value="<?php echo $pqr_id;?>">
-                </div>
-                <div class="col-sm-12 col-xl-12">
-                    <button class="btn btn-info pull-right" type="button" id="btnWeldingparameters">Save & Next</button>
-                    <button class="btn btn-warning pull-left previous" type="button" data-btn="9"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
-                </div>
-                
-            </div>
-        </div>
+                      </tbody>
+                    </table>
 
-           <!--  <div class="row blockdiv hide" id="tensile">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_tensile_test_label');?></h3>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnTensile">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="10"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                 </div>
 
-                <table class="table table-bordered tablepqr">
-                  <thead>
-                    <tr>
-                      <th><?php echo lang('mm_operation_pqr_specimen_no_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_thickness_mm_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_width_mm_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_area_sq_mm_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_ultimate_tensile_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_ultimate_tensile_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_fracture_location_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_result_label');?></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php for($i = 1; $i <=2; $i++){
-                      ?>
-                    <tr>
-                      <td>
-                        <input type="text" class="form-control" id="specimen_no<?php echo $i; ?>" name="specimen_no[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="thickness<?php echo $i; ?>" name="thickness[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="width<?php echo $i; ?>" name="width[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="area<?php echo $i; ?>" name="area[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="ultimate_tensile_load<?php echo $i; ?>" name="ultimate_tensile_load[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="ultimate_tensile_strength<?php echo $i; ?>" name="ultimate_tensile_strength[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="fracture_location<?php echo $i; ?>" name="fracture_location[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="tensile_test_result<?php echo $i; ?>" name="tensile_test_result[]" value="" autocomplete="off">
-                      </td>
-                    </tr>
-                    <?php
-                      }
-                   ?>
-                    <tr>
-                      <td colspan="8" align="center"><?php echo lang('mm_operation_pqr_refer_to_fugro_label');?></td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
+                <!-- Guided -->
+                <div class="row blockdiv hide" id="guided">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></h3>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <table class="table table-bordered tablepqr">
+                            <thead>
+                                <tr>
+                                  <th width="50%"><?php echo lang('mm_operation_pqr_type_figure_no_label');?></th>
+                                  <th width="50%"><?php echo lang('mm_operation_pqr_result_label');?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php for($i = 0; $i <=1; $i++){
+                                  ?>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control type_and_figure_no" id="type_and_figure_no<?php echo $i; ?>" name="type_and_figure_no[]" value="<?= $type_and_figure_no[$i] ?>" autocomplete="off" placeholder="<?php echo lang('mm_operation_pqr_type_figure_no_label');?>">
+                                  </td>
+                                  <td>
+                                    <select class="form-control select2 ben_test_result" id="ben_test_result<?php echo $i; ?>" name="ben_test_result[]" data-live-search="true" data-width="100%"  style="width:100%;">
+                                        <option value="">-- Select Result --</option>
+                                        <option value="Satisfactory" <?php echo ($ben_test_result[$i]=='Satisfactory'?'selected':''); ?>>Satisfactory</option>
+                                        <option value="Not Satisfactory" <?php echo ($ben_test_result[$i]=='Not Satisfactory'?'selected':''); ?>>Not Satisfactory</option>
+                                    </select>
+                                  </td>
+                                </tr>
+                              <?php } ?>
+                                <!-- <tr>
+                                  <td colspan="2" align="center"><?php echo lang('mm_operation_pqr_refer_to_fugro_label');?></td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
 
-            <div class="row blockdiv hide" id="guided">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_guided_ben_test_label');?></h3>
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnGuided">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="11"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                 </div>
 
-                <table class="table table-bordered tablepqr">
-                  <thead>
-                    <tr>
-                      <th width="50%"><?php echo lang('mm_operation_pqr_type_figure_no_label');?></th>
-                      <th width="50%"><?php echo lang('mm_operation_pqr_result_label');?></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php for($i = 1; $i <=2; $i++){
-                      ?>
-                    <tr>
-                      <td>
-                        <input type="text" class="form-control" id="type_and_figure_no<?php echo $i; ?>" name="type_and_figure_no[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="ben_test_result<?php echo $i; ?>" name="ben_test_result[]" value="" autocomplete="off">
-                      </td>
-                    </tr>
-                  <?php } ?>
-                    <tr>
-                      <td colspan="2" align="center"><?php echo lang('mm_operation_pqr_refer_to_fugro_label');?></td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
 
-            <div class="row blockdiv hide" id="touchness">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_touchness_test_label');?></h3>
+                <!-- Touchness -->
+                <div class="row blockdiv hide" id="touchness">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_touchness_test_label');?></h3>
+                    </div>
+
+                    <table class="table table-bordered tablepqr">
+                      <thead>
+                        <tr>
+                          <th rowspan="2"><?php echo lang('mm_operation_pqr_specimen_no_label');?></th>
+                          <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_location_label');?></th>
+                          <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_type_label');?></th>
+                          <th rowspan="2"><?php echo lang('mm_operation_pqr_test_temp_label');?></th>
+                          <th rowspan="2"><?php echo lang('mm_operation_pqr_impact_values_label');?></th>
+                          <th colspan="2"><?php echo lang('mm_operation_pqr_lateral_exp_label');?></th>
+                          <th colspan="2"><?php echo lang('mm_operation_pqr_drop_weight_label');?></th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th><?php echo lang('mm_operation_pqr_shear_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_mils_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_break_label');?></th>
+                          <th><?php echo lang('mm_operation_pqr_no_break_label');?></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody class="touchness_tbody">
+                        <?php 
+                            if(isset($value) &&  !empty($value)){
+                            foreach($touchness_specimen_no as $k => $value){
+                        ?>
+                        <tr>
+                          <td>
+                            <input type="text" class="form-control touchness_specimen_no" id="touchness_specimen_no<?php echo $i; ?>" name="touchness_specimen_no[]" value="<?= $touchness_specimen_no[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control notch_location" id="notch_location<?php echo $i; ?>" name="notch_location[]" value="<?= $notch_location[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control notch_type" id="notch_type<?php echo $i; ?>" name="notch_type[]" value="<?= $notch_type[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control test_temp" id="test_temp<?php echo $i; ?>" name="test_temp[]" value="<?= $test_temp[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control impact_values" id="impact_values<?php echo $i; ?>" name="impact_values[]" value="<?= $impact_values[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control lateral_exp_shear" id="lateral_exp_shear<?php echo $i; ?>" name="lateral_exp_shear[]" value="<?= $lateral_exp_shear[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control lateral_exp_mils" id="lateral_exp_mils<?php echo $i; ?>" name="lateral_exp_mils[]" value="<?= $lateral_exp_mils[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control drop_break" id="drop_break<?php echo $i; ?>" name="drop_break[]" value="<?= $drop_break[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control drop_no_break" id="drop_no_break<?php echo $i; ?>" name="drop_no_break[]" value="<?= $drop_no_break[$k] ?>" autocomplete="off">
+                          </td>
+                          <td>
+                                <?php if( $k == (count($specimen_no)-1)){ ?>
+                                    <button type="button" class="btn btn-info touchness_row">+</button>
+                                <?php } else { ?>
+                                    <button type="button" class="btn btn-danger touchness_row_remove">x</button>
+                                <?php } ?>
+                          </td>
+                        </tr>
+                        <?php } 
+                            }else{
+                        ?>
+                        <tr>
+                          <td>
+                            <input type="text" class="form-control touchness_specimen_no" id="touchness_specimen_no<?php echo $i; ?>" name="touchness_specimen_no[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control notch_location" id="notch_location<?php echo $i; ?>" name="notch_location[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control notch_type" id="notch_type<?php echo $i; ?>" name="notch_type[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control test_temp" id="test_temp<?php echo $i; ?>" name="test_temp[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control impact_values" id="impact_values<?php echo $i; ?>" name="impact_values[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control lateral_exp_shear" id="lateral_exp_shear<?php echo $i; ?>" name="lateral_exp_shear[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control lateral_exp_mils" id="lateral_exp_mils<?php echo $i; ?>" name="lateral_exp_mils[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control drop_break" id="drop_break<?php echo $i; ?>" name="drop_break[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control drop_no_break" id="drop_no_break<?php echo $i; ?>" name="drop_no_break[]" value="" autocomplete="off">
+                          </td>
+                          <td>
+                              <button type="button" class="btn btn-info touchness_row">+</button>
+                          </td>
+                        </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnTouchness">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="12"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                 </div>
 
-                <table class="table table-bordered tablepqr">
-                  <thead>
-                    <tr>
-                      <th rowspan="2"><?php echo lang('mm_operation_pqr_specimen_no_label');?></th>
-                      <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_location_label');?></th>
-                      <th rowspan="2"><?php echo lang('mm_operation_pqr_notch_type_label');?></th>
-                      <th rowspan="2"><?php echo lang('mm_operation_pqr_test_temp_label');?></th>
-                      <th rowspan="2"><?php echo lang('mm_operation_pqr_impact_values_label');?></th>
-                      <th colspan="2"><?php echo lang('mm_operation_pqr_lateral_exp_label');?></th>
-                      <th colspan="2"><?php echo lang('mm_operation_pqr_drop_weight_label');?></th>
-                    </tr>
-                    <tr>
-                      <th><?php echo lang('mm_operation_pqr_shear_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_mils_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_break_label');?></th>
-                      <th><?php echo lang('mm_operation_pqr_no_break_label');?></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                     <tr>
-                      <td rowspan="3">
-                        <input type="text" class="form-control" id="touchness_specimen_no<?php echo $i; ?>" name="touchness_specimen_no[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="notch_location<?php echo $i; ?>" name="notch_location[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="notch_type<?php echo $i; ?>" name="notch_type[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="test_temp<?php echo $i; ?>" name="test_temp[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="impact_values<?php echo $i; ?>" name="impact_values[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="lateral_exp_shear<?php echo $i; ?>" name="lateral_exp_shear[]" value="" autocomplete="off">
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" id="lateral_exp_mils<?php echo $i; ?>" name="lateral_exp_mils[]" value="" autocomplete="off">
-                      </td>
-                      <td  rowspan="3">
-                        <input type="text" class="form-control" id="drop_break<?php echo $i; ?>" name="drop_break[]" value="" autocomplete="off">
-                      </td>
-                      <td  rowspan="3">
-                        <input type="text" class="form-control" id="drop_no_break<?php echo $i; ?>" name="drop_no_break[]" value="" autocomplete="off">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="7" align="center"><?php echo lang('mm_operation_pqr_refer_to_fugro_label');?></td>
-                    </tr>
-                    <tr>
-                      <td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
+                <!-- Fillet Weld Test -->
+                <div class="row blockdiv hide" id="fillet">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></h3>
+                    </div>
 
-            <div class="row blockdiv hide" id="fillet">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></h3>
-                </div>
-
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('result_statificatory')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_pwht_label');?><span class="text-danger">*</span></label>
-                    <div class="row">
-                      <div class="col-sm-6 col-xs-6">
-                        <div class="radio radio-success">
-                          <input type="radio" name="result_statificatory" id="result_statificatory" value="<?php echo lang('mm_operation_pqr_yes_label');?>" <?php if($staffs_id !='') {if($result_statificatory=='Yes'){?> checked <?php }}else{?> checked <?php }?>>
-                          <label for="result_statificatoryYes"> <?php echo lang('mm_operation_pqr_yes_label');?> </label>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-xs-6">
-                        <div class="radio radio-danger">
-                          <input type="radio" name="result_statificatory" id="result_statificatory" value="<?php echo lang('mm_operation_pqr_no_label');?>" <?php  if($result_statificatory =='No'){?> checked <?php }?>>
-                          <label for="result_statificatoryNo"> <?php echo lang('mm_operation_pqr_no_label');?> </label>
-                        </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label class="display-block"><?php echo lang('mm_operation_pqr_pwht_label');?></label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="result_statificatory" class="styled result_statificatory" <?php if($result_statificatory=='Yes'){?> checked="checked"  <?php }?> value="Yes" > Yes
+                            </div>  
+                        </label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="result_statificatory" class="styled result_statificatory" <?php if($result_statificatory=='No'){?> checked="checked" <?php }?>  value="No">No
+                            </div>                                                          
+                        </label>
                       </div>
                     </div>
-                    <?PHP if(form_error('result_statificatory')){ echo '<span class="help-block">'.form_error('result_statificatory').'</span>';} ?>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group">
+                        <label class="display-block"><?php echo lang('mm_operation_pqr_penetration_partent_metal_label');?></label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="penetration_into_partent_metal" class="styled penetration_into_partent_metal" <?php if($penetration_into_partent_metal=='Yes'){?> checked="checked"  <?php }?> value="Yes" > Yes
+                            </div>  
+                        </label>
+                        <label class="radio-inline">
+                            <div class="choice"><input type="radio" name="penetration_into_partent_metal" class="styled penetration_into_partent_metal"      <?php if($penetration_into_partent_metal=='No'){?> checked="checked" <?php }?>  value="No">No
+                            </div>                                                          
+                        </label>
+                        
+                        <?PHP if(form_error('penetration_into_partent_metal')){ echo '<span class="help-block">'.form_error('penetration_into_partent_metal').'</span>';} ?>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-6">
+                      <div class="form-group <?PHP if(form_error('maro_result')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_macro_result_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_macro_result_label');?>" id="maro_result" name="maro_result" value="<?= $maro_result ?>" autocomplete="off">
+                        <?PHP if(form_error('maro_result')){ echo '<span class="help-block">'.form_error('maro_result').'</span>';} ?>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnFillet">Save & Next</button>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="13"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
+                </div>
+
+                <!-- Others -->
+                <div class="row blockdiv hide" id="other">
+                    <div class="col-sm-12 col-xs-12 box-title-head">
+                      <h3 class="box-title"><?php echo lang('mm_operation_pqr_other_tests_label');?></h3>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"> <?php echo lang('mm_operation_pqr_type_of_test_label');?><span class="text-danger">*</span></label>
+                            <select class="form-control select2 type_test" id="type_test" name="type_test" data-live-search="true" data-width="100%"  style="width:100%;">
+                                <option value="">-- Select Type of Test --</option>Radiography Test
+                                <option value="Radiography Test" <?php echo ($type_test=='Radiography Test'?'selected':''); ?>>Radiography Test</option>
+                                <option value="Others" <?php echo ($type_test=='Others'?'selected':''); ?>>Others</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"> <?php echo lang('mm_operation_pqr_type_of_test_other_label');?><span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="type_test_other" id="type_test_other" Placeholder="Other Type of Test" value="<?= $type_test_other ?>" <?php echo ($type_test=='Others'?'':'disabled'); ?>/>
+                        </div>
+
+                        <div class="form-group <?PHP if(form_error('deposit_analysis')){ echo 'has-error';} ?>">
+                            <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_deposit_analysis_label');?><span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_deposit_analysis_label');?>" id="deposit_analysis" name="deposit_analysis" value="<?php echo $deposit_analysis ;?>" autocomplete="off">
+                            <?PHP if(form_error('deposit_analysis')){ echo '<span class="help-block">'.form_error('deposit_analysis').'</span>';} ?>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12 col-xs-12">   
+                        <div class="form-group <?PHP if(form_error('test_others')){ echo 'has-error';} ?>">
+                            <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?><span class="text-danger">*</span></label>
+                            <select class="form-control select2 test_other_sel" id="test_other_sel" name="test_other_sel" data-live-search="true" data-width="100%"  style="width:100%;">
+                                <option value="">-- Select  --</option>
+                                <option value="Hardness" <?php echo ($test_other_sel=='Hardness'?'selected':''); ?> >Hardness</option>
+                                <option value="Others" <?php echo ($test_other_sel=='Others'?'selected':''); ?> >Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="test_other" id="test_other" placeholder="Others" value="<?= $test_other ?>" <?php echo ($test_other_sel=='Others'?'':'disabled'); ?> />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('welder_staff_id')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welder_name_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="welder_staff_id"  data-live-search="true" data-width="100%"  id="welder_staff_id"';
+                          echo form_dropdown('welder_staff_id', $drop_menu_staff_welder, set_value('welder_staff_id', (isset($welder_staff_id)) ? $welder_staff_id : ''), $attrib);
+                          ?> 
+                        <?PHP if(form_error('welder_staff_id')){ echo '<span class="help-block">'.form_error('welder_staff_id').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('stamp_no')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_stamp_no_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_stamp_no_label');?>" id="stamp_no" name="stamp_no" value="<?php echo $stamp_no ;?>" autocomplete="off">
+                        <?PHP if(form_error('stamp_no')){ echo '<span class="help-block">'.form_error('stamp_no').'</span>';} ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('conducted_by')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_test_conducted_by_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_test_conducted_by_label');?>" id="conducted_by" name="conducted_by" value="<?php echo $conducted_by ;?>" autocomplete="off">
+                        <?PHP if(form_error('conducted_by')){ echo '<span class="help-block">'.form_error('conducted_by').'</span>';} ?>
+                        </div>
+                    </div>
+
+                     <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('laboratory_test_1')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_laboratory_test_no_label');?><span class="text-danger">*</span></label>
+                        <input type="text" class="form-control"  id="laboratory_test_1" name="laboratory_test_1" value="<?= $laboratory_test_1 ?>" autocomplete="off">
+                        <?PHP if(form_error('laboratory_test_1')){ echo '<span class="help-block">'.form_error('laboratory_test_1').'</span>';} ?><br/>
+                         <input type="text" class="form-control"  id="laboratory_test_2" name="laboratory_test_2" value="<?= $laboratory_test_2 ?>" autocomplete="off">
+                        <?PHP if(form_error('laboratory_test_2')){ echo '<span class="help-block">'.form_error('laboratory_test_2').'</span>';} ?><br/>
+                         <input type="text" class="form-control"  id="laboratory_test_3" name="laboratory_test_3" value="<?= $laboratory_test_3 ?>" autocomplete="off">
+                        <?PHP if(form_error('laboratory_test_3')){ echo '<span class="help-block">'.form_error('laboratory_test_3').'</span>';} ?><br/>
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="col-sm-12 col-xl-12">
+                        <button class="btn btn-info pull-right" type="button" id="btnOthers">Save</button>
+                        <a href="<?php echo base_url().$form_cancel_url;?>" style="margin-right:5px;" class="btn btn-warning waves-effect waves-light m-r-10 pull-right"><?php echo lang('btn_Cancel');?></a>
+                        <button class="btn btn-warning pull-left previous" type="button" data-btn="14"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+                    </div>
                   </div>
                 </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('penetration_into_partent_metal')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_penetration_partent_metal_label');?><span class="text-danger">*</span></label>
-                    <div class="row">
-                      <div class="col-sm-6 col-xs-6">
-                        <div class="radio radio-success">
-                          <input type="radio" name="penetration_into_partent_metal" id="penetration_into_partent_metal" value="<?php echo lang('mm_operation_pqr_yes_label');?>" <?php if($staffs_id !='') {if($penetration_into_partent_metal=='Yes'){?> checked <?php }}else{?> checked <?php }?>>
-                          <label for="penetration_into_partent_metalYes"> <?php echo lang('mm_operation_pqr_yes_label');?> </label>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-xs-6">
-                        <div class="radio radio-danger">
-                          <input type="radio" name="penetration_into_partent_metal" id="penetration_into_partent_metal" value="<?php echo lang('mm_operation_pqr_no_label');?>" <?php  if($penetration_into_partent_metal =='No'){?> checked <?php }?>>
-                          <label for="penetration_into_partent_metalNo"> <?php echo lang('mm_operation_pqr_no_label');?> </label>
-                        </div>
-                      </div>
-                    </div>
-                    <?PHP if(form_error('penetration_into_partent_metal')){ echo '<span class="help-block">'.form_error('penetration_into_partent_metal').'</span>';} ?>
-                  </div>
-                </div>
-
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('maro_result')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_macro_result_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_macro_result_label');?>" id="maro_result" name="maro_result" value="N/A" autocomplete="off" disabled>
-                    <?PHP if(form_error('maro_result')){ echo '<span class="help-block">'.form_error('maro_result').'</span>';} ?>
-                    </div>
-                </div>
-              </div>
-
-              <div class="row blockdiv hide" id="other">
-                <div class="col-sm-12 col-xs-12 box-title-head">
-                  <h3 class="box-title"><?php echo lang('mm_operation_pqr_other_tests_label');?></h3>
-                </div>
-
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('type_test')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_of_test_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_type_of_test_label');?>" id="type_test" name="type_test" value="<?php echo $type_test ;?>" autocomplete="off">
-                    <?PHP if(form_error('type_test')){ echo '<span class="help-block">'.form_error('type_test').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('deposit_analysis')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_deposit_analysis_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_deposit_analysis_label');?>" id="deposit_analysis" name="deposit_analysis" value="<?php echo $deposit_analysis ;?>" autocomplete="off">
-                    <?PHP if(form_error('deposit_analysis')){ echo '<span class="help-block">'.form_error('deposit_analysis').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('test_others')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_post_heat_others_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_post_heat_others_label');?>" id="test_others" name="test_others" value="<?php echo $test_others ;?>" autocomplete="off">
-                    <?PHP if(form_error('test_others')){ echo '<span class="help-block">'.form_error('test_others').'</span>';} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('welder_staff_id')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_welder_name_label');?><span class="text-danger">*</span></label>
-                    <?php   
-                      $attrib = 'class="form-control select2" name="welder_staff_id"  data-live-search="true" data-width="100%"  id="welder_staff_id"';
-                      echo form_dropdown('welder_staff_id', $drop_menu_staff_welder, set_value('welder_staff_id', (isset($welder_staff_id)) ? $welder_staff_id : ''), $attrib);
-                      ?> 
-                    <?PHP if(form_error('welder_staff_id')){ echo '<span class="help-block">'.form_error('welder_staff_id').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('stamp_no')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_stamp_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_stamp_no_label');?>" id="stamp_no" name="stamp_no" value="<?php echo $stamp_no ;?>" autocomplete="off">
-                    <?PHP if(form_error('stamp_no')){ echo '<span class="help-block">'.form_error('stamp_no').'</span>';} ?>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('conducted_by')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_test_conducted_by_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_operation_pqr_test_conducted_by_label');?>" id="conducted_by" name="conducted_by" value="N/A" autocomplete="off">
-                    <?PHP if(form_error('conducted_by')){ echo '<span class="help-block">'.form_error('conducted_by').'</span>';} ?>
-                    </div>
-                </div>
-
-                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('laboratory_test_1')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_laboratory_test_no_label');?><span class="text-danger">*</span></label>
-                    <input type="text" class="form-control"  id="laboratory_test_1" name="laboratory_test_1" value="N/A" autocomplete="off">
-                    <?PHP if(form_error('laboratory_test_1')){ echo '<span class="help-block">'.form_error('laboratory_test_1').'</span>';} ?><br/>
-                     <input type="text" class="form-control"  id="laboratory_test_2" name="laboratory_test_2" value="N/A" autocomplete="off">
-                    <?PHP if(form_error('laboratory_test_2')){ echo '<span class="help-block">'.form_error('laboratory_test_2').'</span>';} ?><br/>
-                     <input type="text" class="form-control"  id="laboratory_test_3" name="laboratory_test_3" value="N/A" autocomplete="off">
-                    <?PHP if(form_error('laboratory_test_3')){ echo '<span class="help-block">'.form_error('laboratory_test_3').'</span>';} ?><br/>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="text-right final_button">
-                    <input type="hidden" name="pqr_id" value="<?php echo $pqr_id;?>">
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit"><?php echo lang('btn_save');?></button>
-                    <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10"><?php echo lang('btn_Reset');?></button>
-                    <a href="<?php echo base_url().$form_cancel_url;?>" class="btn btn-warning waves-effect waves-light m-r-10"><?php echo lang('btn_Cancel');?></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-              
-            <?php echo form_close(); ?>
-     </div>
+            </div>
+                  
+                <?php echo form_close(); ?>
+            </div>
       </div>
     </div>
 
@@ -2098,7 +2286,7 @@ if(isset($value) && !empty($value)){
         if(value != ''){
             process['process2'] = $(this).val();
             processName['process2'] = $('#process2 option:selected').text();
-            tableTdCreate();
+            tableTdCreate(2);
             $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)')
                 .val($("#process2 option:selected").text())
                 .attr('data-process-id', $('#process2').val()).attr('data-child', 3);
@@ -2115,7 +2303,7 @@ if(isset($value) && !empty($value)){
         if(value != ''){
             process['process3'] = $(this).val();
             processName['process3'] = $('#process3 option:selected').text();
-            tableTdCreate();
+            tableTdCreate(3);
             $('#mtable tbody tr:nth-child(1) td:nth-child(3) .processVal:nth-child(1)')
                 .val($("#process2 option:selected").text())
                 .attr('data-process-id', $('#process2').val()).attr('data-child', 3);
@@ -2163,33 +2351,47 @@ if(isset($value) && !empty($value)){
         $('.welding_tbody tr:nth-child('+changeChild+') td:nth-child(4) .classVal').val(WeldingData[changeVal]);
     });
 
-    function tableTdCreate(){
+    function tableTdCreate(child){
         $('.fno_id').select2("destroy");
 
-          $('#mtable tbody tr').each(function(key){
-                // $(this).children('td:last').attr('class','append'+key);
-                var count = key+1;
-            
-                $("#mtable tbody tr:nth-child("+count+") td:nth-child(2)").clone(false)
-                    .insertAfter('#mtable tbody tr:nth-child('+count+') td:last').attr('class','append'+key)
-                    .attr('data-val', key)
-                    .attr('data-col',($('#mtable tbody tr:nth-child('+count+') td').length));
-                $('#mtable tbody tr:nth-child('+count+') td:nth-child(2)').children("select").select2();
-            });
-          $(".fno_id").select2({               
-                allowClear:true 
-            });
-          // electrical character block
-          $('#electrical_mtab tbody tr').each(function(key){
-                // $(this).children('td:last').attr('class','append'+key);
-                var count = key+1;
-            
-                $("#electrical_mtab tbody tr:nth-child("+count+") td:nth-child(2)").clone(false)
-                    .insertAfter('#electrical_mtab tbody tr:nth-child('+count+') td:nth-child(2)').attr('class','append'+key)
-                    .attr('data-val', key)
-                    .attr('data-col',key == 1 ? 1+key : undefined);
-                $('#electrical_mtab tbody tr:nth-child('+count+') td:nth-child(2)').children("select").select2();
-            });
+           var tableTRLength =  $('#mtable tbody tr:first td').length;
+
+           if(child == 2 && tableTRLength == 3){
+             $(".fno_id").select2({               
+                    allowClear:true 
+                });
+           }else if(child == 3 && tableTRLength == 4){
+             $(".fno_id").select2({               
+                    allowClear:true 
+                });
+           }else{
+                $('#mtable tbody tr').each(function(key){
+                    // $(this).children('td:last').attr('class','append'+key);
+                    var count = key+1;
+                
+                    $("#mtable tbody tr:nth-child("+count+") td:nth-child(2)").clone(false)
+                        .insertAfter('#mtable tbody tr:nth-child('+count+') td:last').attr('class','append'+key)
+                        .attr('data-val', key)
+                        .attr('data-col',($('#mtable tbody tr:nth-child('+count+') td').length));
+                    $('#mtable tbody tr:nth-child('+count+') td:nth-child(2)').children("select").select2();
+                });
+                $(".fno_id").select2({               
+                    allowClear:true 
+                });
+                // electrical character block
+                $('#electrical_mtab tbody tr').each(function(key){
+                    // $(this).children('td:last').attr('class','append'+key);
+                    var count = key+1;
+                
+                    $("#electrical_mtab tbody tr:nth-child("+count+") td:nth-child(2)").clone(false)
+                        .insertAfter('#electrical_mtab tbody tr:nth-child('+count+') td:nth-child(2)').attr('class','append'+key)
+                        .attr('data-val', key)
+                        .attr('data-col',key == 1 ? 1+key : undefined);
+                    $('#electrical_mtab tbody tr:nth-child('+count+') td:nth-child(2)').children("select").select2();
+                });
+           }
+
+          
     }
 
     function tableTdRemove(child){
@@ -2230,6 +2432,65 @@ if(isset($value) && !empty($value)){
         }
     });
 
+    $(document).on('click', '.tensile_row', function(){
+       
+        var trcount = 0;
+        var trcount = $('.tensile_tbody tr').length;
+       $(".tensile_tbody tr:last").find('.failure_location').select2('destroy');
+
+        $('.tensile_tbody tr:last').clone().insertAfter('.tensile_tbody tr:last').find("input:text").val("");
+        $('.failure_location ').select2();
+        
+        // for calculation add dynamic ids
+
+
+        // if(trcount == 5){
+            $('.tensile_tbody tr:nth-child('+(trcount)+') td:last').html('<button type="button" class="btn btn-danger tensile_row_remove">x</button>');
+        // }
+        
+    }); 
+
+    $(document).on('click', '.touchness_row', function(){
+       
+        var trcount = 0;
+        var trcount = $('.touchness_tbody tr').length;
+
+        $('.touchness_tbody tr:last').clone().insertAfter('.touchness_tbody tr:last').find("input:text").val("");
+       
+        $('.touchness_tbody tr:nth-child('+(trcount)+') td:last').html('<button type="button" class="btn btn-danger touchness_row_remove">x</button>');
+      
+    });
+
+    $(document).on('focus', '.ultimate_tensile_load', function(){
+        var width = $(this).parents('tr').find('.width').val();
+        var thickness = $(this).parents('tr').find('.thickness').val();
+
+        var area = parseFloat(width)*parseFloat(thickness);
+        $(this).parents('tr').find('.area').val(area);
+    });
+
+    $(document).on('keydown', '.ultimate_tensile_load', function(){
+        var area = $(this).parents('tr').find('.area').val();
+        var ultimate = $(this).parents('tr').find('.ultimate_tensile_load').val();
+
+        var ultimate_tensile = (parseFloat(ultimate)/parseFloat(area))*1000;
+        $(this).parents('tr').find('.ultimate_tensile_strength').val(ultimate_tensile);
+    });
+
+    $('.decimal').keyup(function(){
+        var val = $(this).val();
+        if(isNaN(val)){
+             val = val.replace(/[^0-9\.]/g,'');
+             if(val.split('.').length>2) 
+                 val =val.replace(/\.+$/,"");
+        }
+        $(this).val(val); 
+    });
+
+    // remove row from Tensline Block
+    $(document).on('click', '.tensile_row_remove, .touchness_row_remove', function(){
+        $(this).parents('tr').remove();
+    });
 
     $(document).on('focus', '.heat_input', function(){
         var row_no = $(this).attr('data-row-no');
@@ -2282,7 +2543,9 @@ if(isset($value) && !empty($value)){
         var process1 = $('#process1').val();
         var process2 = $('#process2').val();
         var process3 = $('#process3').val();
-        var type_id = $('#type_id').val();
+        var type_id1 = $('#type_id1').val();
+        var type_id2 = $('#type_id2').val();
+        var type_id3 = $('#type_id3').val();
         var code_id = $('#code_id').val();
         var pqr_other = $('#pqr_other').val();
         var valid = 0;
@@ -2293,7 +2556,7 @@ if(isset($value) && !empty($value)){
         if(inspection_date == ''){ $('#inspection_date').addClass('invalid'); valid = 1;}else{$('#inspection_date').removeClass('invalid'); valid = 0;}
         if(wps_no == ''){ $('#wps_no').addClass('invalid'); valid = 1;}else{$('#wps_no').removeClass('invalid'); valid = 0;}
         if(process1 != ''){ $('#process1').next().removeClass('invalid'); valid= 0;}else{$('#process1').next().addClass('invalid'); valid=1;}
-        if(type_id != ''){ $('#type_id').next().removeClass('invalid'); valid= 0;}else{$('#type_id').next().addClass('invalid'); valid=1;}
+        if(type_id1 != ''){ $('#type_id1').next().removeClass('invalid'); valid= 0;}else{$('#type_id1').next().addClass('invalid'); valid=1;}
         if(code_id != ''){ $('#code_id').next().removeClass('invalid'); valid= 0;}else{$('#code_id').next().addClass('invalid'); valid=1;}
         
 
@@ -2312,7 +2575,9 @@ if(isset($value) && !empty($value)){
                     process1 : process1,
                     process2 : process2,
                     process3 : process3,
-                    type_id : type_id,
+                    type_id1 : type_id1,
+                    type_id2 : type_id2,
+                    type_id3 : type_id3,
                     code_id : code_id,
                     pqr_other : pqr_other
 
@@ -2330,7 +2595,6 @@ if(isset($value) && !empty($value)){
 
             });
         }
-
     });
 
     $('#btnJoints').on('click', function(){
@@ -2357,7 +2621,7 @@ if(isset($value) && !empty($value)){
             // processData: false,
             error: function(err){
                 console.log(err);
-                alert('Something wrong..!');
+                // alert('Something wrong..!');
             }, 
             success: function(data){
                 if(data.img_success == 1){
@@ -2366,6 +2630,7 @@ if(isset($value) && !empty($value)){
                     });
                 }
 
+               
 
             }
         });
@@ -2654,7 +2919,6 @@ if(isset($value) && !empty($value)){
 
             });
         }
-
     });
 
     $('#btnpost').on('click', function(){
@@ -2704,9 +2968,9 @@ if(isset($value) && !empty($value)){
 
             });
         }
-
     });
 
+    // Gas Block
     $('#btngas').on('click', function(){
         var shielding_gas = $('#shielding_gas').val();
         var shielding_percent = $('#shielding_percent').val();
@@ -2753,10 +3017,9 @@ if(isset($value) && !empty($value)){
 
             });
         }
-
     });
     
-
+    // Electrical Block+
     $('#btnElectrical').on('click', function(){ 
         var elec_current = [];
         var elec_prolarity = [];
@@ -2844,6 +3107,7 @@ if(isset($value) && !empty($value)){
             $.ajax({
                 type: 'post',
                 url: '<?php echo base_url(); ?>operation/pqr/create',
+                dataType: 'json',
                 data: {
                     blockname: "electricalblock",
                     pqr_id: $('#pqr_id').val(),
@@ -2867,6 +3131,7 @@ if(isset($value) && !empty($value)){
                     alert('Something wrong..!');
                 }, 
                 success: function(data){
+                    console.log(data.success);
                     if(data.success == 1){
                         $('.tablinks:nth-child(9)').trigger('click');
                     }
@@ -2874,7 +3139,8 @@ if(isset($value) && !empty($value)){
             });
         }
     });
-
+    
+    // Teachniqe Block
     $('#btnTechinque').on('click', function(){
         var travel_speed = $('#travel_speed').val();
         var weave_bead = $('#weave_bead').val();
@@ -2919,6 +3185,7 @@ if(isset($value) && !empty($value)){
                     console.log(err);
                 },
                 success : function(data){
+                    console.log(data.success);
                     if(data.success == 1){
                         $('.tablinks:nth-child(10)').trigger('click');
                     }
@@ -2926,9 +3193,9 @@ if(isset($value) && !empty($value)){
 
             });
         }
-
     });
     
+    // Welding Parameters Block
     $('#btnWeldingparameters').on('click', function(){
         var layer = [];
         var welder_process = [];
@@ -2990,6 +3257,7 @@ if(isset($value) && !empty($value)){
             $.ajax({
                 type: 'post',
                 url: '<?php echo base_url(); ?>operation/pqr/create',
+                dataType: 'json',
                 data: {
                     blockname: "weldingparametersblock",
                     pqr_id: $('#pqr_id').val(),
@@ -3002,7 +3270,6 @@ if(isset($value) && !empty($value)){
                     current_voltage_range: current_voltage_range,
                     travel_speed_range: travel_speed_range,
                     heat_input: heat_input,
-                    blockfinished: 1
                 },
                 // processData: false,
                 error: function(err){
@@ -3010,21 +3277,291 @@ if(isset($value) && !empty($value)){
                     alert('Something wrong..!');
                 }, 
                 success: function(data){
+                    console.log(data.success);
                     if(data.success == 1){
-                        window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                         $('.tablinks:nth-child(11)').trigger('click');
                     }
                 }
             });
         }
     });
 
+    // Tensline Block
+    $('#btnTensile').on('click', function(){
+        var specimen_no = [];
+        var thickness = [];
+        var width = [];
+        var area = [];
+        var ultimate_tensile_load = [];
+        var ultimate_tensile_strength = [];
+        var failure_location = [];
+        var tensile_test_result = [];
+
+        $('.specimen_no').each(function(k){
+            specimen_no[k] = $(this).val();
+        });
+        $('.thickness').each(function(k){
+            thickness[k] = $(this).val();
+        });
+        $('.width').each(function(k){
+            width[k] = $(this).val();
+        });
+        $('.area').each(function(k){
+            area[k] = $(this).val();
+        });
+        $('.ultimate_tensile_load').each(function(k){
+            ultimate_tensile_load[k] = $(this).val();
+        });
+        $('.ultimate_tensile_strength').each(function(k){
+            ultimate_tensile_strength[k] = $(this).val();
+        });
+        $('.failure_location').each(function(k){
+            failure_location[k] = $(this).val();
+        });
+        $('.tensile_test_result').each(function(k){
+            tensile_test_result[k] = $(this).val();
+        });
+
+         $.ajax({
+                type: 'post',
+                url: '<?php echo base_url(); ?>operation/pqr/create',
+                dataType: 'json',
+                data: {
+                    blockname: "tensile",
+                    pqr_id: $('#pqr_id').val(),
+                    specimen_no: specimen_no,
+                    thickness: thickness,
+                    width: width,
+                    area: area,
+                    ultimate_tensile_load: ultimate_tensile_load,
+                    ultimate_tensile_strength: ultimate_tensile_strength,
+                    failure_location: failure_location,
+                    tensile_test_result: tensile_test_result
+                },
+                // processData: false,
+                error: function(err){
+                    console.log(err);
+                    alert('Something wrong..!');
+                }, 
+                success: function(data){
+                    console.log(data.success);
+                    if(data.success == 1){
+                        $('.tablinks:nth-child(12)').trigger('click');
+                    }
+                }
+            });
+    });
+
+    $('#btnGuided').on('click', function(){
+        var type_and_figure_no = [];
+        var ben_test_result = [];
+
+        $('.type_and_figure_no').each(function(k){
+            type_and_figure_no[k] = $(this).val();
+        });
+
+        $('.ben_test_result').each(function(k){
+            ben_test_result[k] = $(this).val();
+        });
+
+        $.ajax({
+            type: 'post',
+            url: '<?php echo base_url(); ?>operation/pqr/create',
+            dataType: 'json',
+            data: {
+                blockname: "guided",
+                pqr_id: $('#pqr_id').val(),
+                type_and_figure_no: type_and_figure_no,
+                ben_test_result: ben_test_result,
+            },
+            // processData: false,
+            error: function(err){
+                console.log(err);
+                alert('Something wrong..!');
+            }, 
+            success: function(data){
+                console.log(data.success);
+                if(data.success == 1){
+                    // window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                    $('.tablinks:nth-child(13)').trigger('click');
+                }
+            }
+        });
+    });
+
+    $('#btnTouchness').on('click', function(){
+        var touchness_specimen_no = [];
+        var notch_location = [];
+        var notch_type = [];
+        var test_temp = [];
+        var impact_values = [];
+        var lateral_exp_shear = [];
+        var lateral_exp_mils = [];
+        var drop_break = [];
+        var drop_no_break = [];
+
+        $('.touchness_specimen_no').each(function(k){
+            touchness_specimen_no[k] = $(this).val();
+        });
+        $('.notch_location').each(function(k){
+            notch_location[k] = $(this).val();
+        });
+        $('.notch_type').each(function(k){
+            notch_type[k] = $(this).val();
+        });
+        $('.test_temp').each(function(k){
+            test_temp[k] = $(this).val();
+        });
+        $('.impact_values').each(function(k){
+            impact_values[k] = $(this).val();
+        });
+        $('.lateral_exp_shear').each(function(k){
+            lateral_exp_shear[k] = $(this).val();
+        });
+        $('.lateral_exp_mils').each(function(k){
+            lateral_exp_mils[k] = $(this).val();
+        });
+        $('.drop_break').each(function(k){
+            drop_break[k] = $(this).val();
+        });
+        $('.drop_no_break').each(function(k){
+            drop_no_break[k] = $(this).val();
+        });
+
+
+        $.ajax({
+            type: 'post',
+            url: '<?php echo base_url(); ?>operation/pqr/create',
+            dataType: 'json',
+            data: {
+                blockname: "touchness",
+                pqr_id: $('#pqr_id').val(),
+                touchness_specimen_no : touchness_specimen_no,
+                notch_location : notch_location,
+                notch_type : notch_type,
+                test_temp : test_temp,
+                impact_values : impact_values,
+                lateral_exp_shear : lateral_exp_shear,
+                lateral_exp_mils : lateral_exp_mils,
+                drop_break : drop_break,
+                drop_no_break : drop_no_break
+            },
+            // processData: false,
+            error: function(err){
+                console.log(err);
+                alert('Something wrong..!');
+            }, 
+            success: function(data){
+                console.log(data.success);
+                if(data.success == 1){
+                    // window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                    $('.tablinks:nth-child(14)').trigger('click');
+                }
+            }
+        });
+    });
+
+    $('#btnFillet').on('click', function(){
+        var result_statificatory = $("input[name='result_statificatory']:checked").val();
+        var penetration_into_partent_metal = $("input[name='penetration_into_partent_metal']:checked").val();
+        var maro_result = $('#maro_result').val();
+
+        $.ajax({
+            type: 'post',
+            url: '<?php echo base_url(); ?>operation/pqr/create',
+            dataType: 'json',
+            data: {
+                blockname: "fillet",
+                pqr_id: $('#pqr_id').val(),
+                result_statificatory: result_statificatory,
+                penetration_into_partent_metal: penetration_into_partent_metal,
+                maro_result: maro_result,
+            },
+            // processData: false,
+            error: function(err){
+                console.log(err);
+                alert('Something wrong..!');
+            }, 
+            success: function(data){
+                console.log(data.success);
+                if(data.success == 1){
+                    // window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                    $('.tablinks:nth-child(15)').trigger('click');
+                }
+            }
+        });
+    });
+
+    $('#btnOthers').on('click', function(){
+        var type_test = $('#type_test').val();
+        var type_test_other = $('#type_test_other').val();
+        var deposit_analysis = $('#deposit_analysis').val();
+        var test_other_sel = $('#test_other_sel').val();
+        var test_other = $('#test_other').val();
+        var welder_staff_id = $('#welder_staff_id').val();
+        var stamp_no = $('#stamp_no').val();
+        var conducted_by = $('#conducted_by').val();
+        var laboratory_test_1 = $('#laboratory_test_1').val();
+        var laboratory_test_2 = $('#laboratory_test_2').val();
+        var laboratory_test_3 = $('#laboratory_test_3').val();
+
+        $.ajax({
+            type: 'post',
+            url: '<?php echo base_url(); ?>operation/pqr/create',
+            dataType: 'json',
+            data: {
+                blockname: "others",
+                pqr_id: $('#pqr_id').val(),
+                type_test: type_test,
+                type_test_other: type_test_other,
+                deposit_analysis: deposit_analysis,
+                test_other_sel: test_other_sel,
+                test_other: test_other,
+                welder_staff_id: welder_staff_id,
+                stamp_no: stamp_no,
+                conducted_by: conducted_by,
+                laboratory_test_1: laboratory_test_1,
+                laboratory_test_2: laboratory_test_2,
+                laboratory_test_3: laboratory_test_3,
+                blockfinished: 1
+            },
+            // processData: false,
+            error: function(err){
+                console.log(err);
+                alert('Something wrong..!');
+            }, 
+            success: function(data){
+                console.log(data.success);
+                if(data.success == 1){
+                    window.location.href = '<?php echo base_url() ?>operation/pqr/';
+                }
+            }
+        });
+    });
 
     $('.previous').on('click', function(){
         var blockno = $(this).attr('data-btn');
         $('.tablinks:nth-child('+blockno+')').trigger('click');
     });
    
-    
+
+    $('#type_test').on('change',  function(){
+        if('Others' == $(this).val()){
+            $('#type_test_other').removeAttr('disabled');
+        }else{
+            $('#type_test_other').val('');
+            $('#type_test_other').attr('disabled','disabled');
+        }
+    });
+
+    $('#test_other_sel').on('change',  function(){
+        if('Others' == $(this).val()){
+            $('#test_other').removeAttr('disabled');
+        }else{
+            $('#test_other').val('');
+            $('#test_other').attr('disabled','disabled');
+        }
+    });
   });
 
 </script>

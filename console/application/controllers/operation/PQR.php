@@ -212,7 +212,9 @@ class PQR extends CI_Controller
 				'process1' 			=> $_POST['process1'],
 				'process2' 			=> $_POST['process2'],
 				'process3' 			=> $_POST['process3'],
-				'type_id' 			=> implode(',' , $_POST['type_id']),
+				'type_id1' 			=> $_POST['type_id1'],
+				'type_id2' 			=> $_POST['type_id2'],
+				'type_id3' 			=> $_POST['type_id3'],
 				'code_id' 			=> implode(',' , $_POST['code_id']),
 				'pqr_other' 		=> $_POST['pqr_other'],
 				
@@ -315,6 +317,7 @@ class PQR extends CI_Controller
 			$i++;
 			}
 
+
 			if(count($path) != 0){
 				$value_array = array(
 					'joints_image' => implode(',' ,$path)
@@ -334,7 +337,7 @@ class PQR extends CI_Controller
 					$data['img_success'] = 1;
 					$data['path'] = $path;
 				}
-
+				print_r($data); die();
 				echo json_encode($data);
 			}
 			exit;
@@ -565,6 +568,123 @@ class PQR extends CI_Controller
 			}
 		}
 
+		if($_POST['blockname'] == 'tensile'){
+			$value_array = array(
+				'specimen_no' => implode(',', $_POST['specimen_no']),
+				'thickness' => implode(',', $_POST['thickness']),
+				'width' => implode(',', $_POST['width']),
+				'area' => implode(',', $_POST['area']),
+				'ultimate_tensile_load' => implode(',', $_POST['ultimate_tensile_load']),
+				'ultimate_tensile_strength' => implode(',', $_POST['ultimate_tensile_strength']),
+				'failure_location' => implode(',', $_POST['failure_location']),
+				'tensile_test_result' => implode(',', $_POST['tensile_test_result'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'touchness'){
+
+			
+			$value_array = array(
+				'touchness_specimen_no' => implode(',', $_POST['touchness_specimen_no']),
+				'notch_location' => implode(',', $_POST['notch_location']),
+				'notch_type' => implode(',', $_POST['notch_type']),
+				'test_temp' => implode(',', $_POST['test_temp']),
+				'impact_values' => implode(',', $_POST['impact_values']),
+				'lateral_exp_shear' => implode(',', $_POST['lateral_exp_shear']),
+				'lateral_exp_mils' => implode(',', $_POST['lateral_exp_mils']),
+				'drop_break' => implode(',', $_POST['drop_break']),
+				'drop_no_break' => implode(',', $_POST['drop_no_break'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+
+		if($_POST['blockname'] == 'guided'){
+			$value_array = array(
+				'type_and_figure_no' => implode(',', $_POST['type_and_figure_no']),
+				'ben_test_result' => implode(',', $_POST['ben_test_result'])
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'fillet'){
+			$value_array = array(
+				'result_statificatory' => $_POST['result_statificatory'],
+				'penetration_into_partent_metal' => $_POST['penetration_into_partent_metal'],
+				'maro_result' => $_POST['maro_result']
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
+		if($_POST['blockname'] == 'others'){
+			$value_array = array(
+				'type_test' => $_POST['type_test'],
+				'type_test_other' => $_POST['type_test_other'],
+				'deposit_analysis' => $_POST['deposit_analysis'],
+				'test_other_sel' => $_POST['test_other_sel'],
+				'test_other' => $_POST['test_other'],
+				'welder_staff_id' => $_POST['welder_staff_id'],
+				'stamp_no' => $_POST['stamp_no'],
+				'conducted_by' => $_POST['conducted_by'],
+				'laboratory_test_1' => $_POST['laboratory_test_1'],
+				'laboratory_test_2' => $_POST['laboratory_test_2'],
+				'laboratory_test_3' => $_POST['laboratory_test_3']
+			);
+
+			$value_array['updateBy'] =  $this->session->userdata('user_id');    
+			$value_array['updateOn'] =  date('Y-m-d H:i:s');
+			
+			if($_POST['pqr_id'] !='')
+			{
+				$where_array = array(
+					'pqr_id'		=>	$_POST['pqr_id']
+				);
+				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
+			}
+		}
+
 
 		$data = [];
 
@@ -582,8 +702,12 @@ class PQR extends CI_Controller
 			if(isset($_POST['blockfinished']) && $_POST['blockfinished'] == 1){
 				$this->session->set_flashdata('res', lang('common_message_update'));
 				$this->session->set_flashdata('res_pqr', 'success');
-				redirect(base_url().'operation/PQR');
+				// redirect(base_url().'operation/PQR');
+				$data['success'] = 1;
+				echo json_encode($data);
+				exit;
 			}else{
+				$data['id'] = $_POST['pqr_id'];
 				$data['success'] = 1;
 				echo json_encode($data);
 				exit;

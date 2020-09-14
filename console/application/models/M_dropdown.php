@@ -1091,7 +1091,7 @@ class M_dropdown extends CI_Model {
 		//$this->db->where('cat_isSubcat',0);
 		//$this->db->where('st_storeID ',$this->session->userdata('st_storeID'));
 		$query = $this->db->get('jr_type');
-		// $data[''] = lang("mm_operation_type_Select_label") ;
+		$data[''] = lang("mm_operation_type_Select_label") ;
 		
 		foreach($query->result_array() as $item)
 		{

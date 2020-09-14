@@ -1,5 +1,5 @@
   <?php
-    $this->mcommon->getCheckUserPermissionHead('Type',true);
+    $this->mcommon->getCheckUserPermissionHead('PQR',true);
   ?> 
  <div id="main-wrapper">
   <div class="text-center">
@@ -50,12 +50,12 @@
                             echo $this->table->generate(); */
                         ?>
                     <?php 
-                      if($this->mcommon->getISUserPermission('type all details download excel',$this->session->userdata('user_id'))){
+                      if($this->mcommon->getISUserPermission('PQR all details download excel',$this->session->userdata('user_id'))){
                         ?>
                         <button id="excel" class="btn btn-primary btn-addon m-b-sm pull-right"><i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?></button>
                         <?php
                       }
-                      if($this->mcommon->getISUserPermission('type all details download pdf',$this->session->userdata('user_id'))){
+                      if($this->mcommon->getISUserPermission('PQR all details download pdf',$this->session->userdata('user_id'))){
                         ?>
                         <button id="pdf" class="btn btn-primary btn-addon m-b-sm pull-right m-r-10"><i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?></button>
                         <?php 
@@ -126,7 +126,7 @@
         rowNum:10,
         rowList:[10,25,50,100],
         pager: jQuery('#dataTablePager2'),
-        sortname: 'type_id',
+        sortname: 'pqr_id',
         viewrecords: true,
         sortorder: "desc",
         autowidth: true,

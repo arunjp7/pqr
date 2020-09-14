@@ -1,11 +1,8 @@
   <?php 
       $this->mcommon->getCheckUserPermissionHead('staffs',true);
 ?>
-  <div class="row">
-
-    <div class="col-sm-12">
-
-      <div class="white-box">
+<div id="main-wrapper">
+  <div class="text-center">
 
       <?php
         if($this->session->flashdata('res'))
@@ -18,50 +15,66 @@
           <?php
         }
         ?>
+      <br/>
+  </div>
         
-        <div class="row m-b-10">
-          <div class="col-sm-12">   
-          <?php 
-            if($this->mcommon->getISUserPermission('Staffs add and edit',$this->session->userdata('user_id'))){
-              ?>
-              <span class="pull-left">
-                <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_staffs_manage_form_add_button_name');?></a>
-              </span>
-              <?php
-            }
-          ?>
-            <span class="pull-right"> 
-              <!--<a href="<?php echo base_url().$export_url;?>" target="_blank" class="btn btn-primary btn-addon m-b-sm pull-right"> <i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?> </a>           <a href="<?php echo base_url().$pdf_url;?>" target="_blank" class="btn btn-primary btn-addon m-b-sm pull-right m-r-10"> <i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?> </a> 
-              -->
-              <!--
-                <h3 class="box-title m-b-0"><?php echo $list_tittle;?></h3>
-                <p class="text-muted m-b-30"><?php echo $list_tittle_small;?></p>
-                -->
-                  <?php /* 
-                      echo $this->table->generate(); */
-                  ?>
-              <?php 
-                if($this->mcommon->getISUserPermission('Staffs all details download excel',$this->session->userdata('user_id'))){
-                  ?>
-                  <button id="excel" class="btn btn-primary btn-addon m-b-sm pull-right"><i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?></button>
-                  <?php
-                }
-                if($this->mcommon->getISUserPermission('Staffs all details download pdf',$this->session->userdata('user_id'))){
-                  ?>
-                  <button id="pdf" class="btn btn-primary btn-addon m-b-sm pull-right m-r-10"><i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?></button>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title"></h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">       
+                <div class="col-md-12">  
                   <?php 
-                }
-              ?>
-            </span>
-          </div>
-        </div>
+                    if($this->mcommon->getISUserPermission('Staffs add and edit',$this->session->userdata('user_id'))){
+                      ?>
+                      <span class="pull-left">
+                        <a href="<?php echo base_url().$add_button_url;?>" class="btn btn-success waves-effect waves-light m-r-10 pull-right" ><?php echo lang('mm_masters_staffs_manage_form_add_button_name');?></a>
+                      </span>
+                      <?php
+                    }
+                  ?>
+                  <span class="pull-right"> 
+                    <!--<a href="<?php echo base_url().$export_url;?>" target="_blank" class="btn btn-primary btn-addon m-b-sm pull-right"> <i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?> </a>           <a href="<?php echo base_url().$pdf_url;?>" target="_blank" class="btn btn-primary btn-addon m-b-sm pull-right m-r-10"> <i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?> </a> 
+                    -->
+                    <!--
+                      <h3 class="box-title m-b-0"><?php echo $list_tittle;?></h3>
+                      <p class="text-muted m-b-30"><?php echo $list_tittle_small;?></p>
+                      -->
+                        <?php /* 
+                            echo $this->table->generate(); */
+                        ?>
+                    <?php 
+                      if($this->mcommon->getISUserPermission('Staffs all details download excel',$this->session->userdata('user_id'))){
+                        ?>
+                        <button id="excel" class="btn btn-primary btn-addon m-b-sm pull-right"><i class="fa fa-file-excel-o"></i> <?php echo lang('helper_common_excel_label');?></button>
+                        <?php
+                      }
+                      if($this->mcommon->getISUserPermission('Staffs all details download pdf',$this->session->userdata('user_id'))){
+                        ?>
+                        <button id="pdf" class="btn btn-primary btn-addon m-b-sm pull-right m-r-10"><i class="fa fa-file-pdf-o"></i> <?php echo lang('helper_common_pdf_label');?></button>
+                        <?php 
+                      }
+                    ?>
+                  </span>
+                </div>
+            </div>
 
-        <table id="dataTableList2"></table>
-        <div id="dataTablePager2"></div>
+            <div class="mr-1">
 
-      </div>
+              <table id="dataTableList2"></table>
+              <div id="dataTablePager2"></div>
+            </div>
+
     </div>
   </div>
+</div>
+
+</div>
+
+</div>
 
 
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false" id="CompanyModal">
