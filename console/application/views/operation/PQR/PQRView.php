@@ -862,7 +862,7 @@ if(isset($value) && !empty($value)){
                                             </tr>
                                             <tr>
                                                 <td><?php echo lang('mm_operation_pqr_welder_name_label');?></td>
-                                                <td><?= $welder_staff_id ?></td>
+                                                <td><?php echo implode(',', $welder_staff_id); ?></td>
                                                 <td><?php echo lang('mm_operation_pqr_stamp_no_label');?></td>
                                                 <td><?= $stamp_no ?></td>
                                             </tr>
