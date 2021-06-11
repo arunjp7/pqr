@@ -9,10 +9,14 @@ if(isset($value) && !empty($value))
       $company_id               =  $row->company_id;
       $company_name             =  $row->company_name;
       $company_email            =  $row->company_email;       
-      $company_phone            =  $row->company_phone;   
+      $contact_no               =  $row->contact_no;
+      $abbreviation             =  $row->abbreviation;
+      $alternate_contact_no     =  $row->alternate_contact_no;
+      $company_fax              =  $row->fax;
+      $company_website          =  $row->website;
       $company_address          =  $row->company_address; 
-      $company_logo            =  $row->company_logo;  
-      $old_companylogo         =  $row->company_logo;  
+      $company_logo             =  $row->company_logo;  
+      $old_companylogo          =  $row->company_logo;  
     }
 }
 else
@@ -20,10 +24,14 @@ else
     $company_id                 =  $this->input->post('company_id');
     $company_name               =  $this->input->post('company_name');
     $company_email              =  $this->input->post('company_email');
-    $company_phone              =  $this->input->post('company_phone');
+    $contact_no                 =  $this->input->post('contact_no');
+    $alternate_contact_no       =  $this->input->post('alternate_contact_no');
+    $company_fax                =  $this->input->post('company_fax');
+    $abbreviation               =  $this->input->post('abbreviation');
+    $company_website            =  $this->input->post('company_website');
     $company_address            =  $this->input->post('company_address');
-    $company_logo              =  $this->input->post('company_logo');
-    $old_companylogo           =  $this->input->post('old_companylogo');
+    $company_logo               =  $this->input->post('company_logo');
+    $old_companylogo            =  $this->input->post('old_companylogo');
 }
 
 ?>
@@ -46,6 +54,29 @@ else
                   </div>
                 </div> 
                 <div class="col-sm-3 col-xs-3">
+                  <div class="form-group <?PHP if(form_error('abbreviation')){ echo 'has-error';} ?>">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_abbreviations');?><span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_abbreviations');?>" id="abbreviation" name="abbreviation" value="<?php echo $abbreviation ;?>" autocomplete="off">
+                   <?PHP if(form_error('abbreviation')){ echo '<span class="help-block">'.form_error('abbreviation').'</span>';} ?>
+                  </div>
+                </div> 
+                <div class="col-sm-3 col-xs-3">
+                  <div class="form-group <?PHP if(form_error('contact_no')){ echo 'has-error';} ?>">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_contact_no');?><span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_contact_no');?>" id="contact_no" name="contact_no" value="<?php echo $contact_no ;?>" autocomplete="off">
+                   <?PHP if(form_error('contact_no')){ echo '<span class="help-block">'.form_error('contact_no').'</span>';} ?>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_alternate_contact_no');?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_alternate_contact_no');?>" id="alternate_contact_no" name="alternate_contact_no" value="<?php echo $alternate_contact_no ;?>" autocomplete="off">
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-sm-3 col-xs-3">
                   <div class="form-group <?PHP if(form_error('company_email')){ echo 'has-error';} ?>">
                     <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_company_email');?><span class="text-danger">*</span></label>
                     <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_company_email');?>" id="company_email" name="company_email" value="<?php echo $company_email ;?>" autocomplete="off">
@@ -53,18 +84,20 @@ else
                   </div>
                 </div>
                 <div class="col-sm-3 col-xs-3">
-                  <div class="form-group <?PHP if(form_error('company_phone')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_table_label_company_phone');?></label>
-                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_table_label_company_phone');?>" id="company_phone" name="company_phone" value="<?php echo $company_phone ;?>" autocomplete="off">
-                    <?PHP if(form_error('company_phone')){ echo '<span class="help-block">'.form_error('company_phone').'</span>';} ?>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_website');?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_website');?>" id="company_website" name="company_website" value="<?php echo $company_website ;?>" autocomplete="off">
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                
+                <div class="col-sm-3 col-xs-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_fax');?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_fax');?>" id="company_fax" name="company_fax" value="<?php echo $company_fax ;?>" autocomplete="off">
+                  </div>
+                </div>
                 <div class="col-sm-3 col-xs-3">
                   <div class="form-group <?PHP if(form_error('company_address')){ echo 'has-error';} ?>">
-                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_table_label_company_address');?></label>
+                    <label for="exampleInputEmail1"><?php echo lang('mm_masters_companydetails_table_label_company_address');?><span class="text-danger">*</span></label>
                     <textarea class="form-control" placeholder="<?php echo lang('mm_masters_companydetails_table_label_company_address');?>" id="company_address" name="company_address" rows="3"><?php echo $company_address;?></textarea>
                     <?PHP if(form_error('company_address')){ echo '<span class="help-block">'.form_error('company_address').'</span>';} ?>
                   </div>
@@ -77,11 +110,12 @@ else
                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                       <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                       <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new"><?php echo lang('mm_common_logo_name_label');?></span> <span class="fileinput-exists"><?php echo lang('mm_common_logo_change_label');?></span>
-                      <input type="file" id="company_logo" name="company_logo" >
+                      <input type="file" id="company_logo" name="company_logo" class="company_logo" >
                       </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><?php echo lang('mm_Hrm_staffs_attachment');?></a>
                     </div>
                     <?PHP if(form_error('company_logo')){ echo '<span class="help-block">'.form_error('company_logo').'</span>';} ?>
-                    <?php if($old_companylogo!=''){ ?> <img src="<?php echo config_item('image_url').$old_companylogo;?>" height="100" width="100"> <?php }?>
+                    <?php if($old_companylogo!=''){ ?> <img src="<?php echo config_item('image_url').$old_companylogo;?>" class="logo_image_display" height="100" width="100"> <?php }?>
+                     
                   </div>
                 </div> 
                              
@@ -99,4 +133,26 @@ else
     </div>
 
 </div>
-  <!-- /.end form -->
+
+<script>
+  
+    // show selected image
+      function readURL(input, id) {
+
+          if (input.files && input.files[0]) {
+
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $(".logo_image_display") .attr('src', '');
+                  $(".logo_image_display").attr('src', e.target.result);
+                  // $('#profile-img-tag').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+      $(document).on("change", ".company_logo", function(){
+
+          readURL(this, $(this).attr("id"));
+      });
+
+  </script>

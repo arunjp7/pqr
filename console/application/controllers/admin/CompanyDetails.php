@@ -70,7 +70,7 @@ class CompanyDetails extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	function datatable1()
     {
-    	$this->datatables->select('p.company_id, p.company_name, p.company_email, p.company_phone, p.company_office_no, p.company_fax, p.company_website, p.company_abbreviations, p.company_address, u.first_name, p.createOn,u1.first_name as firstname,p.updateOn')
+    	$this->datatables->select('p.company_id, p.company_name, p.company_email, p.contact_no, p.company_office_no, p.company_fax, p.company_website, p.company_abbreviations, p.company_address, u.first_name, p.createOn,u1.first_name as firstname,p.updateOn')
         ->from('jr_company_details AS p')
         ->join('users AS u', 'u.id = p.createBy','left') 
         ->join('users AS u1', 'u1.id = p.updateBy','left') 
@@ -95,7 +95,7 @@ class CompanyDetails extends CI_Controller
 
 
 		$fields_arrayPackage = array(
-			'p.company_id','p.company_name','p.company_email','p.company_phone','p.company_address','p.company_logo','u.first_name','p.createOn','u1.first_name as firstname','p.updateOn'
+			'p.company_id','p.company_name','p.company_email','p.contact_no', 'p.abbreviation','p.company_address','p.company_logo','u.first_name','p.createOn','u1.first_name as firstname','p.updateOn'
 		);
 		$join_arrayPackage = array(
 			'users AS u' => 'u.id = p.createBy',
@@ -128,7 +128,7 @@ class CompanyDetails extends CI_Controller
 	        	$responce->rows[$i]['cell']['delete_company_id'] = get_buttons_new_only_Delete($dataDetail->company_id,'admin/CompanyDetails/');
 	        	$responce->rows[$i]['cell']['company_name'] = $dataDetail->company_name;
 	        	$responce->rows[$i]['cell']['company_email'] = $dataDetail->company_email;
-	        	$responce->rows[$i]['cell']['company_phone'] = $dataDetail->company_phone;
+	        	$responce->rows[$i]['cell']['contact_no'] = $dataDetail->contact_no;
 	        	$responce->rows[$i]['cell']['company_address'] = $dataDetail->company_address;
 	        	$responce->rows[$i]['cell']['company_logo'] = get_image_tag($dataDetail->company_logo);
 	        	$responce->rows[$i]['cell']['first_name'] = $dataDetail->first_name;
@@ -172,13 +172,16 @@ class CompanyDetails extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function create()
 	{		
+		
         $user   = $this->ion_auth->user()->row();
-		$this->mcommon->getCheckUserPermissionHead('Clients add and edit',true);
+		$this->mcommon->getCheckUserPermissionHead('CompanyDetails add and edit',true);
 
         if(isset($_POST['submit']))
 		{			
-			 $this->form_validation->set_rules('company_name', lang('mm_master_company_name'), 'required');
-			 $this->form_validation->set_rules('company_phone', lang('mm_master_company_phone'), 'required');
+
+			 $this->form_validation->set_rules('company_name', lang('mm_masters_companydetails_company_name'), 'required');
+			 $this->form_validation->set_rules('abbreviation', lang('mm_masters_companydetails_abbreviations'), 'required');
+			 $this->form_validation->set_rules('contact_no', lang('mm_masters_companydetails_contact_no'), 'required');
 			 $this->form_validation->set_rules('company_email', $this->lang->line('mm_master_company_email'), 'required|valid_email');
 			 $this->form_validation->set_rules('company_address', lang('mm_master_company_address'), 'required');
 
@@ -209,6 +212,7 @@ class CompanyDetails extends CI_Controller
 					$image_data['message'] = $this->upload->data(); 
 
 					$_POST['company_logo']="~cdn/companyLogo/".$image_data['message']['file_name'];
+
 				} 
 				else
 				{
@@ -217,22 +221,25 @@ class CompanyDetails extends CI_Controller
 				}	
 			}
 
-
             if ($this->form_validation->run() == true)
 			{
 				$value_array=array(
 					'company_name'		    =>	ucwords($this->input->post('company_name')),
+					'abbreviation'			=>	$this->input->post('abbreviation'),
+					'contact_no'			=>	$this->input->post('contact_no'),
+					'alternate_contact_no'	=>	($this->input->post('alternate_contact_no')!='') ? $this->input->post('alternate_contact_no') : '',
+					'fax'					=>	($this->input->post('company_fax')!='') ? $this->input->post('company_fax') : '',
+					'website'				=>	($this->input->post('company_website')!='') ? $this->input->post('company_website') : '',
 					'company_email'			=>	$this->input->post('company_email'),
-					'company_phone'=>	($this->input->post('company_phone')!='') ? $this->input->post('company_phone') : '',
-					'company_address'=>	($this->input->post('company_address')!='') ? $this->input->post('company_address') : '',
-					'updateBy'			=>	$this->session->userdata('user_id'),
-					'updateOn'			=>	date('Y-m-d H:i:s')
+					'company_address'		=>	($this->input->post('company_address')!='') ? $this->input->post('company_address') : '',
+					'updateBy'				=>	$this->session->userdata('user_id'),
+					'updateOn'				=>	date('Y-m-d H:i:s')
 				);
 				if($this->input->post('company_id')!='')
 				{
 					if($_FILES['company_logo']['name']!='')
 					{
-						unlink(FCPATH .$this->input->post('old_companyLogo')); 
+						unlink(FCPATH .$this->input->post('old_companylogo')); 
 						$value_array = array_merge($value_array, array('company_logo'=>$this->input->post('company_logo')));
 					}
 					$where_array=array(
@@ -250,7 +257,8 @@ class CompanyDetails extends CI_Controller
 					$value_array['createOn'] =  date('Y-m-d H:i:s'); 
 					$result=$this->mcommon->common_insert('jr_company_details',$value_array);
 				}
-			}		
+			}	
+				
 		}
 
 		if($result)
@@ -275,7 +283,7 @@ class CompanyDetails extends CI_Controller
 	// Last Updated by Vinitha 09/08/2016 
 	public function operation($id)
 	{
-		$this->mcommon->getCheckUserPermissionHead('Clients add and edit',true);
+		$this->mcommon->getCheckUserPermissionHead('CompanyDetails add and edit',true);
 		$where_array=array(
 			'company_id'=>$id
 		);

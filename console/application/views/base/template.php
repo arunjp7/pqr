@@ -144,7 +144,7 @@
             <?php echo (isset($content))?$content:''; ?>
             <!-- footer div starts -->
             <div class="page-footer">
-                <p class="no-s" style="text-align: right;">
+                <p class="no-s" style="text-align: center;">
                     Powered By <a href="http://agmtechnical.com/" target="_blank">AGM Technical</a>
                 </p>
             </div>

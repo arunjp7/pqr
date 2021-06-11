@@ -878,7 +878,7 @@ class M_dropdown extends CI_Model {
     function getMainMenuAll($userID)
     {
     	//echo "select DISTINCT(mm.menu_area) as menuarea from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."')";
-    	$selectQuery = $this->db->query("select DISTINCT(mm.menu_area) as menuarea, mm.menu_active_name from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."')  Order by mm.top_menu_position");
+    	$selectQuery = $this->db->query("select DISTINCT(mm.menu_area) as menuarea, mm.menu_active_name from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."')  Order by mm.top_menu_position asc");
     	return $selectQuery;
 
     }
@@ -893,7 +893,7 @@ class M_dropdown extends CI_Model {
 			$data[$mainMenu['menuarea']] = $mainMenu;
 			//echo "select DISTINCT(mm.menu_name) as menuname, mm.menu_link, mm.menu_id from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND mm.menu_parent=0 AND mm.menu_status=1 AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."') AND mm.menu_area IN ('".$mainMenu['menuarea']."') Order by mm.menu_name ";
 
-			$selectQuery = $this->db->query("select DISTINCT(mm.menu_name) as menu_name, mm.menu_link, mm.menu_id, mm.menu_path, mm.menu_active_name from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND mm.menu_parent=0 AND mm.menu_status=1 AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."') AND mm.menu_area IN ('".$mainMenu['menuarea']."') Order by mm.top_menu_position, mm.menu_position asc ");
+			$selectQuery = $this->db->query("select DISTINCT(mm.menu_name) as menu_name, mm.menu_link, mm.menu_id, mm.menu_path, mm.menu_active_name from jr_menu_module as mm, user_group_module as gm where mm.menu_id=gm.module_id AND mm.menu_parent=0 AND mm.menu_status=1 AND group_id IN (SELECT group_id as groupname FROM `user_admin_group` as a WHERE user_id = '".$userID."') AND mm.menu_area IN ('".$mainMenu['menuarea']."') Order by mm.top_menu_position asc, mm.menu_position asc ");
 
 			foreach($selectQuery->result_array() as $item1)
 			{
@@ -1146,7 +1146,7 @@ class M_dropdown extends CI_Model {
 		
 		foreach($query->result_array() as $item)
 		{
-			$data[$item['pno_id']] = $item['pno_name'] . " - " . $item['group_no'] . ',' . $item['specification_no'] . ',' . ($item['dtg_name']!=null?$item['dtg_name']:$item['uns_number']);
+			$data[$item['pno_id']] = $item['pno_name'] . " | " . $item['group_no'] . ' | ' . $item['specification_no'] . ' | ' . ($item['dtg_name']!=null?$item['dtg_name']:$item['uns_number']);
 		}
       return $data;
     }

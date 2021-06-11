@@ -207,6 +207,7 @@ class PQR extends CI_Controller
 		if($_POST['blockname'] == 'companyDetails'){
 			$value_array = array(
 				'pqr_no' 			=> $_POST['pqr_no'],
+				'company_id' 		=> $_POST['company_id'],
 				'inspection_date' 	=> date("Y-m-d", strtotime($_POST['inspection_date'])),
 				'wps_no' 			=> $_POST['wps_no'],
 				'process1' 			=> $_POST['process1'],
@@ -217,6 +218,7 @@ class PQR extends CI_Controller
 				'type_id3' 			=> $_POST['type_id3'],
 				'code_id' 			=> implode(',' , $_POST['code_id']),
 				'pqr_other' 		=> $_POST['pqr_other'],
+				'pqr_pwht' 			=> $_POST['pwht'],
 				
 			);
 			$value_array['updateBy'] =  $this->session->userdata('user_id');    
@@ -262,7 +264,7 @@ class PQR extends CI_Controller
 				$resultupdate = $this->mcommon->common_edit('jr_pqr',$value_array,$where_array);
 			}
 		}
-
+		// save joints
 		if($_GET['blockname'] == 'jointimages'){
 
 			
@@ -347,7 +349,6 @@ class PQR extends CI_Controller
 		if($_POST['blockname'] == 'basemetals'){
 			
 			$value_array = array(
-				'company_id' => $_POST['company_id'],
                 'pno_id' => $_POST['pno_id'],
                 'to_pno_id' => $_POST['to_pno_id'],
                 'group_no' => $_POST['group_no'],
@@ -641,7 +642,6 @@ class PQR extends CI_Controller
 
 		if($_POST['blockname'] == 'fillet'){
 			$value_array = array(
-				'result_statificatory' => $_POST['result_statificatory'],
 				'penetration_into_partent_metal' => $_POST['penetration_into_partent_metal'],
 				'maro_result' => $_POST['maro_result']
 			);

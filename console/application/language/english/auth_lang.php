@@ -2504,6 +2504,7 @@ $lang['mm_masters_companydetails_manage_list_title_small']='Company Detail list'
 $lang['mm_masters_companydetails_manage_form_button_name']='Company Details';
 $lang['mm_masters_companydetails_manage_form_add_button_name']='Add New Company Details';
 
+
 $lang['mm_masters_companydetails_manage_exportPDFFileName']='CompanyDetails_';
 $lang['mm_masters_companydetails_manage_pdfTitle']='Company Details';
 
@@ -2513,6 +2514,11 @@ $lang['mm_masters_companydetails_company_logo']='Company Logo';
 $lang['mm_masters_companydetails_company_phone']='Phone No.';
 $lang['mm_masters_companydetails_company_email']='Email';
 $lang['mm_masters_companydetails_company_address']='Address';
+$lang['mm_masters_companydetails_abbreviations']='Abbreviations';
+$lang['mm_masters_companydetails_contact_no']='Contact No.';
+$lang['mm_masters_companydetails_alternate_contact_no']='Alternate Contact No.';
+$lang['mm_masters_companydetails_website']='Website';
+$lang['mm_masters_companydetails_fax']='Fax';
 
 $lang['mm_masters_companydetails_table_label_company_name']='Comapny Name';
 $lang['mm_masters_companydetails_table_label_company_logo']='Logo';
@@ -2865,6 +2871,34 @@ $lang['mm_masters_diameter_table_label_createOn']='Created On';
 $lang['mm_masters_diameter_table_label_updateBy']='Updated By';
 $lang['mm_masters_diameter_table_label_updateon']='Updated On';
 
+// Project Manage titles and labels for master Thickness
+
+$lang['mm_masters_thickness_manage_create']='Create Thickness';
+$lang['mm_masters_thickness_manage_view']='View Thickness';
+
+$lang['mm_masters_thickness_manage_toptitle']='Thickness';
+$lang['mm_masters_thickness_manage_pergram']='Thickness';
+$lang['mm_masters_thickness_manage_form_title']=' Create Thickness';
+$lang['mm_masters_thickness_manage_form_title_small']='Create Thickness';
+$lang['mm_masters_thickness_manage_list_title']='Thickness List';
+$lang['mm_masters_thickness_manage_list_title_small']='Thickness list';
+$lang['mm_masters_thickness_manage_form_button_name']='Thickness';
+$lang['mm_masters_thickness_manage_form_add_button_name']='Add New Thickness';
+
+
+$lang['mm_masters_thickness_manage_exportPDFFileName']='Thickness_';
+$lang['mm_masters_diameter']='Diameter';
+
+
+$lang['mm_masters_thickness_name']='Thickness';
+
+$lang['mm_masters_thickness_table_label_diameter_name']='Diameter';
+$lang['mm_masters_thickness_table_label_thickness_name']='Thickness';
+$lang['mm_masters_thickness_table_label_createBy']='Created By';
+$lang['mm_masters_thickness_table_label_createOn']='Created On';
+$lang['mm_masters_thickness_table_label_updateBy']='Updated By';
+$lang['mm_masters_thickness_table_label_updateon']='Updated On';
+
 // Project Manage titles and labels for master Welder
 
 $lang['mm_masters_welder_manage_create']='Create Welder';
@@ -3123,7 +3157,7 @@ $lang['mm_operation_process_Select_label'] = "-- Select Process --";
 $lang['mm_operation_type_Select_label'] = "-- Select Type --";
 $lang['mm_operation_layer_Select_label'] = "-- Select Layer --";
 $lang['mm_operation_code_Select_label'] = "-- Select Code --";
-$lang['mm_operation_diameter_Select_label'] = "-- Select Diameter of Test Coupon --";
+$lang['mm_operation_diameter_Select_label'] = "-- Select Diameter --";
 $lang['mm_operation_pno_Select_label'] = "-- Select P-Number --";
 $lang['mm_operation_position_Select_label'] = "-- Select Position --";
 $lang['mm_operation_fno_Select_label'] = "-- Select F-No --";

@@ -19,6 +19,7 @@ if(isset($value) && !empty($value)){
     $type_id3 = $row->type_id3;
     $code_id = explode(',', $row->code_id);
     $pqr_other  = $row->pqr_other;
+    $pqr_pwht  = $row->pqr_pwht;
 
 
     // Joints Block
@@ -190,7 +191,7 @@ if(isset($value) && !empty($value)){
                     <li class="tablinks nav-item" data-id="position_preheat">
                         <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_position_label');?> & <?php echo lang('mm_operation_pqr_preheat_label');?></a>
                     </li>
-                    <li class="tablinks nav-item" data-id="post">
+                    <li class="tablinks nav-item" data-id="post" id="hidepost">
                         <a class="nav-link" href="javascript:void(0);"><?php echo lang('mm_operation_pqr_post_weld_heat_label');?></a>
                     </li>
                     <li class="tablinks nav-item" data-id="gas">
@@ -254,6 +255,18 @@ if(isset($value) && !empty($value)){
                       <h3 class="box-title"><?php echo lang('mm_operation_pqr_company_details_label');?></h3>
                     </div>
                     
+                    <!-- Company Details -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
+                          echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
+                          ?> 
+                        <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
+                        </div>
+                    </div>
+                        
                     <!-- Procedure Qulation specification No -->
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group <?PHP if(form_error('pqr_no')){ echo 'has-error';} ?>">
@@ -309,6 +322,17 @@ if(isset($value) && !empty($value)){
                         ?> 
                         </div>
                     </div>
+                     <!-- Code -->
+                    <div class="col-sm-3 col-xs-3">
+                      <div class="form-group <?PHP if(form_error('code_id')){ echo 'has-error';} ?>">
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_code_label');?><span class="text-danger">*</span></label>
+                        <?php   
+                          $attrib = 'class="form-control select2" name="code_id" multiple="multiple" data-live-search="true" data-width="100%"  id="code_id"';
+                          echo form_dropdown('code_id', $drop_menu_code, set_value('code_id', (isset($code_id)) ? $code_id : ''), $attrib);
+                        ?>
+                        <?PHP if(form_error('code_id')){ echo '<span class="help-block">'.form_error('code_id').'</span>';} ?>
+                        </div>
+                    </div>
                     <!-- Types 1 -->
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group <?PHP if(form_error('type_id1')){ echo 'has-error';} ?>">
@@ -323,7 +347,7 @@ if(isset($value) && !empty($value)){
                     <!-- Types2 -->
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group">
-                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_2_label');?><span class="text-danger">*</span></label>
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_2_label');?></label>
                         <?php   
                           $attrib = 'class="form-control select2" name="type_id2" data-live-search="true" data-width="100%"  id="type_id2"';
                           echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
@@ -333,24 +357,14 @@ if(isset($value) && !empty($value)){
                     <!-- Types3 -->
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group">
-                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_3_label');?><span class="text-danger">*</span></label>
+                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_type_3_label');?></label>
                         <?php   
                           $attrib = 'class="form-control select2" name="type_id3" data-live-search="true" data-width="100%"  id="type_id3"';
                           echo form_dropdown('type_id', $drop_menu_type, set_value('type_id', (isset($type_id)) ? $type_id : ''), $attrib);
                         ?>
                         </div>
                     </div>
-                    <!-- Code -->
-                    <div class="col-sm-3 col-xs-3">
-                      <div class="form-group <?PHP if(form_error('code_id')){ echo 'has-error';} ?>">
-                        <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_code_label');?><span class="text-danger">*</span></label>
-                        <?php   
-                          $attrib = 'class="form-control select2" name="code_id" multiple="multiple" data-live-search="true" data-width="100%"  id="code_id"';
-                          echo form_dropdown('code_id', $drop_menu_code, set_value('code_id', (isset($code_id)) ? $code_id : ''), $attrib);
-                        ?>
-                        <?PHP if(form_error('code_id')){ echo '<span class="help-block">'.form_error('code_id').'</span>';} ?>
-                        </div>
-                    </div>
+                   
                     <!-- Others -->
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group">
@@ -361,19 +375,19 @@ if(isset($value) && !empty($value)){
 
 
                     <!-- Post Weld Heat Treatment get yes or no -->
-                    <!-- <div class="col-sm-3 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <div class="form-group <?PHP if(form_error('pwht')){ echo 'has-error';} ?>">
-                            <label class="display-block">Pre Payment <span class="text-danger">*</span></label>
+                            <label class="display-block">Post Weld Heat Treatment <span class="text-danger">*</span></label>
                             <label class="radio-inline">
-                                <div class="choice"><input type="radio" name="pwht" class="styled" <?php if($pwht=='1'){?> checked="checked"  <?php }?>value="1" > Yes
+                                <div class="choice"><input type="radio" name="pwht"  class="styled pwht" <?php if($pqr_pwht=='1'){?> checked  <?php }?> value="1" > Yes
                                 </div>  
                             </label>
                             <label class="radio-inline">
-                                <div class="choice"><input type="radio" name="pwht" class="styled" checked="" <?php if($pwht=='0'){?> checked="checked" <?php }?>  value="0">No
+                                <div class="choice"><input type="radio" name="pwht" class="styled pwht"  <?php if($pqr_pwht =='0'){?> checked <?php }?>  value="0">No
                                 </div>                                                          
                             </label>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- Next button -->
                     <div class="col-sm-12 col-xs-12">
                         <button class="btn btn-info pull-right" type="button"  id="btnCompanyDetails" data-block="1" data-block-name="companydetails">Save & Next</button>
@@ -599,19 +613,6 @@ if(isset($value) && !empty($value)){
                       <h3 class="box-title"><?php echo lang('mm_operation_pqr_base_metals_label');?></h3>
                     </div>
                     <div class="col-sm-12 col-xs-12">
-                        <div class="row">
-                            <!-- Company Details -->
-                            <div class="col-sm-3 col-xs-3">
-                              <div class="form-group <?PHP if(form_error('company_id')){ echo 'has-error';} ?>">
-                                <label for="exampleInputEmail1"><?php echo lang('mm_operation_pqr_company_name_label');?><span class="text-danger">*</span></label>
-                                <?php   
-                                  $attrib = 'class="form-control select2" name="company_id"  data-live-search="true" data-width="100%"  id="company_id"';
-                                  echo form_dropdown('company_id', $drop_menu_company, set_value('company_id', (isset($company_id)) ? $company_id : ''), $attrib);
-                                  ?> 
-                                <?PHP if(form_error('company_id')){ echo '<span class="help-block">'.form_error('company_id').'</span>';} ?>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Pno to Pno -->
                         <div class="row">
                             <div class="col-sm-3 col-xs-3">
@@ -1934,19 +1935,7 @@ if(isset($value) && !empty($value)){
                       <h3 class="box-title"><?php echo lang('mm_operation_pqr_fillet_weld_test_label');?></h3>
                     </div>
 
-                    <div class="col-sm-3 col-xs-3">
-                      <div class="form-group">
-                        <label class="display-block"><?php echo lang('mm_operation_pqr_pwht_label');?></label>
-                        <label class="radio-inline">
-                            <div class="choice"><input type="radio" name="result_statificatory" class="styled result_statificatory" <?php if($result_statificatory=='Yes'){?> checked="checked"  <?php }?> value="Yes" > Yes
-                            </div>  
-                        </label>
-                        <label class="radio-inline">
-                            <div class="choice"><input type="radio" name="result_statificatory" class="styled result_statificatory" <?php if($result_statificatory=='No'){?> checked="checked" <?php }?>  value="No">No
-                            </div>                                                          
-                        </label>
-                      </div>
-                    </div>
+                    
                     <div class="col-sm-3 col-xs-3">
                       <div class="form-group">
                         <label class="display-block"><?php echo lang('mm_operation_pqr_penetration_partent_metal_label');?></label>
@@ -2084,6 +2073,13 @@ if(isset($value) && !empty($value)){
 
     var process = [];
     var processName = [];
+    var pwht = '<?= $pqr_pwht; ?>';
+    
+    if(pwht == '1'){
+        $('#hidepost').hide();
+        $('#post').hide();
+        $("[data-btn='6']").attr('data-btn', 5);
+    }
 
     // array object to handle Process select
     var objProcess = {}; 
@@ -2523,20 +2519,28 @@ if(isset($value) && !empty($value)){
         var formula = ((avg_voltage * avg_amp * 60)/avg_travel_speed);
         return Math.round(formula);
     }
-    // check the preheat value yes r no choice
-    // $(document).on('click',"input[name='pwht']", function(){
-    //     var radioValue = $("input[name='pwht']:checked").val();
-    //     if(radioValue == 0){
 
-    //     }else if(radioValue == 1){
-    //         $('#post').trigger();
-    //     }
-    // });
+    // check the preheat value yes r no choice
+    $(document).on('click',"input[name='pwht']", function(){
+
+        var radioValue = $("input[name='pwht']:checked").val();
+        if(radioValue == 0){
+             $('#hidepost').show();
+            $('#post').show();
+            $("[data-btn='5']").attr('data-btn', 6);
+        }else if(radioValue == 1){
+            $('#hidepost').hide();
+            $('#post').hide();
+            $("[data-btn='6']").attr('data-btn', 5);
+            
+        }
+    });
 
     var pqr_id = $("#pqr_id").val();
 
     $('#btnCompanyDetails').on('click', function(){
 
+        var company = $('#company_id').val();
         var pqr_no = $('#pqr_no').val();
         var inspection_date = $('#inspection_date').val();
         var wps_no = $('#wps_no').val();
@@ -2548,10 +2552,11 @@ if(isset($value) && !empty($value)){
         var type_id3 = $('#type_id3').val();
         var code_id = $('#code_id').val();
         var pqr_other = $('#pqr_other').val();
+        var pwht = $("input[name='pwht']:checked").val();
         var valid = 0;
 
         
-
+        if(company != ''){ $('#company_id').next().removeClass('invalid'); valid= 0;}else{$('#company_id').next().addClass('invalid'); valid=1;}
         if(pqr_no == ''){ $('#pqr_no').addClass('invalid'); valid = 1;}else{$('#pqr_no').removeClass('invalid'); valid = 0;}
         if(inspection_date == ''){ $('#inspection_date').addClass('invalid'); valid = 1;}else{$('#inspection_date').removeClass('invalid'); valid = 0;}
         if(wps_no == ''){ $('#wps_no').addClass('invalid'); valid = 1;}else{$('#wps_no').removeClass('invalid'); valid = 0;}
@@ -2569,6 +2574,7 @@ if(isset($value) && !empty($value)){
                 data : {
                     blockname: "companyDetails",
                     pqr_id : pqr_id,
+                    company_id : company,
                     pqr_no : pqr_no,
                     inspection_date : inspection_date,
                     wps_no : wps_no,
@@ -2579,7 +2585,8 @@ if(isset($value) && !empty($value)){
                     type_id2 : type_id2,
                     type_id3 : type_id3,
                     code_id : code_id,
-                    pqr_other : pqr_other
+                    pqr_other : pqr_other,
+                    pwht : pwht
 
                 },
                 error: function(err){
@@ -2698,7 +2705,7 @@ if(isset($value) && !empty($value)){
     });
   
     $('#btnBasemetals').on('click', function(){
-        var company = $('#company_id').val();
+        
         var pno_id = $('#pno_id').val();
         var to_pno_id = $('#to_pno_id').val();
         var group_no = $('#group_no').val();
@@ -2715,7 +2722,7 @@ if(isset($value) && !empty($value)){
         var base_to_others = $('#base_to_others').val();
         var valid = 0;
 
-        if(company != ''){ $('#company_id').next().removeClass('invalid'); valid= 0;}else{$('#company_id').next().addClass('invalid'); valid=1;}
+        
         if(pno_id != ''){ $('#pno_id').next().removeClass('invalid'); valid= 0;}else{$('#pno_id').next().addClass('invalid'); valid=1;}
         if(to_pno_id != ''){ $('#to_pno_id').next().removeClass('invalid'); valid= 0;}else{$('#to_pno_id').next().addClass('invalid'); valid=1;}
         if(group_no == ''){ $('#group_no').addClass('invalid'); valid = 1;}else{$('#group_no').removeClass('invalid'); valid = 0;}
@@ -2738,7 +2745,6 @@ if(isset($value) && !empty($value)){
                 data: {
                     blockname: "basemetals",
                     pqr_id: $('#pqr_id').val(),
-                    company_id : company,
                     pno_id : pno_id,
                     to_pno_id : to_pno_id,
                     group_no : group_no,
@@ -2913,7 +2919,12 @@ if(isset($value) && !empty($value)){
                 },
                 success : function(data){
                     if(data.success == 1){
-                        $('.tablinks:nth-child(6)').trigger('click');
+                        if($("input[name='pwht']:checked").val() == 1){
+                            $('.tablinks:nth-child(7)').trigger('click');
+                        }else{
+                            $('.tablinks:nth-child(6)').trigger('click');
+                        }
+                        
                     }
                 }
 
@@ -3462,7 +3473,7 @@ if(isset($value) && !empty($value)){
     });
 
     $('#btnFillet').on('click', function(){
-        var result_statificatory = $("input[name='result_statificatory']:checked").val();
+        
         var penetration_into_partent_metal = $("input[name='penetration_into_partent_metal']:checked").val();
         var maro_result = $('#maro_result').val();
 
@@ -3473,7 +3484,6 @@ if(isset($value) && !empty($value)){
             data: {
                 blockname: "fillet",
                 pqr_id: $('#pqr_id').val(),
-                result_statificatory: result_statificatory,
                 penetration_into_partent_metal: penetration_into_partent_metal,
                 maro_result: maro_result,
             },

@@ -103,7 +103,7 @@
 
           {label:'<?php echo lang('mm_masters_companydetails_table_label_company_name');?>',name:'company_name',index:'company_name', width:250, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
           {label:'<?php echo lang('mm_masters_companydetails_table_label_company_email');?>',name:'company_email',index:'company_email', width:220, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
-          {label:'<?php echo lang('mm_masters_companydetails_table_label_company_phone');?>',name:'company_phone',index:'company_phone', width:150, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
+          {label:'<?php echo lang('mm_masters_companydetails_contact_no');?>',name:'contact_no',index:'contact_no', width:150, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
           
           {label:'<?php echo lang('mm_masters_companydetails_table_label_company_logo');?>',name:'company_logo',index:'company_logo', width:200, coloptions : {sorting:true, columns: true, filtering: true, grouping:true, freeze : true}},
          
